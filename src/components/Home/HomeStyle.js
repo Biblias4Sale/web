@@ -1,5 +1,5 @@
 export const Style = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
 }

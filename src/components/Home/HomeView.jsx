@@ -30,7 +30,7 @@ export const HomeView = () => {
           </Col>
           <Col>
             <Link to=''>
-              <div><img className='w-100' height='900px' alt='imagen no encontrada' src={Camaras} /></div>
+              <div><img className='w-100' height='700px' alt='imagen no encontrada' src={Camaras} /></div>
             </Link>
           </Col>
         </Row>
