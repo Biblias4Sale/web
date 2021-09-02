@@ -15,8 +15,8 @@ const rootReducer = (state = initialState, action) => {
       console.log(action.payload)
       return { ...state, products: action.payload}
 
-      case GET_CATEGORIES:
-      return { ...state, categories: action.payload }
+    case GET_CATEGORIES:
+    return { ...state, categories: action.payload }
 
     default:
       return state
