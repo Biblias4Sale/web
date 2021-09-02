@@ -1,0 +1,44 @@
+[debug] [2021-09-02T22:35:29.320Z] ----------------------------------------------------------------------
+[debug] [2021-09-02T22:35:29.336Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\nacho\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-09-02T22:35:29.337Z] CLI Version:   9.17.0
+[debug] [2021-09-02T22:35:29.337Z] Platform:      win32
+[debug] [2021-09-02T22:35:29.337Z] Node Version:  v14.16.1
+[debug] [2021-09-02T22:35:29.555Z] Time:          Thu Sep 02 2021 19:35:29 GMT-0300 (hora estándar de Argentina)
+[debug] [2021-09-02T22:35:29.555Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-02T22:35:29.976Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-02T22:35:29.976Z] > authorizing via signed-in user (ignacioamatt@gmail.com)
+[debug] [2021-09-02T22:35:29.976Z] [iam] checking project noiloan for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-09-02T22:35:29.979Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-09-02T22:35:29.979Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-09-02T22:35:34.495Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Thu, 02 Sep 2021 22:35:34 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-02T22:35:34.793Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/noiloan:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-09-02T22:35:35.671Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 02 Sep 2021 22:35:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=810","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-02T22:35:35.673Z] > refreshing access token with scopes: []
+[debug] [2021-09-02T22:35:35.673Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-09-02T22:35:35.880Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Thu, 02 Sep 2021 22:35:35 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-02T22:35:35.995Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/noiloan [none]
+[debug] [2021-09-02T22:35:37.051Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/noiloan 200
+[debug] [2021-09-02T22:35:37.051Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/noiloan {"projectId":"noiloan","projectNumber":"197125618237","displayName":"noiloan","name":"projects/noiloan","resources":{"hostingSite":"noiloan"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'noiloan'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-09-02T22:35:37.064Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-09-02T22:35:37.065Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-09-02T22:35:37.299Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Thu, 02 Sep 2021 22:35:36 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-02T22:35:37.560Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/noiloan/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-09-02T22:35:39.134Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 02 Sep 2021 22:35:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[noiloan]: beginning deploy... 
+[info] i  hosting[noiloan]: found 23 files in build 
+[debug] [2021-09-02T22:35:39.632Z] > refreshing access token with scopes: []
+[debug] [2021-09-02T22:35:39.632Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-09-02T22:35:39.649Z] [hosting] hash cache [YnVpbGQ] stored for 23 files
+[debug] [2021-09-02T22:35:39.650Z] [hosting][hash queue][FINAL] {"max":392,"min":4,"avg":28.347826086956523,"active":0,"complete":23,"success":23,"errored":0,"retried":0,"total":23,"elapsed":413}
+[debug] [2021-09-02T22:35:39.879Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Thu, 02 Sep 2021 22:35:39 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
