@@ -3,31 +3,44 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import { BsPersonSquare } from 'react-icons/bs'
 
-import { style, container, botton } from './LoginStyle'
+import { style, container, botton } from './CreateAccountStyle'
 import { Link } from 'react-router-dom'
 
-export const LoginView = () => {
+export const CreateAccountView = () => {
   return (
     <div>
       <Container style={container}>
         <Col>
-          <h1 className='m-3'>Iniciar Sesion</h1>
+          <h1 className='m-3'>Registro</h1>
+          <InputGroup size='lg m-4'>
+            <InputGroup.Text id='name' className='bg-white'>
+              <BsPersonSquare size={28} />
+            </InputGroup.Text>
+            <FormControl type='text' placeholder='Nombre' />
+          </InputGroup>
+          <InputGroup size='lg m-4'>
+            <InputGroup.Text id='lastname' className='bg-white'>
+              <BsPersonSquare size={28} />
+            </InputGroup.Text>
+            <FormControl type='text' placeholder='Apellido' />
+          </InputGroup>
           <InputGroup size='lg m-4'>
             <InputGroup.Text id='e-mail' className='bg-white'>
               <HiOutlineMail size={30} />
-            </InputGroup.Text >
-            <FormControl type='e-mail' placeholder='Ingresa tu E-mail' />
+            </InputGroup.Text>
+            <FormControl type='e-mail' placeholder='E-mail' />
           </InputGroup>
           <InputGroup size='lg m-4'>
             <InputGroup.Text id='password' className='bg-white'>
               <RiLockPasswordLine size={30} />
             </InputGroup.Text>
-            <FormControl type='password' placeholder='Ingresa tu Contraseña' />
+            <FormControl type='password' placeholder='Contraseña' />
           </InputGroup>
           <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'><AiOutlineLogin size={25} className='text-white' />LOGIN</Button>
-          <Link to='/create'>
-            <h4 className='m-3 text-center justify-content-center'> No tenes una Cuenta ? Create una aqui ! </h4>
+          <Link to='/login'>
+            <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ? Inicia sesion ahora ! </h4>
           </Link>
           <h4 className='m-3 text-center'> O </h4>
           <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'><GrGoogle size={20} className='m-1 text-white' />Ingresar con Google</Button>
