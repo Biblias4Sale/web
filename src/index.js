@@ -11,6 +11,7 @@ import Store from './redux/store/'
 // import { RootComponent, LoadingView } from './components';
 
 const { persistor, store } = Store
+//persistor.purge()
 
 ReactDOM.render(
   <React.StrictMode>
