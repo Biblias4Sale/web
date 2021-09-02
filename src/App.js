@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getProducts, getCategories } from './redux/actions'
 import { RouterWeb } from './RoutesWeb'
+import { NavBar } from './components/NavBar/NavBar'
+import { Footer } from './components/Footer/Footer'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -21,7 +23,9 @@ const App = () => {
 
   return (
     <div>
+      <NavBar />
       <RouterWeb />
+      <Footer />
     </div>
   )
 }
