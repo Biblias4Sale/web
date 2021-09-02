@@ -4,7 +4,7 @@ export const container = {
     justifyContent: 'center',
     justifyText: 'center',
     margin: '5%',
-    width: '40%'
+    width: '80%'
   }
   
   export const botton = {
