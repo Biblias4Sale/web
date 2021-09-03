@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import Paginate from './Pagination'
 import {Container} from 'react-bootstrap'
 
+
 export default function Catalogue () {
 const dispatch = useDispatch(); 
 const allProducts = useSelector((state) => state.products)
@@ -32,6 +33,7 @@ useEffect(() =>{
         <h2>Productos disponibles</h2>
         
         <Container style = {{background : 'red', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+
         {product?.map((obj) => {
             return (
                 <NavLink to={'/details/' + obj.id}>
@@ -49,6 +51,7 @@ useEffect(() =>{
         </div>
         <div>
             <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length + 1} ítems</a></h6>
+
         </div>
     </div>
     )
