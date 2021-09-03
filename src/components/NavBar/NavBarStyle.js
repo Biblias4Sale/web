@@ -24,11 +24,12 @@ export const LinkStyle = {
 }
 
 export const CategoriesDrop = {
-  marginLeft: '20px'
+  display: 'flex',
+  justifyContent: 'center'
 }
 
 export const CategoriesDropTitle = {
-  color: '#ff9500'
+  color: '#c8e165'
 }
 
 export const IconContainer = {
