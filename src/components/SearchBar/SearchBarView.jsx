@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   InputGroup,
   FormControl,
@@ -9,6 +11,14 @@ import { FiSearch } from 'react-icons/fi'
 import { Style, Input, Contenedor } from './SearchBarStyle'
 
 export const SearchBarView = () => {
+  const [search, setSearch] = useState('')
+  const dispatch = useDispatch()
+
+  const handleChangeSearchBar = async e => {
+    e.persist()
+    await setSearch({ search: e.target.value })
+    console.log(search)
+  }
   return (
     <div style={Contenedor}>
       <Container>
@@ -19,6 +29,8 @@ export const SearchBarView = () => {
               <FormControl
                 style={Input}
                 placeholder='Busca tu poducto..'
+                onChange={e => handleChangeSearchBar(e)}
+                value={search}
               />
             </InputGroup.Text>
           </InputGroup>

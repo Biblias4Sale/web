@@ -10,14 +10,14 @@ export const setLogged = () => {
 
 export const getProducts = (payload) => {
   return {
-    type: GET_PRODUCTS, 
-    payload,
+    type: GET_PRODUCTS,
+    payload
   }
 }
 
 export const getCategories = (payload) => {
   return {
-    type: GET_CATEGORIES, 
-    payload,
+    type: GET_CATEGORIES,
+    payload
   }
 }

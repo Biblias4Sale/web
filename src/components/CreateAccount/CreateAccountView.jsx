@@ -4,35 +4,26 @@ import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
-import { style, container, botton } from './CreateAccountStyle'
+import { container, botton } from './CreateAccountStyle'
 import { useState } from 'react'
 import { ModalUser } from '../Modals/ModalUser'
-import { UseForm } from '../common/UseForm'
-import { Validations } from '../common/Validations'
 
 export const CreateAccountView = () => {
   const [modalShow, setModalShow] = useState(false)
 
-  const {
-    errors,
-    values,
-    onInputChange,
-    handleSubmit
-  } = UseForm(Validations)
   return (
     <div>
       <Container style={container}>
         <Col>
           <h1 className='m-3'>Registro</h1>
           <InputGroup size='lg m-4'>
-            <InputGroup.Text id='name' className='bg-white'>
+            <InputGroup.Text id='firstname' className='bg-white'>
               <BsPersonSquare size={28} />
             </InputGroup.Text>
             <FormControl
               type='text'
               placeholder='Nombre'
-              name={values.name}
-              onChange={e => onInputChange(e)}
+              name='firstName'
             />
           </InputGroup>
           <InputGroup size='lg m-4'>
@@ -42,19 +33,17 @@ export const CreateAccountView = () => {
             <FormControl
               type='text'
               placeholder='Apellido'
-              name={values.lastname}
-              onChange={e => onInputChange(e)}
+              name='lastname'
             />
           </InputGroup>
           <InputGroup size='lg m-4'>
-            <InputGroup.Text id='e-mail' className='bg-white'>
+            <InputGroup.Text id='email' className='bg-white'>
               <HiOutlineMail size={30} />
             </InputGroup.Text>
             <FormControl
               type='e-mail'
               placeholder='E-mail'
-              name={values.email}
-              onChange={e => onInputChange(e)}
+              name='email'
             />
           </InputGroup>
           <InputGroup size='lg m-4'>
@@ -64,14 +53,13 @@ export const CreateAccountView = () => {
             <FormControl
               type='password'
               placeholder='Contraseña'
-              name={values.password}
-              onChange={e => onInputChange(e)}
+              name='password'
             />
           </InputGroup>
-          <Button type='submit' onCclick={e => handleSubmit(e)} style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
+          <Button type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
             <AiOutlineLogin size={25} className='text-white' />
             REGISTRARSE
-            </Button>
+          </Button>
           <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
           <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center' onClick={() => setModalShow(true)}>Inicia sesion ahora !</Button>
           <ModalUser

@@ -6,16 +6,8 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
 import { useState } from 'react'
 import { ModalCreateAccount } from '../Modals/ModalCreateAccount'
-import { UseForm } from '../common/UseForm'
-import { Validations } from '../common/Validations'
 
 export const LoginView = () => {
-  const {
-    errors,
-    values,
-    onInputChange,
-    handleSubmit
-  } = UseForm(Validations)
 
   const [modalShow, setModalShow] = useState(false)
   return (
@@ -24,14 +16,13 @@ export const LoginView = () => {
         <Col>
           <h1 className='m-3'>Iniciar Sesion</h1>
           <InputGroup size='lg m-4'>
-            <InputGroup.Text id='e-mail' className='bg-white'>
+            <InputGroup.Text id='email' className='bg-white'>
               <HiOutlineMail size={30} />
             </InputGroup.Text>
             <FormControl
               type='e-mail'
-              placeholder='Ingresa tu E-mail'
-              name={values.email}
-              onChange={e => onInputChange(e)}
+              placeholder='E-mail'
+              name='email'
             />
           </InputGroup>
           <InputGroup size='lg m-4'>
@@ -40,12 +31,11 @@ export const LoginView = () => {
             </InputGroup.Text>
             <FormControl
               type='password'
-              placeholder='Ingresa tu Contraseña'
-              name={values.password}
-              onChange={e => onInputChange(e)}
+              placeholder='Contraseña'
+              name='password'
             />
           </InputGroup>
-          <Button type='submit' onCclick={e => handleSubmit(e)} style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
+          <Button type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
             <AiOutlineLogin size={25} className='text-white' />
             LOGIN
           </Button>
