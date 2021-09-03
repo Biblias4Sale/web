@@ -4,11 +4,12 @@ import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
-
 import { style, container, botton } from './CreateAccountStyle'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { ModalUser } from '../Modals/ModalUser'
 
 export const CreateAccountView = () => {
+  const [modalShow, setModalShow] = useState(false)
   return (
     <div>
       <Container style={container}>
@@ -39,9 +40,12 @@ export const CreateAccountView = () => {
             <FormControl type='password' placeholder='Contraseña' />
           </InputGroup>
           <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'><AiOutlineLogin size={25} className='text-white' />LOGIN</Button>
-          <Link to='/login'>
-            <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ? Inicia sesion ahora ! </h4>
-          </Link>
+          <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
+          <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center' onClick={() => setModalShow(true)}>Inicia sesion ahora !</Button>
+          <ModalUser
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
           <h4 className='m-3 text-center'> O </h4>
           <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'><GrGoogle size={20} className='m-1 text-white' />Ingresar con Google</Button>
         </Col>
