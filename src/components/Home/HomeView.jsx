@@ -1,6 +1,7 @@
 import { Row } from 'react-bootstrap'
 import { TopContainer } from './modules/TopContainer'
 import { CenterContainer } from './modules/CenterContainer'
+import { BestOfTheWeek } from './modules/BestOfTheWeek'
 import { StyleContainer, MainContainer } from './HomeStyle'
 
 export const HomeView = () => {
@@ -12,6 +13,9 @@ export const HomeView = () => {
         </Row>
         <Row>
           <CenterContainer />
+        </Row>
+        <Row>
+          <BestOfTheWeek />
         </Row>
       </div>
     </div>
