@@ -11,7 +11,6 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response1 = await axios.get(`${ApiURL}/product`)
-      console.log(response1)
       dispatch(getProducts(response1.data))
       const response2 = await axios.get(`${ApiURL}/category`)
       dispatch(getCategories(response2.data))
