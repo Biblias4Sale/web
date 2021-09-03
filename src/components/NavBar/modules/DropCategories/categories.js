@@ -6,5 +6,3 @@ export const Categories = [
   'Producto 5',
   'Producto 6'
 ]
-
-// ESTE ARRAY DEBERÁ OBTENER TODAS LAS CATEGORIAS DE LA DB

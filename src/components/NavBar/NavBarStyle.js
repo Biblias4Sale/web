@@ -1,6 +1,7 @@
 export const NavContainer = {
   background: '#ffffff00',
-  color: '#48484a'
+  color: '#48484a',
+  fontSize: '17px'
 }
 
 export const LogoContainer = {
@@ -20,6 +21,10 @@ export const LinkBoxStyle = {
 export const LinkStyle = {
   textDecoration: 'none',
   color: '#48484a'
+}
+
+export const CategoriesDrop = {
+  marginLeft: '20px'
 }
 
 export const CategoriesDropTitle = {

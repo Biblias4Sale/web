@@ -6,7 +6,7 @@ export const SearchIcon = () => {
   const [modalShow, setModalShow] = useState()
   return (
     <div>
-      <FaSearch size={25} onClick={() => setModalShow(true)} />
+      <FaSearch size={28} onClick={() => setModalShow(true)} />
       <ModalSearchBar
         show={modalShow}
         onHide={() => setModalShow(false)}
