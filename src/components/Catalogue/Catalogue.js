@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Product from '../Products/Product'
 import { getProducts } from '../../redux/actions'
 import { NavLink } from 'react-router-dom';
+import Paginate from './Pagination'
+import {Container} from 'react-bootstrap'
 
 
 export default function Catalogue () {
@@ -29,20 +31,27 @@ useEffect(() =>{
     return (
     <div>
         <h2>Productos disponibles</h2>
-        <div>
+        
+        <Container style = {{background : 'red', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+
         {product?.map((obj) => {
             return (
                 <NavLink to={'/details/' + obj.id}>
                      <Product
-                     name={obj.name} points={obj.points}/>
+                     name={obj.name} points={obj.points} id={obj.id}/>
                 </NavLink>
-                
             )
         }
-       
-
         )}
-       
+        </Container>
+        <div>
+            <Paginate productsPerPage = {productsPerPage}
+                allProducts = {allProducts.length}
+                pages = {pages}/>
+        </div>
+        <div>
+            <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length + 1} ítems</a></h6>
+
         </div>
     </div>
     )

@@ -13,8 +13,9 @@ export const setLogged = () => {
 
 export function getProducts() {
   return async function(dispatch) {
-    const response1 = await axios.get(`${ApiURL}/product`)
-    return dispatch({type: GET_PRODUCTS, payload: response1.data})
+  const response1 = await axios.get(`${ApiURL}/product`)
+  return dispatch({type: GET_PRODUCTS, payload: response1.data})
+
   }
 }
 
