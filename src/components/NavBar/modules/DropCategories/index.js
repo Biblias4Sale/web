@@ -1,10 +1,10 @@
 import { Col, NavDropdown } from 'react-bootstrap'
 import { Categories } from './categories'
-import { CategoriesDropTitle } from '../../NavBarStyle'
+import { CategoriesDrop, CategoriesDropTitle } from '../../NavBarStyle'
 
 export const DropCategories = () => {
   return (
-    <Col xs={6} sm={6} md={6} lg={4}>
+    <Col xs={6} sm={6} md={6} lg={4} style={CategoriesDrop}>
       <NavDropdown title='Categorías'>
         <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
         <NavDropdown.Divider />
