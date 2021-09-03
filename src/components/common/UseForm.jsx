@@ -30,9 +30,6 @@ export const UseForm = () => {
         .required('Required'),
       email: Yup.string().email('Invalid email address').required('Required')
     })
-    // onSubmit: values => {
-    //     alert(JSON.stringify(values, null, 2));
-    //   }
   })
 
   const onInputChange = (e) => {
