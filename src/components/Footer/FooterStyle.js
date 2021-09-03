@@ -1,6 +1,5 @@
 export const MainContainer = {
-  position: 'absolute',
-  bottom: '0',
+  position: 'relative',
   width: '100%'
 }
 

@@ -2,7 +2,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 
 export const UserIcon = () => {
   return (
-    <FaRegUserCircle size={25} />
+    <FaRegUserCircle size={28} />
   )
 }
 

@@ -5,7 +5,7 @@ import { LinkBoxStyle } from '../../NavBarStyle'
 
 export const LinksBox = () => {
   return (
-    <Col xs={7} sm={5} lg={6} style={LinkBoxStyle}>
+    <Col xs={7} sm={5} lg={5} style={LinkBoxStyle}>
       <HomeLink />
       <DropCategories />
     </Col>
