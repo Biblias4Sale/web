@@ -8,7 +8,6 @@ import { useState } from 'react'
 import { ModalCreateAccount } from '../Modals/ModalCreateAccount'
 
 export const LoginView = () => {
-
   const [modalShow, setModalShow] = useState(false)
   return (
     <div>

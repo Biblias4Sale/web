@@ -3,10 +3,10 @@ import axios from 'axios'
 import { GET_PRODUCTS, SET_LOGGED, GET_CATEGORIES } from './constants'
 import { ApiURL } from '../../config/config'
 
-export const setLogged = () => {
+export const setLogged = (data) => {
   return {
     type: SET_LOGGED,
-    payload: true
+    payload: data
   }
 }
 
