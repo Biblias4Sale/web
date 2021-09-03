@@ -5,5 +5,3 @@ export const CartIcon = () => {
     <HiOutlineShoppingCart size={28} />
   )
 }
-
-// Logica al apretarlo.
