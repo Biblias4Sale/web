@@ -1,9 +1,18 @@
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { SearchBarView } from './SearchBarView'
 
 export const SearchBar = () => {
+  const allProducts = useSelector(store => store.products)
+  const [search, setSearch] = useState([''])
+
+  const handleChangeSearchBar = e => {
+    const searchResult = allProducts.filter(product => product?.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setSearch(searchResult)
+  }
   return (
     <div>
-      <SearchBarView />
+      <SearchBarView handleChangeSearchBar={handleChangeSearchBar} search={search} />
     </div>
   )
 }
