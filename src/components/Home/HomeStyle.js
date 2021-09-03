@@ -10,6 +10,7 @@ export const MainContainer = {
 
 export const TopContainerStyle = {
   display: 'flex',
+  justifyContent: 'center',
   padding: 0,
   width: '100vw',
   flexWrap: 'wrap'
@@ -29,5 +30,6 @@ export const CentralContainerStyle = {
 }
 
 export const CenterImgs = {
-  width: '95%'
+  width: '95%',
+  marginTop: '20px'
 }
