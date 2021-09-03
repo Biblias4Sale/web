@@ -1,5 +1,7 @@
 
+import axios from 'axios'
 import { GET_PRODUCTS, SET_LOGGED, GET_CATEGORIES } from './constants'
+import { ApiURL } from '../../config/config'
 
 export const setLogged = () => {
   return {
@@ -8,10 +10,10 @@ export const setLogged = () => {
   }
 }
 
-export const getProducts = (payload) => {
-  return {
-    type: GET_PRODUCTS,
-    payload
+export function getProducts () {
+  return async function (dispatch) {
+    const response1 = await axios.get(`${ApiURL}/product`)
+    return dispatch({ type: GET_PRODUCTS, payload: response1.data })
   }
 }
 

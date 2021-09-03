@@ -12,8 +12,9 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, logged: action.payload }
 
     case GET_PRODUCTS:
-      console.log(action.payload)
-      return { ...state, products: action.payload }
+      
+      return { ...state, products: action.payload}
+
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }
