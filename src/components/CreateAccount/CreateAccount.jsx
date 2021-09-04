@@ -25,7 +25,6 @@ export const CreateAccount = () => {
 
   // Submit your data into Redux store
   const onSubmit = (data) => {
-    alert('creando usuario')
     dispatch(createUser(data))
   }
   return (
