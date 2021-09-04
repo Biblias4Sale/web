@@ -10,6 +10,7 @@ export const setLogged = (data) => {
   }
 }
 
+<<<<<<< HEAD
 export const createUser = (payload) => {
   return async function () {
     const createUser = await axios.post(`${ApiURL}/algo`, payload)
@@ -21,9 +22,9 @@ export const createUser = (payload) => {
   }
 }
 
-export function getProducts () {
+export const getProducts = () => {
   return async function (dispatch) {
-    const response1 = await axios.get(`${ApiURL}/product`)
+    const response1 = await axios.get(`${ApiURL}/products`)
     return dispatch({ type: GET_PRODUCTS, payload: response1.data })
   }
 }
