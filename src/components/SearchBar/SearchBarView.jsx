@@ -7,6 +7,7 @@ import {
 } from 'react-bootstrap'
 
 import { FiSearch } from 'react-icons/fi'
+import { AllProducts } from './modules/AllProducts'
 import { Style, Input, Contenedor } from './SearchBarStyle'
 
 export const SearchBarView = ({ handleChangeSearchBar, search }) => {
@@ -26,12 +27,7 @@ export const SearchBarView = ({ handleChangeSearchBar, search }) => {
           </InputGroup>
         </Col>
         <Row className='justify-content-center text-center'>
-          {search?.map(elem => (
-            <Col lg={8} >
-              <h3 key={elem.name}>{elem.name}</h3>
-              <h5 key={elem.points}>{elem.points}</h5>
-            </Col>
-          ))}
+          <AllProducts search={search} />
         </Row>
       </Container>
     </div>
