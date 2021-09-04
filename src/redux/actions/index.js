@@ -10,7 +10,6 @@ export const setLogged = (data) => {
   }
 }
 
-<<<<<<< HEAD
 export const createUser = (payload) => {
   return async function () {
     const createUser = await axios.post(`${ApiURL}/algo`, payload)
