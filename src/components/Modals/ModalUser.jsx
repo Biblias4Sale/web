@@ -9,7 +9,7 @@ export const ModalUser = (props) => {
       aria-labelledby='contained-modal-title-vcenter'
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton aria-label='close'>
         .
       </Modal.Header>
       <Modal.Body>

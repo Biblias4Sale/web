@@ -1,12 +1,23 @@
 
 import axios from 'axios'
-import { GET_PRODUCTS, SET_LOGGED, GET_CATEGORIES } from './constants'
+import { GET_PRODUCTS, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
 import { ApiURL } from '../../config/config'
 
 export const setLogged = (data) => {
   return {
     type: SET_LOGGED,
     payload: data
+  }
+}
+
+export const createUser = (payload) => {
+  return async function () {
+    const createUser = await axios.post(`${ApiURL}/algo`, payload)
+    console.log(payload)
+    return {
+      type: CREATE_USER,
+      createUser
+    }
   }
 }
 

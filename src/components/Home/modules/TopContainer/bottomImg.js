@@ -1,12 +1,14 @@
 import { Row, Image } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Accesorios from '../../../../assets/accesorios.jpg'
 import { ImgWidth } from '../../HomeStyle'
 
 export const BottomImg = () => {
   return (
     <Row>
-      <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
+      <Link to=''>
+        <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
+      </Link>
     </Row>
   )
 }
