@@ -1,6 +1,7 @@
 export const NavContainer = {
   background: '#ffffff00',
-  color: '#48484a'
+  color: '#48484a',
+  fontSize: '17px'
 }
 
 export const LogoContainer = {
@@ -22,8 +23,13 @@ export const LinkStyle = {
   color: '#48484a'
 }
 
+export const CategoriesDrop = {
+  display: 'flex',
+  justifyContent: 'center'
+}
+
 export const CategoriesDropTitle = {
-  color: '#ff9500'
+  color: '#c8e165'
 }
 
 export const IconContainer = {

@@ -6,7 +6,7 @@ export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
   return (
     <div>
-      <FaRegUserCircle size={25} onClick={() => setModalShow(true)} />
+      <FaRegUserCircle size={28} onClick={() => setModalShow(true)} />
       <ModalUser
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -14,5 +14,3 @@ export const UserIcon = () => {
     </div>
   )
 }
-
-// Logica al apretarlo.
