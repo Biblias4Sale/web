@@ -12,9 +12,9 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response1 = await axios.get(`${ApiURL}/product`)
+      const response1 = await axios.get(`${ApiURL}/products`)
       dispatch(getProducts(response1.data))
-      const response2 = await axios.get(`${ApiURL}/category`)
+      const response2 = await axios.get(`${ApiURL}/categories`)
       dispatch(getCategories(response2.data))
     }
     fetchData()

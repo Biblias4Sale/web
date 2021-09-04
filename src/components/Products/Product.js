@@ -1,17 +1,19 @@
-import React from 'react'; 
-import './ProductStyle.css'
+import React from 'react'
+import { productImg } from './ProductStyle.js'
+import Camaras from '../../assets/camaras.jpg'
+import { productDetail, productTitle, productDetail2 } from './ProductStyle'
 
-
-export default function Product ({name, points, id}) {
-    return (
-    
-    <div class="col-xs-6 col-md-4">
-       <div class="product tumbnail thumbnail-3"><a href="#"><img src="https://via.placeholder.com/350x280/87CEFA/000000" alt=""/></a>
-         <div class="caption">
-             <h6><a href="#">{name + '   ' + id}</a></h6>
-             <span class="price sale">{points}</span>
-         </div>
-       </div>
-     </div>
-    )
+export default function Product ({ name, points }) {
+  return (
+    <div>
+      <div style={productTitle}><a><img src={Camaras} alt='Image not found' style={productImg} /></a>
+        <div style={productDetail}>
+          <h6><a>{name}</a></h6>
+        </div>
+        <div style={productDetail2}>
+          <span>{points}</span>
+        </div>
+      </div>
+    </div>
+  )
 }

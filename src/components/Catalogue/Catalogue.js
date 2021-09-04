@@ -1,55 +1,76 @@
-import React, { useState, useEffect } from 'react'; 
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Product from '../Products/Product'
 import { getProducts } from '../../redux/actions'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 import Paginate from './Pagination'
-import {Container} from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
+import { paginationStyle, headerProducts, productsCat } from './CatalogueStyle'
+import Select from 'react-select/creatable'
 
-export default function Catalogue () {
-const dispatch = useDispatch(); 
-const allProducts = useSelector((state) => state.products)
-const [currentPage, setCurrentPage] = useState(1); 
-const [productsPerPage, setProductsPerPage] = useState(15); 
-const lastProduct = currentPage * productsPerPage; 
-const firstProduct = lastProduct - productsPerPage; 
-const product = allProducts.slice(firstProduct, lastProduct)
+export const Catalogue = () => {
+  const dispatch = useDispatch()
+  const allProducts = useSelector((state) => state.products)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [productsPerPage, setProductsPerPage] = useState(15)
+  const lastProduct = currentPage * productsPerPage
+  const firstProduct = lastProduct - productsPerPage
+  const product = allProducts.slice(firstProduct, lastProduct)
 
+  const options = [
+    { value: 'Relevancia', label: 'Relevancia' },
+    { value: 'Nuevos', label: 'Recien Llegados' },
+    { value: 'PrecioMayor', label: 'Precio, mayor a menor' },
+    { value: 'PrecioMenor', label: 'Precio, menor a mayor' },
+    { value: 'Aleatorio', label: 'Aleatorio' }
 
-
-const pages = (pageNumber) => {
+  ]
+  const pages = (pageNumber) => {
     setCurrentPage(pageNumber)
-}
+  }
 
-
-
-useEffect(() =>{
+  useEffect(() => {
     dispatch(getProducts())
-}, [dispatch])
+  }, [dispatch])
 
-    return (
+  return (
     <div>
-        <h2>Productos disponibles</h2>
-        
-        <Container style = {{background : 'red', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-        {product?.map((obj) => {
-            return (
-                <NavLink to={'/details/' + obj.id}>
-                     <Product
-                     name={obj.name} points={obj.points} id={obj.id}/>
+      <Container style={productsCat}>
+        <Row />
+        <Col lg={3} />
+        <Col lg={9}>
+          <div style={headerProducts}>
+            <h3>Cámaras</h3>
+          </div>
+          <Select options={options} />
+          <div style={productsCat}>
+            {product?.map((obj) => {
+              return (
+                <NavLink to={'/details/' + obj.id} key={obj.id}>
+                  <Product
+                    name={obj.name} points={obj.points} id={obj.id} key={obj.id}
+                  />
                 </NavLink>
-            )
-        }
-        )}
-        </Container>
-        <div>
-            <Paginate productsPerPage = {productsPerPage}
-                allProducts = {allProducts.length}
-                pages = {pages}/>
-        </div>
-        <div>
-            <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length + 1} ítems</a></h6>
-        </div>
+              )
+            })}
+          </div>
+          <hr style={{ width: '100%' }} />
+          <div style={paginationStyle}>
+            <div>
+              <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length} ítems</a></h6>
+            </div>
+            <div>
+              <Paginate
+                productsPerPage={productsPerPage}
+                allProducts={allProducts.length}
+                pages={pages}
+              />
+            </div>
+          </div>
+        </Col>
+      </Container>
     </div>
-    )
+  )
 }
+
+export default Catalogue
