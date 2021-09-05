@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../../redux/actions/index'
+import React, { useState } from 'react'
+// import { useSelector } from 'react-redux'
+// import { getProducts } from '../../../redux/actions/index'
+import { GetStarts } from '../../common/getStars'
+
 import Paginate from './Pagination'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../Products/Product'
 import { productsCat, paginationStyle } from '../CatalogueStyle'
 
-export const Pages = () => {
-  const dispatch = useDispatch()
-  const allProducts = useSelector((state) => state.products)
+export const Pages = ({ finalList }) => {
+  // const dispatch = useDispatch()
+  // const allProducts = useSelector((state) => state.products)
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage, setProductsPerPage] = useState(15)
   const lastProduct = currentPage * productsPerPage
   const firstProduct = lastProduct - productsPerPage
-  const product = allProducts.slice(firstProduct, lastProduct)
+  const product = finalList.slice(firstProduct, lastProduct)
+  // const productStars = GetStarts(product)
 
   const pages = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [dispatch])
+
   return (
     <div>
       <div style={productsCat}>
@@ -28,7 +29,7 @@ export const Pages = () => {
           return (
             <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.name} points={obj.points} id={obj.id} key={obj.id}
+                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={obj.id} img={obj.img}
               />
             </NavLink>
           )
@@ -37,12 +38,12 @@ export const Pages = () => {
       <hr style={{ width: '100%' }} />
       <div style={paginationStyle}>
         <div>
-          <h6><a href>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length} ítems</a></h6>
+          <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {finalList.length} ítems</a></h6>
         </div>
         <div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={allProducts.length}
+            allProducts={finalList.length}
             pages={pages}
           />
         </div>

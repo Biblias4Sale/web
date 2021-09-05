@@ -8,10 +8,10 @@ export const Cards = ({ product }) => {
 
   return (
     <Card style={CardStyle}>
-      <Card.Img variant='top' src='https://www.headchile.com/media/catalog/product/cache/7151efb52db8e605104a54f6f8b7286a/1/0/107563_expedition_tweed_negro_iso_1_2.jpg' />
+      <Card.Img variant='top' src={product.img} />
       <Card.Body>
-        <Card.Title style={StyleContainer}>{product.name}</Card.Title>
-        <Card.Text style={StyleContainer}> $3200 </Card.Text>
+        <Card.Title style={StyleContainer}>{product.brand + ' ' + product.model}</Card.Title>
+        <Card.Text style={StyleContainer}> {product.price} </Card.Text>
         <CardBottom stars={productStars} product={product} />
       </Card.Body>
     </Card>
