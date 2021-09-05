@@ -5,7 +5,7 @@ import { ImgWidth } from '../../HomeStyle'
 
 export const TopImg = () => {
   return (
-    <Link to='/product'>
+    <Link to='/catalogo'>
       <Row>
         <Image src={LineaExpertos} alt='Linea expertos ' style={ImgWidth('60vh')} />
       </Row>

@@ -12,12 +12,12 @@ export const Catalogue = () => {
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: actualCategory,
+    category: 'Luces',
     subCategory: [],
     price: 'all',
-    raiting: [],
-    order: 'id',
-    direction: 'asc'
+    raiting: []
+    // order: 'id',
+    // direction: 'asc'
   })
 
   const [finalList, setFinalList] = useState(allProducts)
@@ -36,11 +36,11 @@ export const Catalogue = () => {
     filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
 
     // OBTIENE SUB-CATEGORIAS de la CATEGORIA ACTUAL
-    // const getSubs = async () => {
-    //   const response = await axios.get(`${ApiURL}/categories/subCat/${options.category}`)
-    //   console.log(response.data)
-    // }
-    // getSubs()
+    const getSubs = async () => {
+      const response = await axios.get(`${ApiURL}/categories/getSub/${options.category}`)
+      console.log(response.data)
+    }
+    getSubs()
 
     // FILTRA por SUB-CATEGORIA
     if (options.subCategory.length === 0) {
