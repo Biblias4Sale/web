@@ -6,16 +6,14 @@ import { getProducts } from '../../redux/actions/index'
 import { ApiURL } from '../../config/config'
 
 export const Catalogue = (props) => {
-  // console.log(props.location.state.category)
   const allProducts = useSelector((state) => state.products)
-  const actualCategory = useSelector((state) => state.actualCategory)
 
   const [actualSubcategories, setActualSubcategories] = useState([])
 
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: props.location.state.category,
+    category: props ? props.location.state.category : 'Camaras',
     subCategory: [],
     price: 'all',
     raiting: []
@@ -79,6 +77,7 @@ export const Catalogue = (props) => {
   }
 
   const handleCategoryChange = (category) => {
+    setOptions(prev => ({ ...prev, price: 'all', raiting: [] }))
     setOptions(prev => ({ ...prev, category: category }))
   }
 

@@ -1,5 +1,6 @@
 import { Form, Container } from 'react-bootstrap'
-import { checkGoto, inputFilterby } from '../../CatalogueStyle'
+import { checkGoto } from '../../CatalogueStyle'
+// import { inputFilterby } from '../../CatalogueStyle'
 
 export const Price = ({ handleChange, options }) => {
   return (
