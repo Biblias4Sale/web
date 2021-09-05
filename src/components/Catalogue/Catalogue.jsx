@@ -28,13 +28,12 @@ export const Catalogue = (props) => {
   }, [dispatch])
 
   useEffect(() => {
-    let filtredByCategory
     let filtredBySubCategory
     let filtredByPrice
     let filtredByRaiting
 
     // FILTRA por CATEGORIA
-    filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
+    const filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
 
     // OBTIENE SUB-CATEGORIAS de la CATEGORIA ACTUAL
     const getSubs = async () => {
