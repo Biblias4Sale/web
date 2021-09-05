@@ -40,10 +40,3 @@ export const getCategories = (payload) => {
     payload
   }
 }
-
-export const changeActualCategory = (category) => {
-  return {
-    type: CHANGE_ACTUAL_CATEGORY,
-    payload: category
-  }
-}
