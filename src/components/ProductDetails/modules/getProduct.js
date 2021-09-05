@@ -14,7 +14,7 @@ export const GetProduct = ({ id }) => {
   return (
     <div>
       {
-      !product.id
+      !product
         ? <h2> Loading... </h2>
         : <ProductContainer product={product} />
       }
