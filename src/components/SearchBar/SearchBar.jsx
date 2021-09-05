@@ -6,12 +6,24 @@ import { SearchBarView } from './SearchBarView'
 export const SearchBar = () => {
   const allProducts = useSelector(state => state.products)
   const [search, setSearch] = useState([])
+  const [parsedProducts, setParsedProducts] = useState([])
+
+  useEffect(() => {
+    const arr = allProducts.map(product => {
+      return {
+        brand: product.brand,
+        model: product.model,
+        img: product.img,
+        price: product.price,
+        name: product.brand + ' ' + product.model
+      }
+    })
+
+    setParsedProducts(arr)
+  }, [allProducts])
 
   const handleChangeSearchBar = e => {
-    const searchResult = allProducts.filter(prod => prod.brand.toLowerCase().includes(e.target.value.toLowerCase()))
-    // const searchResultBrand = allProducts.filter(prod => prod.brand.toLowerCase().includes(e.target.value.toLowerCase()))
-    // const searchResultModel = allProducts.filter(prod => prod.model.toLowerCase().includes(e.target.value.toLowerCase()))
-    // if (search.length === allProducts.length) setSearch([])
+    const searchResult = parsedProducts.filter(product => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
     setSearch(searchResult)
   }
 
