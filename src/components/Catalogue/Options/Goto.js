@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form, Container } from 'react-bootstrap'
 import { labelGoto, checkGoto } from '../CatalogueStyle'
 
