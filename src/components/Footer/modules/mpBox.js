@@ -4,8 +4,8 @@ import { LogoMPStyle, MPCol } from '../FooterStyle'
 
 export const MercadoPagoBox = () => {
   return (
-    <Col xs={6} lg={6} style={MPCol}>
-      <img src={Logo} alt='MERCADO PAGO' style={LogoMPStyle} />
+    <Col xs={8} lg={10} style={MPCol}>
+      <img src={Logo} alt='MERCADO PAGO' style={LogoMPStyle} title='mercado pago' width='120px' />
     </Col>
   )
 }
