@@ -9,6 +9,8 @@ export const Catalogue = () => {
   const allProducts = useSelector((state) => state.products)
   const actualCategory = useSelector((state) => state.actualCategory)
 
+  const [actualSubcategories, setActualSubcategories] = useState([])
+
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
@@ -38,7 +40,7 @@ export const Catalogue = () => {
     // OBTIENE SUB-CATEGORIAS de la CATEGORIA ACTUAL
     const getSubs = async () => {
       const response = await axios.get(`${ApiURL}/categories/getSub/${options.category}`)
-      console.log(response.data)
+      setActualSubcategories(response.data)
     }
     getSubs()
 
@@ -79,5 +81,5 @@ export const Catalogue = () => {
     setOptions(prev => ({ ...prev, category: category }))
   }
 
-  return <CatalogueView options={options} finalList={finalList} handleChangeMulti={handleChangeMulti} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
+  return <CatalogueView options={options} finalList={finalList} actualSubcategories={actualSubcategories} handleChangeMulti={handleChangeMulti} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
 }
