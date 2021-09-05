@@ -19,18 +19,6 @@ export const SubCategories = ({ handleChangeMulti, actualSubcategories }) => {
           )
         })}
 
-        {/* <div style={checkGoto}>
-          <Form.Check tykGoto}>
-          <Form.Check type='checkbox' name='subCategory' label='Mirrorless' id='Mirrorless' onChange={(event) => handleChangeMulti(event)} />
-        </div>
-        <div style={checpe='checkbox' name='subCategory' label='Semi-Reflex' id='Semi-Reflex' onChange={(event) => handleChangeMulti(event)} />
-        </div>
-        <div style={checkGoto}>
-          <Form.Check type='checkbox' name='subCategory' label='DSLR' id='DSLR' onChange={(event) => handleChangeMulti(event)} />
-        </div>
-        <div style={checkGoto}>
-          <Form.Check type='checkbox' name='subCategory' label='Lens-Style' id='Lens' onChange={(event) => handleChangeMulti(event)} />
-        </div> */}
       </Form>
     </Container>
   )

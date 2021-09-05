@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/actions/index'
 import { ApiURL } from '../../config/config'
 
-export const Catalogue = () => {
+export const Catalogue = (props) => {
+  // console.log(props.location.state.category)
   const allProducts = useSelector((state) => state.products)
   const actualCategory = useSelector((state) => state.actualCategory)
 
@@ -14,7 +15,7 @@ export const Catalogue = () => {
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: actualCategory,
+    category: props.location.state.category,
     subCategory: [],
     price: 'all',
     raiting: []
