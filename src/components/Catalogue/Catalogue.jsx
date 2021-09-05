@@ -5,10 +5,12 @@ import { getProducts } from '../../redux/actions/index'
 
 export const Catalogue = () => {
   const allProducts = useSelector((state) => state.products)
+  const actualCategory = useSelector((state) => state.actualCategory)
+
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: 'Camaras',
+    category: actualCategory,
     subCategory: [],
     price: 'all',
     raiting: [],

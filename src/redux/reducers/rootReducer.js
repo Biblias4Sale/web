@@ -5,7 +5,8 @@ const initialState = {
   products: [],
   productDetails: [],
   categories: [],
-  newUser: []
+  newUser: [],
+  actualCategory: 'Camaras'
 }
 
 const rootReducer = (state = initialState, action) => {
