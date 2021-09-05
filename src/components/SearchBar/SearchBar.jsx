@@ -16,7 +16,6 @@ export const SearchBar = () => {
   }
 
   // ---------------------------------------
-
   // // Paginado
   // const [currentPage, setCurrentPage] = useState(1)
   // const [productsPerPage, setProductsPerPage] = useState(3)
