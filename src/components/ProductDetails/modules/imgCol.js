@@ -4,7 +4,7 @@ import { ImgColStyle } from '../ProductDetailsStyle'
 export const ImgCol = () => {
   return (
     <Col xs={12} lg={5} style={ImgColStyle}>
-      <Image src='https://m.media-amazon.com/images/I/71EWRyqzw0L._AC_SX679_.jpg' />
+      <Image src={img} />
     </Col>
   )
 }
