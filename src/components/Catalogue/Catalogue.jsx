@@ -1,7 +1,9 @@
 import CatalogueView from './Catalogue.view.js'
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/actions/index'
+import { ApiURL } from '../../config/config'
 
 export const Catalogue = () => {
   const allProducts = useSelector((state) => state.products)
@@ -33,7 +35,12 @@ export const Catalogue = () => {
     // FILTRA por CATEGORIA
     filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
 
-    // OBTIENE SUB-CATEGORIAS
+    // OBTIENE SUB-CATEGORIAS de la CATEGORIA ACTUAL
+    // const getSubs = async () => {
+    //   const response = await axios.get(`${ApiURL}/categories/subCat/${options.category}`)
+    //   console.log(response.data)
+    // }
+    // getSubs()
 
     // FILTRA por SUB-CATEGORIA
     if (options.subCategory.length === 0) {
