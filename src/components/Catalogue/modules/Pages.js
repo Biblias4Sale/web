@@ -25,11 +25,11 @@ export const Pages = ({ finalList }) => {
   return (
     <div>
       <div style={productsCat}>
-        {product?.map((obj) => {
+        {product?.map((obj, index) => {
           return (
             <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={obj.id} img={obj.img}
+                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={index} img={obj.img}
               />
             </NavLink>
           )

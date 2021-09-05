@@ -13,7 +13,7 @@ export const Catalogue = (props) => {
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: props.location.state.category,
+    category: props ? props.location.state.category : 'Camaras',
     subCategory: [],
     price: 'all',
     raiting: []
@@ -77,6 +77,7 @@ export const Catalogue = (props) => {
   }
 
   const handleCategoryChange = (category) => {
+    setOptions(prev => ({ ...prev, price: 'all', raiting: [] }))
     setOptions(prev => ({ ...prev, category: category }))
   }
 
