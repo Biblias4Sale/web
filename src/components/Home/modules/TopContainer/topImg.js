@@ -1,5 +1,4 @@
 import { Row, Image } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
 import LineaExpertos from '../../../../assets/lineaExpertos.jpg'
 import { ImgWidth } from '../../HomeStyle'
 
