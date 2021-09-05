@@ -70,5 +70,9 @@ export const Catalogue = () => {
     else setOptions(prev => ({ ...prev, [event.target.name]: event.target.id }))
   }
 
-  return <CatalogueView options={options} finalList={finalList} handleSubCategoryChange={handleSubCategoryChange} handleChange={handleChange} />
+  const handleCategoryChange = (category) => {
+    setOptions(prev => ({ ...prev, category: category }))
+  }
+
+  return <CatalogueView options={options} finalList={finalList} handleSubCategoryChange={handleSubCategoryChange} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
 }

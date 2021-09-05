@@ -26,7 +26,7 @@ export const Pages = ({ finalList }) => {
           return (
             <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.model} points={obj.points} id={obj.id} key={obj.id}
+                name={obj.model} points={obj.points} id={obj.id} key={obj.id} img={obj.img}
               />
             </NavLink>
           )
