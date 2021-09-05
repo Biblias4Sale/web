@@ -6,7 +6,12 @@ import { StyleContainer, CenterImgs } from '../../HomeStyle'
 export const CenterImg = () => {
   return (
     <Col lg={4} style={StyleContainer}>
-      <Link to=''>
+      <Link
+        to={{
+          pathname: '/catalogo',
+          state: { category: 'Luces' }
+        }}
+      >
         <Image src={Luces} style={CenterImgs} />
       </Link>
     </Col>
