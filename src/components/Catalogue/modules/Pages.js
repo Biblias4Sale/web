@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // import { useSelector } from 'react-redux'
 // import { getProducts } from '../../../redux/actions/index'
+import { GetStarts } from '../../common/getStars'
+
 import Paginate from './Pagination'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../Products/Product'
@@ -14,6 +16,7 @@ export const Pages = ({ finalList }) => {
   const lastProduct = currentPage * productsPerPage
   const firstProduct = lastProduct - productsPerPage
   const product = finalList.slice(firstProduct, lastProduct)
+  // const productStars = GetStarts(product)
 
   const pages = (pageNumber) => {
     setCurrentPage(pageNumber)
@@ -26,7 +29,7 @@ export const Pages = ({ finalList }) => {
           return (
             <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.brand + ' ' + obj.model} points={obj.points} id={obj.id} key={obj.id} img={obj.img}
+                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={obj.id} img={obj.img}
               />
             </NavLink>
           )
