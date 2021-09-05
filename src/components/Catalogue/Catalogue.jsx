@@ -12,7 +12,7 @@ export const Catalogue = () => {
   const dispatch = useDispatch()
 
   const [options, setOptions] = useState({
-    category: 'Luces',
+    category: actualCategory,
     subCategory: [],
     price: 'all',
     raiting: []
