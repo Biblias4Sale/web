@@ -7,7 +7,7 @@ export const ProductContainer = ({ product }) => {
   return (
     <Container style={ProductContainerStyle}>
       <Row>
-        <ImgCol img={product.img} />
+        <ImgCol />
         <DetailsCol product={product} />
       </Row>
     </Container>

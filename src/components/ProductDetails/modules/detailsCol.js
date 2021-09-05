@@ -15,7 +15,7 @@ export const DetailsCol = ({ product }) => {
       <p style={Height('28vh')}>
         {product.description}
       </p>
-      <h6 style={Height('2vh')}> Marca</h6>
+      <h6 style={Height('3vh')}> Marca</h6>
       <h6 style={Height('4vh')}> {product.brand} </h6>
       <ButtonCart />
     </Col>

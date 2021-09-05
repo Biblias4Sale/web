@@ -4,7 +4,7 @@ export const StyleContainer = {
 }
 
 export const MainContainer = {
-  width: '94%',
+  width: '100%',
   marginTop: '-100px'
 }
 
@@ -12,7 +12,7 @@ export const TopContainerStyle = {
   display: 'flex',
   justifyContent: 'center',
   padding: 0,
-  width: '100vw',
+  width: '120vw',
   flexWrap: 'wrap'
 }
 

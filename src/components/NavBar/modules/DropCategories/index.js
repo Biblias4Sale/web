@@ -17,7 +17,7 @@ const DropCategories = (props) => {
             <NavDropdown title='Categorías' style={CategoriesDrop}>
               <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
               <NavDropdown.Divider />
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div className='d-flex flex-column color-black'>
                 {allCategories.map(item =>
                   <Link
                     key={item}
@@ -25,7 +25,7 @@ const DropCategories = (props) => {
                       pathname: '/catalogo',
                       state: { category: item }
                     }}
-                    style={{ textDecoration: 'none' }}
+                    className='align-self-center text-decoration-none text-black'
                   >
                     {item}
                   </Link>

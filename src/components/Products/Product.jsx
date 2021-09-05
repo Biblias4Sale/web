@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap'
-import { productImg, productDetail, productTitle, productDetail2 } from './ProductStyle'
+import { productImg } from './ProductStyle'
 // import Camaras from '../../assets/camaras.jpg'
 
 export const Product = ({ name, stars, img, key }) => {

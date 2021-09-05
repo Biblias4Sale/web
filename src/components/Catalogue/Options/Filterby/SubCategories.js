@@ -18,7 +18,6 @@ export const SubCategories = ({ handleChangeMulti, actualSubcategories }) => {
             </div>
           )
         })}
-
       </Form>
     </Container>
   )
