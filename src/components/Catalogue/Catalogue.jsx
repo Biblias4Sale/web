@@ -1,4 +1,3 @@
-import React from 'react'
 import { Pages } from './modules/Pages'
 import { Container, Col, Row } from 'react-bootstrap'
 import { headerProducts, productsCat } from './CatalogueStyle'
@@ -33,5 +32,3 @@ export const Catalogue = () => {
     </div>
   )
 }
-
-export default Catalogue
