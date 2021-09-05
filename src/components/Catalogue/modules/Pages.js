@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../../redux/actions/index'
-import { Paginate } from './Pagination'
+import Paginate from './Pagination'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../Products/Product'
 import { productsCat, paginationStyle } from '../CatalogueStyle'
@@ -26,7 +26,7 @@ export const Pages = () => {
       <div style={productsCat}>
         {product?.map((obj) => {
           return (
-            <NavLink to={`/product/details/${obj.id}`} key={obj.id} style={{textDecoration:'none'}}>
+            <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
                 name={obj.name} points={obj.points} id={obj.id} key={obj.id}
               />
