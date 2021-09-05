@@ -1,17 +1,19 @@
+import { Card } from 'react-bootstrap'
 import { productImg, productDetail, productTitle, productDetail2 } from './ProductStyle'
 // import Camaras from '../../assets/camaras.jpg'
 
 export const Product = ({ name, stars, img, key }) => {
   return (
-    <div key={key}>
-      <div style={productTitle}><a href><img src={img} alt='No encontrada' style={productImg} /></a>
-        <div style={productDetail}>
-          <h6><a href>{name}</a></h6>
-        </div>
-        <div style={productDetail2}>
-          <span>{stars}</span>
-        </div>
+    <Card key={key} style={{ width: '20vw', height: '48vh', display: 'flex', marginTop: '20px' }}>
+      <div style={{ width: '20vw', height: '35vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Card.Img src={img} alt='No encontrada' style={productImg} />
       </div>
-    </div>
+      <Card.Body>
+        <Card.Title> {name}  </Card.Title>
+        <Card.Text style={{ color: 'orange' }}>
+          {stars}
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }

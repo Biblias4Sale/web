@@ -21,7 +21,7 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_PRODUCT_BY_ID:
 
-      return { ...state, productDetails: state.products.filter(obj => obj.id === parseInt(action.payload)) }
+      return { ...state, productDetails: action.payload.data }
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }

@@ -1,21 +1,42 @@
 import { Col, NavDropdown } from 'react-bootstrap'
+import { Link, withRouter } from 'react-router-dom'
 import { Categories } from './categories'
 import { CategoriesDrop, CategoriesDropTitle } from '../../NavBarStyle'
 
-export const DropCategories = () => {
+const DropCategories = (props) => {
   const allCategories = Categories()
+  const location = props.location.pathname
 
   return (
-    <Col xs={6} sm={6} md={6} lg={4}>
-      <NavDropdown title='Categorías' style={CategoriesDrop}>
-        <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
-        <NavDropdown.Divider />
-        {allCategories.map(item =>
-          <NavDropdown.Item href={`/${item}`} key={item}>
-            {item}
-          </NavDropdown.Item>
-        )}
-      </NavDropdown>
-    </Col>
+    <>
+      {
+      location === '/catalogo'
+        ? ''
+        : (
+          <Col xs={6} sm={6} md={6} lg={4}>
+            <NavDropdown title='Categorías' style={CategoriesDrop}>
+              <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {allCategories.map(item =>
+                  <Link
+                    key={item}
+                    to={{
+                      pathname: '/catalogo',
+                      state: { category: item }
+                    }}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    {item}
+                  </Link>
+                )}
+              </div>
+            </NavDropdown>
+          </Col>
+          )
+      }
+    </>
   )
 }
+
+export default withRouter(DropCategories)

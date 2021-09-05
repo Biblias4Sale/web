@@ -5,7 +5,7 @@ import { ProductContainer } from './productContainer'
 
 export const GetProduct = ({ id }) => {
   const dispatch = useDispatch()
-  const product = useSelector(state => state.productDetails[0])
+  const product = useSelector(state => state.productDetails)
 
   useEffect(() => {
     dispatch(getProductById(id))
@@ -14,7 +14,7 @@ export const GetProduct = ({ id }) => {
   return (
     <div>
       {
-      !product.id
+      !product
         ? <h2> Loading... </h2>
         : <ProductContainer product={product} />
       }
