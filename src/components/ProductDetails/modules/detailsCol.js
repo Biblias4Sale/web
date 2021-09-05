@@ -8,15 +8,15 @@ export const DetailsCol = ({ product }) => {
 
   return (
     <Col xs={12} lg={5} style={DetailsColStyle}>
-      <h5 style={Height('4vh')}> {product.name} </h5>
+      <h5 style={Height('4vh')}> {product.brand + ' ' + product.model} </h5>
       <div style={Height('4vh', 'orange')}> {productStars} </div>
-      <h4 style={Height('4vh')}> $3.200 </h4>
+      <h4 style={Height('4vh')}> {product.price} </h4>
       <h6 style={Height('2vh')}> Descripción </h6>
       <p style={Height('28vh')}>
         {product.description}
       </p>
       <h6 style={Height('2vh')}> Marca</h6>
-      <h6 style={Height('4vh')}> LORE IMPSUM </h6>
+      <h6 style={Height('4vh')}> {product.brand} </h6>
       <ButtonCart />
     </Col>
   )

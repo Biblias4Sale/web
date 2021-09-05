@@ -28,9 +28,9 @@ export const getProducts = () => {
 }
 
 export const getProductById = (id) => {
-  return {
-    type: GET_PRODUCT_BY_ID,
-    payload: id
+  return async dispatch => {
+    const response = await axios.get(`${ApiURL}/products/detail/${id}`)
+    return dispatch({ type: GET_PRODUCT_BY_ID, payload: response })
   }
 }
 

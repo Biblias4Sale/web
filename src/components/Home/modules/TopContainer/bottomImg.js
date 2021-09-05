@@ -5,7 +5,12 @@ import { ImgWidth } from '../../HomeStyle'
 
 export const BottomImg = () => {
   return (
-    <Link to='/product'>
+    <Link
+      to={{
+        pathname: '/catalogo',
+        state: { category: 'Accesorios' }
+      }}
+    >
       <Row>
         <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
       </Row>

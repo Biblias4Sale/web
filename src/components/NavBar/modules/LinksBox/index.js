@@ -1,6 +1,6 @@
 import { Col } from 'react-bootstrap'
 import { HomeLink } from './home'
-import { DropCategories } from '../DropCategories'
+import DropCategories from '../DropCategories'
 import { LinkBoxStyle } from '../../NavBarStyle'
 
 export const LinksBox = () => {
