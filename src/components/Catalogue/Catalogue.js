@@ -1,37 +1,57 @@
-import React from 'react'
-import { Pages } from './modules/Pages'
-import { Container, Col, Row } from 'react-bootstrap'
-import { headerProducts, productsCat } from './CatalogueStyle'
-import SelectOptions from './modules/SelectOptions'
-import { CenterBanner } from './modules/CenterBanner'
-import { Goto } from './Options/Goto'
-import { Categories } from './Options/Filterby/Categories'
-import { Rating } from './Options/Filterby/Rating'
-import { Price } from './Options/Filterby/Price'
+import CatalogueView from './Catalogue.view.js'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../redux/actions/index'
 
 export const Catalogue = () => {
-  return (
-    <div>
-      <Container style={productsCat}>
-        <Row>
-          <CenterBanner />
-        </Row>
-        <Col lg={3}>
-          <Goto />
-          <Categories />
-          <Price />
-          <Rating />
-        </Col>
-        <Col lg={9}>
-          <div style={headerProducts}>
-            <h3>Cámaras</h3>
-          </div>
-          <SelectOptions />
-          <Pages />
-        </Col>
-      </Container>
-    </div>
-  )
+  const allProducts = useSelector((state) => state.products)
+  const dispatch = useDispatch()
+
+  const [options, setOptions] = useState({
+    category: 'Cámaras',
+    subCategory: [],
+    order: 'id',
+    direction: 'asc'
+  })
+
+  const [finalList, setFinalList] = useState(allProducts)
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [dispatch])
+
+  useEffect(() => {
+    let filtredByCategory
+    let filtredBySubCategory
+
+    // FILTRA por CATEGORIA
+    filtredByCategory = allProducts.filter(product => product.category === options.category)
+
+    // OBTIENE SUB-CATEGORIAS
+
+    // FILTRA por SUB-CATEGORIA
+    if (options.subCategory.length === 0) {
+      filtredBySubCategory = filtredByCategory
+    } else {
+      filtredBySubCategory = filtredByCategory.filter(product => options.subCategory.includes(product.subCategory))
+    }
+
+    setFinalList(filtredBySubCategory)
+  }, [allProducts, options.category, options.subCategory])
+
+  const handleOptionsChange = (event) => {
+    let newArray = [...options.subCategory, event.target.id]
+    setOptions(prev => ({ ...prev, subCategory: newArray }))
+    if (options.subCategory.includes(event.target.id)) {
+      newArray = newArray.filter(type => type !== event.target.id)
+    }
+    console.log(newArray)
+    console.log(options)
+  }
+
+  // console.log(options)
+
+  return <CatalogueView options={options} finalList={finalList} handleOptionsChange={handleOptionsChange} />
 }
 
 export default Catalogue
