@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { getProductById } from '../../../redux/actions'
 import { ProductContainer } from './productContainer'
 
-export const GetProduct = (id) => {
+export const GetProduct = ({ id }) => {
   const dispatch = useDispatch()
   const product = useSelector(state => state.productDetails[0])
 
