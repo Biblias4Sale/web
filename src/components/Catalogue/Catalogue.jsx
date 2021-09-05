@@ -6,9 +6,7 @@ import { getProducts } from '../../redux/actions/index'
 import { ApiURL } from '../../config/config'
 
 export const Catalogue = (props) => {
-  // console.log(props.location.state.category)
   const allProducts = useSelector((state) => state.products)
-  const actualCategory = useSelector((state) => state.actualCategory)
 
   const [actualSubcategories, setActualSubcategories] = useState([])
 
