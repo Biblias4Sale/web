@@ -3,7 +3,7 @@ import { Form, Container } from 'react-bootstrap'
 import { labelGoto, checkGoto } from '../../CatalogueStyle'
 import { Categories } from '../../../NavBar/modules/DropCategories/categories'
 
-export const ListCategories = () => {
+export const ListCategories = ({ options }) => {
   const allCategories = Categories()
 
   return (
@@ -14,11 +14,13 @@ export const ListCategories = () => {
       <hr style={{ width: '100%' }} />
       <Form>
         {allCategories.map((category, i) => {
-          return (
-            <div key={i} style={checkGoto}>
-              <Form.Check type='radio' label={category} />
-            </div>
-          )
+          if (category !== options.category) {
+            return (
+              <div key={i} style={checkGoto}>
+                <Form.Check type='radio' label={category} />
+              </div>
+            )
+          } else return null
         })}
 
       </Form>

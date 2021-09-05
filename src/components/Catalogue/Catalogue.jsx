@@ -7,11 +7,11 @@ export const Catalogue = () => {
   const allProducts = useSelector((state) => state.products)
   const dispatch = useDispatch()
 
-  console.log(allProducts)
-
   const [options, setOptions] = useState({
     category: 'Camaras',
     subCategory: [],
+    price: 'all',
+    raiting: 'all',
     order: 'id',
     direction: 'asc'
   })
@@ -25,33 +25,50 @@ export const Catalogue = () => {
   useEffect(() => {
     let filtredByCategory
     let filtredBySubCategory
-
-    // FILTRA por CATEGORIA
-    filtredByCategory = allProducts.filter(product => product.category === options.category)
+    let filtredByPrice
+    let filtredByRaiting
 
     // OBTIENE SUB-CATEGORIAS
+
+    // FILTRA por CATEGORIA
+    filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
 
     // FILTRA por SUB-CATEGORIA
     if (options.subCategory.length === 0) {
       filtredBySubCategory = filtredByCategory
     } else {
-      filtredBySubCategory = filtredByCategory.filter(product => options.subCategory.includes(product.subCategory))
+      filtredBySubCategory = filtredByCategory.filter(product => options.subCategory.includes(product.subCategory.name))
     }
 
-    setFinalList(filtredBySubCategory)
-  }, [allProducts, options.category, options.subCategory])
+    // FILTRA por PRECIO
+    if (options.price === 'all') filtredByPrice = filtredBySubCategory
+    else if (options.price === '30k') filtredByPrice = filtredBySubCategory.filter(product => product.price <= 30000)
+    else if (options.price === '30k/250k') filtredByPrice = filtredBySubCategory.filter(product => product.price > 30000 && product.price <= 250000)
+    else if (options.price === '250k') filtredByPrice = filtredBySubCategory.filter(product => product.price > 250000)
 
-  const handleOptionsChange = (event) => {
+    // FILTRA por PUNTAJE
+    if (options.raiting === 'all') filtredByRaiting = filtredByPrice
+    else if (options.raiting === '5') filtredByRaiting = filtredByPrice.filter(product => product.points === '5')
+    else if (options.raiting === '4') filtredByRaiting = filtredByPrice.filter(product => product.points === '4')
+    else if (options.raiting === '3') filtredByRaiting = filtredByPrice.filter(product => product.points === '3')
+    else if (options.raiting === '2') filtredByRaiting = filtredByPrice.filter(product => product.points === '2')
+    else if (options.raiting === '1') filtredByRaiting = filtredByPrice.filter(product => product.points === '1')
+
+    setFinalList(filtredByRaiting)
+  }, [allProducts, options.category, options.subCategory, options.price, options.raiting])
+
+  const handleSubCategoryChange = (event) => {
     let newArray = [...options.subCategory, event.target.id]
     setOptions(prev => ({ ...prev, subCategory: newArray }))
     if (options.subCategory.includes(event.target.id)) {
       newArray = newArray.filter(type => type !== event.target.id)
     }
-    console.log(newArray)
-    console.log(options)
   }
 
-  // console.log(options)
+  const handleChange = (event) => {
+    if (options.price === event.target.id) setOptions(prev => ({ ...prev, [event.target.name]: 'all' }))
+    else setOptions(prev => ({ ...prev, [event.target.name]: event.target.id }))
+  }
 
-  return <CatalogueView options={options} finalList={finalList} handleOptionsChange={handleOptionsChange} />
+  return <CatalogueView options={options} finalList={finalList} handleSubCategoryChange={handleSubCategoryChange} handleChange={handleChange} />
 }
