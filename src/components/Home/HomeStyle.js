@@ -33,3 +33,19 @@ export const CenterImgs = {
   width: '95%',
   marginTop: '20px'
 }
+
+export const CardStyle = {
+  width: '80%',
+  marginBottom: '35px'
+}
+
+export const CardBottomStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: 'orange'
+}
+
+export const ButtonDetail = {
+  marginLeft: '50px'
+}
