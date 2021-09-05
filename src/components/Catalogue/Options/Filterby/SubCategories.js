@@ -1,7 +1,7 @@
 import { Form, Container } from 'react-bootstrap'
 import { labelGoto, checkGoto } from '../../CatalogueStyle'
 
-export const SubCategories = ({ handleSubCategoryChange }) => {
+export const SubCategories = ({ handleChangeMulti }) => {
   return (
     <Container>
       <div style={labelGoto}>
@@ -11,16 +11,16 @@ export const SubCategories = ({ handleSubCategoryChange }) => {
       <Form>
         <h5>Sub-Categorías</h5>
         <div style={checkGoto}>
-          <Form.Check type='checkbox' label='Mirrorless' id='Mirrorless' onChange={(event) => handleSubCategoryChange(event)} />
+          <Form.Check type='checkbox' name='subCategory' label='Mirrorless' id='Mirrorless' onChange={(event) => handleChangeMulti(event)} />
         </div>
         <div style={checkGoto}>
-          <Form.Check type='checkbox' label='Semi-Reflex' id='Semi-Reflex' onChange={(event) => handleSubCategoryChange(event)} />
+          <Form.Check type='checkbox' name='subCategory' label='Semi-Reflex' id='Semi-Reflex' onChange={(event) => handleChangeMulti(event)} />
         </div>
         <div style={checkGoto}>
-          <Form.Check type='checkbox' label='DSLR' id='DSLR' onChange={(event) => handleSubCategoryChange(event)} />
+          <Form.Check type='checkbox' name='subCategory' label='DSLR' id='DSLR' onChange={(event) => handleChangeMulti(event)} />
         </div>
         <div style={checkGoto}>
-          <Form.Check type='checkbox' label='Lens-Style' id='Lens' onChange={(event) => handleSubCategoryChange(event)} />
+          <Form.Check type='checkbox' name='subCategory' label='Lens-Style' id='Lens' onChange={(event) => handleChangeMulti(event)} />
         </div>
       </Form>
     </Container>

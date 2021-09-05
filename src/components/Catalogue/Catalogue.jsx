@@ -11,7 +11,7 @@ export const Catalogue = () => {
     category: 'Camaras',
     subCategory: [],
     price: 'all',
-    raiting: 'all',
+    raiting: [],
     order: 'id',
     direction: 'asc'
   })
@@ -28,10 +28,10 @@ export const Catalogue = () => {
     let filtredByPrice
     let filtredByRaiting
 
-    // OBTIENE SUB-CATEGORIAS
-
     // FILTRA por CATEGORIA
     filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
+
+    // OBTIENE SUB-CATEGORIAS
 
     // FILTRA por SUB-CATEGORIA
     if (options.subCategory.length === 0) {
@@ -47,21 +47,17 @@ export const Catalogue = () => {
     else if (options.price === '250k') filtredByPrice = filtredBySubCategory.filter(product => product.price > 250000)
 
     // FILTRA por PUNTAJE
-    if (options.raiting === 'all') filtredByRaiting = filtredByPrice
-    else if (options.raiting === '5') filtredByRaiting = filtredByPrice.filter(product => product.points === '5')
-    else if (options.raiting === '4') filtredByRaiting = filtredByPrice.filter(product => product.points === '4')
-    else if (options.raiting === '3') filtredByRaiting = filtredByPrice.filter(product => product.points === '3')
-    else if (options.raiting === '2') filtredByRaiting = filtredByPrice.filter(product => product.points === '2')
-    else if (options.raiting === '1') filtredByRaiting = filtredByPrice.filter(product => product.points === '1')
+    if (options.raiting.length === 0) filtredByRaiting = filtredByPrice
+    else filtredByRaiting = filtredByPrice.filter(product => options.raiting.includes(product.points))
 
     setFinalList(filtredByRaiting)
   }, [allProducts, options.category, options.subCategory, options.price, options.raiting])
 
-  const handleSubCategoryChange = (event) => {
-    let newArray = [...options.subCategory, event.target.id]
-    setOptions(prev => ({ ...prev, subCategory: newArray }))
-    if (options.subCategory.includes(event.target.id)) {
-      newArray = newArray.filter(type => type !== event.target.id)
+  const handleChangeMulti = (event) => {
+    let newArray = [...options[event.target.name], event.target.id]
+    setOptions(prev => ({ ...prev, [event.target.name]: newArray }))
+    if (options[event.target.name].includes(event.target.id)) {
+      newArray = newArray.filter(subCat => subCat !== event.target.id)
     }
   }
 
@@ -74,5 +70,5 @@ export const Catalogue = () => {
     setOptions(prev => ({ ...prev, category: category }))
   }
 
-  return <CatalogueView options={options} finalList={finalList} handleSubCategoryChange={handleSubCategoryChange} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
+  return <CatalogueView options={options} finalList={finalList} handleChangeMulti={handleChangeMulti} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
 }

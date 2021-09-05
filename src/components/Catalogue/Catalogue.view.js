@@ -8,7 +8,7 @@ import { SubCategories } from './Options/Filterby/SubCategories'
 import { Rating } from './Options/Filterby/Rating'
 import { Price } from './Options/Filterby/Price'
 
-const CatalogueView = ({ options, finalList, handleSubCategoryChange, handleChange, handleCategoryChange }) => {
+const CatalogueView = ({ options, finalList, handleChangeMulti, handleChange, handleCategoryChange }) => {
   return (
     <div>
       <Container style={productsCat}>
@@ -17,9 +17,9 @@ const CatalogueView = ({ options, finalList, handleSubCategoryChange, handleChan
         </Row>
         <Col lg={3}>
           <ListCategories options={options} handleCategoryChange={handleCategoryChange} />
-          <SubCategories handleSubCategoryChange={handleSubCategoryChange} />
+          <SubCategories handleChangeMulti={handleChangeMulti} />
           <Price handleChange={handleChange} options={options} />
-          <Rating handleChange={handleChange} />
+          <Rating handleChange={handleChange} handleChangeMulti={handleChangeMulti} />
         </Col>
         <Col lg={9}>
           <div style={headerProducts}>
