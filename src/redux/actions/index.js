@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, CHANGE_ACTUAL_CATEGORY } from './constants'
 import { ApiURL } from '../../config/config'
 
 export const setLogged = (data) => {
@@ -38,5 +38,12 @@ export const getCategories = (payload) => {
   return {
     type: GET_CATEGORIES,
     payload
+  }
+}
+
+export const changeActualCategory = (category) => {
+  return {
+    type: CHANGE_ACTUAL_CATEGORY,
+    payload: category
   }
 }
