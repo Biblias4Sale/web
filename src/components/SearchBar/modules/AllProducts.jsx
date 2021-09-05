@@ -1,23 +1,29 @@
 import { Row, Col, Image } from 'react-bootstrap'
-import Camaras from '../../../assets/camaras.jpg'
 import { NavLink } from 'react-router-dom'
 
 export const AllProducts = (props) => {
   return (
-    <Row>
+    <>
       {props.search?.map(elem => (
-        <NavLink to={'/details/' + elem.id} key={elem.id} style={{ textDecoration: 'none' }}>
-          <Col key={elem.name} lg={8}>
-            <h3>
-              {elem.name}
-            </h3>
-            <h5>
-              {elem.points}
-            </h5>
-            <Image src={Camaras} alt='No encontrada' width='100px' />
-          </Col>
+        <NavLink to={'/detail/' + elem.id} key={elem.id} style={{ textDecoration: 'none' }}>
+          <Row lg={6} md={8} sm={10} className='justify-content-center p-2'>
+            <Col className='ml-2'>
+              <Image src={elem.img} alt='No encontrada' width='100px' height='100px' />
+            </Col>
+            <Col key={elem.brand} lg={8}>
+              <h3>
+                {elem.brand}
+              </h3>
+              <h5>
+                {elem.model}
+              </h5>
+              <h5>
+                ${elem.price}
+              </h5>
+            </Col>
+          </Row>
         </NavLink>
       ))}
-    </Row>
+    </>
   )
 }
