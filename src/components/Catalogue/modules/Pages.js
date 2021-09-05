@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../../redux/actions/index'
 import Paginate from './Pagination'
 import { NavLink } from 'react-router-dom'
-import Product from '../../Products/Product'
+import { Product } from '../../Products/Product'
 import { productsCat, paginationStyle } from '../CatalogueStyle'
 
 export const Pages = () => {
@@ -37,7 +37,7 @@ export const Pages = () => {
       <hr style={{ width: '100%' }} />
       <div style={paginationStyle}>
         <div>
-          <h6><a>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length} ítems</a></h6>
+          <h6><a href>Mostrando {firstProduct + 1} - {lastProduct} de {allProducts.length} ítems</a></h6>
         </div>
         <div>
           <Paginate

@@ -1,14 +1,12 @@
-import React from 'react'
-import { productImg } from './ProductStyle.js'
+import { productImg, productDetail, productTitle, productDetail2 } from './ProductStyle'
 import Camaras from '../../assets/camaras.jpg'
-import { productDetail, productTitle, productDetail2 } from './ProductStyle'
 
-export default function Product ({ name, points }) {
+export const Product = ({ name, points }) => {
   return (
     <div>
-      <div style={productTitle}><a><img src={Camaras} alt='Image not found' style={productImg} /></a>
+      <div style={productTitle}><a href><img src={Camaras} alt='No encontrada' style={productImg} /></a>
         <div style={productDetail}>
-          <h6><a>{name}</a></h6>
+          <h6><a href>{name}</a></h6>
         </div>
         <div style={productDetail2}>
           <span>{points}</span>
