@@ -7,7 +7,7 @@ export const BestOfTheWeek = () => {
     <Container style={{ marginTop: '80px' }}>
       <TitleBox />
       <ProductsBox />
-      HOLA SOY BOTON
+      HOLA SOY BOTON CON IMAGEN VER MAS
     </Container>
   )
 }
