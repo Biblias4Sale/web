@@ -5,10 +5,10 @@ import { ImgWidth } from '../../HomeStyle'
 
 export const BottomImg = () => {
   return (
-    <Row>
-      <Link to=''>
+    <Link to='/product'>
+      <Row>
         <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
-      </Link>
-    </Row>
+      </Row>
+    </Link>
   )
 }

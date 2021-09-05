@@ -7,8 +7,10 @@ export const Catalogue = () => {
   const allProducts = useSelector((state) => state.products)
   const dispatch = useDispatch()
 
+  console.log(allProducts)
+
   const [options, setOptions] = useState({
-    category: 'Cámaras',
+    category: 'Camaras',
     subCategory: [],
     order: 'id',
     direction: 'asc'
@@ -53,5 +55,3 @@ export const Catalogue = () => {
 
   return <CatalogueView options={options} finalList={finalList} handleOptionsChange={handleOptionsChange} />
 }
-
-export default Catalogue

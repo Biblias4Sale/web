@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 // import { getProducts } from '../../../redux/actions/index'
 import Paginate from './Pagination'
 import { NavLink } from 'react-router-dom'
-import Product from '../../Products/Product'
+import { Product } from '../../Products/Product'
 import { productsCat, paginationStyle } from '../CatalogueStyle'
 
 export const Pages = ({ finalList }) => {
@@ -24,9 +24,9 @@ export const Pages = ({ finalList }) => {
       <div style={productsCat}>
         {product?.map((obj) => {
           return (
-            <NavLink to={'/details/' + obj.id} key={obj.id}>
+            <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.name} points={obj.points} id={obj.id} key={obj.id}
+                name={obj.model} points={obj.points} id={obj.id} key={obj.id}
               />
             </NavLink>
           )

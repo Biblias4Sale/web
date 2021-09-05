@@ -5,10 +5,10 @@ import { ImgWidth } from '../../HomeStyle'
 
 export const RightImg = () => {
   return (
-    <Row>
-      <Link to=''>
+    <Link to='/product'>
+      <Row>
         <Image src={Camaras} alt='Camaras NOI LOAN' style={ImgWidth('100vh')} />
-      </Link>
-    </Row>
+      </Row>
+    </Link>
   )
 }
