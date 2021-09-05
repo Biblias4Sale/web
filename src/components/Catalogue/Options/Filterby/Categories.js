@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { labelGoto, checkGoto } from '../../CatalogueStyle'
 import { Categories } from '../../../NavBar/modules/DropCategories/categories'
 
@@ -12,22 +12,10 @@ export const ListCategories = ({ options, handleCategoryChange }) => {
         <h4>IR A</h4>
       </div>
       <hr style={{ width: '100%' }} />
-      {/* <Form>
-        {allCategories.map((category, i) => {
-          if (category !== options.category) {
-            return (
-              <div key={i} style={checkGoto}>
-                <Form.Check type='radio' label={category} />
-              </div>
-            )
-          } else return null
-        })}
-
-      </Form> */}
       {allCategories.map((category, i) => {
         if (category !== options.category) {
           return (
-            <div style={checkGoto} onClick={() => handleCategoryChange(category)}>
+            <div key={i} style={checkGoto} onClick={() => handleCategoryChange(category)}>
               {category}
             </div>
           )
