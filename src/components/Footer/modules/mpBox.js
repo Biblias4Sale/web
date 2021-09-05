@@ -5,7 +5,7 @@ import { LogoMPStyle, MPCol } from '../FooterStyle'
 export const MercadoPagoBox = () => {
   return (
     <Col xs={6} lg={6} style={MPCol}>
-      <img src={Logo} alt='MERCADO PAGO' style={LogoMPStyle} />
+      <img src={Logo} alt='MERCADO PAGO' style={LogoMPStyle} title='mercado pago'/>
     </Col>
   )
 }
