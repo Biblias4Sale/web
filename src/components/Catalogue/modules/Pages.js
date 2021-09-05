@@ -26,7 +26,7 @@ export const Pages = () => {
       <div style={productsCat}>
         {product?.map((obj) => {
           return (
-            <NavLink to={`/product/details/${obj.id}`} key={obj.id}>
+            <NavLink to={`/product/details/${obj.id}`} key={obj.id} style={{textDecoration:'none'}}>
               <Product
                 name={obj.name} points={obj.points} id={obj.id} key={obj.id}
               />
