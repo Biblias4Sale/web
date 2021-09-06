@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-bootstrap'
 import { LinkStyle } from '../../NavBarStyle'
 
 export const HomeLink = () => {
   return (
-    <Link to='/' style={LinkStyle}>
+    <NavLink to='/' style={LinkStyle}>
       Inicio
-    </Link>
+    </NavLink>
   )
 }

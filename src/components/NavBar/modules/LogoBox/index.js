@@ -1,14 +1,13 @@
-import { Col, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Image, Navbar } from 'react-bootstrap'
 import Logo from '../../../../assets/logo.png'
-import { LogoContainer, LogoStyle } from '../../NavBarStyle'
+import { SetSurface } from '../../NavBarStyle'
 
 export const LogoBox = () => {
   return (
-    <Col xs={12} sm={7} lg={5} style={LogoContainer}>
-      <Link to='/'>
-        <Image src={Logo} alt='NOI LOAN' style={LogoStyle} title='NOI LOAN' />
-      </Link>
-    </Col>
+    <div style={SetSurface('60vh')}>
+      <Navbar.Brand href='/'>
+        <Image src={Logo} alt='NOI LOAN' title='NOI LOAN' style={SetSurface('160px')} />
+      </Navbar.Brand>
+    </div>
   )
 }
