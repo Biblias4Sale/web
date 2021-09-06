@@ -12,7 +12,7 @@ export const BestOfTheWeek = () => {
       <ProductsBox />
       <div className='d-flex justify-content-center'>
         <Link to='/catalogo'>
-          <Image src={verMas} alt='No encontrada' width='200vw' />
+          <Image src={verMas} alt='No encontrada' width='180vw' />
         </Link>
       </div>
     </Container>

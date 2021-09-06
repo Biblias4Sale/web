@@ -28,8 +28,13 @@ export const CategoriesDrop = {
   justifyContent: 'center'
 }
 
+export const CategoriesTitle = {
+  color: 'black'
+}
+
 export const CategoriesDropTitle = {
-  color: '#c8e165'
+  color: 'mediumVioletRed',
+  fontWeight: 'bolder'
 }
 
 export const IconContainer = {

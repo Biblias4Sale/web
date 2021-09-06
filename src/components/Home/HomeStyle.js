@@ -24,9 +24,9 @@ export const ImgWidth = (wd) => {
 
 export const CentralContainerStyle = {
   marginTop: '50px',
+  marginLeft: '10px',
   display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around'
+  justifyContent: 'center'
 }
 
 export const CenterImgs = {
@@ -56,20 +56,26 @@ export const ContainerBests = {
 }
 
 export const CardStyle = {
-  height: '55vh',
-  width: '80%',
+  height: '60vh',
+  width: '95%',
   marginBottom: '35px'
 }
 
 export const CardImage = {
-  height: '35vh',
+  height: '40vh',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'
 }
 
 export const ImageWidth = {
-  width: '150px'
+  width: '140px'
+}
+
+export const FooterStyle = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center'
 }
 
 export const CardBottomStyle = {

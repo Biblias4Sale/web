@@ -12,8 +12,8 @@ const validations = yup.object().shape({
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
   // confirmEmail: yup.string().email().required().oneOf([yup.ref("email"), null], "Emails must match"),
   password: yup.string().required('Por favor ingrese una contraseña')
-  // .matches('^(?=.*[A-Za-z])("?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$',
-  //   'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
+    .matches('^(?=.*[A-Za-z])("?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{6,}$',
+      'Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
   // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
 
@@ -29,6 +29,7 @@ export const CreateAccount = () => {
     window.alert('Cuenta Creada')
     dispatch(createUser(data))
   }
+
   return (
     <div>
       <CreateAccountView

@@ -8,11 +8,11 @@ export const TopContainer = () => {
   return (
     <div style={StyleContainer}>
       <div style={TopContainerStyle}>
-        <Col xs={12} sm={10} md={8} lg={5}>
+        <Col xs={12} sm={9} md={5} lg={5}>
           <TopImg />
           <BottomImg />
         </Col>
-        <Col xs={12} sm={10} md={8} lg={7}>
+        <Col xs={12} sm={9} md={7} lg={7}>
           <RightImg />
         </Col>
       </div>
