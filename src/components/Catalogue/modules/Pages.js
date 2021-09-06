@@ -27,9 +27,9 @@ export const Pages = ({ finalList }) => {
       <div style={productsCat}>
         {product?.map((obj, index) => {
           return (
-            <NavLink style={{ textDecoration: 'none', color:'#48484a' }} to={`/product/details/${obj.id}`} key={obj.id}>
+            <NavLink style={{ textDecoration: 'none', color: '#48484a' }} to={`/product/details/${obj.id}`} key={obj.id}>
               <Product
-                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={index} img={obj.img}
+                name={obj.brand + ' ' + obj.model} stars={GetStarts(obj)} id={obj.id} key={index} img={obj.img} price={obj.price}
               />
             </NavLink>
           )
