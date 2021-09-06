@@ -6,7 +6,7 @@ import { TitleBox } from './title'
 
 export const BestOfTheWeek = () => {
   return (
-    <Container style={{ marginTop: '80px' }}>
+    <Container style={{ marginTop: '80px', width: '80vw' }}>
       <TitleBox />
       <ProductsBox />
       <div className='d-flex justify-content-center'>

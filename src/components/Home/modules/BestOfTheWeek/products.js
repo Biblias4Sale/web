@@ -7,7 +7,7 @@ export const ProductsBox = () => {
     <Row>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {BestProducts().map(product =>
-          <Col key={product.id} lg={4} style={{ display: 'flex', justifyContent: 'center' }}>
+          <Col key={product.id} xs={12} lg={4} style={{ display: 'flex', justifyContent: 'center' }}>
             <Cards product={product} />
           </Col>
         )}

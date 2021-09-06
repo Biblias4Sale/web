@@ -35,6 +35,7 @@ export const CenterImgs = {
 }
 
 export const CardStyle = {
+  height: '55vh',
   width: '80%',
   marginBottom: '35px'
 }

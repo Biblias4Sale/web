@@ -1,6 +1,6 @@
 import { Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Soportes from '../../../../assets/soportes.jpg'
+import Camara from '../../../../assets/camara.jpg'
 import { StyleContainer, CenterImgs } from '../../HomeStyle'
 
 export const LeftImg = () => {
@@ -12,7 +12,7 @@ export const LeftImg = () => {
           state: { category: 'Lentes' }
         }}
       >
-        <Image src={Soportes} style={CenterImgs} />
+        <Image src={Camara} style={CenterImgs} />
       </Link>
     </Col>
   )
