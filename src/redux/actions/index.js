@@ -4,7 +4,8 @@ import { ApiURL } from '../../config/config'
 
 export const setLogged = (loginInfo) => {
   return async function (dispatch) {
-    const response = await axios.post(`${ApiURL}/login`, loginInfo, { withCredentials: true })
+    const response = await axios.post(`${ApiURL}/login`, loginInfo)
+    console.log(response)
     return dispatch({
       type: SET_LOGGED,
       payload: response.data
@@ -14,7 +15,8 @@ export const setLogged = (loginInfo) => {
 
 export const createUser = (payload) => {
   return async function () {
-    const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
+    const createUser = await axios.post(`${ApiURL}/user`, payload)
+    console.log(createUser)
     return {
       type: CREATE_USER,
       createUser
