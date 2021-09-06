@@ -1,3 +1,4 @@
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
@@ -6,7 +7,7 @@ import { CreateAccountView } from './CreateAccountView'
 import { createUser } from '../../redux/actions'
 
 const validations = yup.object().shape({
-  firstName: yup.string().required('Por favor ingrese tu nombre'),
+  name: yup.string().required('Por favor ingrese tu nombre'),
   lastName: yup.string().required('Por favor ingrese tu apellido'),
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
   // confirmEmail: yup.string().email().required().oneOf([yup.ref("email"), null], "Emails must match"),

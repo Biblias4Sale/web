@@ -3,16 +3,18 @@ import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USE
 import { ApiURL } from '../../config/config'
 
 export const setLogged = (data) => {
-  return {
-    type: SET_LOGGED,
-    payload: data
+  console.log(data)
+  return async function () {
+    const login = await axios.get(`${ApiURL}/login` + { data })
+    console.log('soy login', login)
+    return ({ type: SET_LOGGED, payload: login })
   }
 }
 
 export const createUser = (payload) => {
   return async function () {
-    const createUser = await axios.post(`${ApiURL}/algo`, payload)
-    console.log(payload)
+    const createUser = await axios.post(`${ApiURL}/user`, payload)
+    console.log(createUser)
     return {
       type: CREATE_USER,
       createUser

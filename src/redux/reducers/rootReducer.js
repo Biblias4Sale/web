@@ -11,6 +11,7 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGGED:
+      console.log(action.payload)
       return { ...state, logged: action.payload }
 
     case CREATE_USER:
