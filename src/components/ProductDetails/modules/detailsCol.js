@@ -14,7 +14,7 @@ export const DetailsCol = ({ product }) => {
         ? <Loading />
         : (
           <Col xs={12} lg={5} style={DetailsColStyle}>
-            <h5 style={Height('4vh')}> {product.brand + ' ' + product.model} </h5>
+            <h5 style={Height('4vh')}> {product.model} </h5>
             <div style={Height('4vh', 'orange')}> {productStars} </div>
             <h4 style={Height('4vh')}> {product.price} </h4>
             <h6 style={Height('2vh')}> Descripción </h6>

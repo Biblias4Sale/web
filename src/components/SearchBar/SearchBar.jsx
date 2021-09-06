@@ -24,8 +24,12 @@ export const SearchBar = () => {
   }, [allProducts])
 
   const handleChangeSearchBar = e => {
-    const searchResult = parsedProducts.filter(product => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    setSearch(searchResult)
+    if (e.target.value !== '') {
+      const searchResult = parsedProducts.filter(product => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      setSearch(searchResult)
+    } else {
+      setSearch([])
+    }
   }
 
   // ---------------------------------------
