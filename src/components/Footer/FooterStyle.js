@@ -5,23 +5,24 @@ export const MainContainer = {
 
 export const ContainerStyle = {
   display: 'flex',
-  flexDirection: 'row'
+  flexDirection: 'row',
+  flexWrap: 'wrap'
 }
 
 export const LogoCol = {
-  height: '60px',
+  height: '80px',
   display: 'flex',
   alignItems: 'center'
 }
 
 export const LogoStyle = {
-  height: '70%',
+  width: '30%',
   display: 'flex',
   alignItems: 'center'
 }
 
 export const MPCol = {
-  height: '60px',
+  height: '80px',
   display: 'flex',
   justifyContent: 'flex-end'
 }
