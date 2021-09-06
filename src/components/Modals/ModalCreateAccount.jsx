@@ -14,7 +14,9 @@ export const ModalCreateAccount = (props) => {
       </Modal.Header>
       <Modal.Body>
         <CreateAccount />
+
       </Modal.Body>
+
     </Modal>
   )
 }

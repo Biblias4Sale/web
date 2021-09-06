@@ -7,6 +7,7 @@ import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
 import { useState } from 'react'
 import { ModalUser } from '../Modals/ModalUser'
+import { ModalCreateAccount } from '../Modals/ModalCreateAccount'
 
 export const CreateAccountView = (props) => {
   const [modalShow, setModalShow] = useState(false)
@@ -69,10 +70,17 @@ export const CreateAccountView = (props) => {
               />
               <p className='text-danger'>{props.errors.password?.message}</p>
             </InputGroup>
-            <Button type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
+            <Button
+              type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
+              //onClick={() => setModalShow(true)}
+            >
               <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
               REGISTRARSE
             </Button>
+            {/* <ModalCreateAccount
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+            /> */}
             <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
             <Button
               style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
@@ -83,13 +91,6 @@ export const CreateAccountView = (props) => {
               show={modalShow}
               onHide={() => setModalShow(false)}
             />
-            <h4 className='m-3 text-center'> O </h4>
-            <Button
-              style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
-            >
-              <GrGoogle size={20} className='m-1 text-white' />
-              Ingresar con Google
-            </Button>
           </Form.Group>
         </Form>
       </Col>

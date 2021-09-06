@@ -5,13 +5,13 @@ const initialState = {
   products: [],
   productDetails: [],
   categories: [],
-  newUser: []
+  newUser: [],
+  modal: ''
 }
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGGED:
-      console.log('ENTRE AL REDUCER', action.payload)
       return { ...state, logged: action.payload }
 
     case CREATE_USER:
@@ -26,7 +26,6 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }
-
     default:
       return state
   }
