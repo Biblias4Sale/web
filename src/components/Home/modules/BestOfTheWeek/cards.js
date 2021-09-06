@@ -8,7 +8,7 @@ export const Cards = ({ product }) => {
 
   return (
     <Card style={CardStyle}>
-      <Card.Img variant='top' src={product.img} />
+      <Card.Img variant='top' src={product.img} style={{ height: '50vh' }} />
       <Card.Body>
         <Card.Title style={StyleContainer}>{product.brand + ' ' + product.model}</Card.Title>
         <Card.Text style={StyleContainer}> {product.price} </Card.Text>

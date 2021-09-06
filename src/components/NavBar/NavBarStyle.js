@@ -25,7 +25,7 @@ export const LinkStyle = {
 
 export const CategoriesDrop = {
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
 }
 
 export const CategoriesDropTitle = {

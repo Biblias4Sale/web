@@ -1,4 +1,6 @@
-import { Container } from 'react-bootstrap'
+import { Container, Image } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import verMas from '../../../../assets/verMas.png'
 import { ProductsBox } from './products'
 import { TitleBox } from './title'
 
@@ -7,7 +9,11 @@ export const BestOfTheWeek = () => {
     <Container style={{ marginTop: '80px' }}>
       <TitleBox />
       <ProductsBox />
-      HOLA SOY BOTON CON IMAGEN VER MAS
+      <div className='d-flex justify-content-center'>
+        <Link to='/catalogo'>
+          <Image src={verMas} alt='No encontrada' width='200vw' />
+        </Link>
+      </div>
     </Container>
   )
 }

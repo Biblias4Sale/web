@@ -26,7 +26,7 @@ export const LoginView = (props) => {
                   name='email'
                   {...props.register('email')}
                 />
-                <p>{props.errors.email?.message}</p>
+                <p className='text-danger'>{props.errors.email?.message}</p>
               </InputGroup>
               <InputGroup size='lg m-4'>
                 <InputGroup.Text id='password' className='bg-white'>
@@ -38,14 +38,14 @@ export const LoginView = (props) => {
                   name='password'
                   {...props.register('password')}
                 />
-                <p>{props.errors.password?.message}</p>
+                <p className='text-danger'>{props.errors.password?.message}</p>
               </InputGroup>
             </Form.Group>
             <Button
               type='submit'
               style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
             >
-              <AiOutlineLogin size={25} className='text-white' />
+              <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
               LOGIN
             </Button>
             <h4 className='m-3 text-center justify-content-center'> No tenes una Cuenta ?</h4>
@@ -56,7 +56,7 @@ export const LoginView = (props) => {
             />
             <h4 className='m-3 text-center'> O </h4>
             <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
-              <GrGoogle size={20} className='m-1 text-white' />
+              <GrGoogle size={20} className='m-1 text-white' style={{ cursor: 'pointer' }} />
               Ingresar con Google
             </Button>
           </Form>

@@ -9,5 +9,6 @@ export const container = {
 
 export const botton = {
   backgroundColor: 'black',
-  fontSize: '20px'
+  fontSize: '20px',
+  cursor: 'pointer'
 }

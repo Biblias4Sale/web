@@ -26,12 +26,15 @@ export const labelGoto = {
   marginTop: '30px'
 }
 export const checkGoto = {
-  padding: '15px'
+  padding: '15px',
+  cursor: 'pointer'
 }
 
 export const inputFilterby = {
   display: 'flex',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  cursor: 'pointer'
+
 }
 
 export const checkRating = {
