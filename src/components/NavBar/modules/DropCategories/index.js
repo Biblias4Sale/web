@@ -1,6 +1,7 @@
 import { Col, NavDropdown } from 'react-bootstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Categories } from './categories'
+import { MapCategories } from './mapCategories'
 import { CategoriesDrop, CategoriesDropTitle } from '../../NavBarStyle'
 
 const DropCategories = (props) => {
@@ -18,18 +19,7 @@ const DropCategories = (props) => {
               <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
               <NavDropdown.Divider />
               <div className='d-flex flex-column color-black'>
-                {allCategories.map(item =>
-                  <Link
-                    key={item}
-                    to={{
-                      pathname: '/catalogo',
-                      state: { category: item }
-                    }}
-                    className='align-self-center text-decoration-none text-black'
-                  >
-                    {item}
-                  </Link>
-                )}
+                <MapCategories allCategories={allCategories} />
               </div>
             </NavDropdown>
           </Col>
