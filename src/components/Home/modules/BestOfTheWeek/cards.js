@@ -1,6 +1,6 @@
 import { Card, Image } from 'react-bootstrap'
 import { GetStarts } from '../../../common/getStars'
-import { StyleContainer, CardStyle, CardImage, ImageWidth } from '../../HomeStyle'
+import { StyleContainer, CardStyle, CardImage, ImageWidth, FooterStyle } from '../../HomeStyle'
 import { CardBottom } from './cardBotton'
 
 export const Cards = ({ product }) => {
@@ -13,11 +13,11 @@ export const Cards = ({ product }) => {
       <div style={CardImage}>
         <Image variant='top' src={product.img} style={ImageWidth} />
       </div>
-      <Card.Body>
-        <Card.Title style={StyleContainer}>{product.brand + ' ' + product.model}</Card.Title>
+      <Card.Body style={{ fontWeight: 'bolder' }}>
+        <Card.Text style={StyleContainer}>{product.brand + ' ' + product.model}</Card.Text>
         <Card.Text style={StyleContainer}> {formatedPrice} </Card.Text>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer style={FooterStyle}>
         <CardBottom stars={productStars} product={product} />
       </Card.Footer>
     </Card>

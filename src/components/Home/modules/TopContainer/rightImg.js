@@ -13,7 +13,7 @@ export const RightImg = () => {
     >
       <Row>
         <Image
-          src={Camaras} alt='Camaras NOI LOAN' style={ImgWidth('100%')}
+          src={Camaras} alt='Camaras NOI LOAN' style={ImgWidth('100vh')}
         />
       </Row>
     </Link>

@@ -11,18 +11,20 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGGED:
-      console.log('ENTRE AL REDUCER', action.payload)
+
       return { ...state, logged: action.payload }
 
     case CREATE_USER:
+
       return { ...state, newUser: action.payload }
 
     case GET_PRODUCTS:
+
       return { ...state, products: action.payload }
 
     case GET_PRODUCT_BY_ID:
 
-      return { ...state, productDetails: action.payload.data }
+      return { ...state, productDetails: action.payload }
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }

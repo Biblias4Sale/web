@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
 import { ApiURL } from '../../config/config'
+// import { create } from 'yup/lib/Reference'
 
 export const setLogged = (loginInfo) => {
   return async function (dispatch) {
@@ -15,6 +16,7 @@ export const setLogged = (loginInfo) => {
 export const createUser = (payload) => {
   return async function () {
     const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
+    console.log('action', createUser)
     return {
       type: CREATE_USER,
       createUser
@@ -32,7 +34,16 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return async dispatch => {
     const response = await axios.get(`${ApiURL}/products/detail/${id}`)
-    return dispatch({ type: GET_PRODUCT_BY_ID, payload: response })
+    const product = {
+      brand: response.data.brand,
+      model: response.data.model,
+      img: response.data.img,
+      description: response.data.description,
+      price: '$' + new Intl.NumberFormat('es-ES').format(response.data.price.toString()),
+      points: response.data.points,
+      subCategoryId: response.data.subCategoryId
+    }
+    return dispatch({ type: GET_PRODUCT_BY_ID, payload: product })
   }
 }
 
