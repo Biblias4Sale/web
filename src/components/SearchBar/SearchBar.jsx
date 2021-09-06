@@ -11,6 +11,7 @@ export const SearchBar = () => {
   useEffect(() => {
     const arr = allProducts.map(product => {
       return {
+        id: product.id,
         brand: product.brand,
         model: product.model,
         img: product.img,

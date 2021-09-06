@@ -27,7 +27,7 @@ export const CreateAccountView = (props) => {
                 name='firstName'
                 {...props.register('firstName')}
               />
-              <p>{props.errors.firstName?.message}</p>
+              <p className='text-danger'>{props.errors.firstName?.message}</p>
             </InputGroup>
             <InputGroup size='lg m-4'>
               <InputGroup.Text id='lastname' className='bg-white'>
@@ -39,7 +39,7 @@ export const CreateAccountView = (props) => {
                 name='lastName'
                 {...props.register('lastName')}
               />
-              <p>{props.errors.lastName?.message}</p>
+              <p className='text-danger'>{props.errors.lastName?.message}</p>
             </InputGroup>
             <InputGroup size='lg m-4'>
               <InputGroup.Text id='email' className='bg-white'>
@@ -51,7 +51,7 @@ export const CreateAccountView = (props) => {
                 name='email'
                 {...props.register('email')}
               />
-              <p>{props.errors.email?.message}</p>
+              <p className='text-danger'>{props.errors.email?.message}</p>
             </InputGroup>
             <InputGroup size='lg m-4'>
               <InputGroup.Text id='password' className='bg-white'>
@@ -63,10 +63,10 @@ export const CreateAccountView = (props) => {
                 name='password'
                 {...props.register('password')}
               />
-              <p>{props.errors.password?.message}</p>
+              <p className='text-danger'>{props.errors.password?.message}</p>
             </InputGroup>
             <Button type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
-              <AiOutlineLogin size={25} className='text-white' />
+              <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
               REGISTRARSE
             </Button>
             <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
@@ -80,7 +80,13 @@ export const CreateAccountView = (props) => {
               onHide={() => setModalShow(false)}
             />
             <h4 className='m-3 text-center'> O </h4>
-            <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'><GrGoogle size={20} className='m-1 text-white' />Ingresar con Google</Button>
+            <Button
+              style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
+              style={{ cursor: 'pointer' }}
+            >
+              <GrGoogle size={20} className='m-1 text-white' />
+              Ingresar con Google
+            </Button>
           </Form.Group>
         </Form>
       </Col>
