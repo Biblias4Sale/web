@@ -1,9 +1,10 @@
 import { Row } from 'react-bootstrap'
+import { RowBests, TitleContainer } from '../../HomeStyle'
 
 export const TitleBox = () => {
   return (
-    <Row style={{ fontSize: '30px', marginBottom: '80px' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', fontWeight: '400' }}>
+    <Row style={RowBests}>
+      <div style={TitleContainer}>
         Tendencias de la semana
       </div>
     </Row>

@@ -12,7 +12,7 @@ export const BottomImg = () => {
       }}
     >
       <Row>
-        <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
+        <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('299px')} />
       </Row>
     </Link>
   )
