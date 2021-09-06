@@ -18,16 +18,17 @@ export const CreateAccountView = (props) => {
         <Form onSubmit={props.handleSubmit}>
           <Form.Group className='mb-3'>
             <InputGroup size='lg m-4'>
-              <InputGroup.Text id='firstname' className='bg-white'>
+              <InputGroup.Text id='name' className='bg-white'>
                 <BsPersonSquare size={28} />
               </InputGroup.Text>
               <FormControl
                 type='text'
                 placeholder='Nombre'
-                name='firstName'
-                {...props.register('firstName')}
+                name='name'
+                {...props.register('name')}
+
               />
-              <p className='text-danger'>{props.errors.firstName?.message}</p>
+              <p className='text-danger'>{props.errors.name?.message}</p>
             </InputGroup>
             <InputGroup size='lg m-4'>
               <InputGroup.Text id='lastname' className='bg-white'>
@@ -38,6 +39,7 @@ export const CreateAccountView = (props) => {
                 placeholder='Apellido'
                 name='lastName'
                 {...props.register('lastName')}
+
               />
               <p className='text-danger'>{props.errors.lastName?.message}</p>
             </InputGroup>
@@ -50,6 +52,7 @@ export const CreateAccountView = (props) => {
                 placeholder='E-mail'
                 name='email'
                 {...props.register('email')}
+
               />
               <p className='text-danger'>{props.errors.email?.message}</p>
             </InputGroup>
@@ -62,6 +65,7 @@ export const CreateAccountView = (props) => {
                 placeholder='Contraseña'
                 name='password'
                 {...props.register('password')}
+
               />
               <p className='text-danger'>{props.errors.password?.message}</p>
             </InputGroup>
