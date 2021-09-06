@@ -1,17 +1,15 @@
-import { Col, Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { SearchIcon } from './searchIcons'
 import { CartIcon } from './cartIcon'
 import { UserIcon } from './userIcon'
-import { IconContainer } from '../../NavBarStyle'
+import { SetSurface } from '../../NavBarStyle'
 
 export const IconsBox = () => {
   return (
-    <Col xs={4} sm={12} lg={2}>
-      <Container style={IconContainer}>
-        <SearchIcon />
-        <CartIcon />
-        <UserIcon />
-      </Container>
-    </Col>
+    <Container className='d-flex justify-content-around' style={SetSurface('40vh')}>
+      <SearchIcon />
+      <CartIcon />
+      <UserIcon />
+    </Container>
   )
 }

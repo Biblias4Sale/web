@@ -1,8 +1,8 @@
-import { Col, NavDropdown } from 'react-bootstrap'
+import { NavDropdown } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { Categories } from './categories'
 import { MapCategories } from './mapCategories'
-import { CategoriesDrop, CategoriesTitle, CategoriesDropTitle } from '../../NavBarStyle'
+import { CategoriesTitle } from '../../NavBarStyle'
 
 const DropCategories = (props) => {
   const allCategories = Categories()
@@ -14,19 +14,18 @@ const DropCategories = (props) => {
       location === '/catalogo'
         ? ''
         : (
-          <Col xs={6} sm={6} md={6} lg={4}>
-            <NavDropdown
-              title={
-                <span style={CategoriesTitle}>Categorías</span>
-              } style={CategoriesDrop}
-            >
-              <NavDropdown.Item style={CategoriesDropTitle}> Categorías </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <div className='d-flex flex-column color-black'>
-                <MapCategories allCategories={allCategories} />
-              </div>
-            </NavDropdown>
-          </Col>
+          <NavDropdown
+            title={
+              <span style={CategoriesTitle}>Categorías</span>
+            }
+            className='d-flex justify-content-center ms-3'
+          >
+            <NavDropdown.Item className='fw-bolder text-info'> Categorías </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <div className='d-flex flex-column color-black'>
+              <MapCategories allCategories={allCategories} />
+            </div>
+          </NavDropdown>
           )
       }
     </>

@@ -1,13 +1,12 @@
-import { Col } from 'react-bootstrap'
 import { HomeLink } from './home'
 import DropCategories from '../DropCategories'
-import { LinkBoxStyle } from '../../NavBarStyle'
+import { SetSurface } from '../../NavBarStyle'
 
 export const LinksBox = () => {
   return (
-    <Col xs={7} sm={5} lg={5} style={LinkBoxStyle}>
+    <div className='d-flex justify-content-center align-items-center' style={SetSurface('75vh')}>
       <HomeLink />
       <DropCategories />
-    </Col>
+    </div>
   )
 }
