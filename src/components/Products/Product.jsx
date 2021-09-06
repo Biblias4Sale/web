@@ -1,4 +1,4 @@
-import { Card } from 'react-bootstrap'
+import { Card, Image } from 'react-bootstrap'
 import { CardStyle, ImgContainer, ProductImg, Stars } from './ProductStyle'
 
 export const Product = ({ name, stars, img, key, price }) => {
@@ -8,7 +8,7 @@ export const Product = ({ name, stars, img, key, price }) => {
   return (
     <Card key={key} style={CardStyle}>
       <div style={ImgContainer}>
-        <Card.Img src={img} alt={`Product: ${name}`} style={ProductImg} />
+        <Image src={img} alt={`Product: ${name}`} style={ProductImg} fluid />
       </div>
       <Card.Body>
         <Card.Title> {name}  </Card.Title>

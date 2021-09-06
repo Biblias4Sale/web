@@ -1,7 +1,7 @@
 import { Card, Image } from 'react-bootstrap'
 import { GetStarts } from '../../../common/getStars'
 import { StyleContainer, CardStyle, CardImage, ImageWidth, FooterStyle } from '../../HomeStyle'
-import { CardBottom } from './cardBotton'
+import { CardBottom } from './cardBottom'
 
 export const Cards = ({ product }) => {
   const productStars = GetStarts(product)
