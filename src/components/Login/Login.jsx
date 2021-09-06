@@ -16,15 +16,14 @@ const validations = yup.object().shape({
 
 export const Login = () => {
   const dispatch = useDispatch()
-
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
   })
 
   // Submit your data into Redux store
-  const onSubmit = (data) => {
-    alert('iniciando sesion')
-    dispatch(setLogged(data))
+  const onSubmit = (loginInfo) => {
+    window.alert('Iniciando sesion')
+    dispatch(setLogged(loginInfo))
   }
   return (
     <div>

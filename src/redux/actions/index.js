@@ -2,19 +2,19 @@ import axios from 'axios'
 import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
 import { ApiURL } from '../../config/config'
 
-export const setLogged = (data) => {
-  console.log(data)
-  return async function () {
-    const login = await axios.get(`${ApiURL}/login` + { data })
-    console.log('soy login', login)
-    return ({ type: SET_LOGGED, payload: login })
+export const setLogged = (loginInfo) => {
+  return async function (dispatch) {
+    const response = await axios.post(`${ApiURL}/login`, loginInfo, { withCredentials: true })
+    return dispatch({
+      type: SET_LOGGED,
+      payload: response.data
+    })
   }
 }
 
 export const createUser = (payload) => {
   return async function () {
-    const createUser = await axios.post(`${ApiURL}/user`, payload)
-    console.log(createUser)
+    const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
     return {
       type: CREATE_USER,
       createUser
