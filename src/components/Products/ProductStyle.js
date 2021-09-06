@@ -14,8 +14,7 @@ export const ImgContainer = {
 }
 
 export const ProductImg = {
-  padding: '10px',
-  width: '250px'
+  height: '100%'
 }
 
 export const Stars = {
