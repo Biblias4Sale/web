@@ -11,7 +11,6 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('entre')
     const fetchData = async () => {
       const response1 = await axios.get(`${ApiURL}/products`)
       dispatch(getProducts(response1.data))

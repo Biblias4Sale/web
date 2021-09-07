@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 export const CardBottom = ({ product, stars }) => {
-  console.log('llegue')
   return (
     <div className='d-flex justify-content-center align-items-center' style={{ color: 'orange' }}>
       {stars}
