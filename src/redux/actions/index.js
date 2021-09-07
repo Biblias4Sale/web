@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, LOG_OUT } from './constants'
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'

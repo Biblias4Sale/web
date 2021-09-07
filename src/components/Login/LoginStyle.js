@@ -13,5 +13,7 @@ export const botton = {
   alignItems: 'center',
   justifyContent: 'center',
   justifyText: 'center',
-  width: '100%'
+  width: '98%',
+  color: 'white',
+  cursor: 'pointer'
 }

@@ -10,14 +10,13 @@ export const ModalUser = (props) => {
   const handleClose = () => {
     setTimeout(() => {
       props.setModalShow(false)
-    }, 2000)
+    }, 1500)
   }
 
   return (
     <Modal
       {...props}
       size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
       centered
     >
       <Modal.Header closeButton>
@@ -25,7 +24,7 @@ export const ModalUser = (props) => {
       </Modal.Header>
       <Modal.Body>
         {showModal === 'init' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
-        {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} /> : null}
+        {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} handleClose={handleClose} /> : null}
       </Modal.Body>
     </Modal>
   )
