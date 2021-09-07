@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS } from './constants'
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
 
@@ -51,5 +51,12 @@ export const getCategories = (payload) => {
   return {
     type: GET_CATEGORIES,
     payload
+  }
+}
+
+export const getReviews = () => {
+  return async dispatch => {
+    const reviews = await axios.get(`${ApiURL}//products/reviews`)
+    return dispatch({ type: GET_REVIEWS, payload: reviews.data })
   }
 }
