@@ -10,6 +10,7 @@ export const UserIcon = () => {
     <div>
       <FaRegUserCircle size={28} onClick={() => setModalShow(true)} title='Login' style={Cursor} />
       <ModalUser
+        setModalShow={setModalShow}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />

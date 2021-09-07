@@ -1,7 +1,7 @@
 import { Pages } from './modules/Pages'
 import { Container, Col } from 'react-bootstrap'
 import { headerProducts, productsCat } from './CatalogueStyle'
-// import SelectOptions from './modules/SelectOptions'
+import SelectOptions from './modules/SelectOptions'
 import { CenterBanner } from './modules/CenterBanner'
 import { ListCategories } from './Options/Filterby/Categories'
 import { SubCategories } from './Options/Filterby/SubCategories'
@@ -23,7 +23,7 @@ const CatalogueView = ({ options, finalList, handleChangeMulti, handleChange, ha
           <div style={headerProducts}>
             <h3>{options.category}</h3>
           </div>
-          {/* <SelectOptions /> */}
+          <SelectOptions />
           <Pages finalList={finalList} />
         </Col>
       </Container>

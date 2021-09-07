@@ -4,11 +4,8 @@ import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
-import { useState } from 'react'
-import { ModalCreateAccount } from '../Modals/ModalCreateAccount'
 
 export const LoginView = (props) => {
-  const [modalShow, setModalShow] = useState(false)
   return (
     <div>
       <Container style={container}>
@@ -49,11 +46,8 @@ export const LoginView = (props) => {
               LOGIN
             </Button>
             <h4 className='m-3 text-center justify-content-center'> No tenes una Cuenta ?</h4>
-            <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center' onClick={() => setModalShow(true)}>Create una aqui !</Button>
-            <ModalCreateAccount
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
+            <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center' onClick={() => props.setShowModal('create')}>Create una aqui !</Button>
+
             <h4 className='m-3 text-center'> O </h4>
             <Button style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
               <GrGoogle size={20} className='m-1 text-white' style={{ cursor: 'pointer' }} />
