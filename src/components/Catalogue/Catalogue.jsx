@@ -1,66 +1,44 @@
-import CatalogueView from './Catalogue.view.js'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 import { getProducts } from '../../redux/actions/index'
-import { ApiURL } from '../../config/config'
+import { Statements } from './modules/main/statements'
+import { getSubs } from './modules/main/getSubs'
+import { filterBySubCategory } from './modules/main/filterBySubCategory.js'
+import { filterByPrice } from './modules/main/filterByPrice.js'
+import { filterByPoints } from './modules/main/filterByPoints.js'
+import { CatalogueView } from './Catalogue.view.jsx'
 
 export const Catalogue = (props) => {
-  const allProducts = useSelector((state) => state.products)
-
-  const [actualSubcategories, setActualSubcategories] = useState([])
-
-  const dispatch = useDispatch()
-
-  const [options, setOptions] = useState({
-    category: props.location.state ? props.location.state.category : 'Camaras',
-    subCategory: [],
-    price: 'all',
-    raiting: []
-    // order: 'id',
-    // direction: 'asc'
-  })
-
-  const [finalList, setFinalList] = useState(allProducts)
+  const {
+    allProducts,
+    actualSubcategories,
+    setActualSubcategories,
+    dispatch,
+    options,
+    setOptions,
+    finalList,
+    setFinalList
+  } = Statements(props)
 
   useEffect(() => {
     dispatch(getProducts())
   }, [dispatch])
 
   useEffect(() => {
-    let filtredBySubCategory
-    let filtredByPrice
-    let filtredByRaiting
+    getSubs(setActualSubcategories, options)
 
-    // FILTRA por CATEGORIA
     const filtredByCategory = allProducts.filter(product => product.subCategory.category.name === options.category)
 
-    // OBTIENE SUB-CATEGORIAS de la CATEGORIA ACTUAL
-    const getSubs = async () => {
-      const response = await axios.get(`${ApiURL}/categories/getSub/${options.category}`)
-      setActualSubcategories(response.data)
-    }
-    getSubs()
+    const setFilterBySubCategory = filterBySubCategory(options, filtredByCategory)
+    const filtredBySubCategory = setFilterBySubCategory
 
-    // FILTRA por SUB-CATEGORIA
-    if (options.subCategory.length === 0) {
-      filtredBySubCategory = filtredByCategory
-    } else {
-      filtredBySubCategory = filtredByCategory.filter(product => options.subCategory.includes(product.subCategory.name))
-    }
+    const setFilterByPrice = filterByPrice(options, filtredBySubCategory)
+    const filtredByPrice = setFilterByPrice
 
-    // FILTRA por PRECIO
-    if (options.price === 'all') filtredByPrice = filtredBySubCategory
-    else if (options.price === '30k') filtredByPrice = filtredBySubCategory.filter(product => product.price <= 30000)
-    else if (options.price === '30k/250k') filtredByPrice = filtredBySubCategory.filter(product => product.price > 30000 && product.price <= 250000)
-    else if (options.price === '250k') filtredByPrice = filtredBySubCategory.filter(product => product.price > 250000)
-
-    // FILTRA por PUNTAJE
-    if (options.raiting.length === 0) filtredByRaiting = filtredByPrice
-    else filtredByRaiting = filtredByPrice.filter(product => options.raiting.includes(product.points))
+    const setFilterByPoints = filterByPoints(options, filtredByPrice)
+    const filtredByRaiting = setFilterByPoints
 
     setFinalList(filtredByRaiting)
-  }, [allProducts, options.category, options.subCategory, options.price, options.raiting])
+  }, [allProducts, options, setActualSubcategories, setFinalList])
 
   const handleChangeMulti = (event) => {
     let newArray = [...options[event.target.name], event.target.id]
@@ -80,5 +58,14 @@ export const Catalogue = (props) => {
     setOptions(prev => ({ ...prev, category: category }))
   }
 
-  return <CatalogueView options={options} finalList={finalList} actualSubcategories={actualSubcategories} handleChangeMulti={handleChangeMulti} handleCategoryChange={handleCategoryChange} handleChange={handleChange} />
+  return (
+    <CatalogueView
+      options={options}
+      finalList={finalList}
+      actualSubcategories={actualSubcategories}
+      handleChangeMulti={handleChangeMulti}
+      handleCategoryChange={handleCategoryChange}
+      handleChange={handleChange}
+    />
+  )
 }
