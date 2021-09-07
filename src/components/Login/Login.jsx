@@ -14,21 +14,19 @@ const validations = yup.object().shape({
 })
 
 export const Login = ({ setShowModal, handleClose }) => {
-  const isLogged = useSelector(state => state.isLogged)
+  const logged = useSelector(state => state.logged)
   const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
   })
 
-  // if(isLogged === true)
-
   // Submit your data into Redux store
-  const onSubmit = (loginInfo) => {
-    handleClose()
+  const onSubmit = async (loginInfo) => {
     dispatch(setLogged(loginInfo))
+    if (logged === false) alert('Tus datos no son correctos por favor prueba nuevamente')
+    handleClose()
   }
-
   return (
     <div>
       <LoginView

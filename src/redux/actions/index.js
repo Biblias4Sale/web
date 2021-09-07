@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, IS_LOGGED } from './constants'
+
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, LOG_OUT } from './constants'
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
 
@@ -54,9 +55,9 @@ export const getCategories = (payload) => {
   }
 }
 
-export const isLogged = (payload) => {
+export const logOut = () => {
+  axios.get(`${ApiURL}/logout`, { withCredentials: true })
   return {
-    type: IS_LOGGED,
-    payload
+    type: LOG_OUT
   }
 }
