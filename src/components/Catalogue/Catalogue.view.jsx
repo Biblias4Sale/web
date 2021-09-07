@@ -3,7 +3,7 @@ import { CenterBanner } from './modules/viewComponent/CenterBanner'
 import { LeftContainer } from './modules/viewComponent/leftContainer'
 import { RightContainer } from './modules/viewComponent/rightContainer'
 
-export const CatalogueView = ({ options, finalList, handleChangeMulti, handleChange, handleCategoryChange, actualSubcategories }) => {
+export const CatalogueView = ({ options, setOptions, finalList, handleChangeMulti, handleChange, handleCategoryChange, actualSubcategories }) => {
   return (
     <div>
       <CenterBanner />
@@ -12,7 +12,7 @@ export const CatalogueView = ({ options, finalList, handleChangeMulti, handleCha
           options={options} handleCategoryChange={handleCategoryChange} handleChange={handleChange}
           handleChangeMulti={handleChangeMulti} actualSubcategories={actualSubcategories}
         />
-        <RightContainer options={options} finalList={finalList} />
+        <RightContainer options={options} finalList={finalList} setOptions={setOptions} />
       </Container>
     </div>
   )

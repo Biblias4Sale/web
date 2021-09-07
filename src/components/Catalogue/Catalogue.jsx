@@ -5,6 +5,7 @@ import { getSubs } from './modules/main/getSubs'
 import { filterBySubCategory } from './modules/main/filterBySubCategory.js'
 import { filterByPrice } from './modules/main/filterByPrice.js'
 import { filterByPoints } from './modules/main/filterByPoints.js'
+import { orderByPrice } from './modules/main/orderByPrice.js'
 import { CatalogueView } from './Catalogue.view.jsx'
 
 export const Catalogue = (props) => {
@@ -37,7 +38,10 @@ export const Catalogue = (props) => {
     const setFilterByPoints = filterByPoints(options, filtredByPrice)
     const filtredByRaiting = setFilterByPoints
 
-    setFinalList(filtredByRaiting)
+    const setOrderByPrice = orderByPrice(options, filtredByRaiting)
+    const ordererByPrice = setOrderByPrice
+
+    setFinalList(ordererByPrice)
   }, [allProducts, options, setActualSubcategories, setFinalList])
 
   const handleChangeMulti = (event) => {
@@ -61,6 +65,7 @@ export const Catalogue = (props) => {
   return (
     <CatalogueView
       options={options}
+      setOptions={setOptions}
       finalList={finalList}
       actualSubcategories={actualSubcategories}
       handleChangeMulti={handleChangeMulti}

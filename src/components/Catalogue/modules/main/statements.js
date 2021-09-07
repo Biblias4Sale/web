@@ -11,8 +11,8 @@ export const Statements = (props) => {
     category: props.location.state ? props.location.state.category : 'Camaras',
     subCategory: [],
     price: 'all',
-    raiting: []
-    // order: 'id',
+    raiting: [],
+    orderBy: 'priceAsc'
     // direction: 'asc'
   })
 
