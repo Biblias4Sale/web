@@ -1,95 +1,120 @@
-import { Form, Container, Button, Col, FormControl, InputGroup } from 'react-bootstrap'
+import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
-import { useState } from 'react'
-import { ModalUser } from '../Modals/ModalUser'
 
-export const CreateAccountView = (props) => {
-  const [modalShow, setModalShow] = useState(false)
-
+export const CreateAccountView = ({ setShowModal, register, handleSubmit, errors }) => {
   return (
     <Container style={container}>
       <Col>
         <h1 className='m-3'>Registro</h1>
-        <Form onSubmit={props.handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>
-            <InputGroup size='lg m-4'>
-              <InputGroup.Text id='name' className='bg-white'>
-                <BsPersonSquare size={28} />
-              </InputGroup.Text>
-              <FormControl
-                type='text'
-                placeholder='Nombre'
-                name='name'
-                {...props.register('name')}
-
-              />
-              <p className='text-danger'>{props.errors.name?.message}</p>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='name' className='bg-white' style={{ width: '10%' }}>
+                    <BsPersonSquare size={28} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='text'
+                    placeholder='Nombre'
+                    name='name'
+                    {...register('name')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.name?.message}</h6>
+                </Row>
+              </Col>
             </InputGroup>
-            <InputGroup size='lg m-4'>
-              <InputGroup.Text id='lastname' className='bg-white'>
-                <BsPersonSquare size={28} />
-              </InputGroup.Text>
-              <FormControl
-                type='text'
-                placeholder='Apellido'
-                name='lastName'
-                {...props.register('lastName')}
-
-              />
-              <p className='text-danger'>{props.errors.lastName?.message}</p>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='lastname' className='bg-white' style={{ width: '10%' }}>
+                    <BsPersonSquare size={28} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='text'
+                    placeholder='Apellido'
+                    name='lastName'
+                    {...register('lastName')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.lastName?.message}</h6>
+                </Row>
+              </Col>
             </InputGroup>
-            <InputGroup size='lg m-4'>
-              <InputGroup.Text id='email' className='bg-white'>
-                <HiOutlineMail size={30} />
-              </InputGroup.Text>
-              <FormControl
-                type='e-mail'
-                placeholder='E-mail'
-                name='email'
-                {...props.register('email')}
-
-              />
-              <p className='text-danger'>{props.errors.email?.message}</p>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='email' className='bg-white' style={{ width: '10%' }}>
+                    <HiOutlineMail size={30} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='e-mail'
+                    placeholder='E-mail'
+                    name='email'
+                    {...register('email')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.email?.message}</h6>
+                </Row>
+              </Col>
             </InputGroup>
-            <InputGroup size='lg m-4'>
-              <InputGroup.Text id='password' className='bg-white'>
-                <RiLockPasswordLine size={30} />
-              </InputGroup.Text>
-              <FormControl
-                type='password'
-                placeholder='Contraseña'
-                name='password'
-                {...props.register('password')}
-
-              />
-              <p className='text-danger'>{props.errors.password?.message}</p>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='password' className='bg-white' style={{ width: '10%' }}>
+                    <RiLockPasswordLine size={30} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='password'
+                    placeholder='Contraseña'
+                    name='password'
+                    {...register('password')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.password?.message}</h6>
+                </Row>
+              </Col>
             </InputGroup>
-            <Button type='submit' style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'>
-              <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
-              REGISTRARSE
-            </Button>
-            <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
-            <Button
-              style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
-              onClick={() => setModalShow(true)}
-            >Inicia sesion ahora !
-            </Button>
-            <ModalUser
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
-            <h4 className='m-3 text-center'> O </h4>
-            <Button
-              style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
-            >
-              <GrGoogle size={20} className='m-1 text-white' />
-              Ingresar con Google
-            </Button>
+            <Col className='m-3 justify-content-center'>
+              <Row>
+                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
+                  REGISTRARSE
+                </Button>
+              </Row>
+              <Row className='d-flex justify-content-center'>
+                <h6> Ya tenes una Cuenta ? {' '}
+                  <a
+                    href
+                    style={{ fontWeight: 'bolder' }}
+                    onClick={() => setShowModal('init')}
+                  >
+                    Create una aqui !
+                  </a>
+                </h6>
+              </Row>
+              <Row> <h4 className='m-1 text-center'> O </h4></Row>
+              <Row>
+                <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <GrGoogle size={20} />
+                  Ingresar con Google
+                </Button>
+              </Row>
+            </Col>
           </Form.Group>
         </Form>
       </Col>

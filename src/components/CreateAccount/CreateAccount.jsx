@@ -11,13 +11,12 @@ const validations = yup.object().shape({
   lastName: yup.string().required('Por favor ingrese tu apellido'),
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
   // confirmEmail: yup.string().email().required().oneOf([yup.ref("email"), null], "Emails must match"),
-  password: yup.string().required('Por favor ingrese una contraseña')
-    .matches('^(?=.*[A-Za-z])("?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{6,}$',
-      'Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
-  // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match')
+  password: yup.string().required('Por favor ingrese una contraseña').min(6, 'Por favor ingrese na contraseña de al menos 6 characteres')
+    // .matches('/^(?=.*)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/', 'La contraseña debe contener al menos 6 caracteres, al menos un numero, al menos una minúscula, al menos una mayúscula')
+  // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
-export const CreateAccount = () => {
+export const CreateAccount = ({ setShowModal, handleClose }) => {
   const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -26,13 +25,14 @@ export const CreateAccount = () => {
 
   // Submit your data into Redux store
   const onSubmit = (data) => {
-    window.alert('Cuenta Creada')
+    handleClose()
     dispatch(createUser(data))
   }
 
   return (
     <div>
       <CreateAccountView
+        setShowModal={setShowModal}
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}

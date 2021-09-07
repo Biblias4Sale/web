@@ -5,7 +5,7 @@ import { getSubs } from './modules/main/getSubs'
 import { filterBySubCategory } from './modules/main/filterBySubCategory.js'
 import { filterByPrice } from './modules/main/filterByPrice.js'
 import { filterByPoints } from './modules/main/filterByPoints.js'
-import CatalogueView from './Catalogue.view.jsx'
+import { CatalogueView } from './Catalogue.view.jsx'
 
 export const Catalogue = (props) => {
   const {

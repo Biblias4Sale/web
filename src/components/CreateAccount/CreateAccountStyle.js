@@ -9,6 +9,11 @@ export const container = {
 
 export const botton = {
   backgroundColor: 'black',
-  fontSize: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  justifyText: 'center',
+  width: '98%',
+  color: 'white',
   cursor: 'pointer'
 }
