@@ -14,7 +14,7 @@ const validations = yup.object().shape({
   // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
 
-export const Login = () => {
+export const Login = ({ setShowModal, handleClose }) => {
   const dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
@@ -23,11 +23,13 @@ export const Login = () => {
   // Submit your data into Redux store
   const onSubmit = (loginInfo) => {
     window.alert('Iniciando sesion')
+    handleClose()
     dispatch(setLogged(loginInfo))
   }
   return (
     <div>
       <LoginView
+        setShowModal={setShowModal}
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}

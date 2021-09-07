@@ -76,13 +76,9 @@ export const CreateAccountView = (props) => {
             <h4 className='m-3 text-center justify-content-center'> Ya tienes una Cuenta ?</h4>
             <Button
               style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'
-              onClick={() => setModalShow(true)}
+              onClick={() => props.setShowModal('init')}
             >Inicia sesion ahora !
             </Button>
-            <ModalUser
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
             <h4 className='m-3 text-center'> O </h4>
             <Button
               style={botton} variant='pl-1 pr-1 w-100 text-white m-3 justify-content-center'

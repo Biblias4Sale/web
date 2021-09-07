@@ -17,7 +17,7 @@ const validations = yup.object().shape({
   // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
 
-export const CreateAccount = () => {
+export const CreateAccount = ({ setShowModal }) => {
   const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -33,6 +33,7 @@ export const CreateAccount = () => {
   return (
     <div>
       <CreateAccountView
+        setShowModal={setShowModal}
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
