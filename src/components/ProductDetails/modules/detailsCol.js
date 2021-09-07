@@ -1,6 +1,7 @@
 import { Col } from 'react-bootstrap'
 import { GetStarts } from '../../common/getStars'
 import { ButtonCart } from './buttonCart'
+import { Loading } from '../../common/spinner'
 import { DetailsColStyle, Height } from '../ProductDetailsStyle'
 
 export const DetailsCol = ({ product }) => {
@@ -12,7 +13,7 @@ export const DetailsCol = ({ product }) => {
     <>
       {
       !product.price
-        ? <h2>Loading...</h2>
+        ? <Loading />
         : (
           <Col xs={12} lg={5} style={DetailsColStyle}>
             <h5 style={Height('4vh')}> {product.brand + ' ' + product.model} </h5>

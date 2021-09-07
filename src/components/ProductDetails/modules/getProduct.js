@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getProductById } from '../../../redux/actions'
 import { ProductContainer } from './productContainer'
+import { Loading } from '../../common/spinner'
 
 export const GetProduct = ({ id }) => {
   const dispatch = useDispatch()
@@ -15,7 +16,7 @@ export const GetProduct = ({ id }) => {
     <div>
       {
       !product
-        ? <h2> Loading... </h2>
+        ? <Loading />
         : <ProductContainer product={product} />
       }
     </div>

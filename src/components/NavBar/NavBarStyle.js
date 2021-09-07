@@ -25,7 +25,7 @@ export const LinkStyle = {
 
 export const CategoriesDrop = {
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'center'
 }
 
 export const CategoriesDropTitle = {
@@ -35,4 +35,8 @@ export const CategoriesDropTitle = {
 export const IconContainer = {
   display: 'flex',
   justifyContent: 'space-around'
+}
+
+export const Cursor = {
+  cursor: 'pointer'
 }

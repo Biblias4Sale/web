@@ -12,7 +12,7 @@ export const TopContainerStyle = {
   display: 'flex',
   justifyContent: 'center',
   padding: 0,
-  width: '120vw',
+  width: '95vw',
   flexWrap: 'wrap'
 }
 
@@ -34,10 +34,42 @@ export const CenterImgs = {
   marginTop: '20px'
 }
 
+export const RowBests = {
+  fontSize: '30px',
+  marginBottom: '80px'
+}
+
+export const TitleContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  fontWeight: '400'
+}
+
+export const BestOfTheWeekStyle = {
+  marginTop: '80px',
+  width: '80vw'
+}
+
+export const ContainerBests = {
+  display: 'flex',
+  flexWrap: 'wrap'
+}
+
 export const CardStyle = {
   height: '55vh',
   width: '80%',
   marginBottom: '35px'
+}
+
+export const CardImage = {
+  height: '35vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+export const ImageWidth = {
+  width: '150px'
 }
 
 export const CardBottomStyle = {

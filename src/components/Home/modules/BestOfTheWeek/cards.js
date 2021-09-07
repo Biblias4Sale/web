@@ -1,6 +1,6 @@
-import { Card } from 'react-bootstrap'
+import { Card, Image } from 'react-bootstrap'
 import { GetStarts } from '../../../common/getStars'
-import { StyleContainer, CardStyle } from '../../HomeStyle'
+import { StyleContainer, CardStyle, CardImage, ImageWidth } from '../../HomeStyle'
 import { CardBottom } from './cardBotton'
 
 export const Cards = ({ product }) => {
@@ -10,8 +10,8 @@ export const Cards = ({ product }) => {
 
   return (
     <Card style={CardStyle}>
-      <div style={{ height: '35vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <img variant='top' src={product.img} style={{ width: '150px' }} />
+      <div style={CardImage}>
+        <Image variant='top' src={product.img} style={ImageWidth} />
       </div>
       <Card.Body>
         <Card.Title style={StyleContainer}>{product.brand + ' ' + product.model}</Card.Title>
