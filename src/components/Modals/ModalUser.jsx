@@ -1,5 +1,4 @@
 import { Modal } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
 import { Login } from '../Login/Login'
 import { CreateAccount } from '../CreateAccount/CreateAccount'
 
@@ -7,7 +6,6 @@ import { useState } from 'react'
 
 export const ModalUser = (props) => {
   const [showModal, setShowModal] = useState('init')
-
 
   const handleClose = () => {
     setTimeout(() => {

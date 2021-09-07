@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER } from './constants'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, IS_LOGGED } from './constants'
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
 
@@ -50,6 +50,13 @@ export const getProductById = (id) => {
 export const getCategories = (payload) => {
   return {
     type: GET_CATEGORIES,
+    payload
+  }
+}
+
+export const isLogged = (payload) => {
+  return {
+    type: IS_LOGGED,
     payload
   }
 }

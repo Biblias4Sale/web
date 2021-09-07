@@ -1,7 +1,8 @@
-import { SET_LOGGED, GET_CATEGORIES, GET_PRODUCTS, GET_PRODUCT_BY_ID, CREATE_USER } from '../actions/constants'
+import { SET_LOGGED, GET_CATEGORIES, GET_PRODUCTS, GET_PRODUCT_BY_ID, CREATE_USER, IS_LOGGED } from '../actions/constants'
 
 const initialState = {
   logged: false,
+  isLogged: false,
   products: [],
   productDetails: [],
   categories: [],
@@ -28,6 +29,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }
+
+    case IS_LOGGED:
+      return { ...state, isLogged: action.payload }
 
     default:
       return state

@@ -5,7 +5,7 @@ import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
 
-export const LoginView = ({ setShowModal, register, handleSubmit, errors, logged }) => {
+export const LoginView = ({ setShowModal, register, handleSubmit, errors }) => {
   return (
     <Container style={container}>
       <Col>
@@ -54,7 +54,7 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors, logged
           <Col className='m-3 justify-content-center'>
             <Row>
               <Button
-              
+                onClick={handleSubmit}
                 type='submit'
                 style={botton}
                 variant='pl-1 pr-1 m-3 text-center justify-content-center'
