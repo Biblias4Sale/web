@@ -2,11 +2,11 @@ import { Row } from 'react-bootstrap'
 import { TopContainer } from './modules/TopContainer'
 import { CenterContainer } from './modules/CenterContainer'
 import { BestOfTheWeek } from './modules/BestOfTheWeek'
-import { StyleContainer, MainContainer } from './HomeStyle'
+import { MainContainer } from './HomeStyle'
 
 export const HomeView = () => {
   return (
-    <div style={StyleContainer}>
+    <div className='d-flex justify-content-center'>
       <div style={MainContainer}>
         <Row>
           <TopContainer />

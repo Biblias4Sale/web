@@ -3,6 +3,6 @@ import { Cursor } from '../../NavBarStyle'
 
 export const CartIcon = () => {
   return (
-    <HiOutlineShoppingCart size={28} title='Shopping cart' style={Cursor} />
+    <HiOutlineShoppingCart size={32} title='Shopping cart' style={Cursor} />
   )
 }

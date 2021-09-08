@@ -1,4 +1,4 @@
-import { Nav, Navbar, Container } from 'react-bootstrap'
+import { Nav, Navbar, Container, Col } from 'react-bootstrap'
 import { LogoBox } from './modules/LogoBox'
 import { LinksBox } from './modules/LinksBox'
 import { IconsBox } from './modules/IconsBox'
@@ -9,15 +9,25 @@ export const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand='lg' style={NavContainer}>
       <Container>
-        <LogoBox />
-        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-        <Navbar.Collapse id='responsive-navbar-nav'>
-          <Nav className='me-auto'>
-            <LinksBox />
-            <SearchBar />
-            <IconsBox />
-          </Nav>
-        </Navbar.Collapse>
+        <Col lg={2}>
+          <LogoBox />
+        </Col>
+        <Col lg={10}>
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Collapse id='responsive-navbar-nav ' >
+            <Nav className='me-auto aling-items-center'>
+              <Col lg={8} md={10} sm={12}>
+                <SearchBar />
+              </Col>
+              <Col lg={4}>
+                <LinksBox />
+              </Col>
+              <Col lg={4}>
+                <IconsBox />
+              </Col>
+            </Nav>
+          </Navbar.Collapse>
+        </Col>
       </Container>
     </Navbar>
   )

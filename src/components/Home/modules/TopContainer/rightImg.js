@@ -1,7 +1,7 @@
 import { Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Camaras from '../../../../assets/camaras.jpg'
-import { ImgWidth } from '../../HomeStyle'
+import { ImgHeight } from '../../HomeStyle'
 
 export const RightImg = () => {
   return (
@@ -11,10 +11,8 @@ export const RightImg = () => {
         state: { category: 'Camaras' }
       }}
     >
-      <Row>
-        <Image
-          src={Camaras} alt='Camaras NOI LOAN' style={ImgWidth('100vh')}
-        />
+      <Row style={ImgHeight('100%')}>
+        <Image src={Camaras} alt='Camaras NOI LOAN' fluid />
       </Row>
     </Link>
   )

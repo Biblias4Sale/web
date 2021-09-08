@@ -23,8 +23,3 @@ export const inputFilterby = {
   cursor: 'pointer'
 
 }
-
-export const checkRating = {
-  padding: '5px',
-  display: 'flex'
-}
