@@ -27,10 +27,10 @@ export const ModalUser = (props) => {
             .
           </Modal.Header>
           <Modal.Body>
-            {showModal === 'inicial' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
+            {showModal === 'init' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
             {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} handleClose={handleClose} /> : null}
           </Modal.Body>
-          </Modal>
+        </Modal>
         : <Modal
             {...props}
             size='lg'
@@ -42,7 +42,7 @@ export const ModalUser = (props) => {
           <Modal.Body>
             <EditAccount setShowModal={setShowModal} handleClose={handleClose} />
           </Modal.Body>
-          </Modal>}
+        </Modal>}
     </div>
   )
 }
