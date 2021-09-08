@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as yup from 'yup'
 import { LoginView } from './LoginView'
 import { setLogged } from '../../redux/actions'
@@ -8,13 +8,12 @@ import { setLogged } from '../../redux/actions'
 const validations = yup.object().shape({
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
   // confirmEmail: yup.string().email().required().oneOf([yup.ref("email"), null], "Emails must match"),
-  password: yup.string().required('Por favor ingrese una contraseña').min(6, 'Por favor ingrese la contraseña de al menos 6 characteres')
+  password: yup.string().required('Por favor ingrese una contraseña').min(6, 'Por favor ingrese una contraseña de al menos 6 caracteres')
   // .matches('/^(?=.*)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/', 'La contraseña debe contener al menos 6 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula')
   // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
 export const Login = ({ setShowModal, handleClose }) => {
-  const logged = useSelector(state => state.logged)
   const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -22,11 +21,11 @@ export const Login = ({ setShowModal, handleClose }) => {
   })
 
   // Submit your data into Redux store
-  const onSubmit = async (loginInfo) => {
-    dispatch(setLogged(loginInfo))
-    if (logged === false) alert('Tus datos no son correctos por favor prueba nuevamente')
+  const onSubmit = (loginInfo) => {
     handleClose()
+    dispatch(setLogged(loginInfo))
   }
+
   return (
     <div>
       <LoginView
