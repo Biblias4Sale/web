@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as yup from 'yup'
 import { LoginView } from './LoginView'
 import { setLogged } from '../../redux/actions'
@@ -14,7 +14,6 @@ const validations = yup.object().shape({
 })
 
 export const Login = ({ setShowModal, handleClose }) => {
-  // const logged = useSelector(state => state.logged)
   const dispatch = useDispatch()
 
   const { register, handleSubmit, formState: { errors } } = useForm({

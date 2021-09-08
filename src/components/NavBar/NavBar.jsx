@@ -14,7 +14,7 @@ export const NavBar = () => {
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             <LinksBox />
-            <SearchBar/>
+            <SearchBar />
             <IconsBox />
           </Nav>
         </Navbar.Collapse>

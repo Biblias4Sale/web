@@ -1,4 +1,4 @@
-import { Row, Col, Image } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 export const AllProducts = (props) => {
