@@ -1,7 +1,6 @@
 import { Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Accesorios from '../../../../assets/accesorios.jpg'
-import { ImgWidth } from '../../HomeStyle'
 
 export const BottomImg = () => {
   return (
@@ -12,7 +11,7 @@ export const BottomImg = () => {
       }}
     >
       <Row>
-        <Image src={Accesorios} alt='Accesorios NOI LOAN' style={ImgWidth('40vh')} />
+        <Image src={Accesorios} alt='Accesorios NOI LOAN' fluid />
       </Row>
     </Link>
   )
