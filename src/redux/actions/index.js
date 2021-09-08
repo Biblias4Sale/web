@@ -15,12 +15,18 @@ export const setLogged = (loginInfo) => {
 }
 
 export const createUser = (payload) => {
+  console.log(payload, '<<Payload: Createuser')
   return async function (dispatch) {
-    const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
-    return dispatch({
-      type: CREATE_USER,
-      payload: createUser
-    })
+    axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
+      .then(createUser => {
+        if (createUser.status === 201) {
+          return dispatch({
+            type: CREATE_USER,
+            payload: createUser.data
+          })
+        }
+      })
+      .catch(e => window.alert('ESE USUARIO YA EXISTE'))
   }
 }
 
