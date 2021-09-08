@@ -2,6 +2,7 @@ import axios from 'axios'
 import {
   GET_PRODUCTS,
   GET_PRODUCT_BY_ID,
+  DELETE_DETAILS,
   SET_LOGGED,
   GET_CATEGORIES,
   CREATE_USER,
@@ -65,6 +66,12 @@ export const getProductById = (id) => {
       subCategoryId: response.data.subCategoryId
     }
     return dispatch({ type: GET_PRODUCT_BY_ID, payload: product })
+  }
+}
+
+export const deleteDetails = () => {
+  return {
+    type: DELETE_DETAILS
   }
 }
 

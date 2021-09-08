@@ -3,6 +3,7 @@ import {
   GET_CATEGORIES,
   GET_PRODUCTS,
   GET_PRODUCT_BY_ID,
+  DELETE_DETAILS,
   CREATE_USER,
   LOG_OUT,
   SET_SEARCH_RESULT,
@@ -36,6 +37,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_PRODUCT_BY_ID:
       return { ...state, productDetails: action.payload }
+
+    case DELETE_DETAILS:
+      return { ...state, productDetails: [] }
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }
