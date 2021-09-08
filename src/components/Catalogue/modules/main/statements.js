@@ -8,10 +8,11 @@ export const Statements = (props) => {
   const [actualSubcategories, setActualSubcategories] = useState([])
 
   const [options, setOptions] = useState({
-    category: props.location.state ? props.location.state.category : '',
+    category: props.location.state ? props.location.state.category : false,
+    searching: false,
     subCategory: [],
     price: 'all',
-    raiting: [],  
+    raiting: [],
     orderBy: 'priceAsc'
   })
 

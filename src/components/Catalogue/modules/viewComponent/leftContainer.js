@@ -8,7 +8,7 @@ export const LeftContainer = ({ options, handleCategoryChange, handleChangeMulti
   return (
     <Col lg={3}>
       <ListCategories options={options} handleCategoryChange={handleCategoryChange} />
-      {options.category !== 'Resultados de la Búsqueda:'
+      {options.category !== 'Resultados de la Búsqueda:' && options.category !== ''
         ? <SubCategories handleChangeMulti={handleChangeMulti} actualSubcategories={actualSubcategories} />
         : null}
       <Price handleChange={handleChange} options={options} />

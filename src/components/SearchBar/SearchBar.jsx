@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { SearchBarView } from './SearchBarView'
-import { setSearchResult } from '../../redux/actions/index'
+import { setSearchResult, setSearchString } from '../../redux/actions/index'
 
 export const SearchBar = () => {
   const dispatch = useDispatch()
   const allProducts = useSelector(state => state.products)
   const [result, setResult] = useState([])
+  const [searching, setSearching] = useState([])
+
   // const [parsedProducts, setParsedProducts] = useState([])
 
   // useEffect(() => {
@@ -29,6 +31,7 @@ export const SearchBar = () => {
     if (event.target.value !== '') {
       const searchResult = allProducts.filter(product => product.model.toLowerCase().includes(event.target.value.toLowerCase()))
       setResult(searchResult)
+      setSearching(event.target.value)
     } else {
       setResult([])
     }
@@ -36,6 +39,7 @@ export const SearchBar = () => {
 
   const search = event => {
     dispatch(setSearchResult(result))
+    dispatch(setSearchString(searching))
   }
 
   return (

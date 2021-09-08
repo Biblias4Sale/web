@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getProducts } from '../../redux/actions/index'
+import { getProducts, setSearchResult } from '../../redux/actions/index'
 import { Statements } from './modules/main/statements'
 import { getSubs } from './modules/main/getSubs'
 import { filterByCategory } from './modules/main/filterByCategory.js'
@@ -12,6 +12,7 @@ import { CatalogueView } from './Catalogue.view.jsx'
 
 export const Catalogue = (props) => {
   const searchResult = useSelector(state => state.searchResult)
+  const searchString = useSelector(state => state.searchString)
 
   const {
     allProducts,
@@ -29,7 +30,7 @@ export const Catalogue = (props) => {
   }, [dispatch])
 
   useEffect(() => {
-    if (searchResult.length > 0) setOptions(prev => ({ ...prev, category: 'Resultados de la Búsqueda:' }))
+    if (searchResult.length > 0) setOptions(prev => ({ ...prev, searching: `Resultados de "${searchString}":`, category: '' }))
   }, [searchResult.length, setOptions])
 
   useEffect(() => {
@@ -74,6 +75,15 @@ export const Catalogue = (props) => {
     setOptions(prev => ({ ...prev, category: category }))
   }
 
+  const clearCategory = () => {
+    setOptions(prev => ({ ...prev, category: '' }))
+  }
+
+  const clearSearch = () => {
+    setOptions(prev => ({ ...prev, searching: false, category: '' }))
+    dispatch(setSearchResult(''))
+  }
+
   return (
     <CatalogueView
       options={options}
@@ -83,6 +93,8 @@ export const Catalogue = (props) => {
       handleChangeMulti={handleChangeMulti}
       handleCategoryChange={handleCategoryChange}
       handleChange={handleChange}
+      clearCategory={clearCategory}
+      clearSearch={clearSearch}
     />
   )
 }
