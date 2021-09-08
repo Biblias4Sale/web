@@ -4,11 +4,11 @@ const initialState = {
   logged: false,
   products: [],
   productDetails: [],
-  categories: [],
-  newUser: []
+  categories: []
 }
 
 const rootReducer = (state = initialState, action) => {
+  console.log(action.payload)
   switch (action.type) {
     case SET_LOGGED:
 
@@ -20,7 +20,7 @@ const rootReducer = (state = initialState, action) => {
 
     case CREATE_USER:
 
-      return { ...state, newUser: action.payload }
+      return { ...state, logged: action.payload }
 
     case GET_PRODUCTS:
 

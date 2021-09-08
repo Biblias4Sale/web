@@ -2,6 +2,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap'
 import { LogoBox } from './modules/LogoBox'
 import { LinksBox } from './modules/LinksBox'
 import { IconsBox } from './modules/IconsBox'
+import { SearchBar } from '../SearchBar/SearchBar'
 import { NavContainer } from './NavBarStyle'
 
 export const NavBar = () => {
@@ -13,6 +14,7 @@ export const NavBar = () => {
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             <LinksBox />
+            <SearchBar/>
             <IconsBox />
           </Nav>
         </Navbar.Collapse>

@@ -14,9 +14,8 @@ export const SearchBarView = ({ handleChangeSearchBar, search }) => {
   return (
     <div style={Contenedor}>
       <Container>
-        <Col>
-          <InputGroup size='md' className='bg-white justify-content-center m-6'>
-            <InputGroup.Text style={Style} className='bg-white w-75 m-6'>
+          <InputGroup>
+            <InputGroup.Text style={Style} className='bg-white'>
               <FiSearch className='m-1' size={30} />
               <FormControl
                 style={Input}
@@ -25,7 +24,6 @@ export const SearchBarView = ({ handleChangeSearchBar, search }) => {
               />
             </InputGroup.Text>
           </InputGroup>
-        </Col>
         <Row className='justify-content-center text-center'>
           <AllProducts search={search} />
         </Row>

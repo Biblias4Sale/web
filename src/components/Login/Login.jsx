@@ -22,10 +22,17 @@ export const Login = ({ setShowModal, handleClose }) => {
   })
 
   // Submit your data into Redux store
-  const onSubmit = async (loginInfo) => {
-    dispatch(setLogged(loginInfo))
-    if (logged === false) alert('Tus datos no son correctos por favor prueba nuevamente')
+  const onSubmit = (loginInfo) => {
+    // try {
+    //   if (logged === true) {
+    console.log('inicie sesion')
     handleClose()
+    dispatch(setLogged(loginInfo))
+    // }
+    // } catch (error) {
+    //   console.log(error,'Tus datos no son correctos por favor prueba nuevamente')
+    //   // alert('Tus datos no son correctos por favor prueba nuevamente')
+    // }
   }
   return (
     <div>

@@ -16,5 +16,5 @@ export const Contenedor = {
 
 export const Input = {
   width: '100%',
-  padding: '8px'
+  padding: '4%'
 }
