@@ -15,7 +15,7 @@ export const setLogged = (loginInfo) => {
 }
 
 export const createUser = (payload) => {
-  console.log(payload, '<<Payload: Createuser')
+  // console.log(payload, '<<Payload: Createuser')
   return async function (dispatch) {
     axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
       .then(createUser => {
