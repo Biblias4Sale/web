@@ -8,7 +8,6 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
-  console.log(action.payload)
   switch (action.type) {
     case SET_LOGGED:
 
@@ -19,7 +18,6 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, logged: false }
 
     case CREATE_USER:
-
       return { ...state, logged: action.payload }
 
     case GET_PRODUCTS:

@@ -1,6 +1,6 @@
 import axios from 'axios'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT } from './constants'
 
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, LOG_OUT } from './constants'
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
 
@@ -15,13 +15,12 @@ export const setLogged = (loginInfo) => {
 }
 
 export const createUser = (payload) => {
-  return async function () {
+  return async function (dispatch) {
     const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
-    console.log('action', createUser)
-    return {
+    return dispatch({
       type: CREATE_USER,
-      createUser
-    }
+      payload: createUser
+    })
   }
 }
 
@@ -52,6 +51,13 @@ export const getCategories = (payload) => {
   return {
     type: GET_CATEGORIES,
     payload
+  }
+}
+
+export const getReviews = () => {
+  return async function (dispatch) {
+    const reviews = await axios.get(`${ApiURL}/products/reviews`)
+    return dispatch({ type: GET_REVIEWS, payload: reviews.data })
   }
 }
 
