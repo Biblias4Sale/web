@@ -15,19 +15,19 @@ export const ReviewContainer = ({ reviews }) => {
             <hr style={{ width: '100%' }} />
             <Container key={obj.user} style={contReview}>
               <Col lg={1}>
-                <div style={CenterCol}><a>{obj.user[0]}</a></div>
+                <div style={CenterCol}><div>{obj.user[0]}</div></div>
               </Col>
               <Col lg={11} style={SeparateCol} key={obj.user}>
                 <div style={dateName}>
                   <h6>{obj.user}</h6>
-                  <a style={dateStyle}>{obj.fecha}</a>
+                  <div style={dateStyle}>{obj.fecha}</div>
                 </div>
                 <div style={starColor}>{stars}</div>
                 <div style={titleStyle}>
-                  <a>{obj.tittle}</a>
+                  <div>{obj.tittle}</div>
                 </div>
                 <div style={descriptionStyle}>
-                  <a>{obj.description}</a>
+                  <div>{obj.description}</div>
                 </div>
               </Col>
             </Container>
