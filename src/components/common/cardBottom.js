@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { ButtonCart } from './buttonCart'
 
 export const CardBottom = ({ product, stars }) => {
-  console.log('llegue')
   return (
-    <div className='d-flex justify-content-center align-items-center' style={{ color: 'orange' }}>
-      {stars}
+    <div className='d-flex justify-content-center align-items-center flex-column' style={{ color: 'orange' }}>
+      <div className='mb-1'>
+        {stars}
+      </div>
       <NavLink to={`/product/details/${product.id}`}>
-        <Button variant='dark' style={{ marginLeft: '50px' }}> Detalles </Button>
+        <ButtonCart />
       </NavLink>
     </div>
   )

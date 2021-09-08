@@ -1,6 +1,6 @@
 import { Col } from 'react-bootstrap'
 import { Pages } from '../Pages'
-// import { SelectOptions } from '../SelectOptions'
+import { SelectOptions } from '../SelectOptions'
 
 export const RightContainer = ({ options, finalList }) => {
   return (
@@ -8,7 +8,7 @@ export const RightContainer = ({ options, finalList }) => {
       <div className='d-flex justify-content-between'>
         <h3>{options.category}</h3>
       </div>
-      {/* <SelectOptions /> */}
+      <SelectOptions />
       <Pages finalList={finalList} />
     </Col>
   )
