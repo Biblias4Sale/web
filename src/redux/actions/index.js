@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT } from './constants'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT, SET_SEARCH_RESULT } from './constants'
 
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
@@ -71,5 +71,12 @@ export const logOut = () => {
   axios.get(`${ApiURL}/logout`, { withCredentials: true })
   return {
     type: LOG_OUT
+  }
+}
+
+export const setSearchResult = (searchResults) => {
+  return {
+    type: SET_SEARCH_RESULT,
+    payload: searchResults
   }
 }

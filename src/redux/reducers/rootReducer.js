@@ -1,11 +1,12 @@
-import { SET_LOGGED, GET_CATEGORIES, GET_PRODUCTS, GET_PRODUCT_BY_ID, CREATE_USER, LOG_OUT, GET_REVIEWS } from '../actions/constants'
+import { SET_LOGGED, GET_CATEGORIES, GET_PRODUCTS, GET_PRODUCT_BY_ID, CREATE_USER, LOG_OUT, SET_SEARCH_RESULT, GET_REVIEWS } from '../actions/constants'
 
 const initialState = {
   logged: false,
   products: [],
   productDetails: [],
   categories: [],
-  reviews: []
+  reviews: [],
+  searchResult: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -34,6 +35,10 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_REVIEWS:
       return { ...state, reviews: action.payload }
+
+    case SET_SEARCH_RESULT:
+      return { ...state, searchResult: action.payload }
+
     default:
       return state
   }

@@ -1,65 +1,48 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { SearchBarView } from './SearchBarView'
-// import { Paginate } from './modules/Pagination'
+import { setSearchResult } from '../../redux/actions/index'
 
 export const SearchBar = () => {
+  const dispatch = useDispatch()
   const allProducts = useSelector(state => state.products)
-  const [search, setSearch] = useState([])
-  const [parsedProducts, setParsedProducts] = useState([])
+  const [result, setResult] = useState([])
+  // const [parsedProducts, setParsedProducts] = useState([])
 
-  useEffect(() => {
-    const arr = allProducts.map(product => {
-      return {
-        id: product.id,
-        brand: product.brand,
-        model: product.model,
-        img: product.img,
-        price: product.price,
-        name: product.brand + ' ' + product.model
-      }
-    })
+  // useEffect(() => {
+  //   const arr = allProducts.map(product => {
+  //     return {
+  //       id: product.id,
+  //       category: product.category,
+  //       brand: product.brand,
+  //       model: product.model,
+  //       img: product.img,
+  //       price: product.price,
+  //       name: product.brand + ' ' + product.model
+  //     }
+  //   })
 
-    setParsedProducts(arr)
-  }, [allProducts])
+  //   setParsedProducts(arr)
+  // }, [allProducts])
 
-  const handleChangeSearchBar = e => {
-    if (e.target.value !== '') {
-      const searchResult = parsedProducts.filter(product => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
-      setSearch(searchResult)
+  const handleChangeSearchBar = event => {
+    if (event.target.value !== '') {
+      const searchResult = allProducts.filter(product => product.model.toLowerCase().includes(event.target.value.toLowerCase()))
+      setResult(searchResult)
     } else {
-      setSearch([])
+      setResult([])
     }
   }
 
-  // ---------------------------------------
-  // // Paginado
-  // const [currentPage, setCurrentPage] = useState(1)
-  // const [productsPerPage, setProductsPerPage] = useState(3)
-
-  // const pages = (pageNumber) => {
-  //   setCurrentPage(pageNumber)
-  // }
-
-  // // Paginado
-  // const lastProduct = currentPage * productsPerPage
-  // const firstProduct = lastProduct - productsPerPage
-  // const productShow = search.slice(firstProduct, lastProduct)
-
-  // useEffect(() => {
-  //   setCurrentPage(search)
-  // }, [])
+  const search = event => {
+    dispatch(setSearchResult(result))
+  }
 
   return (
     <div>
       <div>
-        <SearchBarView handleChangeSearchBar={handleChangeSearchBar} search={search} />
+        <SearchBarView handleChangeSearchBar={handleChangeSearchBar} result={result} search={search} />
       </div>
-      {/* <Paginate
-        productsPerPage={productsPerPage}
-        productShow={search}
-        pages={pages}
-      /> */}
     </div>
   )
 }

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ApiURL } from './config/config'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getProducts, getCategories } from './redux/actions'
+import { getProducts, getCategories, setSearchResult } from './redux/actions'
 import { RouterWeb } from './RoutesWeb'
 import { NavBar } from './components/NavBar/NavBar'
 import { Footer } from './components/Footer/Footer'
@@ -17,6 +17,7 @@ const App = () => {
       const response2 = await axios.get(`${ApiURL}/categories`)
       dispatch(getCategories(response2.data))
     }
+    dispatch(setSearchResult(false))
     fetchData()
   }, [dispatch])
 
