@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT, EDIT_USER } from './constants'
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT } from './constants'
 
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
@@ -74,17 +74,17 @@ export const logOut = () => {
   }
 }
 
-export const editUser = (payload) => {
+export const editUser = (id, data) => {
   return async function (dispatch) {
-    axios.put(`${ApiURL}/user/:id`, payload, { withCredentials: true })
+    axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
       .then(editUser => {
         if (editUser.status === 200) {
           return dispatch({
-            type: EDIT_USER,
+            type: SET_LOGGED,
             payload: editUser.data
           })
         }
       })
-      .catch(e => window.alert('ksjdñnñdnñ'))
+      .catch(e => window.alert('Usuario No Modificado'))
   }
 }

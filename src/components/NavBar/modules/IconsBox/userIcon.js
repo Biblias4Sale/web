@@ -5,7 +5,6 @@ import { Cursor } from '../../NavBarStyle'
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
-
   return (
     <div>
       <FaRegUserCircle size={28} onClick={() => setModalShow(true)} title='Login' style={Cursor} />
