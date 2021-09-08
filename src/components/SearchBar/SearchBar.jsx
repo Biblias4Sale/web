@@ -5,52 +5,39 @@ import { setSearchResult, setSearchString } from '../../redux/actions/index'
 
 export const SearchBar = () => {
   const dispatch = useDispatch()
-  const allProducts = useSelector(state => state.products)
+  const allProducts = useSelector((state) => state.products)
   const [result, setResult] = useState([])
   const [searching, setSearching] = useState([])
 
-  // const [parsedProducts, setParsedProducts] = useState([])
-
-  // useEffect(() => {
-  //   const arr = allProducts.map(product => {
-  //     return {
-  //       id: product.id,
-  //       category: product.category,
-  //       brand: product.brand,
-  //       model: product.model,
-  //       img: product.img,
-  //       price: product.price,
-  //       name: product.brand + ' ' + product.model
-  //     }
-  //   })
-
-  //   setParsedProducts(arr)
-  // }, [allProducts])
-
-  const handleChangeSearchBar = event => {
+  const handleChangeSearchBar = (event) => {
     if (event.target.value !== '') {
-      const searchResult = allProducts.filter(product => {
+      const searchResult = allProducts.filter((product) => {
         const name = product.brand + ' ' + product.model
-        return (
-          name.toLowerCase().includes(event.target.value.toLowerCase())
-        )
+        return name.toLowerCase().includes(event.target.value.toLowerCase())
       })
       setResult(searchResult)
       setSearching(event.target.value)
     } else {
+      setSearching('')
       setResult([])
     }
   }
 
-  const search = event => {
+  const search = (event) => {
     dispatch(setSearchResult(result))
     dispatch(setSearchString(searching))
+    setSearching('')
   }
 
   return (
     <div>
       <div>
-        <SearchBarView handleChangeSearchBar={handleChangeSearchBar} result={result} search={search} />
+        <SearchBarView
+          handleChangeSearchBar={handleChangeSearchBar}
+          result={result}
+          search={search}
+          searching={searching}
+        />
       </div>
     </div>
   )

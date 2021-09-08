@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 import { Style, Input, Contenedor } from './SearchBarStyle'
 
-export const SearchBarView = ({ handleChangeSearchBar, result, search }) => {
+export const SearchBarView = ({ handleChangeSearchBar, result, search, searching }) => {
   return (
     <div style={Contenedor}>
       <Container>
@@ -16,9 +16,11 @@ export const SearchBarView = ({ handleChangeSearchBar, result, search }) => {
           <InputGroup.Text style={Style} className='bg-white'>
             <FormControl
               style={Input}
+              value={searching}
               placeholder='Buscar...'
               onChange={e => handleChangeSearchBar(e)}
             />
+
             <Link
               to={{
                 pathname: '/catalogo'
