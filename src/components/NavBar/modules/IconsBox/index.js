@@ -5,7 +5,7 @@ import { SetSurface } from '../../NavBarStyle'
 
 export const IconsBox = () => {
   return (
-    <Container className='d-flex justify-content-around' style={SetSurface('40vh')}>
+    <Container className='d-flex justify-content-around align-items-center' style={SetSurface('40vh')}>
       <CartIcon />
       <UserIcon />
     </Container>

@@ -11,17 +11,11 @@ export const AllProducts = (props) => {
         return (
 
           <NavLink to={'product/details/' + elem.id} key={elem.id} style={{ textDecoration: 'none', color: 'black', cursor: 'pointer' }}>
-            <Row lg={6} md={8} sm={10} className='justify-content-center m-2'>
-              <Col key={elem.brand} lg={8} className='justify-content-center'>
-                <h4>
-                  {elem.brand}
-                </h4>
+            <Row lg={6} md={8} sm={10} className='justify-content-center'>
+              <Col key={elem.brand} lg={8}>
                 <h6>
-                  {elem.model}
+                  {elem.brand} - {elem.model} {formatedPrice}
                 </h6>
-                <h5>
-                  {formatedPrice}
-                </h5>
               </Col>
             </Row>
           </NavLink>

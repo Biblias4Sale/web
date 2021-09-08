@@ -8,13 +8,13 @@ export const SetSurface = (wd, hg) => {
 export const NavContainer = {
   background: '#ffffff00',
   color: '#48484a',
-  fontSize: '17px'
+  fontSize: '18px'
 }
 
 export const LinkStyle = {
   textDecoration: 'none',
   color: 'black',
-  margin: '5%'
+  margin: '6%'
 }
 
 export const CategoriesTitle = {
