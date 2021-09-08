@@ -5,7 +5,7 @@ export const GetStarts = (product) => {
   const stars = []
 
   for (let i = 0; i < points; i++) {
-    stars.push(<BsStarFill />)
+    stars.push(<BsStarFill key={i} />)
   }
 
   return (
