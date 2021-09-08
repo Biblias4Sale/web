@@ -4,9 +4,8 @@ import {
   Container,
   Row
 } from 'react-bootstrap'
-
+import { Link } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
-// import { AllProducts } from './modules/AllProducts'
 import { Style, Input, Contenedor } from './SearchBarStyle'
 
 export const SearchBarView = ({ handleChangeSearchBar, result, search }) => {
@@ -20,12 +19,18 @@ export const SearchBarView = ({ handleChangeSearchBar, result, search }) => {
               placeholder='Buscar...'
               onChange={e => handleChangeSearchBar(e)}
             />
-            <FiSearch className='m-1' size={30} onClick={search} />
+            <Link
+              to={{
+                pathname: '/catalogo'
+              }}
+              className='align-self-center text-decoration-none text-black'
+            >
+              <FiSearch className='m-1' size={30} onClick={search} />
+            </Link>
+
           </InputGroup.Text>
         </InputGroup>
-        <Row className='justify-content-center text-center'>
-          {/* <AllProducts result={result} /> */}
-        </Row>
+        <Row className='justify-content-center text-center' />
       </Container>
     </div>
   )
