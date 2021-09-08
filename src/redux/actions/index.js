@@ -1,10 +1,6 @@
 import axios from 'axios'
-<<<<<<< HEAD
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS } from './constants'
-=======
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, GET_REVIEWS, LOG_OUT } from './constants'
 
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID, SET_LOGGED, GET_CATEGORIES, CREATE_USER, LOG_OUT } from './constants'
->>>>>>> e0d7a88f87c008785cf09be31fef7d029aae0f68
 import { ApiURL } from '../../config/config'
 // import { create } from 'yup/lib/Reference'
 
@@ -19,13 +15,18 @@ export const setLogged = (loginInfo) => {
 }
 
 export const createUser = (payload) => {
-  return async function () {
-    const createUser = await axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
-    console.log('action', createUser)
-    return {
-      type: CREATE_USER,
-      createUser
-    }
+  console.log(payload, '<<Payload: Createuser')
+  return async function (dispatch) {
+    axios.post(`${ApiURL}/user`, payload, { withCredentials: true })
+      .then(createUser => {
+        if (createUser.status === 201) {
+          return dispatch({
+            type: CREATE_USER,
+            payload: createUser.data
+          })
+        }
+      })
+      .catch(e => window.alert('ESE USUARIO YA EXISTE'))
   }
 }
 
@@ -59,16 +60,16 @@ export const getCategories = (payload) => {
   }
 }
 
-<<<<<<< HEAD
 export const getReviews = () => {
   return async function (dispatch) {
     const reviews = await axios.get(`${ApiURL}/products/reviews`)
     return dispatch({ type: GET_REVIEWS, payload: reviews.data })
-=======
+  }
+}
+
 export const logOut = () => {
   axios.get(`${ApiURL}/logout`, { withCredentials: true })
   return {
     type: LOG_OUT
->>>>>>> e0d7a88f87c008785cf09be31fef7d029aae0f68
   }
 }
