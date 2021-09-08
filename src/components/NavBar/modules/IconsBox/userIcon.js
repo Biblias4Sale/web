@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
+import { NavDropdown } from 'react-bootstrap'
 import { FaRegUserCircle } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ModalUser } from '../../../Modals/ModalUser'
 import { Cursor } from '../../NavBarStyle'
+import { logOut } from '../../../../redux/actions/index'
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
-<<<<<<< HEAD
-=======
   const logged = useSelector(state => state.logged)
   const [initial, setinitial] = useState('')
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (logged !== false) {
@@ -22,9 +24,6 @@ export const UserIcon = () => {
     }
   }, [logged])
 
-  console.log(initial)
-
->>>>>>> 3f7318a32eb357f28b552b0ae41802c3f22b2601
   return (
     <>
       {logged === false
@@ -38,7 +37,18 @@ export const UserIcon = () => {
             />
           </>
           )
-        : <div className='d-flex w-auto' style={{ borderRadius: '100%', textColor: 'green' }}><h1 className='text-success'>{initial}</h1> </div>}
+        : (
+          <div className='d-flex'>
+            <NavDropdown
+              title={
+                <span className='text-white'>{initial}</span>
+            }
+              className='d-flex justify-content-center rounded-circle bg-success'
+            >
+              <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar Sesion </NavDropdown.Item>
+            </NavDropdown>
+          </div>
+          )}
     </>
   )
 }
