@@ -29,7 +29,12 @@ export const SearchBar = () => {
 
   const handleChangeSearchBar = event => {
     if (event.target.value !== '') {
-      const searchResult = allProducts.filter(product => product.model.toLowerCase().includes(event.target.value.toLowerCase()))
+      const searchResult = allProducts.filter(product => {
+        const name = product.brand + ' ' + product.model
+        return (
+          name.toLowerCase().includes(event.target.value.toLowerCase())
+        )
+      })
       setResult(searchResult)
       setSearching(event.target.value)
     } else {

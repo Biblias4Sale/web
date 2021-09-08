@@ -31,7 +31,7 @@ export const Catalogue = (props) => {
 
   useEffect(() => {
     if (searchResult.length > 0) setOptions(prev => ({ ...prev, searching: `Resultados de "${searchString}":`, category: '' }))
-  }, [searchResult.length, setOptions])
+  }, [searchResult.length, setOptions, searchString])
 
   useEffect(() => {
     getSubs(setActualSubcategories, options)
