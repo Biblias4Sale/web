@@ -32,6 +32,7 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_REVIEWS:
       return { ...state, reviews: action.payload }
+
     default:
       return state
   }

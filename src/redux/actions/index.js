@@ -55,8 +55,8 @@ export const getCategories = (payload) => {
 }
 
 export const getReviews = () => {
-  return async dispatch => {
-    const reviews = await axios.get(`${ApiURL}//products/reviews`)
+  return async function (dispatch) {
+    const reviews = await axios.get(`${ApiURL}/products/reviews`)
     return dispatch({ type: GET_REVIEWS, payload: reviews.data })
   }
 }

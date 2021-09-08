@@ -1,13 +1,17 @@
 import { BannerBox } from './modules/banner'
 import { GetProduct } from './modules/getProduct'
-import { GetReview } from './ProductReviews/modules/getReview'
+import { ProductReviewView } from './ProductReviews/ProductReviewView'
 
 export const ProductDetailsView = ({ match }) => {
   return (
     <div>
-      <BannerBox />
-      <GetProduct id={match} />
-      <GetReview />
+      <div>
+        <BannerBox />
+        <GetProduct id={match} />
+      </div>
+      <div>
+        <ProductReviewView />
+      </div>
     </div>
   )
 }
