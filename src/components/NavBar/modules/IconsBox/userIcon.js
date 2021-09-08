@@ -35,7 +35,7 @@ export const UserIcon = () => {
             />
           </>
           )
-        : <div className='d-flex bg-gray'><h1>{initial}</h1> </div>}
+        : <div className='d-flex w-auto' style={{ borderRadius: '100%', textColor: 'green' }}><h1 className='text-success'>{initial}</h1> </div>}
     </>
   )
 }
