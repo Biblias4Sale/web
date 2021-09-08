@@ -6,6 +6,8 @@ import { Cursor } from '../../NavBarStyle'
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
+<<<<<<< HEAD
+=======
   const logged = useSelector(state => state.logged)
   const [initial, setinitial] = useState('')
 
@@ -22,6 +24,7 @@ export const UserIcon = () => {
 
   console.log(initial)
 
+>>>>>>> 3f7318a32eb357f28b552b0ae41802c3f22b2601
   return (
     <>
       {logged === false

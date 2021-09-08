@@ -89,6 +89,20 @@ export const logOut = () => {
   }
 }
 
+export const editUser = (id, data) => {
+  return async function (dispatch) {
+    axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
+      .then(editUser => {
+        if (editUser.status === 200) {
+          return dispatch({
+            type: SET_LOGGED,
+            payload: editUser.data
+          })
+        }
+      })
+      .catch(e => window.alert('Usuario No Modificado'))
+  }
+}
 export const setSearchResult = (searchResults) => {
   return {
     type: SET_SEARCH_RESULT,
