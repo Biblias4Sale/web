@@ -1,13 +1,15 @@
 import { Col, Image, NavLink } from 'react-bootstrap'
 import InstagramLogo from '../../../assets/instagramLogo.png'
+import { InstagramLink, InstagramLogoStyle } from '../FooterStyle'
 
 export const InstagramBox = () => {
   const url = 'https://www.instagram.com/noiloan_latam/'
+
   return (
-    <Col xs={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <NavLink href={url} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', color: 'black' }}>
+    <Col xs={4} lg={4} className='d-flex justify-content-center align-items-center'>
+      <NavLink href={url} target='_blank' className='d-flex justify-content-center align-items-center fw-bold' style={InstagramLink}>
         Síguenos en
-        <Image src={InstagramLogo} style={{ width: '10%', marginLeft: '15px' }} />
+        <Image src={InstagramLogo} style={InstagramLogoStyle} />
       </NavLink>
     </Col>
   )

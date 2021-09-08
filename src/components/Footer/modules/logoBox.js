@@ -5,9 +5,9 @@ import { LogoStyle, LogoCol } from '../FooterStyle'
 
 export const LogoBox = () => {
   return (
-    <Col xs={12} lg={4} style={LogoCol}>
+    <Col xs={4} lg={4} className='d-flex align-items-center' style={LogoCol}>
       <Link to='/'>
-        <Image src={Logo} alt='NOI LOAN.' style={LogoStyle} title='NOI LOAN logo' />
+        <Image src={Logo} alt='NOI LOAN.' className='d-flex align-items-center' style={LogoStyle} title='NOI LOAN logo' />
       </Link>
     </Col>
   )
