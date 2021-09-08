@@ -2,7 +2,6 @@ import {
   InputGroup,
   FormControl,
   Container,
-  Col,
   Row
 } from 'react-bootstrap'
 
@@ -14,16 +13,16 @@ export const SearchBarView = ({ handleChangeSearchBar, search }) => {
   return (
     <div style={Contenedor}>
       <Container>
-          <InputGroup>
-            <InputGroup.Text style={Style} className='bg-white'>
-              <FiSearch className='m-1' size={30} />
-              <FormControl
-                style={Input}
-                placeholder='Busca tu poducto..'
-                onChange={e => handleChangeSearchBar(e)}
-              />
-            </InputGroup.Text>
-          </InputGroup>
+        <InputGroup>
+          <InputGroup.Text style={Style} className='bg-white'>
+            <FiSearch className='m-1' size={30} />
+            <FormControl
+              style={Input}
+              placeholder='Busca tu poducto..'
+              onChange={e => handleChangeSearchBar(e)}
+            />
+          </InputGroup.Text>
+        </InputGroup>
         <Row className='justify-content-center text-center'>
           <AllProducts search={search} />
         </Row>
