@@ -1,16 +1,16 @@
 import React from 'react'
 import Select from 'react-select/creatable'
 
-export const SelectOptions = () => {
-  const options = [
+export const SelectOptions = ({ options, setOptions }) => {
+  const selections = [
     { value: 'Relevancia', label: 'Relevancia' },
     { value: 'Nuevos', label: 'Recien Llegados' },
-    { value: 'PrecioMayor', label: 'Precio, mayor a menor' },
-    { value: 'PrecioMenor', label: 'Precio, menor a mayor' },
+    { value: 'priceDesc', label: 'Precio, mayor a menor' },
+    { value: 'priceAsc', label: 'Precio, menor a mayor' },
     { value: 'Aleatorio', label: 'Aleatorio' }
   ]
   return (
-    <Select options={options} />
+    <Select options={selections} onChange={(event) => setOptions((prev) => ({ ...prev, orderBy: event.value }))} />
   )
 }
 export default SelectOptions

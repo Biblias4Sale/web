@@ -1,9 +1,9 @@
-import axios from 'axios'
-import { ApiURL } from '../../config/config'
+import { useDispatch } from 'react-redux'
+import { logOut } from '../../redux/actions'
 
-const Logout = async () => {
-  console.log('me deslogueo')
-  return await axios.get(`${ApiURL}/logout`, { withCredentials: true })
+const Logout = () => {
+  const dispatch = useDispatch()
+  dispatch(logOut())
 }
 
 export default Logout

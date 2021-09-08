@@ -10,7 +10,7 @@ export const GetProduct = ({ id }) => {
 
   useEffect(() => {
     dispatch(getProductById(id))
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <div>
