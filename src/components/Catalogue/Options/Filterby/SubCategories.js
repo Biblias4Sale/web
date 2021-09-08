@@ -7,7 +7,7 @@ export const SubCategories = ({ handleChangeMulti, actualSubcategories }) => {
       <div style={labelGoto}>
         <h4>Filtrar por</h4>
       </div>
-      <hr style={{ width: '100%' }} />
+      <hr />
       <Form>
         <h5>Sub-Categorías</h5>
 

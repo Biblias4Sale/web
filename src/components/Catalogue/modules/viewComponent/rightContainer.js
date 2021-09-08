@@ -5,7 +5,7 @@ import { SelectOptions } from '../SelectOptions'
 export const RightContainer = ({ options, finalList, setOptions }) => {
   return (
     <Col lg={9}>
-      <div className='d-flex justify-content-between'>
+      <div className='d-flex justify-content-between mb-2'>
         <h3>{options.category}</h3>
       </div>
       <SelectOptions options={options} setOptions={setOptions} />

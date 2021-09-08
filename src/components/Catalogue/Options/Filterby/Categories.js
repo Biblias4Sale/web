@@ -1,27 +1,22 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import { labelGoto, checkGoto } from '../../CatalogueStyle'
 import { Categories } from '../../../NavBar/modules/DropCategories/categories'
+import { MapCategories } from '../../modules/optionsComponent/mapCategories'
 
 export const ListCategories = ({ options, handleCategoryChange }) => {
   const allCategories = Categories()
 
   return (
     <Container>
-      <div style={labelGoto}>
+      <div className='mt-1'>
         <h4>IR A</h4>
       </div>
-      <hr style={{ width: '100%' }} />
-      {allCategories.map((category, i) => {
-        if (category !== options.category) {
-          return (
-            <div key={i} style={checkGoto} onClick={() => handleCategoryChange(category)}>
-              {category}
-            </div>
-          )
-        } else return null
-      })}
-
+      <hr />
+      <MapCategories
+        allCategories={allCategories}
+        options={options}
+        handleCategoryChange={handleCategoryChange}
+      />
     </Container>
   )
 }

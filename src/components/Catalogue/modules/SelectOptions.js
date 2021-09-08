@@ -10,7 +10,9 @@ export const SelectOptions = ({ options, setOptions }) => {
     { value: 'Aleatorio', label: 'Aleatorio' }
   ]
   return (
-    <Select options={selections} onChange={(event) => setOptions((prev) => ({ ...prev, orderBy: event.value }))} />
+    <div className='mb-4'>
+      <Select options={selections} onChange={(event) => setOptions((prev) => ({ ...prev, orderBy: event.value }))} />
+    </div>
   )
 }
 export default SelectOptions
