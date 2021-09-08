@@ -31,14 +31,12 @@ export const SearchBar = () => {
 
   return (
     <div>
-      <div>
-        <SearchBarView
-          handleChangeSearchBar={handleChangeSearchBar}
-          result={result}
-          search={search}
-          searching={searching}
-        />
-      </div>
+      <SearchBarView
+        handleChangeSearchBar={handleChangeSearchBar}
+        result={result}
+        search={search}
+        searching={searching}
+      />
     </div>
   )
 }

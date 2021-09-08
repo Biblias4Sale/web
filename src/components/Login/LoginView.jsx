@@ -67,7 +67,7 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors }) => {
               <h6> No tenes una Cuenta ? {' '}
                 <a
                   href
-                  style={{ fontWeight: 'bolder' }}
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
                   onClick={() => setShowModal('create')}
                 >
                   Create una aqui !
