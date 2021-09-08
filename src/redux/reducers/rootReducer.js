@@ -1,6 +1,5 @@
 import { SET_LOGGED, GET_CATEGORIES, GET_PRODUCTS, GET_PRODUCT_BY_ID, CREATE_USER, GET_REVIEWS, LOG_OUT } from '../actions/constants'
 
-
 const initialState = {
   logged: false,
   products: [],
