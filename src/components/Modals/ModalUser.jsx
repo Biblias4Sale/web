@@ -27,7 +27,7 @@ export const ModalUser = (props) => {
             .
           </Modal.Header>
           <Modal.Body>
-            {showModal === 'init' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
+            {showModal === 'inicial' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
             {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} handleClose={handleClose} /> : null}
           </Modal.Body>
           </Modal>
