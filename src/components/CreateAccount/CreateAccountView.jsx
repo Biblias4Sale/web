@@ -98,13 +98,13 @@ export const CreateAccountView = ({ setShowModal, register, handleSubmit, errors
               </Row>
               <Row className='d-flex justify-content-center'>
                 <h6> Ya tenes una Cuenta ? {' '}
-                  <a
+                  <div
                     href
                     style={{ fontWeight: 'bolder' }}
                     onClick={() => setShowModal('init')}
                   >
                     Create una aqui !
-                  </a>
+                  </div>
                 </h6>
               </Row>
               <Row> <h4 className='m-1 text-center'> O </h4></Row>
