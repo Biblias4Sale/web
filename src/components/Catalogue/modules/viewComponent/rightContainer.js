@@ -1,6 +1,7 @@
 import { Col } from 'react-bootstrap'
 import { Pages } from '../Pages'
 import { SelectOptions } from '../SelectOptions'
+import { NoProductToShow } from './noProducts'
 
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
   return (
@@ -21,7 +22,13 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
             : null}
       </div>
       <SelectOptions options={options} setOptions={setOptions} />
-      <Pages finalList={finalList} />
+      {
+        finalList.length === 0
+          ? <NoProductToShow clearSearch={clearSearch} clearCategory={clearCategory} />
+          : (
+            <Pages finalList={finalList} />
+            )
+      }
     </Col>
   )
 }
