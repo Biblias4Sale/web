@@ -116,3 +116,18 @@ export const setSearchString = (searchString) => {
     payload: searchString
   }
 }
+
+export const deleteUser = (id) => {
+  console.log('soy id en action', id)
+  return async function (dispatch) {
+    axios.delete(`${ApiURL}/user/${id}`, { withCredentials: true })
+      .then(deleteUser => {
+        if (deleteUser.status === 200) {
+          return dispatch({
+            type: LOG_OUT
+          })
+        }
+      })
+      .catch(e => console.log('Usuario No ha sido deshabilitado'))
+  }
+}
