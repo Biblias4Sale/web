@@ -1,11 +1,10 @@
 import { Form, Container, Button, Col, Row, InputGroup, FormControl } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
-import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
-import { container, botton } from '../Session/modules/CreateAccount/CreateAccountStyle'
+import { container, botton } from './EditAccountStyle'
 
-export const EditAccountView = ({ register, handleSubmit, errors }) => {
+export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => {
   return (
     <Container style={container}>
       <Col>
@@ -110,7 +109,6 @@ export const EditAccountView = ({ register, handleSubmit, errors }) => {
             <Col className='m-3 justify-content-center'>
               <Row>
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-                  <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
                   Actualizar
                 </Button>
               </Row>
