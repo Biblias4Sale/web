@@ -101,16 +101,24 @@ export const logOut = () => {
   }
 }
 
-export const editUser = (id, data) => {
-  console.log('soy id en actions', id)
-  console.log('data en actions', data)
+export const editUser = (id, data, token) => {
   return async function (dispatch) {
     axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
       .then(editUser => {
+        const EditedUser = {
+          user: {
+            id: editUser.data.id,
+            name: editUser.data.name,
+            lastName: editUser.data.lastName,
+            email: editUser.data.email,
+            password: editUser.data.password
+          },
+          token
+        }
         if (editUser.status === 200) {
           return dispatch({
             type: SET_LOGGED,
-            payload: editUser.data
+            payload: EditedUser
           })
         }
       })

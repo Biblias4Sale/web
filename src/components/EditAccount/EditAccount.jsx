@@ -26,7 +26,7 @@ export const EditAccount = () => {
 
   // Submit your data into Redux store
   const onSubmit = (data) => {
-    dispatch(editUser(oldInfo.user.id, data))
+    dispatch(editUser(oldInfo.user.id, data, oldInfo.token))
   }
 
   return (
