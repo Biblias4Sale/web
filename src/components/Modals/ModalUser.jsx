@@ -8,41 +8,48 @@ import { useSelector } from 'react-redux'
 export const ModalUser = (props) => {
   const [showModal, setShowModal] = useState('init')
   const logged = useSelector(state => state.logged)
+  console.log(logged.name)
 
   const handleClose = () => {
+    setShowModal('welcome')
     setTimeout(() => {
       props.setModalShow('')
-    }, 1500)
+    }, 3500)
   }
 
   return (
     <div>
       {!logged
-        ? <Modal
+        ? (
+          <Modal
             {...props}
             size='lg'
             centered
           >
-          <Modal.Header closeButton>
-            .
-          </Modal.Header>
-          <Modal.Body>
-            {showModal === 'init' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
-            {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} handleClose={handleClose} /> : null}
-          </Modal.Body>
+            <Modal.Header closeButton>
+              .
+            </Modal.Header>
+            <Modal.Body>
+              {showModal === 'welcome' ? <h1>Bienvenido {logged.name} !</h1> : null}
+              {showModal === 'init' ? <Login setShowModal={setShowModal} handleClose={handleClose} /> : null}
+              {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} handleClose={handleClose} /> : null}
+            </Modal.Body>
           </Modal>
-        : <Modal
+          )
+        : (
+          <Modal
             {...props}
             size='lg'
             centered
           >
-          <Modal.Header closeButton>
-            .
-          </Modal.Header>
-          <Modal.Body>
-            <EditAccount setShowModal={setShowModal} handleClose={handleClose} />
-          </Modal.Body>
-          </Modal>}
+            <Modal.Header closeButton>
+              .
+            </Modal.Header>
+            <Modal.Body>
+              <EditAccount setShowModal={setShowModal} handleClose={handleClose} />
+            </Modal.Body>
+          </Modal>
+          )}
     </div>
   )
 }

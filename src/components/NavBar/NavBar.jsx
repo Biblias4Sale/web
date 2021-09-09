@@ -14,7 +14,7 @@ export const NavBar = () => {
         </Col>
         <Col lg={10}>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav ' >
+          <Navbar.Collapse id='responsive-navbar-nav '>
             <Nav className='me-auto aling-items-center'>
               <Col lg={8} md={10} sm={12}>
                 <SearchBar />

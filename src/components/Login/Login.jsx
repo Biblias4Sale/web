@@ -22,8 +22,9 @@ export const Login = ({ setShowModal, handleClose }) => {
 
   // Submit your data into Redux store
   const onSubmit = (loginInfo) => {
-    handleClose()
     dispatch(setLogged(loginInfo))
+    setTimeout(() => setShowModal('welcome'), 15000)
+    // handleClose()
   }
 
   return (

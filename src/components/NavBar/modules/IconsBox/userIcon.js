@@ -20,8 +20,6 @@ export const UserIcon = () => {
     }
   }, [logged])
 
-  console.log(initial)
-
   return (
     <>
       {logged === false
@@ -31,7 +29,7 @@ export const UserIcon = () => {
             <ModalUser
               setModalShow={setModalShow}
               show={modalShow}
-              onHide={() => setModalShow(false)}
+              // onHide={() => setModalShow(false)}
             />
           </>
           )
