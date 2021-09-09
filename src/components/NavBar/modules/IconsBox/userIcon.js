@@ -45,6 +45,8 @@ export const UserIcon = () => {
             }
               className='d-flex justify-content-center rounded-circle bg-success'
             >
+              <NavDropdown.Item> Mi Cuenta </NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar Sesion </NavDropdown.Item>
             </NavDropdown>
           </div>
