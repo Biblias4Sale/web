@@ -15,8 +15,8 @@ export const UserIcon = () => {
 
   useEffect(() => {
     if (logged !== false) {
-      const name = logged.name
-      const lastName = logged.lastName
+      const name = logged.user.name
+      const lastName = logged.user.lastName
       const initialName = name[0].toUpperCase()
       const initialLastName = lastName[0].toUpperCase()
 
@@ -45,9 +45,9 @@ export const UserIcon = () => {
             }
               className='d-flex justify-content-center rounded-circle bg-success'
             >
-              <NavDropdown.Item> Mi Cuenta </NavDropdown.Item>
+              <NavDropdown.Item> Mi cuenta </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar Sesion </NavDropdown.Item>
+              <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
           </div>
           )}
