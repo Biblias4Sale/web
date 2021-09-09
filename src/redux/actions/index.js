@@ -102,6 +102,8 @@ export const logOut = () => {
 }
 
 export const editUser = (id, data) => {
+  console.log('soy id en actions', id)
+  console.log('data en actions', data)
   return async function (dispatch) {
     axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
       .then(editUser => {

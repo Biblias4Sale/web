@@ -15,9 +15,10 @@ const validations = yup.object().shape({
   confirmPassword: yup.string().required('Por favor confirme su contraseña').oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
-export const EditAccount = ({ setShowModal, handleClose }) => {
+export const EditAccount = () => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
+  console.log('OLDINFO', oldInfo)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
@@ -25,18 +26,16 @@ export const EditAccount = ({ setShowModal, handleClose }) => {
 
   // Submit your data into Redux store
   const onSubmit = (data) => {
-    console.log(data)
-    handleClose()
-    dispatch(editUser(oldInfo.id, data.name))
+    dispatch(editUser(oldInfo.user.id, data))
   }
 
   return (
     <div>
       <EditAccountView
-        setShowModal={setShowModal}
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
+        oldInfo={oldInfo.user}
       />
     </div>
   )
