@@ -16,7 +16,7 @@ const validations = yup.object().shape({
   confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
-export const EditAccount = ({ setShowModal, handleClose }) => {
+export const EditAccount = ({ handleClose }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
@@ -35,7 +35,6 @@ export const EditAccount = ({ setShowModal, handleClose }) => {
   return (
     <div>
       <EditAccountView
-        setShowModal={setShowModal}
         register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}

@@ -5,6 +5,7 @@ import Logout from '../components/Logout/Logout'
 
 import { ProductDetails } from '../components/ProductDetails/ProductDetails'
 import { DeleteUser } from '../components/DeleteUser/DeleteUser'
+import { EditAccount } from '../components/EditAccount/EditAccount'
 
 export const RouterWeb = () => {
   return (
@@ -13,6 +14,7 @@ export const RouterWeb = () => {
       <Route exact path='/catalogo' component={Catalogue} />
       <Route exact path='/logout' component={Logout} />
       <Route exact path='/delete' component={DeleteUser} />
+      <Route exact path='/edit' component={EditAccount} />
       <Route exact path='/product/details/:id' component={ProductDetails} />
     </Switch>
   )
