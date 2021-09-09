@@ -10,13 +10,10 @@ import { ApiURL } from '../../config/config'
 
 const validations = yup.object().shape({
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
-  // confirmEmail: yup.string().email().required().oneOf([yup.ref("email"), null], "Emails must match"),
   password: yup.string().required('Por favor ingrese una contraseña').min(6, 'Por favor ingrese una contraseña de al menos 6 caracteres')
-  // .matches('/^(?=.*)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/', 'La contraseña debe contener al menos 6 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula')
-  // confirmPassword: yup.string().required().oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
-export const Login = ({ setShowModal, handleClose }) => {
+export const Login = ({ setShowModal }) => {
   const dispatch = useDispatch()
 
   const [errorAuth, setErrorAuth] = useState('')
@@ -32,7 +29,7 @@ export const Login = ({ setShowModal, handleClose }) => {
       setShowModal(response.data.name)
       setTimeout(() => {
         dispatch(setLogged(response.data))
-      }, 3000)
+      }, 1000)
     } catch (error) {
       setErrorAuth('Datos invalidos, intentá nuevamente')
     }
