@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as yup from 'yup'
 import { LoginView } from './LoginView'
-import { setLogged } from '../../redux/actions'
+import { setLogged } from '../../../../redux/actions'
 import axios from 'axios'
-import { ApiURL } from '../../config/config'
+import { ApiURL } from '../../../../config/config'
 
 const validations = yup.object().shape({
   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
@@ -31,7 +31,7 @@ export const Login = ({ setShowModal }) => {
         dispatch(setLogged(response.data))
       }, 1000)
     } catch (error) {
-      setErrorAuth('Datos invalidos, intentá nuevamente')
+      setErrorAuth('Datos inválidos, intenta nuevamente')
     }
   }
 

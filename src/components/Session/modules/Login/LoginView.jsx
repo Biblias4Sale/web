@@ -9,7 +9,7 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorA
   return (
     <Container style={container}>
       <Col>
-        <h1 className='m-3'>Iniciar Sesion</h1>
+        <h1 className='m-3'>Inicia sesión con tu cuenta</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='m-4'>
             <InputGroup size='lg m-2'>
@@ -21,7 +21,7 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorA
                   <FormControl
                     style={{ width: '90%' }}
                     type='e-mail'
-                    placeholder='E-mail'
+                    placeholder='Correo electrónico'
                     name='email'
                     {...register('email')}
                   />
@@ -64,17 +64,17 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorA
                 variant='pl-1 pr-1 m-3 text-center justify-content-center'
               >
                 <AiOutlineLogin size={25} className='text-white' />
-                LOGIN
+                INICIAR SESIÓN
               </Button>
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> No tenes una Cuenta ? {' '}
+              <h6> ¿No tienes cuenta? {' '}
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
                   onClick={() => setShowModal('create')}
                 >
-                  Create una aqui !
+                  Create una aquí
                 </a>
               </h6>
             </Row>
@@ -82,7 +82,7 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorA
             <Row>
               <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                 <GrGoogle size={20} />
-                Ingresar con Google
+                INICIA SESIÓN CON GOOGLE
               </Button>
             </Row>
           </Col>
