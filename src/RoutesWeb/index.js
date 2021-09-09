@@ -12,7 +12,7 @@ export const RouterWeb = () => {
       <Route exact path='/' component={Home} />
       <Route exact path='/catalogo' component={Catalogue} />
       <Route exact path='/logout' component={Logout} />
-      <Route exact path='/user' component={UserPage} />
+      <Route exact path='/myaccount' component={UserPage} />
       <Route exact path='/delete' component={DeleteUser} />
       <Route exact path='/product/details/:id' component={ProductDetails} />
     </Switch>
