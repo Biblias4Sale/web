@@ -6,7 +6,11 @@ import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from '../CreateAccount/CreateAccountStyle'
 import { Input } from '../common/Input'
 
-export const EditAccountView = ({ register, handleSubmit, errors }) => {
+export const EditAccountView = ({
+  register,
+  handleSubmit,
+  errors
+}) => {
   return (
     <Container style={container}>
       <Col>

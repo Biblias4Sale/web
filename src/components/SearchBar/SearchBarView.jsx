@@ -16,7 +16,6 @@ export const SearchBarView = ({ handleChangeSearchBar, result, search, searching
           placeholder='Buscar...'
           onChange={e => handleChangeSearchBar(e)}
         />
-
         <Link
           to={{
             pathname: '/catalogo'
@@ -25,7 +24,6 @@ export const SearchBarView = ({ handleChangeSearchBar, result, search, searching
         >
           <FiSearch className='m-1' size={30} onClick={search} />
         </Link>
-
       </InputGroup.Text>
     </div>
   )

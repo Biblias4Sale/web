@@ -9,7 +9,6 @@ export const Input = ({
   yup
 }) => {
   return (
-
     <InputGroup size='lg m-2'>
       <Col>
         <Row>
