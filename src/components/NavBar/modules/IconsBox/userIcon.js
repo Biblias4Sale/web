@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavDropdown } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Session } from '../../../Session/Session'
@@ -45,7 +46,7 @@ export const UserIcon = () => {
             }
               className='d-flex justify-content-center rounded-circle bg-success'
             >
-              <NavDropdown.Item> Mi cuenta </NavDropdown.Item>
+              <NavDropdown.Item> <Link to='/myaccount'> Mi cuenta </Link> </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
