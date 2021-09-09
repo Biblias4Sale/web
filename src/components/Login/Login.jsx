@@ -26,7 +26,7 @@ export const Login = ({ setShowModal }) => {
   const onSubmit = async (loginInfo) => {
     try {
       const response = await axios.post(`${ApiURL}/login`, loginInfo, { withCredentials: true })
-      setShowModal(response.data.name)
+      setShowModal(response.data.user.name)
       setTimeout(() => {
         dispatch(setLogged(response.data))
       }, 1000)

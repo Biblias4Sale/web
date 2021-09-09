@@ -15,8 +15,8 @@ export const UserIcon = () => {
 
   useEffect(() => {
     if (logged !== false) {
-      const name = logged.name
-      const lastName = logged.lastName
+      const name = logged.user.name
+      const lastName = logged.user.lastName
       const initialName = name[0].toUpperCase()
       const initialLastName = lastName[0].toUpperCase()
 
