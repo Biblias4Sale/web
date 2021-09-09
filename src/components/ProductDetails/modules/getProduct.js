@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getProductById } from '../../../redux/actions'
+import { getProductById, deleteDetails } from '../../../redux/actions'
 import { ProductContainer } from './productContainer'
 import { Loading } from '../../common/spinner'
 
@@ -9,6 +9,7 @@ export const GetProduct = ({ id }) => {
   const product = useSelector(state => state.productDetails)
 
   useEffect(() => {
+    dispatch(deleteDetails())
     dispatch(getProductById(id))
   }, [dispatch, id])
 
