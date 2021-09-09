@@ -5,8 +5,8 @@ export const Input = ({
   placeholder,
   name,
   type,
-  error,
-  yup
+  error
+  // yup
 }) => {
   return (
 
@@ -20,8 +20,8 @@ export const Input = ({
             style={{ width: '90%' }}
             type={type}
             placeholder={placeholder}
-            name={name}
-            yup={yup}
+            // name={name}
+            // yup={yup}
           />
         </Row>
         <Row className='justify-content-center m-2'>

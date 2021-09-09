@@ -3,13 +3,18 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
-import { container, botton } from '../Session/modules/CreateAccount/CreateAccountStyle'
+import { container, botton } from './CreateAccountStyle'
 
-export const EditAccountView = ({ register, handleSubmit, errors }) => {
+export const CreateAccountView = ({
+  setShowModal,
+  register,
+  handleSubmit,
+  errors
+}) => {
   return (
     <Container style={container}>
       <Col>
-        <h1 className='m-3'>Modificar Cuenta</h1>
+        <h1 className='m-3'>Registro</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>
             <InputGroup size='lg m-2'>
@@ -87,32 +92,43 @@ export const EditAccountView = ({ register, handleSubmit, errors }) => {
                   <h6 className='text-danger'>{errors.password?.message}</h6>
                 </Row>
               </Col>
-              <InputGroup size='lg m-2'>
-                <Col>
-                  <Row>
-                    <InputGroup.Text id='confirmPassword' className='bg-white' style={{ width: '10%' }}>
-                      <RiLockPasswordLine size={30} />
-                    </InputGroup.Text>
-                    <FormControl
-                      style={{ width: '90%' }}
-                      type='password'
-                      placeholder='Confirmar contraseña'
-                      name='confirmPassword'
-                      {...register('confirmPassword')}
-                    />
-                  </Row>
-                  <Row className='justify-content-center m-2'>
-                    <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
-                  </Row>
-                </Col>
-              </InputGroup>
+            </InputGroup>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='confirmPassword' className='bg-white' style={{ width: '10%' }}>
+                    <RiLockPasswordLine size={30} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='password'
+                    placeholder='Confirmar contraseña'
+                    name='confirmPassword'
+                    {...register('confirmPassword')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
+                </Row>
+              </Col>
             </InputGroup>
             <Col className='m-3 justify-content-center'>
               <Row>
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                   <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
-                  Actualizar
+                  REGISTRARSE
                 </Button>
+              </Row>
+              <Row className='d-flex justify-content-center'>
+                <h6> Ya tenes una Cuenta ? {' '}
+                  <a
+                    href
+                    style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
+                    onClick={() => setShowModal('init')}
+                  >
+                    Ingresa aqui !
+                  </a>
+                </h6>
               </Row>
             </Col>
           </Form.Group>

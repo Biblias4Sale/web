@@ -17,19 +17,19 @@ export const Login = ({ setShowModal }) => {
   const dispatch = useDispatch()
 
   const [errorAuth, setErrorAuth] = useState('')
-
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
   })
 
   // Submit your data into Redux store
   const onSubmit = async (loginInfo) => {
+    console.log('loginInfo')
     try {
-      const response = await axios.post(`${ApiURL}/login`, loginInfo, { withCredentials: true })
+      const response = await axios.post(`${ApiURL}/login`, loginInfo)
       setShowModal(response.data.user.name)
       setTimeout(() => {
         dispatch(setLogged(response.data))
-      }, 1000)
+      }, 2000)
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
