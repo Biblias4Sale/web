@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import { LeftContainer } from './modules/LeftContainer'
 import { TopContainer } from './modules/TopContainer'
 import { GetUserCapitals } from '../common/getUserCapitals'
+import { RightContainer } from './modules/RightContainer'
 
 export const UserPageView = () => {
   const user = useSelector(state => state.logged)
@@ -11,8 +12,9 @@ export const UserPageView = () => {
   return (
     <>
       <TopContainer userCapitals={userCapitals} />
-      <Container>
+      <Container className='d-flex' style={{ marginTop: '70px' }}>
         <LeftContainer user={user} />
+        <RightContainer />
       </Container>
     </>
   )
