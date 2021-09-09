@@ -89,6 +89,25 @@ export const CreateAccountView = ({ setShowModal, register, handleSubmit, errors
                 </Row>
               </Col>
             </InputGroup>
+            <InputGroup size='lg m-2'>
+              <Col>
+                <Row>
+                  <InputGroup.Text id='confirmPassword' className='bg-white' style={{ width: '10%' }}>
+                    <RiLockPasswordLine size={30} />
+                  </InputGroup.Text>
+                  <FormControl
+                    style={{ width: '90%' }}
+                    type='password'
+                    placeholder='Confirmar contraseña'
+                    name='confirmPassword'
+                    {...register('confirmPassword')}
+                  />
+                </Row>
+                <Row className='justify-content-center m-2'>
+                  <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
+                </Row>
+              </Col>
+            </InputGroup>
             <Col className='m-3 justify-content-center'>
               <Row>
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
