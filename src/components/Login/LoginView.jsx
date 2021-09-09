@@ -5,7 +5,7 @@ import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
 
-export const LoginView = ({ setShowModal, register, handleSubmit, errors }) => {
+export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorAuth }) => {
   return (
     <Container style={container}>
       <Col>
@@ -50,9 +50,13 @@ export const LoginView = ({ setShowModal, register, handleSubmit, errors }) => {
                 </Row>
               </Col>
             </InputGroup>
+            <Row className='justify-content-center m-2'>
+              <h6 className='text-danger'>{errorAuth && errorAuth}</h6>
+            </Row>
           </Form.Group>
           <Col className='m-3 justify-content-center'>
             <Row>
+
               <Button
                 onClick={handleSubmit}
                 type='submit'

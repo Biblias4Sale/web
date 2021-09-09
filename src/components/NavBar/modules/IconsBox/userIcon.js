@@ -33,7 +33,7 @@ export const UserIcon = () => {
             <ModalUser
               setModalShow={setModalShow}
               show={modalShow}
-              // onHide={() => setModalShow(false)}
+              onHide={() => setModalShow(false)}
             />
           </>
           )

@@ -12,22 +12,27 @@ import {
 } from './constants'
 
 import { ApiURL } from '../../config/config'
-// import { create } from 'yup/lib/Reference'
+
+// export const setLogged = (loginInfo) => {
+//   return async function (dispatch) {
+//     const response = await axios.post(`${ApiURL}/login`, loginInfo, {
+//       withCredentials: true
+//     })
+//     return dispatch({
+//       type: SET_LOGGED,
+//       payload: response.data
+//     })
+//   }
+// }
 
 export const setLogged = (loginInfo) => {
-  return async function (dispatch) {
-    const response = await axios.post(`${ApiURL}/login`, loginInfo, {
-      withCredentials: true
-    })
-    return dispatch({
-      type: SET_LOGGED,
-      payload: response.data
-    })
+  return {
+    type: SET_LOGGED,
+    payload: loginInfo
   }
 }
 
 export const createUser = (payload) => {
-  // console.log(payload, '<<Payload: Createuser')
   return async function (dispatch) {
     axios
       .post(`${ApiURL}/user`, payload, { withCredentials: true })
