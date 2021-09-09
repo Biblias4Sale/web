@@ -1,10 +1,10 @@
-import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
-import { Input } from '../common/Input'
+import { Input } from '../common/InputForm'
 
 export const CreateAccountView = ({
   setShowModal,

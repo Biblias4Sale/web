@@ -6,7 +6,8 @@ export const Input = ({
   name,
   type,
   error,
-  yup
+  yup,
+  defaultValue
 }) => {
   return (
 
@@ -22,6 +23,7 @@ export const Input = ({
             placeholder={placeholder}
             name={name}
             yup={yup}
+            defaultValue={defaultValue}
           />
         </Row>
         <Row className='justify-content-center m-2'>

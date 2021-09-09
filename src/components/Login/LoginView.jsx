@@ -4,7 +4,7 @@ import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
-import { Input } from '../common/Input'
+import { Input } from '../common/InputForm'
 
 export const LoginView = ({
   setShowModal,

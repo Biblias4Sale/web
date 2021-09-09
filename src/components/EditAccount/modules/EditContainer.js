@@ -1,95 +1,73 @@
-import { Form, Container, Button, Col, FormControl, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-// import { HiOutlineMail } from 'react-icons/hi'
-// import { AiOutlineLogin } from 'react-icons/ai'
-// import { RiLockPasswordLine } from 'react-icons/ri'
-// import { BsPersonSquare } from 'react-icons/bs'
-// import { container, botton } from '../CreateAccount/CreateAccountStyle'
+import { HiOutlineMail } from 'react-icons/hi'
+import { RiLockPasswordLine } from 'react-icons/ri'
+import { BsPersonSquare } from 'react-icons/bs'
+import { Input } from '../../common/InputForm'
+import { botton } from '../EditAccountStyle'
 
 export const EditContainer = ({ register, handleSubmit, errors }) => {
   const oldInfo = useSelector(state => state.logged)
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row}>
-          <Form.Label column sm={2}>
-            Nombre
-          </Form.Label>
-          <Col sm={10}>
-            <FormControl
-              style={{ width: '90%' }}
-              type='text'
+      <Col>
+        <h1 className='m-3'>Modificar Cuenta</h1>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className='mb-3'>
+            <Input
+              icono={<BsPersonSquare size={25} />}
               placeholder='Nombre'
-              name='name'
-              defaultValue={oldInfo.name}
-              {...register('name')}
-            />
-            <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.name?.message}</h6>
-            </Row>
-          </Col>
-
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm={2}>
-            Apellido
-          </Form.Label>
-          <Col sm={10}>
-            <FormControl
-              style={{ width: '90%' }}
               type='text'
+              name='name'
+              errors={errors.name?.message}
+              yup={{ ...register('name') }}
+              defaultValue={oldInfo.name}
+            />
+            <Input
+              icono={<BsPersonSquare size={25} />}
               placeholder='Apellido'
+              type='text'
               name='lastName'
-              {...register('lastName')}
+              errors={errors.lastName?.message}
+              yup={{ ...register('lastName') }}
               defaultValue={oldInfo.lastName}
             />
-            <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.lastName?.message}</h6>
-            </Row>
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm={2}>
-            Email
-          </Form.Label>
-          <Col sm={10}>
-            <FormControl
-              style={{ width: '90%' }}
+            <Input
+              icono={<HiOutlineMail size={30} />}
+              placeholder='E-mail'
               type='e-mail'
-              placeholder='Email'
               name='email'
-              {...register('email')}
+              errors={errors.email?.message}
+              yup={{ ...register('email') }}
               defaultValue={oldInfo.email}
             />
-            <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.email?.message}</h6>
-            </Row>
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm={2}>
-            Password
-          </Form.Label>
-          <Col sm={10}>
-            <FormControl
-              style={{ width: '90%' }}
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Contraseña'
               type='password'
-              placeholder='Password'
               name='password'
-              {...register('password')}
+              errors={errors.password?.message}
+              yup={{ ...register('password') }}
             />
-            <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.password?.message}</h6>
-            </Row>
-          </Col>
-        </Form.Group>
-        <Form.Group>
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button style={{ cursor: 'pointer' }} type='submit'>Actualizar</Button>
-          </Col>
-        </Form.Group>
-      </Form>
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Confirmar contraseña'
+              type='password'
+              name='confirmPassword'
+              errors={errors.confirmPassword?.message}
+              yup={{ ...register('confirmPassword') }}
+            />
+            <Col className='m-3 justify-content-center'>
+              <Row>
+                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Actualizar
+                </Button>
+              </Row>
+            </Col>
+          </Form.Group>
+        </Form>
+      </Col>
     </Container>
   )
 }

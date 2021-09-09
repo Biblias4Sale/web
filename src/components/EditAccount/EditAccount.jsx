@@ -15,7 +15,7 @@ const validations = yup.object().shape({
   confirmPassword: yup.string().required('Por favor confirme su contraseña').oneOf([yup.ref('password'), null], 'La contraseña debe coincidir')
 })
 
-export const EditAccount = ({ handleClose }) => {
+export const EditAccount = () => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
@@ -26,7 +26,6 @@ export const EditAccount = ({ handleClose }) => {
   // Submit your data into Redux store
   const onSubmit = (data) => {
     console.log(data)
-    handleClose()
     dispatch(editUser(oldInfo.id, data.name))
   }
 
