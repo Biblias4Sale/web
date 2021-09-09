@@ -1,12 +1,16 @@
-import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row, InputGroup, FormControl } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
-import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
 
-export const CreateAccountView = ({ setShowModal, register, handleSubmit, errors }) => {
+export const CreateAccountView = ({
+  setShowModal,
+  register,
+  handleSubmit,
+  errors
+}) => {
   return (
     <Container style={container}>
       <Col>
@@ -125,13 +129,6 @@ export const CreateAccountView = ({ setShowModal, register, handleSubmit, errors
                     Ingresa aqui !
                   </a>
                 </h6>
-              </Row>
-              <Row> <h4 className='m-1 text-center'> O </h4></Row>
-              <Row>
-                <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-                  <GrGoogle size={20} />
-                  Ingresar con Google
-                </Button>
               </Row>
             </Col>
           </Form.Group>

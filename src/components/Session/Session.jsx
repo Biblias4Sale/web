@@ -1,11 +1,11 @@
 import { Modal } from 'react-bootstrap'
-import { Login } from '../Login/Login'
-import { CreateAccount } from '../CreateAccount/CreateAccount'
+import { Login } from './modules/Login/Login'
+import { CreateAccount } from './modules/CreateAccount/CreateAccount'
 import { EditAccount } from '../EditAccount/EditAccount'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-export const ModalUser = (props) => {
+export const Session = (props) => {
   const [showModal, setShowModal] = useState('init')
   const logged = useSelector(state => state.logged)
 
@@ -25,6 +25,7 @@ export const ModalUser = (props) => {
               {showModal !== 'init' && showModal !== 'create' ? <h1>Bienvenido {showModal} !</h1> : null}
               {showModal === 'init' ? <Login setShowModal={setShowModal} /> : null}
               {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} /> : null}
+              ACA VA EL BOTON GOOGLE
             </Modal.Body>
           </Modal>
           )
@@ -42,6 +43,7 @@ export const ModalUser = (props) => {
             </Modal.Body>
           </Modal>
           )}
+
     </div>
   )
 }

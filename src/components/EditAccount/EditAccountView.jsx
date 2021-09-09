@@ -1,9 +1,9 @@
-import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row, InputGroup, FormControl } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
-import { container, botton } from '../CreateAccount/CreateAccountStyle'
+import { container, botton } from '../Session/modules/CreateAccount/CreateAccountStyle'
 
 export const EditAccountView = ({ register, handleSubmit, errors }) => {
   return (
