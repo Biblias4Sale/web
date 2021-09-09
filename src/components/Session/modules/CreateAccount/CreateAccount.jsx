@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch } from 'react-redux'
 import * as yup from 'yup'
 import { CreateAccountView } from './CreateAccountView'
-import { createUser } from '../../redux/actions'
+import { createUser } from '../../../../redux/actions'
 
 const validations = yup.object().shape({
   name: yup.string().required('Por favor ingrese tu nombre'),
