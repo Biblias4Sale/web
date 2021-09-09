@@ -16,23 +16,26 @@ export const CatalogueView = ({
 }) => {
   return (
     <div>
-      <CenterBanner />
-      <Container className='d-flex justify-content-around flex-wrap'>
-        <LeftContainer
-          options={options}
-          handleCategoryChange={handleCategoryChange}
-          handleChange={handleChange}
-          handleChangeMulti={handleChangeMulti}
-          actualSubcategories={actualSubcategories}
-        />
-        <RightContainer
-          options={options}
-          finalList={finalList}
-          setOptions={setOptions}
-          clearCategory={clearCategory}
-          clearSearch={clearSearch}
-        />
-      </Container>
+      <div> <CenterBanner />
+        <Container className='d-flex justify-content-around flex-wrap'>
+          <LeftContainer
+            options={options}
+            handleCategoryChange={handleCategoryChange}
+            handleChange={handleChange}
+            handleChangeMulti={handleChangeMulti}
+            actualSubcategories={actualSubcategories}
+          />
+
+          <RightContainer
+            options={options}
+            finalList={finalList}
+            setOptions={setOptions}
+            handleCategoryChange={handleCategoryChange}
+            clearCategory={clearCategory}
+            clearSearch={clearSearch}
+          />
+        </Container>
+      </div>
     </div>
   )
 }

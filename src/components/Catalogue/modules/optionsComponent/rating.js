@@ -8,7 +8,7 @@ export const RaitngStars = ({ handleChangeMulti }) => {
     < >
       {rating.map(rating => {
         return (
-          <div className='d-flex p-6 mt-3' key={rating} style={{ color: 'orange' }}>
+          <div className='d-flex p-6 mt-3' key={rating.points} style={{ color: 'orange' }}>
             <Form.Check type='checkbox' name='raiting' id={rating.points} onChange={event => handleChangeMulti(event)} />
             {GetStarts(rating)}
           </div>

@@ -4,6 +4,7 @@ import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from '../CreateAccount/CreateAccountStyle'
+import { Input } from '../common/Input'
 
 export const EditAccountView = ({ register, handleSubmit, errors }) => {
   return (
@@ -12,101 +13,46 @@ export const EditAccountView = ({ register, handleSubmit, errors }) => {
         <h1 className='m-3'>Modificar Cuenta</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='name' className='bg-white' style={{ width: '10%' }}>
-                    <BsPersonSquare size={28} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='text'
-                    placeholder='Nombre'
-                    name='name'
-                    {...register('name')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.name?.message}</h6>
-                </Row>
-              </Col>
-            </InputGroup>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='lastname' className='bg-white' style={{ width: '10%' }}>
-                    <BsPersonSquare size={28} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='text'
-                    placeholder='Apellido'
-                    name='lastName'
-                    {...register('lastName')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.lastName?.message}</h6>
-                </Row>
-              </Col>
-            </InputGroup>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='email' className='bg-white' style={{ width: '10%' }}>
-                    <HiOutlineMail size={30} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='e-mail'
-                    placeholder='E-mail'
-                    name='email'
-                    {...register('email')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.email?.message}</h6>
-                </Row>
-              </Col>
-            </InputGroup>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='password' className='bg-white' style={{ width: '10%' }}>
-                    <RiLockPasswordLine size={30} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='password'
-                    placeholder='Contraseña'
-                    name='password'
-                    {...register('password')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.password?.message}</h6>
-                </Row>
-              </Col>
-              <InputGroup size='lg m-2'>
-                <Col>
-                  <Row>
-                    <InputGroup.Text id='confirmPassword' className='bg-white' style={{ width: '10%' }}>
-                      <RiLockPasswordLine size={30} />
-                    </InputGroup.Text>
-                    <FormControl
-                      style={{ width: '90%' }}
-                      type='password'
-                      placeholder='Confirmar contraseña'
-                      name='confirmPassword'
-                      {...register('confirmPassword')}
-                    />
-                  </Row>
-                  <Row className='justify-content-center m-2'>
-                    <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
-                  </Row>
-                </Col>
-              </InputGroup>
-            </InputGroup>
+            <Input
+              icono={<BsPersonSquare size={25} />}
+              placeholder='Nombre'
+              type='text'
+              name='name'
+              error={errors.name?.message}
+              yup={{ ...register('name') }}
+            />
+            <Input
+              icono={<BsPersonSquare size={25} />}
+              placeholder='Apellido'
+              type='text'
+              name='lastName'
+              error={errors.lastName?.message}
+              yup={{ ...register('lastName') }}
+            />
+            <Input
+              icono={<HiOutlineMail size={30} />}
+              placeholder='E-mail'
+              type='e-mail'
+              name='email'
+              error={errors.email?.message}
+              yup={{ ...register('email') }}
+            />
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Contraseña'
+              type='password'
+              name='password'
+              error={errors.password?.message}
+              yup={{ ...register('password') }}
+            />
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Confirmar contraseña'
+              type='password'
+              name='confirmPassword'
+              error={errors.confirmPassword?.message}
+              yup={{ ...register('confirmPassword') }}
+            />
             <Col className='m-3 justify-content-center'>
               <Row>
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
