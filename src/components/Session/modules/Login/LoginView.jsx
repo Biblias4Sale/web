@@ -1,10 +1,10 @@
-import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
-import { Input } from '../common/Input'
+import { Input } from '../../../common/Input'
 
 export const LoginView = ({
   setShowModal,
@@ -16,7 +16,7 @@ export const LoginView = ({
   return (
     <Container style={container}>
       <Col>
-        <h1 className='m-3'>Iniciar Sesion</h1>
+        <h1 className='m-3'>Inicia sesión con tu cuenta</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='m-4'>
             <Input
@@ -49,17 +49,17 @@ export const LoginView = ({
                 variant='pl-1 pr-1 m-3 text-center justify-content-center'
               >
                 <AiOutlineLogin size={25} className='text-white' />
-                LOGIN
+                INICIAR SESIÓN
               </Button>
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> No tenes una Cuenta ? {' '}
+              <h6> ¿No tienes cuenta? {' '}
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
                   onClick={() => setShowModal('create')}
                 >
-                  Create una aqui !
+                  Create una aquí
                 </a>
               </h6>
             </Row>
@@ -67,7 +67,7 @@ export const LoginView = ({
             <Row>
               <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                 <GrGoogle size={20} />
-                Ingresar con Google
+                INICIA SESIÓN CON GOOGLE
               </Button>
             </Row>
           </Col>
