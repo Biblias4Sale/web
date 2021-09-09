@@ -1,10 +1,10 @@
-import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
-import { Input } from '../common/Input'
+import { Input } from '../../../common/Input'
 
 export const LoginView = ({
   setShowModal,
