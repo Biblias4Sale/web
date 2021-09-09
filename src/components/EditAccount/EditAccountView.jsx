@@ -1,11 +1,69 @@
-import { EditContainer } from './modules/EditContainer'
+import { Form, Container, Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap'
+import { HiOutlineMail } from 'react-icons/hi'
+import { AiOutlineLogin } from 'react-icons/ai'
+import { RiLockPasswordLine } from 'react-icons/ri'
+import { BsPersonSquare } from 'react-icons/bs'
+import { container, botton } from '../CreateAccount/CreateAccountStyle'
+import { Input } from '../common/Input'
 
 export const EditAccountView = ({ register, handleSubmit, errors }) => {
   return (
-    <EditContainer
-      register={register}
-      handleSubmit={handleSubmit}
-      errors={errors}
-    />
+    <Container style={container}>
+      <Col>
+        <h1 className='m-3'>Modificar Cuenta</h1>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className='mb-3'>
+            <Input
+              icono={<BsPersonSquare size={25} />}
+              placeholder='Nombre'
+              type='text'
+              name='name'
+              error={errors.name?.message}
+              yup={{ ...register('name') }}
+            />
+            <Input
+              icono={<BsPersonSquare size={25} />}
+              placeholder='Apellido'
+              type='text'
+              name='lastName'
+              error={errors.lastName?.message}
+              yup={{ ...register('lastName') }}
+            />
+            <Input
+              icono={<HiOutlineMail size={30} />}
+              placeholder='E-mail'
+              type='e-mail'
+              name='email'
+              error={errors.email?.message}
+              yup={{ ...register('email') }}
+            />
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Contraseña'
+              type='password'
+              name='password'
+              error={errors.password?.message}
+              yup={{ ...register('password') }}
+            />
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Confirmar contraseña'
+              type='password'
+              name='confirmPassword'
+              error={errors.confirmPassword?.message}
+              yup={{ ...register('confirmPassword') }}
+            />
+            <Col className='m-3 justify-content-center'>
+              <Row>
+                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
+                  Actualizar
+                </Button>
+              </Row>
+            </Col>
+          </Form.Group>
+        </Form>
+      </Col>
+    </Container>
   )
 }

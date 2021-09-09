@@ -4,52 +4,37 @@ import { GrGoogle } from 'react-icons/gr'
 import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
+import { Input } from '../common/Input'
 
-export const LoginView = ({ setShowModal, register, handleSubmit, errors, errorAuth }) => {
+export const LoginView = ({
+  setShowModal,
+  register,
+  handleSubmit,
+  errors,
+  errorAuth
+}) => {
   return (
     <Container style={container}>
       <Col>
         <h1 className='m-3'>Iniciar Sesion</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='m-4'>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='email' className='bg-white' style={{ width: '10%' }}>
-                    <HiOutlineMail size={30} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='e-mail'
-                    placeholder='E-mail'
-                    name='email'
-                    {...register('email')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.email?.message}</h6>
-                </Row>
-              </Col>
-            </InputGroup>
-            <InputGroup size='lg m-2'>
-              <Col>
-                <Row>
-                  <InputGroup.Text id='password' className='bg-white' style={{ width: '10%' }}>
-                    <RiLockPasswordLine size={30} />
-                  </InputGroup.Text>
-                  <FormControl
-                    style={{ width: '90%' }}
-                    type='password'
-                    placeholder='Contraseña'
-                    name='password'
-                    {...register('password')}
-                  />
-                </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.password?.message}</h6>
-                </Row>
-              </Col>
-            </InputGroup>
+            <Input
+              icono={<HiOutlineMail size={30} />}
+              placeholder='E-mail'
+              type='e-mail'
+              name='email'
+              error={errors.email?.message}
+              yup={{ ...register('email') }}
+            />
+            <Input
+              icono={<RiLockPasswordLine size={30} />}
+              placeholder='Contraseña'
+              type='password'
+              name='confirmPassword'
+              error={errors.confirmPassword?.message}
+              yup={{ ...register('confirmPassword') }}
+            />
             <Row className='justify-content-center m-2 text-center'>
               <h4 className='text-danger'>{errorAuth && errorAuth}</h4>
             </Row>

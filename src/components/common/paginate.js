@@ -13,7 +13,7 @@ export const Paginate = ({ productsPerPage, allProducts, pages }) => {
         {pageNumbers && pageNumbers.map(number => (
           <Pagination.Item key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
         ))}
-        <Pagination.Next />
+        {/* <Pagination.Next /> */}
       </Pagination>
     </div>
   )
