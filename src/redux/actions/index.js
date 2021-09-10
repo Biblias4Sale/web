@@ -33,19 +33,27 @@ export const setLogged = (loginInfo) => {
   }
 }
 
-export const createUser = (payload) => {
-  return async function (dispatch) {
-    axios
-      .post(`${ApiURL}/user`, payload, { withCredentials: true })
-      .then((createUser) => {
-        if (createUser.status === 201) {
-          return dispatch({
-            type: CREATE_USER,
-            payload: createUser.data
-          })
-        }
-      })
-      .catch((e) => window.alert('ESE USUARIO YA EXISTE'))
+// export const createUser = (payload) => {
+//   return async function (dispatch) {
+//     axios
+//       .post(`${ApiURL}/user`, payload, { withCredentials: true })
+//       .then((createUser) => {
+//         if (createUser.status === 201) {
+//           return dispatch({
+//             type: CREATE_USER,
+//             payload: createUser.data
+//           })
+//         }
+//       })
+//       .catch((e) => window.alert('ESE USUARIO YA EXISTE'))
+//   }
+// }
+
+
+export const createUser = (registerInfo) => {
+  return {
+    type: CREATE_USER,
+    payload: registerInfo
   }
 }
 

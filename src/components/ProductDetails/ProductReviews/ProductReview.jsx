@@ -1,6 +1,6 @@
 import { ProductReviewView } from './ProductReviewView'
 
-export const ProductReview = (props) => {
+export const ProductReview = () => {
   return (
     <>
       <ProductReviewView />

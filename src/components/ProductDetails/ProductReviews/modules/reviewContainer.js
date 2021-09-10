@@ -2,10 +2,10 @@ import { Container, Col } from 'react-bootstrap'
 import { contReview, dateName, titleStyle, descriptionStyle, dateStyle, CenterCol, starColor, SeparateCol } from '../ProductReviewStyle'
 import { BsStarFill } from 'react-icons/bs'
 
-export const ReviewContainer = ({ reviews }) => {
+export const ReviewContainer = ({ actualPage }) => {
   return (
     <>
-      {reviews.map((obj, index) => {
+      {actualPage.map((obj, index) => {
         const stars = []
         for (let i = 0; i < obj.points; i++) {
           stars.push(<BsStarFill key={i} />)

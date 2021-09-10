@@ -8,7 +8,9 @@ export const Pages = ({ finalList }) => {
     lastProduct,
     firstProduct,
     product,
-    pages
+    pages,
+    setCurrentPage,
+    currentPage
   } = Statements(finalList)
 
   return (
@@ -16,8 +18,13 @@ export const Pages = ({ finalList }) => {
       <MapProduct product={product} />
       <hr />
       <Pagination
-        firstProduct={firstProduct} lastProduct={lastProduct} finalList={finalList}
-        productsPerPage={productsPerPage} pages={pages}
+        firstProduct={firstProduct}
+         lastProduct={lastProduct}
+          finalList={finalList}
+        productsPerPage={productsPerPage}
+         pages={pages}
+         setCurrentPage={setCurrentPage}
+         currentPage={currentPage}
       />
     </div>
   )
