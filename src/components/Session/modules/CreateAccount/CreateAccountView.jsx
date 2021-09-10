@@ -9,7 +9,6 @@ export const CreateAccountView = ({
   setShowModal,
   handleSubmit,
   handleChange,
-  handleBlur,
   errors,
   errorAuth
 }) => {
@@ -31,7 +30,6 @@ export const CreateAccountView = ({
                     placeholder='Nombre'
                     name='name'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -51,7 +49,6 @@ export const CreateAccountView = ({
                     placeholder='Apellido'
                     name='lastName'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -71,7 +68,6 @@ export const CreateAccountView = ({
                     placeholder='E-mail'
                     name='email'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -91,7 +87,6 @@ export const CreateAccountView = ({
                     placeholder='Contraseña'
                     name='password'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
 
                   />
                 </Row>
@@ -110,14 +105,13 @@ export const CreateAccountView = ({
                     style={{ width: '90%' }}
                     type='password'
                     placeholder='Confirma tu contraseña'
-                    name='Confirmpassword'
+                    name='confirmPassword'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
 
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.Confirmpassword && errors.Confirmpassword}</h6>
+                  <h6 className='text-danger'>{errors.confirmPassword && errors.confirmPassword}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -127,10 +121,18 @@ export const CreateAccountView = ({
           </Form.Group>
             <Col className='m-3 justify-content-center'>
               <Row>
+              {!errors.name && !errors.lastName && !errors.email && !errors.password && !errors.confirmPassword?   
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                   <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
                   REGISTRARSE
                 </Button>
+            :
+                <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
+                  REGISTRARSE
+                </Button>
+            }
+
               </Row>
               <Row className='d-flex justify-content-center'>
                 <h6> Ya tenes una Cuenta ? {' '}
