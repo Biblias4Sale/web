@@ -7,8 +7,9 @@ import { container, botton } from './LoginStyle'
 
 export const LoginView = ({
   setShowModal,
-  register,
   handleSubmit,
+  handleChange,
+  handleBlur,
   errors,
   errorAuth
 }) => {
@@ -29,11 +30,12 @@ export const LoginView = ({
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
-                    {...register('email')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.email?.message}</h6>
+                  <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -48,11 +50,13 @@ export const LoginView = ({
                     type='password'
                     placeholder='Contraseña'
                     name='password'
-                    {...register('password')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.password?.message}</h6>
+                  <h6 className='text-danger'>{errors.password && errors.password}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -64,7 +68,6 @@ export const LoginView = ({
             <Row>
 
               <Button
-                onClick={handleSubmit}
                 type='submit'
                 style={botton}
                 variant='pl-1 pr-1 m-3 text-center justify-content-center'
