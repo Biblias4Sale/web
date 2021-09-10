@@ -6,6 +6,7 @@ import { container, botton } from './EditAccountStyle'
 import { DeleteUser } from './DeleteUser/DeleteUser'
 
 export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal, showModal }) => {
+  console.log('SHOWMODAL', showModal)
   return (
     <Container style={container}>
       <Col>
@@ -120,10 +121,12 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setSh
 
                 <div
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
-                  onClick={() => setShowModal(true)}
+                  onClick={handleShow}
                 >
                   <DeleteUser
                     show={showModal}
+                    backdrop='static'
+                    keyboard={false}
                     setShowModal={setShowModal}
                   />
                   <h6>
