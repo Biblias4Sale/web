@@ -1,6 +1,6 @@
-import { Paginate } from '../../../common/paginate'
+import { Paginate } from '../../../../common/paginate'
 
-export const Pagination = ({ finalList, productsPerPage, pages, setCurrentPage, currentPage }) => {
+export const Pagination = ({ reviews, reviewsPerPage, pages, setCurrentPage, currentPage }) => {
   return (
     <div>
       <div>
@@ -8,8 +8,8 @@ export const Pagination = ({ finalList, productsPerPage, pages, setCurrentPage, 
       </div>
       <div>
         <Paginate
-          objPerPage={productsPerPage}
-          allObj={finalList.length}
+          objPerPage={reviewsPerPage}
+          allObj={reviews.length}
           pages={pages}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
