@@ -5,7 +5,6 @@ import { setLogged } from '../../../../redux/actions'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
-import e from 'express'
 
 export const Login = ({ setShowModal }) => {
   const dispatch = useDispatch()
