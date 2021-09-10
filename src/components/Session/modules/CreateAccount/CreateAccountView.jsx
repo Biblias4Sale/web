@@ -7,9 +7,11 @@ import { container, botton } from './CreateAccountStyle'
 
 export const CreateAccountView = ({
   setShowModal,
-  register,
   handleSubmit,
-  errors
+  handleChange,
+  handleBlur,
+  errors,
+  errorAuth
 }) => {
   return (
     <Container style={container}>
@@ -20,7 +22,7 @@ export const CreateAccountView = ({
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='name' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <BsPersonSquare size={28} />
                   </InputGroup.Text>
                   <FormControl
@@ -28,18 +30,19 @@ export const CreateAccountView = ({
                     type='text'
                     placeholder='Nombre'
                     name='name'
-                    {...register('name')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.name?.message}</h6>
+                <h6 className='text-danger'>{errors.name && errors.name}</h6>
                 </Row>
               </Col>
             </InputGroup>
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='lastname' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <BsPersonSquare size={28} />
                   </InputGroup.Text>
                   <FormControl
@@ -47,18 +50,19 @@ export const CreateAccountView = ({
                     type='text'
                     placeholder='Apellido'
                     name='lastName'
-                    {...register('lastName')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.lastName?.message}</h6>
+                <h6 className='text-danger'>{errors.lastName && errors.lastName}</h6>
                 </Row>
               </Col>
             </InputGroup>
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='email' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <HiOutlineMail size={30} />
                   </InputGroup.Text>
                   <FormControl
@@ -66,18 +70,19 @@ export const CreateAccountView = ({
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
-                    {...register('email')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.email?.message}</h6>
+                  <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
             </InputGroup>
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='password' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <RiLockPasswordLine size={30} />
                   </InputGroup.Text>
                   <FormControl
@@ -85,33 +90,41 @@ export const CreateAccountView = ({
                     type='password'
                     placeholder='Contraseña'
                     name='password'
-                    {...register('password')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.password?.message}</h6>
+                  <h6 className='text-danger'>{errors.password && errors.password}</h6>
                 </Row>
               </Col>
             </InputGroup>
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='confirmPassword' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <RiLockPasswordLine size={30} />
                   </InputGroup.Text>
                   <FormControl
                     style={{ width: '90%' }}
                     type='password'
-                    placeholder='Confirmar contraseña'
-                    name='confirmPassword'
-                    {...register('confirmPassword')}
+                    placeholder='Confirma tu contraseña'
+                    name='Confirmpassword'
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
+                  <h6 className='text-danger'>{errors.Confirmpassword && errors.Confirmpassword}</h6>
                 </Row>
               </Col>
             </InputGroup>
+            <Row className='justify-content-center m-2 text-center'>
+              <h4 className='text-danger'>{errorAuth && errorAuth}</h4>
+            </Row>
+          </Form.Group>
             <Col className='m-3 justify-content-center'>
               <Row>
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
@@ -131,7 +144,6 @@ export const CreateAccountView = ({
                 </h6>
               </Row>
             </Col>
-          </Form.Group>
         </Form>
       </Col>
     </Container>

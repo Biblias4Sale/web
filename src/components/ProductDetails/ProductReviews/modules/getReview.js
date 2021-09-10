@@ -17,8 +17,10 @@ export const GetReview = () => {
 
   const {
     reviewsPerPage,
-    reviewsLength,
-    pages
+    actualPage,
+    pages,
+    setCurrentPage,
+    currentPage
   } = Statements()
 
 
@@ -26,12 +28,14 @@ export const GetReview = () => {
     <Container style={containerReview}>
       <Col lg={3} />
       <Col lg={6}>
-        <ReviewContainer reviews={reviews} />
+        <ReviewContainer actualPage={actualPage} />
         <Pagination
-        reviewsLength={reviewsLength} 
+        actualPage={actualPage} 
         reviews={reviews}
         reviewsPerPage={reviewsPerPage} 
         pages={pages}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
       />
       </Col>
       <Col lg={3} />

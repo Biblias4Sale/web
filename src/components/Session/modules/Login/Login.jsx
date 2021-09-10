@@ -19,7 +19,7 @@ export const Login = ({ setShowModal }) => {
 
   const [errors, setErrors] = useState({
     email: false,
-    password: false
+    contraseña: false
   })
 
   // Submit your data into Redux store  

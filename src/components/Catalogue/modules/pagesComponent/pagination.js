@@ -1,6 +1,6 @@
 import { Paginate } from '../../../common/paginate'
 
-export const Pagination = ({ finalList, productsPerPage, pages }) => {
+export const Pagination = ({ finalList, productsPerPage, pages, setCurrentPage, currentPage }) => {
   return (
     <div>
       <div>
@@ -11,6 +11,8 @@ export const Pagination = ({ finalList, productsPerPage, pages }) => {
           objPerPage={productsPerPage}
           allObj={finalList.length}
           pages={pages}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
         />
       </div>
     </div>

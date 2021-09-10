@@ -22,7 +22,7 @@ export const LoginView = ({
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='email' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <HiOutlineMail size={30} />
                   </InputGroup.Text>
                   <FormControl
@@ -42,7 +42,7 @@ export const LoginView = ({
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>
-                  <InputGroup.Text id='password' className='bg-white' style={{ width: '10%' }}>
+                  <InputGroup.Text className='bg-white' style={{ width: '10%' }}>
                     <RiLockPasswordLine size={30} />
                   </InputGroup.Text>
                   <FormControl
