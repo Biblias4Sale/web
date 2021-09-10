@@ -4,7 +4,7 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './EditAccountStyle'
 
-export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => {
+export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal }) => {
   return (
     <Container style={container}>
       <Col>
@@ -22,6 +22,7 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => 
                     type='text'
                     placeholder='Nombre'
                     name='name'
+                    defaultValue={oldInfo.name}
                     {...register('name')}
                   />
                 </Row>
@@ -41,6 +42,7 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => 
                     type='text'
                     placeholder='Apellido'
                     name='lastName'
+                    defaultValue={oldInfo.lastName}
                     {...register('lastName')}
                   />
                 </Row>
@@ -60,6 +62,7 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => 
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
+                    defaultValue={oldInfo.email}
                     {...register('email')}
                   />
                 </Row>
@@ -111,6 +114,19 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo }) => 
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                   Actualizar
                 </Button>
+              </Row>
+              <Row className='d-flex justify-content-center'>
+
+                <div
+                  href
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
+                  onClick={() => setShowModal('delete')}
+                >
+                  <h6>
+                    Eliminar cuenta
+                  </h6>
+                </div>
+
               </Row>
             </Col>
           </Form.Group>

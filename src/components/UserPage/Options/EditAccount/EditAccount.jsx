@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useDispatch, useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { EditAccountView } from './EditAccountView'
-import { editUser } from '../../redux/actions'
+import { editUser } from '../../../../redux/actions/index'
+import Alert from 'react-bootstrap/Alert'
+import { Button } from 'react-bootstrap'
 
 const validations = yup.object().shape({
   name: yup.string().required('Por favor ingrese tu nombre'),
@@ -16,9 +18,10 @@ const validations = yup.object().shape({
 })
 
 export const EditAccount = () => {
+  const [showModal, setShowModal] = useState('delete')
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
-  console.log('OLDINFO', oldInfo)
+  const [show, setShow] = useState(true)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
@@ -27,6 +30,7 @@ export const EditAccount = () => {
   // Submit your data into Redux store
   const onSubmit = (data) => {
     dispatch(editUser(oldInfo.user.id, data, oldInfo.token))
+    setShowModal()
   }
 
   return (
@@ -36,7 +40,17 @@ export const EditAccount = () => {
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         oldInfo={oldInfo.user}
+        setShowModal={setShowModal}
       />
+      <Alert show={show} variant='light'>
+        <Alert.Heading>Datos actualizados exitosamente</Alert.Heading>
+        <hr />
+        <div className='d-flex justify-content-end'>
+          <Button onClick={() => setShow(false)}>
+            Cerrar
+          </Button>
+        </div>
+      </Alert>
     </div>
   )
 }

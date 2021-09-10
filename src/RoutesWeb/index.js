@@ -3,9 +3,9 @@ import { Home } from '../components/Home/Home'
 import { Catalogue } from '../components/Catalogue/Catalogue'
 import Logout from '../components/Logout/Logout'
 import { ProductDetails } from '../components/ProductDetails/ProductDetails'
-import { DeleteUser } from '../components/DeleteUser/DeleteUser'
 import { UserPage } from '../components/UserPage/UserPage'
-import { EditAccount } from '../components/EditAccount/EditAccount'
+import { DeleteUser } from '../components/UserPage/Options/EditAccount/DeleteUser/DeleteUser'
+
 export const RouterWeb = () => {
   return (
     <Switch>
@@ -13,8 +13,7 @@ export const RouterWeb = () => {
       <Route exact path='/catalogo' component={Catalogue} />
       <Route exact path='/logout' component={Logout} />
       <Route exact path='/myaccount' component={UserPage} />
-      <Route exact path='/delete' component={DeleteUser} />
-      <Route exact path='/edit' component={EditAccount} />
+      <Route exact path='delete' component={DeleteUser} />
       <Route exact path='/product/details/:id' component={ProductDetails} />
     </Switch>
   )
