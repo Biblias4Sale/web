@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteUser } from '../../../../../redux/actions/index'
+import { deleteUser, logOut } from '../../../../../redux/actions/index'
 import { DeleteUserView } from './DeleteUserView'
 
 export const DeleteUser = ({ show, setShowModal }) => {
@@ -11,6 +11,9 @@ export const DeleteUser = ({ show, setShowModal }) => {
 
   const handleOnSubmit = () => {
     dispatch(deleteUser(info.user.id))
+    setTimeout(() => {
+      dispatch(logOut())
+    }, 2000)
   }
 
   return (

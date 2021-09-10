@@ -30,7 +30,6 @@ export const EditAccount = () => {
   // Submit your data into Redux store
   const onSubmit = (data) => {
     dispatch(editUser(oldInfo.user.id, data, oldInfo.token))
-    setShowModal()
   }
 
   return (
@@ -41,7 +40,7 @@ export const EditAccount = () => {
         errors={errors}
         oldInfo={oldInfo.user}
         setShowModal={setShowModal}
-        showModal={showModal}
+        showNodal={showModal}
       />
       <Alert show={showAlert} variant='light'>
         <Alert.Heading>Datos actualizados exitosamente</Alert.Heading>
