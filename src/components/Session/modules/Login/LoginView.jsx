@@ -9,6 +9,7 @@ export const LoginView = ({
   setShowModal,
   register,
   handleSubmit,
+  handleChange,
   errors,
   errorAuth
 }) => {
@@ -30,10 +31,11 @@ export const LoginView = ({
                     placeholder='E-mail'
                     name='email'
                     {...register('email')}
+                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.email?.message}</h6>
+                  <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -52,7 +54,7 @@ export const LoginView = ({
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.password?.message}</h6>
+                  {/* <h6 className='text-danger'>{errors.password?.message}</h6> */}
                 </Row>
               </Col>
             </InputGroup>

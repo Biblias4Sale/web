@@ -25,7 +25,7 @@ export const Session = (props) => {
               {showModal !== 'init' && showModal !== 'create' ? <h1>Bienvenido {showModal} !</h1> : null}
               {showModal === 'init' ? <Login setShowModal={setShowModal} /> : null}
               {showModal === 'create' ? <CreateAccount setShowModal={setShowModal} /> : null}
-              ACA VA EL BOTON GOOGLE
+              {/* ACA VA EL BOTON GOOGLE */}
             </Modal.Body>
           </Modal>
           )
