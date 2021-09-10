@@ -3,8 +3,10 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './EditAccountStyle'
+import { DeleteUser } from './DeleteUser/DeleteUser'
 
-export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal }) => {
+export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal, showModal }) => {
+  console.log('SHOWMODAL', showModal)
   return (
     <Container style={container}>
       <Col>
@@ -118,10 +120,13 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setSh
               <Row className='d-flex justify-content-center'>
 
                 <div
-                  href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
-                  onClick={() => setShowModal('delete')}
+                  onClick={() => setShowModal(true)}
                 >
+                  <DeleteUser
+                    show={showModal}
+                    setShowModal={setShowModal}
+                  />
                   <h6>
                     Eliminar cuenta
                   </h6>

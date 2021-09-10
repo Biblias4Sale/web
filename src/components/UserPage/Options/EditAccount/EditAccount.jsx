@@ -18,10 +18,10 @@ const validations = yup.object().shape({
 })
 
 export const EditAccount = () => {
-  const [showModal, setShowModal] = useState('delete')
+  const [showModal, setShowModal] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
-  const [show, setShow] = useState(true)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validations)
@@ -41,12 +41,13 @@ export const EditAccount = () => {
         errors={errors}
         oldInfo={oldInfo.user}
         setShowModal={setShowModal}
+        showModal={showModal}
       />
-      <Alert show={show} variant='light'>
+      <Alert show={showAlert} variant='light'>
         <Alert.Heading>Datos actualizados exitosamente</Alert.Heading>
         <hr />
         <div className='d-flex justify-content-end'>
-          <Button onClick={() => setShow(false)}>
+          <Button onClick={() => setShowAlert(false)}>
             Cerrar
           </Button>
         </div>

@@ -1,10 +1,10 @@
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap'
 
-export const DeleteUserView = ({ handleOnSubmit, showModal, handleClose }) => {
+export const DeleteUserView = ({ handleOnSubmit, handleClose, showModal, setShowModal }) => {
   return (
     <>
-      <Modal showModal={showModal} onHide={handleClose}>
+      <Modal show={showModal}>
         <Modal.Body>¿Está seguro que desea eliminar su cuenta?</Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>

@@ -140,7 +140,6 @@ export const setSearchString = (searchString) => {
 }
 
 export const deleteUser = (id) => {
-  console.log('soy id en action', id)
   return async function (dispatch) {
     axios.delete(`${ApiURL}/user/${id}`, { withCredentials: true })
       .then(deleteUser => {
