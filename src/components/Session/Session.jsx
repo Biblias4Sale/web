@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export const Session = (props) => {
   const [showModal, setShowModal] = useState('init')
-
+  console.log('Estoy en session.js', showModal)
   return (
     <div>
       <Modal
