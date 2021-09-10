@@ -1,4 +1,3 @@
-const Envoirment = process.env.NODE_ENV
-const ServerHost = process.env.SERVER_HOST
+const { NODE_ENV } = process.env
 
-export const ApiURL = Envoirment === 'development' ? `http://localhost:${ServerHost}` : 'https://noiloan.herokuapp.com'
+export const ApiURL = NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://noiloan.herokuapp.com'
