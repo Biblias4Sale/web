@@ -16,6 +16,8 @@ export const Statements = (finalList) => {
     lastProduct,
     firstProduct,
     product,
-    pages
+    pages,
+    setCurrentPage,
+    currentPage
   }
 }
