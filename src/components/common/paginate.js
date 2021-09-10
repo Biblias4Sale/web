@@ -1,9 +1,9 @@
 import Pagination from 'react-bootstrap/Pagination'
 
-export const Paginate = ({ productsPerPage, allProducts, pages }) => {
+export const Paginate = ({ objPerPage, allObj, pages }) => {
   const pageNumbers = []
 
-  for (let i = 0; i < Math.ceil(allProducts / productsPerPage); i++) {
+  for (let i = 0; i < Math.ceil(allObj / objPerPage); i++) {
     pageNumbers.push(i + 1)
   }
 
