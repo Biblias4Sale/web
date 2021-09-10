@@ -1,5 +1,3 @@
-// import * as yup from 'yup'
-// import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -7,17 +5,18 @@ import { setLogged } from '../../../../redux/actions'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
-
-// const validations = yup.object().shape({
-//   email: yup.string().email('Por favor ingrese un mail valido').required('Por favor ingrese un mail'),
-//   password: yup.string().required('Por favor ingrese una contraseña').min(6, 'Por favor ingrese una contraseña de al menos 6 caracteres')
-// })
+import e from 'express'
 
 export const Login = ({ setShowModal }) => {
   const dispatch = useDispatch()
 
   const [errorAuth, setErrorAuth] = useState('')
-  const { register, handleSubmit} = useForm()
+  const { handleSubmit} = useForm()
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
 
   const [errors, setErrors] = useState({
     email: false,
@@ -25,9 +24,9 @@ export const Login = ({ setShowModal }) => {
   })
 
   // Submit your data into Redux store  
-  const onSubmit = async (loginInfo) => {
+  const onSubmit = async () => {
     try {
-      const response = await axios.post(`${ApiURL}/login`, loginInfo)
+      const response = await axios.post(`${ApiURL}/login`, formData)
       setShowModal(response.data.user.name)
       setTimeout(() => {
         dispatch(setLogged(response.data))
@@ -39,22 +38,33 @@ export const Login = ({ setShowModal }) => {
 
   const handleChange = (event, value) => {
     setErrors(prev => ({ ...prev, [event]: false }))
-    if (!value) setErrors(prev => ({ ...prev, [event]: `Tenes que ingresar tu ${event}`}))
+    if (!value) setErrors(prev => ({ ...prev, [event]: `Ingresa tu ${event}`}))
+    else setFormData(prev => ({ ...prev, [event] : value }))
   }
 
-  const handleBlur = (event) => {
-
+  const handleBlur = (event, value) => {
+    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!value) {
+      setErrors(prev => ({ ...prev, [event] : `Ingresa tu ${event}` }))
+    }
+    else{
+      if(event === 'email') {
+        if (!value.match(emailFormat)) { 
+        setErrors(prev => ({ ...prev, [event] : `Ingresa un ${event} válido` }))
+      }
+    }
+    }
   }
 
   return (
     <div>
       <LoginView
         setShowModal={setShowModal}
-        register={register}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         errorAuth={errorAuth}
         handleChange={handleChange}
+        handleBlur={handleBlur}
       />
     </div>
   )
