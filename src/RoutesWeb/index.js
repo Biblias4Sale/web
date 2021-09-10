@@ -4,12 +4,7 @@ import { Catalogue } from '../components/Catalogue/Catalogue'
 import Logout from '../components/Logout/Logout'
 import { ProductDetails } from '../components/ProductDetails/ProductDetails'
 import { UserPage } from '../components/UserPage/UserPage'
-<<<<<<< HEAD
-import { DeleteUser } from '../components/UserPage/Options/EditAccount/DeleteUser/DeleteUser'
-=======
-import { EditAccount } from '../components/EditAccount/EditAccount'
 import { NotFound } from '../components/Error/Error404'
->>>>>>> develop
 
 export const RouterWeb = () => {
   return (
@@ -18,7 +13,6 @@ export const RouterWeb = () => {
       <Route exact path='/catalogo' component={Catalogue} />
       <Route exact path='/logout' component={Logout} />
       <Route exact path='/myaccount' component={UserPage} />
-      <Route exact path='delete' component={DeleteUser} />
       <Route exact path='/product/details/:id' component={ProductDetails} />
       <Route component={NotFound} />
     </Switch>
