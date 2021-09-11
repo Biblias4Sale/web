@@ -30,7 +30,7 @@ export const Catalogue = (props) => {
   }, [dispatch])
 
   useEffect(() => {
-    if (searchResult.length > 0) setOptions(prev => ({ ...prev, searching: `Resultados de "${searchString}":`, category: '' }))
+    if (searchResult.length > 0) setOptions(prev => ({ ...prev, searching: `Resultados de "${searchString}"`, category: '' }))
   }, [searchResult.length, setOptions, searchString])
 
   useEffect(() => {

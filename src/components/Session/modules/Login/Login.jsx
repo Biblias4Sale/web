@@ -7,7 +7,7 @@ import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
 
-export const Login = ({ setShowModal }) => {
+export const Login = ({ setCurrentView }) => {
   const dispatch = useDispatch()
 
   const [errorAuth, setErrorAuth] = useState('')
@@ -53,7 +53,7 @@ export const Login = ({ setShowModal }) => {
   return (
     <div>
       <LoginView
-        setShowModal={setShowModal}
+        setCurrentView={setCurrentView}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         errorAuth={errorAuth}

@@ -6,7 +6,7 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
 
 export const LoginView = ({
-  setShowModal,
+  setCurrentView,
   handleSubmit,
   handleChange,
   errors,
@@ -89,7 +89,7 @@ export const LoginView = ({
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
-                  onClick={() => setShowModal('create')}
+                  onClick={() => setCurrentView('create')}
                 >
                   Create una acá!
                 </a>

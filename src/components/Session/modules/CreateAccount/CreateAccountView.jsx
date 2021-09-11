@@ -6,7 +6,7 @@ import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
 
 export const CreateAccountView = ({
-  setShowModal,
+  setCurrentView,
   handleSubmit,
   handleChange,
   errors,
@@ -140,7 +140,7 @@ export const CreateAccountView = ({
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
-                  onClick={() => setShowModal('init')}
+                  onClick={() => setCurrentView('init')}
                 >
                   Ingresá acá!
                 </a>

@@ -7,7 +7,7 @@ import { CreateAccountView } from './CreateAccountView'
 import { createUser } from '../../../../redux/actions'
 import { toastCustom } from '../../../common/Toastify'
 
-export const CreateAccount = ({ setShowModal }) => {
+export const CreateAccount = ({ setCurrentView }) => {
   const dispatch = useDispatch()
 
   // const [errorAuth, setErrorAuth] = useState('');
@@ -97,7 +97,7 @@ export const CreateAccount = ({ setShowModal }) => {
   return (
     <div>
       <CreateAccountView
-        setShowModal={setShowModal}
+        setCurrentView={setCurrentView}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         // errorAuth={errorAuth}

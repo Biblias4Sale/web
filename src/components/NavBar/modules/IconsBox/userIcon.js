@@ -11,7 +11,7 @@ export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
   const logged = useSelector(state => state.logged)
   const [initial, setinitial] = useState('')
-
+  const [currentView, setCurrentView] = useState('init')
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,8 +33,15 @@ export const UserIcon = () => {
             <FaRegUserCircle size={32} onClick={() => setModalShow(true)} title='Login' style={Cursor} />
             <Session
               setModalShow={setModalShow}
+              currentView={currentView}
+              setCurrentView={setCurrentView}
               show={modalShow}
-              onHide={() => setModalShow(false)}
+              onHide={() => {
+                setModalShow(false)
+                setTimeout(() => {
+                  setCurrentView('init')
+                }, 500)
+              }}
             />
           </>
           )
