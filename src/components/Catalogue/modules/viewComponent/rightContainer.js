@@ -2,6 +2,7 @@ import { Col } from 'react-bootstrap'
 import { Pages } from '../Pages'
 import { SelectOptions } from '../SelectOptions'
 import { NoProductToShow } from './noProducts'
+import btnBlue from '../../../../assets/btn_close_blue.png'
 
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
   return (
@@ -9,17 +10,19 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
       <div className='d-flex mb-2'>
         {options.searching
           ? (
-
             <>
-              <h3>{options.searching}</h3>
-              <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} />
+              <h3 style={{ marginRight: '0.5rem' }}>{options.searching}</h3>
+              <img src={btnBlue} alt='' height='30px' onClick={clearSearch} />
+              {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
             </>
-
             )
           : options.category
             ? (
               <>
-                <h3>{options.category}</h3><button onClick={clearCategory}>X</button>
+                <h3 style={{ marginRight: '0.5rem' }}>{options.category}</h3>
+                <img src={btnBlue} alt='' height='30px' onClick={clearSearch} />
+                {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
+
               </>
               )
             : null}
