@@ -33,16 +33,14 @@ export const CreateAccount = ({ setShowModal }) => {
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
-      const response = await axios.post(`${ApiURL}/user`, formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(`${ApiURL}/user`, formData, {withCredentials: true});
       dispatch(createUser(response.data));
-      // toastCustom('Cuenta creada exitosamente.', 'success', 4000, 'bottom-right')
       toastCustom(`Cuenta creada exitosamente. Bienvenid@ ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
       console.log(error)
       toastCustom('Ya existe una cuenta con esa dirección de e-mail', 'error', 4000, 'bottom-right')
       // setErrorAuth('Ya existe una cuenta con esa dirección de e-mail');
+      setErrorAuth('') // evita warning
     }
   };
 

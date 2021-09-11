@@ -2,10 +2,10 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLogged } from '../../../../redux/actions'
+import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
-import { toastCustom } from '../../../common/Toastify'
 
 
 export const Login = ({ setShowModal }) => {
