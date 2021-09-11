@@ -29,7 +29,7 @@ export const LoginView = ({
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -48,7 +48,7 @@ export const LoginView = ({
                     type='password'
                     placeholder='Contraseña'
                     name='password'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -62,29 +62,30 @@ export const LoginView = ({
           </Form.Group>
           <Col className='m-3 justify-content-center'>
             <Row>
-              {!errors.email && !errors.password?
-              <Button
-                type='submit'
-                style={botton}
-                variant='pl-1 pr-1 m-3 text-center justify-content-center'
-              >
-                <AiOutlineLogin size={25} className='text-white' />
-                LOGIN
-              </Button>
-              :
-              <Button
-              disabled
-              type='submit'
-              style={botton}
-              variant='pl-1 pr-1 m-3 text-center justify-content-center'
-            >
-              <AiOutlineLogin size={25} className='text-white' />
-              LOGIN
-            </Button>
-              }
+              {!errors.email && !errors.password
+                ? (
+                  <Button
+                    type='submit'
+                    style={botton}
+                    variant='pl-1 pr-1 m-3 text-center justify-content-center'
+                  >
+                    <AiOutlineLogin size={25} className='text-white' />
+                    INCIAR SESIÓN
+                  </Button>)
+                : (
+                  <Button
+                    disabled
+                    type='submit'
+                    style={botton}
+                    variant='pl-1 pr-1 m-3 text-center justify-content-center'
+                  >
+                    <AiOutlineLogin size={25} className='text-white' />
+                    INCIAR SESIÓN
+                  </Button>
+                  )}
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> ¿No tenés una Cuenta? {' '}
+              <h6> ¿No tenés cuenta? {' '}
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
