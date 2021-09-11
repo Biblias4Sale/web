@@ -16,7 +16,7 @@ export const LoginView = ({
   return (
     <Container style={container}>
       <Col>
-        <h1 className='m-3'>Iniciar Sesion</h1>
+        <h1 className='m-3'>Iniciar sesión</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='m-4'>
             <InputGroup size='lg m-2'>
@@ -77,13 +77,13 @@ export const LoginView = ({
               </Button>
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> No tenes una Cuenta ? {' '}
+              <h6> ¿No tenés una Cuenta? {' '}
                 <a
                   href
                   style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
                   onClick={() => setShowModal('create')}
                 >
-                  Create una aqui !
+                  Create una acá!
                 </a>
               </h6>
             </Row>
