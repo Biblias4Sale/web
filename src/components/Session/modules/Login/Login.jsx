@@ -29,7 +29,7 @@ export const Login = ({ setShowModal }) => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
-      toastCustom(`Bienvenid@ ${response.data.user.name}`, 'success', 3000, 'top-right')
+      toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }

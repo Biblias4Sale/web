@@ -5,6 +5,8 @@ import axios from 'axios';
 import { ApiURL } from '../../../../config/config';
 import { CreateAccountView } from './CreateAccountView';
 import { createUser } from '../../../../redux/actions';
+import { toastCustom } from '../../../common/Toastify'
+
 
 export const CreateAccount = ({ setShowModal }) => {
   const dispatch = useDispatch();
@@ -34,13 +36,13 @@ export const CreateAccount = ({ setShowModal }) => {
       const response = await axios.post(`${ApiURL}/user`, formData, {
         withCredentials: true,
       });
-      setShowModal(response.data.user.name);
-      setTimeout(() => {
-        dispatch(createUser(response.data));
-      }, 2000);
+      dispatch(createUser(response.data));
+      // toastCustom('Cuenta creada exitosamente.', 'success', 4000, 'bottom-right')
+      toastCustom(`Cuenta creada exitosamente. Bienvenid@ ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
       console.log(error)
-      setErrorAuth('Ya existe una cuenta con esa dirección de e-mail');
+      toastCustom('Ya existe una cuenta con esa dirección de e-mail', 'error', 4000, 'bottom-right')
+      // setErrorAuth('Ya existe una cuenta con esa dirección de e-mail');
     }
   };
 
