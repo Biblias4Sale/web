@@ -9,7 +9,6 @@ export const LoginView = ({
   setShowModal,
   handleSubmit,
   handleChange,
-  handleBlur,
   errors,
   errorAuth
 }) => {
@@ -31,7 +30,6 @@ export const LoginView = ({
                     placeholder='E-mail'
                     name='email'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -51,8 +49,6 @@ export const LoginView = ({
                     placeholder='Contraseña'
                     name='password'
                     onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
-
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -66,7 +62,7 @@ export const LoginView = ({
           </Form.Group>
           <Col className='m-3 justify-content-center'>
             <Row>
-
+              {!errors.email && !errors.password?
               <Button
                 type='submit'
                 style={botton}
@@ -75,6 +71,17 @@ export const LoginView = ({
                 <AiOutlineLogin size={25} className='text-white' />
                 LOGIN
               </Button>
+              :
+              <Button
+              disabled
+              type='submit'
+              style={botton}
+              variant='pl-1 pr-1 m-3 text-center justify-content-center'
+            >
+              <AiOutlineLogin size={25} className='text-white' />
+              LOGIN
+            </Button>
+              }
             </Row>
             <Row className='d-flex justify-content-center'>
               <h6> ¿No tenés una Cuenta? {' '}
