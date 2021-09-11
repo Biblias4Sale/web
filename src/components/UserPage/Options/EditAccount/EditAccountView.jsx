@@ -3,7 +3,6 @@ import { DeleteUser } from './DeleteUser/DeleteUser'
 import { botton, title } from './EditAccountStyle'
 
 export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal, showModal }) => {
-  console.log('SHOWMODAL', showModal)
   return (
     <Container>
       <h3 style={title}>Modificar Cuenta</h3>
