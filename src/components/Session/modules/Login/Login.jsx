@@ -40,7 +40,7 @@ export const Login = ({ setShowModal }) => {
 
     if (event === 'email') {
       if (!value) setErrors(prev => ({ ...prev, [event]: 'Ingresa tu dirección de correo electrónico' }))
-      if (!value.match(emailFormat)) setErrors(prev => ({ ...prev, [event]: 'Ingresa un e-mail} válido' }))
+      if (!value.match(emailFormat)) setErrors(prev => ({ ...prev, [event]: 'Ingresa un e-mail válido' }))
     }
 
     if (event === 'password') {

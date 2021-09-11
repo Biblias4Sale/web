@@ -125,24 +125,24 @@ export const CreateAccountView = ({
                 ? (
                   <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                     <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
-                    REGISTRARSE
+                    REGISTRARME
                   </Button>
                   )
                 : (
                   <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                     <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
-                    REGISTRARSE
+                    REGISTRARME
                   </Button>)}
 
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> Ya tenes una Cuenta ? {' '}
+              <h6> ¿Ya tenés una cuenta? {' '}
                 <a
                   href
-                  style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
                   onClick={() => setShowModal('init')}
                 >
-                  Ingresa aqui !
+                  Ingresá acá!
                 </a>
               </h6>
             </Row>

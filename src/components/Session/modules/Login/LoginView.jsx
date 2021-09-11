@@ -70,7 +70,7 @@ export const LoginView = ({
                     variant='pl-1 pr-1 m-3 text-center justify-content-center'
                   >
                     <AiOutlineLogin size={25} className='text-white' />
-                    INCIAR SESIÓN
+                    INICIAR SESIÓN
                   </Button>)
                 : (
                   <Button
@@ -80,7 +80,7 @@ export const LoginView = ({
                     variant='pl-1 pr-1 m-3 text-center justify-content-center'
                   >
                     <AiOutlineLogin size={25} className='text-white' />
-                    INCIAR SESIÓN
+                    INICIAR SESIÓN
                   </Button>
                   )}
             </Row>
@@ -88,7 +88,7 @@ export const LoginView = ({
               <h6> ¿No tenés cuenta? {' '}
                 <a
                   href
-                  style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
                   onClick={() => setShowModal('create')}
                 >
                   Create una acá!
