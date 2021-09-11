@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify'
-import { FaTimesCircle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
+// import { FaTimesCircle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
 
 export function toastCustom (description, state, timeAutoclose, position) {
   const renderData = () => {
@@ -8,14 +8,17 @@ export function toastCustom (description, state, timeAutoclose, position) {
         {
         state === 'error'
           ? (
-            <FaTimesCircle className='icon_toast' />
+              null
+            // <FaTimesCircle className='icon_toast' />
             )
           : state === 'success'
             ? (
-              <FaCheckCircle className='icon_toast' />
+                null
+              // <FaCheckCircle className='icon_toast' />
               )
             : (
-              <FaInfoCircle className='icon_toast' />
+                null
+              // <FaInfoCircle className='icon_toast' />
               )
       }
         <p>{description}</p>
