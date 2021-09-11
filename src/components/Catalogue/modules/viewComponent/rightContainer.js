@@ -6,12 +6,15 @@ import { NoProductToShow } from './noProducts'
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
   return (
     <Col lg={9}>
-      <div className='d-flex justify-content-between mb-2'>
+      <div className='d-flex mb-2'>
         {options.searching
           ? (
+
             <>
-              <h3>{options.searching}</h3><button onClick={clearSearch}>X</button>
+              <h3>{options.searching}</h3>
+              <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} />
             </>
+
             )
           : options.category
             ? (

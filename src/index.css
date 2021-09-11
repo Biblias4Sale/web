@@ -20,3 +20,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container_toast {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

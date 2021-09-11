@@ -2,15 +2,16 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLogged } from '../../../../redux/actions'
+import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
 
-export const Login = ({ setShowModal }) => {
+export const Login = ({ setCurrentView }) => {
   const dispatch = useDispatch()
 
   const [errorAuth, setErrorAuth] = useState('')
-  const { handleSubmit} = useForm()
+  const { handleSubmit } = useForm()
 
   const [formData, setFormData] = useState({
     email: '',
@@ -22,14 +23,12 @@ export const Login = ({ setShowModal }) => {
     contraseña: false
   })
 
-  // Submit your data into Redux store  
+  // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
-      setShowModal(response.data.user.name)
-      setTimeout(() => {
-        dispatch(setLogged(response.data))
-      }, 2000)
+      dispatch(setLogged(response.data))
+      toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
@@ -37,33 +36,28 @@ export const Login = ({ setShowModal }) => {
 
   const handleChange = (event, value) => {
     setErrors(prev => ({ ...prev, [event]: false }))
-    if (!value) setErrors(prev => ({ ...prev, [event]: `Ingresa tu ${event}`}))
-    else setFormData(prev => ({ ...prev, [event] : value }))
-  }
-
-  const handleBlur = (event, value) => {
     const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!value) {
-      setErrors(prev => ({ ...prev, [event] : `Ingresa tu ${event}` }))
+
+    if (event === 'email') {
+      if (!value) setErrors(prev => ({ ...prev, [event]: 'Ingresa tu dirección de correo electrónico' }))
+      if (!value.match(emailFormat)) setErrors(prev => ({ ...prev, [event]: 'Ingresa un e-mail válido' }))
     }
-    else{
-      if(event === 'email') {
-        if (!value.match(emailFormat)) { 
-        setErrors(prev => ({ ...prev, [event] : `Ingresa un ${event} válido` }))
-      }
+
+    if (event === 'password') {
+      if (!value) setErrors(prev => ({ ...prev, [event]: 'Ingresa tu contraseña' }))
     }
-    }
+
+    setFormData(prev => ({ ...prev, [event]: value }))
   }
 
   return (
     <div>
       <LoginView
-        setShowModal={setShowModal}
+        setCurrentView={setCurrentView}
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         errorAuth={errorAuth}
         handleChange={handleChange}
-        handleBlur={handleBlur}
       />
     </div>
   )

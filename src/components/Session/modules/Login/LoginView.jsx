@@ -6,17 +6,16 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { container, botton } from './LoginStyle'
 
 export const LoginView = ({
-  setShowModal,
+  setCurrentView,
   handleSubmit,
   handleChange,
-  handleBlur,
   errors,
   errorAuth
 }) => {
   return (
     <Container style={container}>
       <Col>
-        <h1 className='m-3'>Iniciar Sesion</h1>
+        <h1 className='m-3'>Iniciar sesión</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='m-4'>
             <InputGroup size='lg m-2'>
@@ -30,8 +29,7 @@ export const LoginView = ({
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -50,9 +48,7 @@ export const LoginView = ({
                     type='password'
                     placeholder='Contraseña'
                     name='password'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
-
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
                 <Row className='justify-content-center m-2'>
@@ -66,24 +62,36 @@ export const LoginView = ({
           </Form.Group>
           <Col className='m-3 justify-content-center'>
             <Row>
-
-              <Button
-                type='submit'
-                style={botton}
-                variant='pl-1 pr-1 m-3 text-center justify-content-center'
-              >
-                <AiOutlineLogin size={25} className='text-white' />
-                LOGIN
-              </Button>
+              {!errors.email && !errors.password
+                ? (
+                  <Button
+                    type='submit'
+                    style={botton}
+                    variant='pl-1 pr-1 m-3 text-center justify-content-center'
+                  >
+                    <AiOutlineLogin size={25} className='text-white' />
+                    INICIAR SESIÓN
+                  </Button>)
+                : (
+                  <Button
+                    disabled
+                    type='submit'
+                    style={botton}
+                    variant='pl-1 pr-1 m-3 text-center justify-content-center'
+                  >
+                    <AiOutlineLogin size={25} className='text-white' />
+                    INICIAR SESIÓN
+                  </Button>
+                  )}
             </Row>
             <Row className='d-flex justify-content-center'>
-              <h6> No tenes una Cuenta ? {' '}
+              <h6> ¿No tenés cuenta? {' '}
                 <a
                   href
-                  style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
-                  onClick={() => setShowModal('create')}
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
+                  onClick={() => setCurrentView('create')}
                 >
-                  Create una aqui !
+                  Create una acá!
                 </a>
               </h6>
             </Row>
