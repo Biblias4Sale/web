@@ -17,3 +17,9 @@ export const botton = {
   color: 'white',
   cursor: 'pointer'
 }
+
+export const title = {
+  padding: '15px',
+  display: 'flex',
+  justifyContent: 'center'
+}

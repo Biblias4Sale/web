@@ -49,8 +49,8 @@ export const setLogged = (loginInfo) => {
 //   }
 // }
 
-
 export const createUser = (registerInfo) => {
+  console.log(registerInfo)
   return {
     type: CREATE_USER,
     payload: registerInfo
@@ -119,7 +119,12 @@ export const editUser = (id, data, token) => {
             name: editUser.data.name,
             lastName: editUser.data.lastName,
             email: editUser.data.email,
-            password: editUser.data.password
+            password: editUser.data.password,
+            cp: editUser.data.cp,
+            address: editUser.data.address,
+            city: editUser.data.city,
+            province: editUser.data.province,
+            phone: editUser.data.phone
           },
           token
         }
