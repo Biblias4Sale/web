@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { EditAccountView } from './EditAccountView'
 import { editUser } from '../../../../redux/actions/index'
-import Alert from 'react-bootstrap/Alert'
-import { Button } from 'react-bootstrap'
+import { toastCustom } from '../../../common/Toastify'
 
 const validations = yup.object().shape({
   name: yup.string().required('Por favor ingrese tu nombre'),
@@ -24,7 +23,7 @@ const validations = yup.object().shape({
 
 export const EditAccount = () => {
   const [showModal, setShowModal] = useState(false)
-  const [showAlert, setShowAlert] = useState(false)
+  console.log('SHOWMODAL EN EDITACCOUNT', showModal)
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
@@ -33,8 +32,14 @@ export const EditAccount = () => {
   })
 
   // Submit your data into Redux store
-  const onSubmit = (data) => {
-    dispatch(editUser(oldInfo.user.id, data, oldInfo.token))
+  const onSubmit = async (data) => {
+    try {
+      dispatch(editUser(oldInfo.user.id, data, oldInfo.token))
+      toastCustom('Cuenta actualizada exitosamente', 'success', 4000, 'bottom-right')
+    } catch (error) {
+      console.log('Error en actualizar cuenta', error)
+      toastCustom('Cuenta no ha sido actualizada', 'error', 4000, 'bottom-right')
+    }
   }
 
   return (
@@ -45,17 +50,8 @@ export const EditAccount = () => {
         errors={errors}
         oldInfo={oldInfo.user}
         setShowModal={setShowModal}
-        showNodal={showModal}
+        showModal={showModal}
       />
-      <Alert show={showAlert} variant='light'>
-        <Alert.Heading>Datos actualizados exitosamente</Alert.Heading>
-        <hr />
-        <div className='d-flex justify-content-end'>
-          <Button onClick={() => setShowAlert(false)}>
-            Cerrar
-          </Button>
-        </div>
-      </Alert>
     </div>
   )
 }
