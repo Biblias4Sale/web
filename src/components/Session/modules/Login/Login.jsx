@@ -5,6 +5,8 @@ import { setLogged } from '../../../../redux/actions'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { LoginView } from './LoginView'
+import { toastCustom } from '../../../common/Toastify'
+
 
 export const Login = ({ setShowModal }) => {
   const dispatch = useDispatch()
@@ -26,10 +28,8 @@ export const Login = ({ setShowModal }) => {
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
-      setShowModal(response.data.user.name)
-      setTimeout(() => {
-        dispatch(setLogged(response.data))
-      }, 2000)
+      dispatch(setLogged(response.data))
+      toastCustom(`Bienvenid@ ${response.data.user.name}`, 'success', 3000, 'top-right')
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
