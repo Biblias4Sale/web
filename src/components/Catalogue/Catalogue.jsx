@@ -71,7 +71,7 @@ export const Catalogue = (props) => {
   }
 
   const handleCategoryChange = (category) => {
-    setOptions(prev => ({ ...prev, price: 'all', raiting: [] }))
+    setOptions(prev => ({ ...prev, price: 'all', raiting: [], subCategory: [] }))
     setOptions(prev => ({ ...prev, category: category }))
   }
 
