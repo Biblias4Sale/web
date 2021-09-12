@@ -32,7 +32,7 @@ export const CreateAccountView = ({
                     onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.name && errors.name}</h6>
                 </Row>
               </Col>
@@ -51,7 +51,7 @@ export const CreateAccountView = ({
                     onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.lastName && errors.lastName}</h6>
                 </Row>
               </Col>
@@ -70,7 +70,7 @@ export const CreateAccountView = ({
                     onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
@@ -90,7 +90,7 @@ export const CreateAccountView = ({
 
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.password && errors.password}</h6>
                 </Row>
               </Col>
@@ -110,7 +110,7 @@ export const CreateAccountView = ({
 
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.confirmPassword && errors.confirmPassword}</h6>
                 </Row>
               </Col>
