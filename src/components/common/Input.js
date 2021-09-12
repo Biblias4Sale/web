@@ -5,9 +5,12 @@ export const Input = ({
   placeholder,
   name,
   type,
-  error
-  // yup
+  errors,
+  handleChange,
+  handleBlur
 }) => {
+
+  console.log(handleBlur)
   return (
 
     <InputGroup size='lg m-2'>
@@ -20,12 +23,12 @@ export const Input = ({
             style={{ width: '90%' }}
             type={type}
             placeholder={placeholder}
-            // name={name}
-            // yup={yup}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onBlur={(e) => handleBlur(e.target[name], e.target.value)}
           />
         </Row>
         <Row className='justify-content-center m-2'>
-          <h6 className='text-danger'>{error}</h6>
+          <h6 className='text-danger'>{errors[name] && errors[name]}</h6>
         </Row>
       </Col>
     </InputGroup>
