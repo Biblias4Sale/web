@@ -32,7 +32,7 @@ export const LoginView = ({
                     onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '25px' }}>
                   <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
@@ -51,12 +51,12 @@ export const LoginView = ({
                     onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '25px' }}>
                   <h6 className='text-danger'>{errors.password && errors.password}</h6>
                 </Row>
               </Col>
             </InputGroup>
-            <Row className='justify-content-center m-2 text-center'>
+            <Row className='justify-content-center m-2 text-center' style={{ height: '25px' }}>
               <h4 className='text-danger'>{errorAuth && errorAuth}</h4>
             </Row>
           </Form.Group>
