@@ -13,13 +13,13 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
           ? (
             <>
               <h3 style={{ marginRight: '0.5rem' }}>{options.searching}</h3>
-              <img src={btnBlue} alt='' height='30px' onClick={clearSearch} style={{ marginRight: '1rem' }} />
+              <img src={btnBlue} alt='' height='30px' onClick={clearSearch} style={{ marginRight: '1rem', cursor: 'pointer' }} />
               {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
               {options.category
                 ? (
                   <>
                     <h5 style={{ marginRight: '0.5rem' }}>sólo en {options.category}</h5>
-                    <img src={btnBlue} alt='' height='30px' onClick={clearCategory} />
+                    <img src={btnBlue} alt='' height='30px' onClick={clearCategory} style={{ cursor: 'pointer' }} />
                   </>
                   )
                 : null}
@@ -29,7 +29,7 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
             ? (
               <>
                 <h3 style={{ marginRight: '0.5rem' }}>{options.category}</h3>
-                <img src={btnBlue} alt='' height='30px' onClick={clearCategory} />
+                <img src={btnBlue} alt='' height='30px' onClick={clearCategory} style={{ cursor: 'pointer' }} />
                 {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
               </>
               )
