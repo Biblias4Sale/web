@@ -7,10 +7,9 @@ import { container, botton } from './CreateAccountStyle'
 // import { Input } from '../../../common/Input'
 
 export const CreateAccountView = ({
-  setShowModal,
+  setCurrentView,
   handleSubmit,
   handleChange,
-  handleBlur,
   errors,
   errorAuth
 }) => {
@@ -40,12 +39,11 @@ export const CreateAccountView = ({
                     type='text'
                     placeholder='Nombre'
                     name='name'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
-                <h6 className='text-danger'>{errors.name && errors.name}</h6>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
+                  <h6 className='text-danger'>{errors.name && errors.name}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -60,12 +58,11 @@ export const CreateAccountView = ({
                     type='text'
                     placeholder='Apellido'
                     name='lastName'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
-                <h6 className='text-danger'>{errors.lastName && errors.lastName}</h6>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
+                  <h6 className='text-danger'>{errors.lastName && errors.lastName}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -80,11 +77,10 @@ export const CreateAccountView = ({
                     type='e-mail'
                     placeholder='E-mail'
                     name='email'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.email && errors.email}</h6>
                 </Row>
               </Col>
@@ -100,12 +96,11 @@ export const CreateAccountView = ({
                     type='password'
                     placeholder='Contraseña'
                     name='password'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
 
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
                   <h6 className='text-danger'>{errors.password && errors.password}</h6>
                 </Row>
               </Col>
@@ -120,14 +115,13 @@ export const CreateAccountView = ({
                     style={{ width: '90%' }}
                     type='password'
                     placeholder='Confirma tu contraseña'
-                    name='Confirmpassword'
-                    onChange = {(event) => handleChange(event.target.name, event.target.value)}
-                    onBlur = {(event) => handleBlur(event.target.name, event.target.value)}
+                    name='confirmPassword'
+                    onChange={(event) => handleChange(event.target.name, event.target.value)}
 
                   />
                 </Row>
-                <Row className='justify-content-center m-2'>
-                  <h6 className='text-danger'>{errors.Confirmpassword && errors.Confirmpassword}</h6>
+                <Row className='justify-content-center m-2' style={{ height: '18px' }}>
+                  <h6 className='text-danger'>{errors.confirmPassword && errors.confirmPassword}</h6>
                 </Row>
               </Col>
             </InputGroup>
@@ -135,25 +129,34 @@ export const CreateAccountView = ({
               <h4 className='text-danger'>{errorAuth && errorAuth}</h4>
             </Row>
           </Form.Group>
-            <Col className='m-3 justify-content-center'>
-              <Row>
-                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-                  <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
-                  REGISTRARSE
-                </Button>
-              </Row>
-              <Row className='d-flex justify-content-center'>
-                <h6> Ya tenes una Cuenta ? {' '}
-                  <a
-                    href
-                    style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
-                    onClick={() => setShowModal('init')}
-                  >
-                    Ingresa aqui !
-                  </a>
-                </h6>
-              </Row>
-            </Col>
+          <Col className='m-3 justify-content-center'>
+            <Row>
+              {!errors.name && !errors.lastName && !errors.email && !errors.password && !errors.confirmPassword
+                ? (
+                  <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                    <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
+                    REGISTRARME
+                  </Button>
+                  )
+                : (
+                  <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                    <AiOutlineLogin size={25} className='text-white' style={{ cursor: 'pointer' }} />
+                    REGISTRARME
+                  </Button>)}
+
+            </Row>
+            <Row className='d-flex justify-content-center'>
+              <h6> ¿Ya tenés una cuenta? {' '}
+                <a
+                  href
+                  style={{ fontWeight: 'bolder', textDecoration: 'underline', cursor: 'pointer' }}
+                  onClick={() => setCurrentView('init')}
+                >
+                  Ingresá acá!
+                </a>
+              </h6>
+            </Row>
+          </Col>
         </Form>
       </Col>
     </Container>

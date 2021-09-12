@@ -7,6 +7,9 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import Store from './redux/store/'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 // Debo cambiar el null por LoadingView
 // import { RootComponent, LoadingView } from './components';
 
@@ -19,6 +22,7 @@ ReactDOM.render(
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <App />
+          <ToastContainer />
         </Router>
       </PersistGate>
     </Provider>
