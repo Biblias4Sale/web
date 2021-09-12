@@ -23,7 +23,6 @@ const validations = yup.object().shape({
 
 export const EditAccount = () => {
   const [showModal, setShowModal] = useState(false)
-  console.log('SHOWMODAL EN EDITACCOUNT', showModal)
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
