@@ -45,16 +45,16 @@ export const UserIcon = () => {
           </>
           )
         : (
-          <div className='d-flex'>
-            <NavDropdown
+          <div className='dropdown'>
+            <NavDropdown 
               title={
-                <span className='text-white'>{initial}</span>
+                <span className='text-dark'>{initial}</span>
             }
-              className='d-flex justify-content-center rounded-circle bg-success'
+            className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
             >
-              <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
+              <NavDropdown.Item className='d-flex position-relative'> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
+              <NavDropdown.Item className='d-flex position-relative' onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
           </div>
           )}
