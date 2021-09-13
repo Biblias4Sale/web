@@ -5,29 +5,33 @@ import { toastCustom } from '../../../../common/Toastify'
 
 export const DeleteUser = ({ show, setShowModal, onHide }) => {
   const dispatch = useDispatch()
-  const info = useSelector(state => state.logged)
+  const logged = useSelector(state => state.logged)
 
   const handleClose = () => { setShowModal(false) }
 
   const handleOnSubmit = () => {
     try {
-      dispatch(deleteUser(info.user.id))
+      dispatch(deleteUser(logged.user.id))
       dispatch(logOut())
       toastCustom('Tu cuenta ha sido eliminada', 'success', 4000, 'bottom-right')
-      window.location = '/logout'
+      setTimeout(() => {
+        window.location = '/'
+      }, 2000)
     } catch (error) {
-      console.log('Error en actualizar cuenta', error)
+      // console.log('Error en actualizar cuenta', error)
       toastCustom('Tu cuenta no pudo ser eliminada', 'error', 4000, 'bottom-right')
     }
   }
 
-  return (
-    <>
-      <DeleteUserView
-        showModal={show}
-        handleOnSubmit={handleOnSubmit}
-        handleClose={handleClose}
-      />
-    </>
-  )
+  return logged
+    ? (
+      <>
+        <DeleteUserView
+          showModal={show}
+          handleOnSubmit={handleOnSubmit}
+          handleClose={handleClose}
+        />
+      </>
+      )
+    : null
 }
