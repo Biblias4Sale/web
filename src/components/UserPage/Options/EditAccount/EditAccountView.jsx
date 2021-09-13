@@ -5,7 +5,7 @@ import { botton, title } from './EditAccountStyle'
 export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal, showModal }) => {
   return (
     <Container>
-      <h3 style={title}>Modificar Cuenta</h3>
+      <h3 style={title}>Modificar datos personales</h3>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Form.Group as={Col}>
@@ -153,7 +153,7 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setSh
                 show={showModal}
                 setShowModal={setShowModal}
               />
-              <h6>
+              <h6 style={{ cursor: 'pointer' }}>
                 Eliminar cuenta
               </h6>
             </div>
