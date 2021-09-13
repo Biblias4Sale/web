@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteUser, logOut } from '../../../../../redux/actions/index'
+import { logOut } from '../../../../../redux/actions/index'
 import { DeleteUserView } from './DeleteUserView'
 import { toastCustom } from '../../../../common/Toastify'
+import axios from 'axios'
+import { ApiURL } from '../../../../../config/config'
 
 export const DeleteUser = ({ show, setShowModal, onHide }) => {
   const dispatch = useDispatch()
@@ -11,14 +13,15 @@ export const DeleteUser = ({ show, setShowModal, onHide }) => {
 
   const handleOnSubmit = () => {
     try {
-      dispatch(deleteUser(logged.user.id))
-      dispatch(logOut())
+      axios.delete(`${ApiURL}/user/${logged.user.id}`, { withCredentials: true })
       toastCustom('Tu cuenta ha sido eliminada', 'success', 4000, 'bottom-right')
       setTimeout(() => {
+        dispatch(logOut())
+      }, 2900)
+      setTimeout(() => {
         window.location = '/'
-      }, 2000)
+      }, 3000)
     } catch (error) {
-      // console.log('Error en actualizar cuenta', error)
       toastCustom('Tu cuenta no pudo ser eliminada', 'error', 4000, 'bottom-right')
     }
   }
