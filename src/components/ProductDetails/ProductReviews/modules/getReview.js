@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getReviews } from '../../../../redux/actions'
 import { ReviewContainer } from './reviewContainer'
@@ -9,7 +9,6 @@ import { Statements } from './pagesComponent/statements'
 
 export const GetReview = () => {
   const dispatch = useDispatch()
-  const reviews = useSelector(state => state.reviews)
 
   useEffect(() => {
     dispatch(getReviews())
@@ -20,9 +19,11 @@ export const GetReview = () => {
     actualPage,
     pages,
     setCurrentPage,
-    currentPage
+    currentPage,
+    reviews,
+    firstObj,
+    lastObj
   } = Statements()
-
 
   return (
     <Container style={containerReview}>
@@ -30,13 +31,15 @@ export const GetReview = () => {
       <Col lg={6}>
         <ReviewContainer actualPage={actualPage} />
         <Pagination
-        actualPage={actualPage} 
-        reviews={reviews}
-        reviewsPerPage={reviewsPerPage} 
-        pages={pages}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+          actualPage={actualPage}
+          reviews={reviews}
+          reviewsPerPage={reviewsPerPage}
+          pages={pages}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          firstObj={firstObj}
+          lastObj={lastObj}
+        />
       </Col>
       <Col lg={3} />
     </Container>

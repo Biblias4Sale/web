@@ -1,6 +1,6 @@
 import Pagination from 'react-bootstrap/Pagination'
 
-export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPage }) => {
+export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPage, firstObj, lastObj }) => {
   const pageNumbers = []
 
   for (let i = 0; i < Math.ceil(allObj / objPerPage); i++) {
@@ -8,7 +8,7 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
   }
 
   const nextPage = () => {
-    setCurrentPage(currentPage  + 1)
+    setCurrentPage(currentPage + 1)
   }
 
   const prevPage = () => {
@@ -18,11 +18,15 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
   return (
     <div>
       <Pagination>
-      <Pagination.Prev onClick={prevPage}/>
+        {firstObj > 0
+          ? <Pagination.Prev onClick={prevPage} />
+          : null}
         {pageNumbers && pageNumbers.map(number => (
           <Pagination.Item key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
         ))}
-        <Pagination.Next onClick={nextPage}/>
+        {lastObj < allObj
+          ? <Pagination.Next onClick={nextPage} />
+          : null}
       </Pagination>
     </div>
   )
