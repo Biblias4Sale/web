@@ -6,13 +6,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Session } from '../../../Session/Session'
 import { Cursor } from '../../NavBarStyle'
 import { logOut } from '../../../../redux/actions/index'
+import { useHistory } from 'react-router-dom';
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
   const logged = useSelector(state => state.logged)
   const [initial, setinitial] = useState('')
   const [currentView, setCurrentView] = useState('init')
+
   const dispatch = useDispatch()
+
+  const history = useHistory();
 
   useEffect(() => {
     if (logged) {
@@ -24,6 +28,16 @@ export const UserIcon = () => {
       setinitial(initialName.concat(initialLastName))
     }
   }, [logged])
+
+    const handleLogOut = (e) => {
+      e.preventDefault()
+    if (window.location.pathname === '/micuenta') {   
+        history.push('/')
+        dispatch(logOut(e))
+  }
+    else
+      dispatch(logOut(e))
+  }
 
   return (
     <>
@@ -53,9 +67,9 @@ export const UserIcon = () => {
             }
             className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
             >
-              <NavDropdown.Item className='d-flex position-relative'> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
+              <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item className='d-flex position-relative' onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogOut}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
           </div>
           )}
