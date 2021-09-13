@@ -24,7 +24,10 @@ export const UserIcon = () => {
       setinitial(initialName.concat(initialLastName))
     }
   }, [logged])
-
+  const handleClick = () => {
+    dispatch(logOut())
+    window.location = '/'
+  }
   return (
     <>
       {logged === false
@@ -55,7 +58,7 @@ export const UserIcon = () => {
             >
               <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={e => dispatch(logOut(e))}>Cerrar sesión </NavDropdown.Item>
+              <NavDropdown.Item onClick={handleClick}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
           </div>
           )}
