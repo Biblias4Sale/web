@@ -14,40 +14,12 @@ import {
 
 import { ApiURL } from '../../config/config'
 
-// export const setLogged = (loginInfo) => {
-//   return async function (dispatch) {
-//     const response = await axios.post(`${ApiURL}/login`, loginInfo, {
-//       withCredentials: true
-//     })
-//     return dispatch({
-//       type: SET_LOGGED,
-//       payload: response.data
-//     })
-//   }
-// }
-
 export const setLogged = (loginInfo) => {
   return {
     type: SET_LOGGED,
     payload: loginInfo
   }
 }
-
-// export const createUser = (payload) => {
-//   return async function (dispatch) {
-//     axios
-//       .post(`${ApiURL}/user`, payload, { withCredentials: true })
-//       .then((createUser) => {
-//         if (createUser.status === 201) {
-//           return dispatch({
-//             type: CREATE_USER,
-//             payload: createUser.data
-//           })
-//         }
-//       })
-//       .catch((e) => window.alert('ESE USUARIO YA EXISTE'))
-//   }
-// }
 
 export const createUser = (registerInfo) => {
   return {
@@ -148,19 +120,5 @@ export const setSearchString = (searchString) => {
   return {
     type: SET_SEARCH_STRING,
     payload: searchString
-  }
-}
-
-export const deleteUser = (id) => {
-  return async function (dispatch) {
-    axios.delete(`${ApiURL}/user/${id}`, { withCredentials: true })
-      .then(deleteUser => {
-        if (deleteUser.status === 200) {
-          return dispatch({
-            type: LOG_OUT
-          })
-        }
-      })
-      .catch(e => console.log('Usuario No ha sido deshabilitado'))
   }
 }

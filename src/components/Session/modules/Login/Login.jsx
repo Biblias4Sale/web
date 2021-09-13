@@ -30,6 +30,7 @@ export const Login = ({ setCurrentView }) => {
       dispatch(setLogged(response.data))
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
+      // console.log('error en login:', error)
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
   }
