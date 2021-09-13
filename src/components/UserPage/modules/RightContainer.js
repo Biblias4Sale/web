@@ -9,12 +9,12 @@ export const RightContainer = ({ option }) => {
         option === Management[0]
           ? <EditAccount />
           : option === Management[1]
-            ? <h2> COMPONENTE Reviews </h2>
+            ? <h4> Próximamente: Mis Compras </h4>
             : option === Management[2]
-              ? <h2> COMPONENTE Mis Compras </h2>
+              ? <h4> Próximamente: Mis Reviews </h4>
               : option === Management[3]
-                ? <h2> COMPONENTE Métodos de pago </h2>
-                : <h2> COMPONENTE default </h2>
+                ? <h4> Próximamente: Métodos de pago </h4>
+                : <h4> COMPONENTE default </h4>
       }
     </Col>
   )

@@ -10,7 +10,7 @@ export const UserPageView = () => {
   const user = useSelector(state => state.logged)
   const userCapitals = GetUserCapitals(user)
 
-  const [option, setOption] = useState('')
+  const [option, setOption] = useState('Datos personales')
 
   return (
     <>
