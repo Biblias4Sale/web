@@ -4,6 +4,7 @@ import { AiOutlineLogin } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonSquare } from 'react-icons/bs'
 import { container, botton } from './CreateAccountStyle'
+// import { Input } from '../../../common/Input'
 
 export const CreateAccountView = ({
   setCurrentView,
@@ -18,6 +19,15 @@ export const CreateAccountView = ({
         <h1 className='m-3'>Registro</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>
+            {/* <Input 
+            icono={<BsPersonSquare size={28} />}
+            placeholder='Nombre'
+            name='name'
+            type='text'
+            errors={errors}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            /> */}
             <InputGroup size='lg m-2'>
               <Col>
                 <Row>

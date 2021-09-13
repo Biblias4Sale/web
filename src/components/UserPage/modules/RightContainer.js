@@ -4,7 +4,7 @@ import { EditAccount } from '../Options/EditAccount/EditAccount'
 
 export const RightContainer = ({ option }) => {
   return (
-    <Col lg={9} style={{ background: 'red', height: '100vh' }}>
+    <Col lg={9} style={{ height: '100vh' }}>
       {
         option === Management[0]
           ? <EditAccount />
