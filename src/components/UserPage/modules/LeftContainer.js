@@ -9,7 +9,7 @@ export const LeftContainer = ({ user, setOption }) => {
   }
 
   return (
-    <Col lg={3} style={{ background: 'green', height: '100vh' }}>
+    <Col lg={3} style={{ height: '100vh' }}>
       <div>
         <h2> {`${name}  ${lastName}`} </h2>
         <div>
