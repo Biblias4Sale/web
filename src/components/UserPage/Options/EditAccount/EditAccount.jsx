@@ -22,7 +22,8 @@ const validations = yup.object().shape({
 })
 
 export const EditAccount = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [modalShow, setModalShow] = useState(false)
+
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
@@ -48,8 +49,8 @@ export const EditAccount = () => {
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         oldInfo={oldInfo.user}
-        setShowModal={setShowModal}
-        showModal={showModal}
+        setModalShow={setModalShow}
+        modalShow={modalShow}
       />
     </div>
   )

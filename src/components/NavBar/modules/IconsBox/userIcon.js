@@ -32,7 +32,6 @@ export const UserIcon = () => {
           <>
             <FaRegUserCircle size={32} onClick={() => setModalShow(true)} title='Login' style={Cursor} />
             <Session
-              setModalShow={setModalShow}
               currentView={currentView}
               setCurrentView={setCurrentView}
               show={modalShow}

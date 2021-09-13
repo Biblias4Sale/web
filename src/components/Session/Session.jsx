@@ -19,7 +19,6 @@ export const Session = (props) => {
           {props.currentView === 'create' ? <CreateAccount setCurrentView={props.setCurrentView} /> : null}
         </Modal.Body>
       </Modal>
-
     </div>
   )
 }

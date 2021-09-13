@@ -5,11 +5,9 @@ import { toastCustom } from '../../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../../config/config'
 
-export const DeleteUser = ({ show, setShowModal, onHide }) => {
+export const DeleteUser = ({ show, onHide }) => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
-
-  const handleClose = () => { setShowModal(false) }
 
   const handleOnSubmit = () => {
     try {
@@ -30,9 +28,9 @@ export const DeleteUser = ({ show, setShowModal, onHide }) => {
     ? (
       <>
         <DeleteUserView
-          showModal={show}
+          show={show}
           handleOnSubmit={handleOnSubmit}
-          handleClose={handleClose}
+          onHide={onHide}
         />
       </>
       )
