@@ -99,6 +99,8 @@ export const editUser = (id, data, token) => {
           },
           token
         }
+        console.log('data', data)
+        console.log('edituser', EditedUser)
         if (editUser.status === 200) {
           return dispatch({
             type: SET_LOGGED,
