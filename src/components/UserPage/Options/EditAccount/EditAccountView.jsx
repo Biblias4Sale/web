@@ -2,7 +2,7 @@ import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { DeleteUser } from './DeleteUser/DeleteUser'
 import { botton, title } from './EditAccountStyle'
 
-export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setShowModal, showModal }) => {
+export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setModalShow, modalShow }) => {
   return (
     <Container>
       <h3 style={title}>Modificar datos personales</h3>
@@ -145,15 +145,12 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setSh
             </Button>
           </Row>
           <Row className='d-flex justify-content-center'>
-            <div
-              style={{ fontWeight: 'bolder', textDecoration: 'underline' }}
-              onClick={() => setShowModal(true)}
-            >
+            <div>
               <DeleteUser
-                show={showModal}
-                setShowModal={setShowModal}
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
-              <h6 style={{ cursor: 'pointer' }}>
+              <h6 style={{ cursor: 'pointer', fontWeight: 'bolder', textDecoration: 'underline' }} onClick={() => setModalShow(true)}>
                 Eliminar cuenta
               </h6>
             </div>

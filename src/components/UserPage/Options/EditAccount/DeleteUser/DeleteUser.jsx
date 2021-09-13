@@ -5,14 +5,13 @@ import { toastCustom } from '../../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../../config/config'
 
-export const DeleteUser = ({ show, setShowModal, onHide }) => {
+export const DeleteUser = ({ show, onHide }) => {
   const dispatch = useDispatch()
-  const info = useSelector(state => state.logged)
-  const handleClose = () => { setShowModal(false) }
+  const logged = useSelector(state => state.logged)
 
   const handleOnSubmit = () => {
     try {
-      axios.delete(`${ApiURL}/user/${info.user.id}`, { withCredentials: true })
+      axios.delete(`${ApiURL}/user/${logged.user.id}`, { withCredentials: true })
       toastCustom('Tu cuenta ha sido eliminada', 'success', 4000, 'bottom-right')
       setTimeout(() => {
         dispatch(logOut())
@@ -25,13 +24,15 @@ export const DeleteUser = ({ show, setShowModal, onHide }) => {
     }
   }
 
-  return (
-    <>
-      <DeleteUserView
-        showModal={show}
-        handleOnSubmit={handleOnSubmit}
-        onHide={handleClose}
-      />
-    </>
-  )
+  return logged
+    ? (
+      <>
+        <DeleteUserView
+          show={show}
+          handleOnSubmit={handleOnSubmit}
+          onHide={onHide}
+        />
+      </>
+      )
+    : null
 }

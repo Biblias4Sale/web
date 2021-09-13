@@ -77,7 +77,7 @@ export const CreateAccount = ({ setCurrentView }) => {
         if (!value.match(passwordFormat)) {
           setErrors((prev) => ({
             ...prev,
-            [event]: 'Debe tener al entre 6 y 10 caracteres; y al menos un número, una minúscula y una mayúscula. Puede contener símbolos.'
+            [event]: 'Debe tener al entre 6 y 10 caracteres; y al menos un número, una minúscula y una mayúscula.'
           }))
         }
       }
