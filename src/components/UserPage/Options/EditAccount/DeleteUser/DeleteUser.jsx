@@ -9,15 +9,15 @@ export const DeleteUser = ({ show, setShowModal, onHide }) => {
 
   const handleClose = () => { setShowModal(false) }
 
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = () => {
     try {
       dispatch(deleteUser(info.user.id))
-      window.alert('Su cuenta ha sido eliminada')
       dispatch(logOut())
-      window.location = '/'
+      toastCustom('Tu cuenta ha sido eliminada', 'success', 4000, 'bottom-right')
+      window.location = '/logout'
     } catch (error) {
       console.log('Error en actualizar cuenta', error)
-      toastCustom('Su cuenta no pudo ser eliminada', 'error', 4000, 'bottom-right')
+      toastCustom('Tu cuenta no pudo ser eliminada', 'error', 4000, 'bottom-right')
     }
   }
 
