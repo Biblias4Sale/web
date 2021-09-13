@@ -50,7 +50,6 @@ export const setLogged = (loginInfo) => {
 // }
 
 export const createUser = (registerInfo) => {
-  console.log(registerInfo)
   return {
     type: CREATE_USER,
     payload: registerInfo

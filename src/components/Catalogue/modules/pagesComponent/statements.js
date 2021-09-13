@@ -3,9 +3,9 @@ import { useState } from 'react'
 export const Statements = (finalList) => {
   const [currentPage, setCurrentPage] = useState(1)
   const productsPerPage = 15
-  const lastProduct = currentPage * productsPerPage
-  const firstProduct = lastProduct - productsPerPage
-  const product = finalList.slice(firstProduct, lastProduct)
+  const lastObj = currentPage * productsPerPage
+  const firstObj = lastObj - productsPerPage
+  const product = finalList.slice(firstObj, lastObj)
 
   const pages = (pageNumber) => {
     setCurrentPage(pageNumber)
@@ -13,8 +13,8 @@ export const Statements = (finalList) => {
 
   return {
     productsPerPage,
-    lastProduct,
-    firstProduct,
+    lastObj,
+    firstObj,
     product,
     pages,
     setCurrentPage,
