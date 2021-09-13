@@ -1,10 +1,11 @@
 import { Col } from 'react-bootstrap'
 import { Management } from './management'
 import { EditAccount } from '../Options/EditAccount/EditAccount'
+import { container } from './RightContainerStyle'
 
 export const RightContainer = ({ option }) => {
   return (
-    <Col lg={9} style={{ padding: '1rem', height: '100vh', borderStyle: 'solid', borderWidth: '1px', marginTop: '1rem', marginLeft: '1rem', borderColor: 'gray' }}>
+    <Col lg={9} style={container}>
       {
         option === Management[0]
           ? <EditAccount />

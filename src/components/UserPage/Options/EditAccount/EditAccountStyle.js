@@ -21,5 +21,6 @@ export const botton = {
 export const title = {
   padding: '15px',
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  marginBottom: '2rem'
 }
