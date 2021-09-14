@@ -40,6 +40,7 @@ export const getProductById = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${ApiURL}/products/detail/${id}`)
     const product = {
+      id: response.data.id,
       brand: response.data.brand,
       model: response.data.model,
       img: response.data.img,
@@ -126,6 +127,6 @@ export const setSearchString = (searchString) => {
 export const AddCart = (newproduct) => {
   return {
     type: ADD_CART,
-    payload: newproduct
+    payload: { ...newproduct, qty: 1 }
   }
 }
