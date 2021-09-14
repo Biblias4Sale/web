@@ -14,7 +14,6 @@ export const UserIcon = () => {
   const [currentView, setCurrentView] = useState('init')
 
   const dispatch = useDispatch()
-
   const history = useHistory()
 
   useEffect(() => {
@@ -58,12 +57,15 @@ export const UserIcon = () => {
         : (
           <div className='dropdown'>
             <NavDropdown
-              title={
-                <span className='text-dark'>{initial}</span>
-            }
+              title={initial}
               className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
             >
-              <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
+              <NavDropdown.Item as='button'>
+                <Link
+                  to='/micuenta' className='align-self-center text-decoration-none text-black'
+                > Mi cuenta
+                </Link>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogOut}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
