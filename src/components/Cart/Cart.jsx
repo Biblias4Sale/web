@@ -15,7 +15,6 @@ export const Cart = () => {
       resTotal = resTotal + product.price
     })
     setTotal(resTotal)
-    // setTotal(cart.reduce((acc, value) => acc.price + value.price))
   }, [cart])
 
   console.log('TOTAL', total)
