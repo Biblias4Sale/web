@@ -56,13 +56,15 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
               </Col>
 
               <Col lg={2} className='d-flex justify-content-center align-items-center'>
-                <span className='fw-bolder fs-5'>{FormatedPrice(product)}</span>
+                <span className='fw-bolder fs-5'>{product && FormatedPrice(product)}</span>
               </Col>
             </Row>
           )
           )}
           <Row>
-            <span className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>Total: {FormatedPrice({ price: total })}</span>
+            <span className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
+              Total: {total && FormatedPrice({ price: total })}
+            </span>
 
           </Row>
         </Container>
