@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total, addOne, deleteProduct }) => {
+export const CartView = ({ cart, total, addOne, deleteProduct, subTotal }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -55,8 +55,13 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
                 </InputGroup>
               </Col>
 
-              <Col lg={2} className='d-flex justify-content-center align-items-center'>
-                <span className='fw-bolder fs-5'>{product && FormatedPrice(product)}</span>
+              <Col lg={1}  className='d-flex justify-content-center align-items-center flex-column'>
+              <Row><span className='fw-bolder fs-6 text-center'>Precio unitario:</span></Row>
+              <Row><span className='fw-bolder fs-6'>{product && FormatedPrice(product)}</span></Row>
+              </Col>
+
+              <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
+              <Row><span className='fw-bolder fs-5'>{product && FormatedPrice(product) + subTotal}</span></Row>
               </Col>
             </Row>
           )
