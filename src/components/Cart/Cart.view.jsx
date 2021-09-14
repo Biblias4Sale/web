@@ -17,53 +17,53 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
           </ul>
         </div>
 
-        <Container id={styles.body}>
+        <Container id={styles.body}  className='justify-content-center' >
           {cart.map(product => (
-            <Row className={styles.productContainer} key={product.id}>
+            <Row className='border border-dark p-1 mt-2' key={product.id} >
               <Col lg={2}>
-                <img src={product.img} alt='' style={{ width: '6vw' }} />
+                <img src={product.img} alt='' style={{ width: '5vw' }} />
               </Col>
 
               <Col lg={6}>
                 <Row className='text-uppercase mt-2'>
-                  <h5>{product.model}</h5>
+                  <h5 >{product.model}</h5>
                 </Row>
                 <Row>
-                 <h6> Marca: {product.brand}</h6>
+                 <p> Marca: {product.brand}</p>
                 </Row>
 
                 <Row>
                   <Col><Link to='#' onClick={() => deleteProduct(product.id)}>Eliminar</Link></Col>
-                  <Col>Guardar para después</Col>
+                  <Col><Link to='#'>Guardar para después</Link></Col>
 
                 </Row>
 
               </Col>
 
-              <Col lg={2}>
-                <InputGroup className='mb-3 w-50'>
-                  <Button variant='outline-secondary' id='button-addon1'>
-                    -
+              <Col lg={2} className='d-flex justify-content-center align-items-center'>
+                <InputGroup style={{width: '7.5vw'}} className='text-center'>
+                  <Button variant='outline-dark' >
+                  <span className='fw-bolder'>-</span>
                   </Button>
                   <FormControl
-                    aria-label='Example text with button addon'
-                    aria-describedby='basic-addon1'
+                  className='fw-bolder'
                     value={product.qty}
                   />
-                  <Button variant='outline-secondary' id='button-addon1' onClick={() => addOne(product)}>
-                    +
+                  <Button variant='outline-dark' onClick={() => addOne(product)}>
+                    <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
                   </Button>
                 </InputGroup>
               </Col>
 
-              <Col lg={2}>
-                {FormatedPrice(product)}
+              <Col lg={2} className='d-flex justify-content-center align-items-center'>
+              <span className='fw-bolder fs-5'>{FormatedPrice(product)}</span> 
               </Col>
             </Row>
           )
           )}
-          <Row>
-            Total: {FormatedPrice({ price: total })}
+          <Row >
+          <span className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>Total: {FormatedPrice({ price: total })}</span> 
+            
           </Row>
         </Container>
       </div>
