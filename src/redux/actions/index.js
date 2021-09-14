@@ -40,19 +40,19 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${ApiURL}/products/detail/${id}`)
-    const product = {
-      id: response.data.id,
-      brand: response.data.brand,
-      model: response.data.model,
-      img: response.data.img,
-      description: response.data.description,
-      price:
-        '$' +
-        new Intl.NumberFormat('es-ES').format(response.data.price.toString()),
-      points: response.data.points,
-      subCategoryId: response.data.subCategoryId
-    }
-    return dispatch({ type: GET_PRODUCT_BY_ID, payload: product })
+    // const product = {
+    //   id: response.data.id,
+    //   brand: response.data.brand,
+    //   model: response.data.model,
+    //   img: response.data.img,
+    //   description: response.data.description,
+    //   price:
+    //     '$' +
+    //     new Intl.NumberFormat('es-ES').format(response.data.price.toString()),
+    //   points: response.data.points,
+    //   subCategoryId: response.data.subCategoryId
+    // }
+    return dispatch({ type: GET_PRODUCT_BY_ID, payload: response.data })
   }
 }
 
