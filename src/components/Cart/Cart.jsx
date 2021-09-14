@@ -1,5 +1,7 @@
 import CartView from './Cart.view'
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { AddCart } from '../../redux/actions/index'
 
 const ReduxCart = [
   {
@@ -35,12 +37,17 @@ const ReduxCart = [
 // const cart = ReduxCart.slice()
 
 export const Cart = () => {
+  const dispatch = useDispatch()
   const [total, setTotal] = useState(2599)
   const [cart, setCart] = useState(ReduxCart)
 
   useEffect(() => {
     setTotal(cart.reduce((acc, value) => acc.price + value.price))
   }, [cart])
+
+  const addOne = (id) => {
+    dispatch(AddCart(id))
+  }
 
   // const handleUnits = (id, value) => {
   //   let newQty
@@ -55,7 +62,7 @@ export const Cart = () => {
   // }
 
   return (
-    <CartView cart={cart} total={total}  />
+    <CartView cart={cart} total={total} addOne={addOne} />
   )
 }
 

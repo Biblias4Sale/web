@@ -2,7 +2,7 @@ import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-boot
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total }) => {
+export const CartView = ({ cart, total, addOne }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -47,9 +47,13 @@ export const CartView = ({ cart, total }) => {
                   <FormControl
                     aria-label='Example text with button addon'
                     aria-describedby='basic-addon1'
-                    value={product.qty}
+                    value={prod
+                        .
+                        
+                        
+                        uct.qty}
                   />
-                  <Button variant='outline-secondary' id='button-addon1'>
+                  <Button variant='outline-secondary' id='button-addon1' onClick={addOne(product.id)}>
                     +
                   </Button>
                 </InputGroup>
