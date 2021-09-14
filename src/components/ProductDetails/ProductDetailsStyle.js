@@ -26,8 +26,8 @@ export const ButtonCartStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  color: '#ffffff'
-  // cursor: 'pointer'
+  color: '#ffffff',
+  cursor: 'pointer'
 }
 
 export const ImgColStyle = {

@@ -56,7 +56,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, searchString: action.payload }
 
     case ADD_CART:
-      return { ...state, cart: action.payload }
+      console.log('state.cart', state.cart)
+      return { ...state, cart: state.cart.concat(action.payload) }
     default:
       return state
   }
