@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Session } from '../../../Session/Session'
 import { Cursor } from '../../NavBarStyle'
 import { logOut } from '../../../../redux/actions/index'
-import { useHistory } from 'react-router-dom';
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
@@ -15,8 +14,7 @@ export const UserIcon = () => {
   const [currentView, setCurrentView] = useState('init')
 
   const dispatch = useDispatch()
-
-  const history = useHistory();
+  const history = useHistory()
 
   useEffect(() => {
     if (logged) {
@@ -29,14 +27,12 @@ export const UserIcon = () => {
     }
   }, [logged])
 
-    const handleLogOut = (e) => {
-      e.preventDefault()
-    if (window.location.pathname === '/micuenta') {   
-        history.push('/')
-        dispatch(logOut(e))
-  }
-    else
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    if (window.location.pathname === '/micuenta') {
+      history.push('/')
       dispatch(logOut(e))
+    } else { dispatch(logOut(e)) }
   }
 
   return (
@@ -60,13 +56,16 @@ export const UserIcon = () => {
           )
         : (
           <div className='dropdown'>
-            <NavDropdown 
-              title={
-                <span className='text-dark'>{initial}</span>
-            }
-            className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
+            <NavDropdown
+              title={initial}
+              className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
             >
-              <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
+              <NavDropdown.Item as='button'>
+                <Link
+                  to='/micuenta' className='align-self-center text-decoration-none text-black'
+                > Mi cuenta
+                </Link>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogOut}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
