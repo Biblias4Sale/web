@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import { Categories } from '../../../NavBar/modules/DropCategories/categories'
 import { MapCategories } from '../../modules/optionsComponent/mapCategories'
+import { useSelector } from 'react-redux'
 
 export const ListCategories = ({ options, handleCategoryChange }) => {
-  const allCategories = Categories()
+  const allCategories = useSelector(state => state.categories)
 
   return (
     <Container>

@@ -1,0 +1,68 @@
+
+#leftContainer {
+  height: 100vh;
+  margin-top: 0rem;
+  padding: 1rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(192, 178, 178);
+  background-color: rgb(250, 250, 250);
+}
+
+#rightContainer  {
+  padding: 1rem;
+  height: 100vh;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 0rem;
+  margin-left: 1rem;
+  border-color: rgb(192, 178, 178);
+  background-color: rgb(250, 250, 250);
+}
+
+
+#userName {
+  border-bottom-style: solid;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+#banner  {
+  background-image: url('../../../assets/USAF_photographer.jpg');
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(224, 223, 223);
+  margin: 10px 0 0 0;
+  height: 30vh;
+  display: flex;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 28%
+}
+
+#userCapitalsBox {
+  margin-left: 12.5%;
+  margin-bottom: -10vh;
+  font-size: 60px;
+  color: white;
+  border: solid 5px #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 75px;
+  background: rgb(2, 0, 95);
+  height: 8rem;
+  width: 8rem;
+  z-index: 15;
+}
+
+
+.optionItem {
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.optionItem:hover {
+  color: rgb(94, 93, 93);
+}

@@ -1,10 +1,10 @@
-import { banner, userCapitalsBox } from './TopContainerStyle'
+import styles from './userPage.module.css'
 
 export const TopContainer = ({ userCapitals }) => {
   return (
     <div>
-      <div style={banner}>
-        <div style={userCapitalsBox}>
+      <div id={styles.banner}>
+        <div id={styles.userCapitalsBox}>
           {userCapitals}
         </div>
       </div>

@@ -2,7 +2,15 @@ import { Form, Container, Button, Col, Row } from 'react-bootstrap'
 import { DeleteUser } from './DeleteUser/DeleteUser'
 import { botton, title } from './EditAccountStyle'
 
-export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setModalShow, modalShow }) => {
+export const EditAccountView = ({
+  handleSubmit,
+  errors,
+  oldInfo,
+  setModalShow,
+  modalShow,
+  handleChange,
+  errorAuth
+}) => {
   return (
     <Container>
       <h3 style={title}>Modificar datos personales</h3>
@@ -15,10 +23,10 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               placeholder='Nombre'
               name='name'
               defaultValue={oldInfo.name}
-              {...register('name')}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.name?.message}</h6>
+              <h6 className='text-danger'>{errors.name && errors.name}</h6>
             </Row>
           </Form.Group>
           <Form.Group as={Col}>
@@ -28,10 +36,10 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               placeholder='Apellido'
               name='lastName'
               defaultValue={oldInfo.lastName}
-              {...register('lastName')}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.lastName?.message}</h6>
+              <h6 className='text-danger'>{errors.lastName && errors.lastName}</h6>
             </Row>
           </Form.Group>
         </Row>
@@ -43,10 +51,10 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               placeholder='E-mail'
               name='email'
               defaultValue={oldInfo.email}
-              {...register('email')}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.email?.message}</h6>
+              <h6 className='text-danger'>{errors.email && errors.email}</h6>
             </Row>
           </Form.Group>
           <Form.Group as={Col}>
@@ -55,10 +63,11 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='tel'
               placeholder='Teléfono'
               name='phone'
-              {...register('phone')}
+              defaultValue={oldInfo.phone}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.phone?.message}</h6>
+              <h6 className='text-danger'>{errors.phone && errors.phone}</h6>
             </Row>
           </Form.Group>
         </Row>
@@ -69,10 +78,10 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='password'
               placeholder='Contraseña'
               name='password'
-              {...register('password')}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.password?.message}</h6>
+              <h6 className='text-danger'>{errors.password && errors.password}</h6>
             </Row>
           </Form.Group>
           <Form.Group as={Col}>
@@ -81,10 +90,10 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='password'
               placeholder='Confirmar contraseña'
               name='confirmPassword'
-              {...register('confirmPassword')}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.confirmPassword?.message}</h6>
+              <h6 className='text-danger'>{errorAuth && errorAuth}</h6>
             </Row>
           </Form.Group>
         </Row>
@@ -94,10 +103,11 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
             type='text'
             placeholder='Dirección'
             name='address'
-            {...register('address')}
+            defaultValue={oldInfo.address}
+            onChange={(event) => handleChange(event.target.name, event.target.value)}
           />
           <Row className='justify-content-center m-2'>
-            <h6 className='text-danger'>{errors.address?.message}</h6>
+            <h6 className='text-danger'>{errors.address && errors.address}</h6>
           </Row>
         </Form.Group>
         <Row>
@@ -107,10 +117,11 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='text'
               placeholder='Ciudad'
               name='city'
-              {...register('city')}
+              defaultValue={oldInfo.city}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.city?.message}</h6>
+              <h6 className='text-danger'>{errors.city && errors.city}</h6>
             </Row>
           </Form.Group>
           <Form.Group as={Col}>
@@ -119,10 +130,11 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='text'
               placeholder='Provincia'
               name='province'
-              {...register('province')}
+              defaultValue={oldInfo.province}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.province?.message}</h6>
+              <h6 className='text-danger'>{errors.province && errors.province}</h6>
             </Row>
           </Form.Group>
           <Form.Group as={Col}>
@@ -131,18 +143,27 @@ export const EditAccountView = ({ register, handleSubmit, errors, oldInfo, setMo
               type='text'
               placeholder='Código Postal'
               name='cp'
-              {...register('cp')}
+              defaultValue={oldInfo.cp}
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
-              <h6 className='text-danger'>{errors.cp?.message}</h6>
+              <h6 className='text-danger'>{errors.cp && errors.cp}</h6>
             </Row>
           </Form.Group>
         </Row>
         <Col>
           <Row>
-            <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-              Actualizar
-            </Button>
+            {!errors.name && !errors.lastName && !errors.email && !errors.password && !errors.confirmPassword
+              ? (
+                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Actualizar
+                </Button>
+                )
+              : (
+                <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Actualizar
+                </Button>)}
+
           </Row>
           <Row className='d-flex justify-content-center'>
             <div>

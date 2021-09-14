@@ -15,7 +15,7 @@ export const UserPageView = () => {
   return (
     <>
       <TopContainer userCapitals={userCapitals} />
-      <Container className='d-flex' style={{ marginTop: '70px' }}>
+      <Container className='d-flex' style={{ marginTop: '50px' }}>
         <LeftContainer user={user} setOption={setOption} />
         <RightContainer option={option} />
       </Container>

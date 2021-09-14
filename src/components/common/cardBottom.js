@@ -4,10 +4,11 @@ import { LinkStyle } from './styles/cardsStyles'
 
 export const CardBottom = ({ product }) => {
   return (
-    <div className='d-flex justify-content-center align-items-center flex-column'>
-      <NavLink to={`/product/details/${product.id}`} style={LinkStyle}>
-        <ButtonCart />
-      </NavLink>
+    <div className='d-flex justify-content-center align-items-center flex-column' style={LinkStyle}>
+      <NavLink to={`/product/details/${product.id}`} />
+      <ButtonCart
+        product={product}
+      />
     </div>
   )
 }
