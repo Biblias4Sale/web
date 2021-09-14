@@ -17,8 +17,12 @@ export const Cart = () => {
     setTotal(resTotal)
   }, [cart])
 
-  const addOne = (product) => {
+  const addQty = (product) => {
     dispatch(AddProductToCart(product))
+  }
+
+  const subtractQty = (product) => {
+    dispatch(subtractQtyFromCart(product))
   }
 
   const RemoveProduct = (id) => {
@@ -26,7 +30,7 @@ export const Cart = () => {
   }
 
   return (
-    <CartView cart={cart} total={total} addOne={addOne} RemoveProduct={RemoveProduct} />
+    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} />
   )
 }
 
