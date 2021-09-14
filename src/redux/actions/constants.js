@@ -8,6 +8,5 @@ export const GET_REVIEWS = 'GET_REVIEWS'
 export const LOG_OUT = 'LOG_OUT'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 export const SET_SEARCH_STRING = 'SET_SEARCH_STRING'
-export const ADD_CART = 'ADD_CART'
-export const DELETE_PRODUCT = 'DELETE_PRODUCT'
-
+export const ADD_PRODUCT_TO_CART = 'ADD_CART'
+export const REMOVE_PRODUCT_FROM_CART = 'DELETE_PRODUCT'
