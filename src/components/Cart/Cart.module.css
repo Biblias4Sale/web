@@ -1,0 +1,24 @@
+#banner {
+    background-image: url('../../assets/bannerCart.jpg');
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 223, 223);
+    margin: 10px 0 0 0;
+    height: 30vh;
+    display: flex;
+    align-items: flex-end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 70%
+}
+
+#mainContainer {
+  margin: auto;
+  margin-top: 1rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+
+  width: 90vw;
+  height: 80vh;
+}
