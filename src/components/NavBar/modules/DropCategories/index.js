@@ -1,11 +1,9 @@
-import { NavDropdown } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
-import { Categories } from './categories'
-import { MapCategories } from './mapCategories'
-import { CategoriesTitle } from '../../NavBarStyle'
+import { NavDropdown, Dropdown } from 'react-bootstrap'
+import { withRouter, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const DropCategories = (props) => {
-  const allCategories = Categories()
+  const allCategories = useSelector(state => state.categories)
   const location = props.location.pathname
 
   return (
@@ -15,16 +13,22 @@ const DropCategories = (props) => {
         ? ''
         : (
           <NavDropdown
-            title={
-              <span style={CategoriesTitle}>Categorías</span>
-            }
-            className='d-flex justify-content-center ms-3'
+            title='Categorías'
           >
-            <NavDropdown.Item className='fw-bolder text-info'> Categorías </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <div className='d-flex flex-column color-black'>
-              <MapCategories allCategories={allCategories} />
-            </div>
+            {allCategories.map(category =>
+              <Link
+                key={category}
+                to={{
+                  pathname: '/catalogo',
+                  state: { category: category }
+                }}
+                className='align-self-center text-decoration-none text-black'
+              >
+                <Dropdown.Item as='button'>
+                  {category}
+                </Dropdown.Item>
+              </Link>
+            )}
           </NavDropdown>
           )
       }
