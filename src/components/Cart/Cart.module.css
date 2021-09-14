@@ -1,15 +1,15 @@
 #banner {
-    background-image: url('../../assets/bannerCart.jpg');
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(224, 223, 223);
-    margin: 10px 0 0 0;
-    height: 30vh;
-    display: flex;
-    align-items: flex-end;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0% 70%
+  background-image: url('../../assets/bannerCart.jpg');
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(224, 223, 223);
+  margin: 10px 0 0 0;
+  height: 30vh;
+  display: flex;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 70%;
 }
 
 #mainContainer {
@@ -18,7 +18,37 @@
   border-style: solid;
   border-width: 1px;
   border-color: grey;
-
   width: 90vw;
   height: 80vh;
+}
+
+#header {
+  margin: auto;
+  margin-top: 1rem;
+  border-bottom-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  padding: 0.5rem;
+  width: 90%;
+}
+
+ul {
+  /* border-style: solid; */
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-around ;
+}
+
+.headerItem {
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.headerItem:hover {
+  color: rgb(94, 93, 93);
+}
+
+.headerItem:active {
+  border-bottom-style: solid;
 }

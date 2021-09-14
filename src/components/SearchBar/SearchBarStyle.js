@@ -6,5 +6,5 @@ export const Style = {
 
 export const Input = {
   padding: '2hv',
-  width: '300px'
+  width: '200px'
 }
