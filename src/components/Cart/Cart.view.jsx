@@ -40,7 +40,7 @@ export const CartView = ({ cart, total, addOne }) => {
               </Col>
 
               <Col lg={2}>
-                <InputGroup className='mb-3 w-50'>
+                <InputGroup className='mb-3 w-75'>
                   <Button variant='outline-secondary' id='button-addon1'>
                     -
                   </Button>
@@ -56,13 +56,13 @@ export const CartView = ({ cart, total, addOne }) => {
               </Col>
 
               <Col lg={2}>
-                {FormatedPrice(product)}
+                {product && FormatedPrice(product)}
               </Col>
             </Row>
           )
           )}
           <Row>
-            Total: {FormatedPrice({ price: total })}
+            Total: {total && FormatedPrice({ price: total })}
           </Row>
         </Container>
       </div>

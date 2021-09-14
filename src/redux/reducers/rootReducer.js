@@ -56,7 +56,6 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, searchString: action.payload }
 
     case ADD_CART:
-      // console.log(action.payload.id)
       const productoRepetido = state.cart.find(product => product.id === action.payload.id)
       if (productoRepetido) {
         productoRepetido.qty = productoRepetido.qty + 1
