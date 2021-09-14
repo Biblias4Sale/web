@@ -63,6 +63,7 @@ export const EditAccountView = ({
               type='tel'
               placeholder='Teléfono'
               name='phone'
+              defaultValue={oldInfo.phone}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -102,6 +103,7 @@ export const EditAccountView = ({
             type='text'
             placeholder='Dirección'
             name='address'
+            defaultValue={oldInfo.address}
             onChange={(event) => handleChange(event.target.name, event.target.value)}
           />
           <Row className='justify-content-center m-2'>
@@ -115,6 +117,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Ciudad'
               name='city'
+              defaultValue={oldInfo.city}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -127,6 +130,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Provincia'
               name='province'
+              defaultValue={oldInfo.province}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -139,6 +143,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Código Postal'
               name='cp'
+              defaultValue={oldInfo.cp}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -148,9 +153,17 @@ export const EditAccountView = ({
         </Row>
         <Col>
           <Row>
-            <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-              Actualizar
-            </Button>
+            {!errors.name && !errors.lastName && !errors.email && !errors.password && !errors.confirmPassword
+              ? (
+                <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Actualizar
+                </Button>
+                )
+              : (
+                <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Actualizar
+                </Button>)}
+
           </Row>
           <Row className='d-flex justify-content-center'>
             <div>

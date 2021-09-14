@@ -8,7 +8,7 @@ export const container = {
 }
 
 export const botton = {
-  backgroundColor: '#9ba6a5',
+  backgroundColor: 'black',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
