@@ -70,9 +70,8 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, cart: state.cart.concat(action.payload) }
       }
 
-      case DELETE_PRODUCT:
-        const order = state.cart.filter(elem => elem.id !== action.payload)
-        return { ...state, cart: order }
+    case DELETE_PRODUCT:
+      return { ...state, cart: state.cart.filter(elem => elem.id !== action.payload) }
     default:
       return state
   }
