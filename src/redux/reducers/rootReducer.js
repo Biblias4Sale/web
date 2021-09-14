@@ -21,7 +21,10 @@ const initialState = {
   reviews: [],
   searchResult: [],
   searchString: '',
-  cart: []
+  cart: {
+    main: [],
+    saved: []
+  }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -57,21 +60,25 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, searchString: action.payload }
 
     case ADD_CART:
-      const productoRepetido = state.cart.find(product => product.id === action.payload.id)
+      const productoRepetido = state.cart.main.find(product => product.id === action.payload.id)
       if (productoRepetido) {
         productoRepetido.qty = productoRepetido.qty + 1
         return {
           ...state,
-          cart: [...state.cart
-            .filter(product => product.id !== action.payload.id)
-            .concat(productoRepetido)]
+          cart: {
+            ...state.cart,
+            main: [...state.cart.main
+              .filter(product => product.id !== action.payload.id)
+              .concat(productoRepetido)]
+          }
         }
       } else {
-        return { ...state, cart: state.cart.concat(action.payload) }
+        return { ...state, cart: { ...state.cart, main: state.cart.main.concat(action.payload) } }
       }
 
     case DELETE_PRODUCT:
-      return { ...state, cart: state.cart.filter(elem => elem.id !== action.payload) }
+      return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
+
     default:
       return state
   }

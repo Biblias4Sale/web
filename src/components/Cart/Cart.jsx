@@ -7,7 +7,7 @@ let resTotal = 0
 
 export const Cart = () => {
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.cart)
+  const cart = useSelector(state => state.cart.main)
   const [total, setTotal] = useState()
 
   useEffect(() => {
