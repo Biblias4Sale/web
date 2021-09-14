@@ -1,14 +1,14 @@
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { ButtonCartStyle } from '../ProductDetailsStyle'
 import { useDispatch } from 'react-redux'
-import { AddCart } from '../../../redux/actions'
+import { AddProductToCart } from '../../../redux/actions'
 import { toastCustom } from '../../common/Toastify'
 
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
   const onSubmit = async () => {
     try {
-      dispatch(AddCart(product))
+      dispatch(AddProductToCart(product))
       toastCustom('Producto agregado al carrito', 'success', 2000, 'bottom-right')
     } catch (error) {
       console.log('Error a agregar al carrito', error)
