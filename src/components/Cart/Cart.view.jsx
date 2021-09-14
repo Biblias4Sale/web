@@ -33,7 +33,7 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
                 </Row>
 
                 <Row>
-                  <Col><Link to='#' onClick={deleteProduct}>Eliminar</Link></Col>
+                  <Col><Link to='#' onClick={() => deleteProduct(product.id)}>Eliminar</Link></Col>
                   <Col>Guardar para después</Col>
 
                 </Row>
@@ -50,7 +50,7 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
                     aria-describedby='basic-addon1'
                     value={product.qty}
                   />
-                  <Button variant='outline-secondary' id='button-addon1' onClick={addOne(product.id)}>
+                  <Button variant='outline-secondary' id='button-addon1' onClick={() => addOne(product)}>
                     +
                   </Button>
                 </InputGroup>

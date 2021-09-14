@@ -72,7 +72,8 @@ const rootReducer = (state = initialState, action) => {
       }
 
       case DELETE_PRODUCT:
-        return { ...state, productDetails: [] }
+        const order = state.cart.filter(elem => elem.id !== action.payload)
+        return { ...state, cart: order }
     default:
       return state
   }
