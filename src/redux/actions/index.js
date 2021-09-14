@@ -11,7 +11,8 @@ import {
   SET_SEARCH_RESULT,
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
-  REMOVE_PRODUCT_FROM_CART
+  REMOVE_PRODUCT_FROM_CART,
+  SUBTRACT_QTY_FROM_CART
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -137,5 +138,12 @@ export const RemoveProductFromCart = (id) => {
   return {
     type: REMOVE_PRODUCT_FROM_CART,
     payload: id
+  }
+}
+
+export const subtractQtyFromCart = (product) => {
+  return {
+    type: SUBTRACT_QTY_FROM_CART,
+    payload: product
   }
 }
