@@ -9,7 +9,8 @@ import {
   SET_SEARCH_RESULT,
   GET_REVIEWS,
   SET_SEARCH_STRING,
-  ADD_CART
+  ADD_CART,
+  DELETE_PRODUCT
 } from '../actions/constants'
 
 const initialState = {
@@ -68,6 +69,10 @@ const rootReducer = (state = initialState, action) => {
       } else {
         return { ...state, cart: state.cart.concat(action.payload) }
       }
+
+      case DELETE_PRODUCT:
+        const order = state.cart.filter(elem => elem.id !== action.payload)
+        return { ...state, cart: order }
     default:
       return state
   }

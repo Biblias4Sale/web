@@ -10,7 +10,8 @@ import {
   LOG_OUT,
   SET_SEARCH_RESULT,
   SET_SEARCH_STRING,
-  ADD_CART
+  ADD_CART,
+  DELETE_PRODUCT
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -124,9 +125,17 @@ export const setSearchString = (searchString) => {
     payload: searchString
   }
 }
+
 export const AddCart = (newproduct) => {
   return {
     type: ADD_CART,
     payload: { ...newproduct, qty: 1 }
+  }
+}
+
+export const DeleteProduct = (id) => {
+  return {
+    type: DELETE_PRODUCT,
+    payload: id
   }
 }
