@@ -15,7 +15,7 @@ export const DetailsCol = ({ product }) => {
           <Col xs={12} lg={5} style={DetailsColStyle}>
             <h5 style={Height('4vh')}> {product.model} </h5>
             <div style={Height('4vh', 'orange')}> {productStars} </div>
-            <h4 style={Height('4vh')}> {product.price} </h4>
+            <h4 style={Height('4vh')}> {`$${product.price}`} </h4>
             <h6 style={Height('2vh')}> Descripción </h6>
             <p style={Height('18vh')}>
               {product.description}
