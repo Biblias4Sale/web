@@ -9,7 +9,8 @@ import {
   GET_REVIEWS,
   LOG_OUT,
   SET_SEARCH_RESULT,
-  SET_SEARCH_STRING
+  SET_SEARCH_STRING,
+  ADD_CART
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -99,8 +100,6 @@ export const editUser = (id, data, token) => {
           },
           token
         }
-        console.log('data', data)
-        console.log('edituser', EditedUser)
         if (editUser.status === 200) {
           return dispatch({
             type: SET_LOGGED,
@@ -122,5 +121,11 @@ export const setSearchString = (searchString) => {
   return {
     type: SET_SEARCH_STRING,
     payload: searchString
+  }
+}
+export const AddCart = (newproduct) => {
+  return {
+    type: ADD_CART,
+    payload: newproduct
   }
 }

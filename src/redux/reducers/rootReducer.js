@@ -8,7 +8,8 @@ import {
   LOG_OUT,
   SET_SEARCH_RESULT,
   GET_REVIEWS,
-  SET_SEARCH_STRING
+  SET_SEARCH_STRING,
+  ADD_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
   categories: [],
   reviews: [],
   searchResult: [],
-  searchString: ''
+  searchString: '',
+  cart: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -53,6 +55,9 @@ const rootReducer = (state = initialState, action) => {
     case SET_SEARCH_STRING:
       return { ...state, searchString: action.payload }
 
+    case ADD_CART:
+      console.log('state.cart', state.cart)
+      return { ...state, cart: state.cart.concat(action.payload) }
     default:
       return state
   }
