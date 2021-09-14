@@ -1,6 +1,6 @@
 import CartView from './Cart.view'
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { AddCart } from '../../redux/actions/index'
 
 const ReduxCart = [
@@ -39,14 +39,14 @@ const ReduxCart = [
 export const Cart = () => {
   const dispatch = useDispatch()
   const [total, setTotal] = useState(2599)
-  const [cart, setCart] = useState(ReduxCart)
+  const cart = useSelector(state => state.cart)
 
-  useEffect(() => {
-    setTotal(cart.reduce((acc, value) => acc.price + value.price))
-  }, [cart])
+  // useEffect(() => {
+  //   setTotal(cart.reduce((acc, value) => acc.price + value.price))
+  // }, [cart])
 
-  const addOne = (id) => {
-    dispatch(AddCart(id))
+  const addOne = (product) => {
+    dispatch(AddCart(product))
   }
 
   // const handleUnits = (id, value) => {

@@ -47,13 +47,9 @@ export const CartView = ({ cart, total, addOne }) => {
                   <FormControl
                     aria-label='Example text with button addon'
                     aria-describedby='basic-addon1'
-                    value={prod
-                        .
-                        
-                        
-                        uct.qty}
+                    value={product.qty}
                   />
-                  <Button variant='outline-secondary' id='button-addon1' onClick={addOne(product.id)}>
+                  <Button variant='outline-secondary' id='button-addon1' onClick={() => addOne(product)}>
                     +
                   </Button>
                 </InputGroup>
