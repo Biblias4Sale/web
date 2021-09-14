@@ -9,8 +9,8 @@ import {
   SET_SEARCH_RESULT,
   GET_REVIEWS,
   SET_SEARCH_STRING,
-  ADD_CART,
-  DELETE_PRODUCT
+  ADD_PRODUCT_TO_CART,
+  REMOVE_PRODUCT_FROM_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -59,7 +59,7 @@ const rootReducer = (state = initialState, action) => {
     case SET_SEARCH_STRING:
       return { ...state, searchString: action.payload }
 
-    case ADD_CART:
+    case ADD_PRODUCT_TO_CART:
       const productoRepetido = state.cart.main.find(product => product.id === action.payload.id)
       if (productoRepetido) {
         productoRepetido.qty = productoRepetido.qty + 1
@@ -76,7 +76,7 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, cart: { ...state.cart, main: state.cart.main.concat(action.payload) } }
       }
 
-    case DELETE_PRODUCT:
+    case REMOVE_PRODUCT_FROM_CART:
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
 
     default:
