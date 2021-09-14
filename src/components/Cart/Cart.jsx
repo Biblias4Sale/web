@@ -21,12 +21,12 @@ export const Cart = () => {
     dispatch(AddProductToCart(product))
   }
 
-  const deleteProduct = (id) => {
+  const RemoveProduct = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
 
   return (
-    <CartView cart={cart} total={total} addOne={addOne} deleteProduct={deleteProduct} />
+    <CartView cart={cart} total={total} addOne={addOne} RemoveProduct={RemoveProduct} />
   )
 }
 
