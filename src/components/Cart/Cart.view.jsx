@@ -1,8 +1,9 @@
 import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total, addOne }) => {
+export const CartView = ({ cart, total, addOne, deleteProduct }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -20,19 +21,19 @@ export const CartView = ({ cart, total, addOne }) => {
           {cart.map(product => (
             <Row className={styles.productContainer} key={product.id}>
               <Col lg={2}>
-                <img src={product.img} alt='' style={{ width: '80px' }} />
+                <img src={product.img} alt='' style={{ width: '6vw' }} />
               </Col>
 
               <Col lg={6}>
-                <Row>
-                  {product.model}
+                <Row className='text-uppercase mt-2'>
+                  <h5>{product.model}</h5>
                 </Row>
                 <Row>
-                  Marca: {product.brand}
+                 <h6> Marca: {product.brand}</h6>
                 </Row>
 
                 <Row>
-                  <Col>Eliminar</Col>
+                  <Col><Link to='#' onClick={() => deleteProduct(product.id)}>Eliminar</Link></Col>
                   <Col>Guardar para después</Col>
 
                 </Row>
