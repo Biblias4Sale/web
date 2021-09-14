@@ -6,7 +6,6 @@ import { DetailsColStyle, Height } from '../ProductDetailsStyle'
 
 export const DetailsCol = ({ product }) => {
   const productStars = GetStarts(product)
-
   return (
     <>
       {
@@ -23,8 +22,10 @@ export const DetailsCol = ({ product }) => {
             </p>
             <h6 style={Height('3vh')}> Marca</h6>
             <h6 style={Height('4vh')}> {product.brand} </h6>
-            <ButtonCart />
-            <h6 className='text-danger'> Sin Stock </h6>
+            <ButtonCart
+              product={product}
+            />
+            {/* <h6 className='text-danger'> Sin Stock </h6> */}
           </Col>
           )
       }
