@@ -12,7 +12,7 @@ export const CartView = ({ cart, total, addOne, deleteProduct }) => {
 
         <div id={styles.header}>
           <ul>
-            <li className={styles.headerItem}> Carrito </li>
+            <li className={styles.headerItem}> {`Carrito (${cart.length})`}</li>
             <li className={styles.headerItem}> Guardados </li>
           </ul>
         </div>
