@@ -66,7 +66,7 @@ export const UserIcon = () => {
             }
             className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
             >
-              <NavDropdown.Item> <Link to='/micuenta'> Mi cuenta </Link> </NavDropdown.Item>
+              <NavDropdown.Item> <Link to='/micuenta' className='text-decoration-none'> Mi cuenta </Link> </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogOut}>Cerrar sesión </NavDropdown.Item>
             </NavDropdown>
