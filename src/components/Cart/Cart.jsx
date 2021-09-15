@@ -1,5 +1,5 @@
 import CartView from './Cart.view'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   AddProductToCart,
   RemoveProductFromCart,
@@ -28,7 +28,7 @@ export const Cart = () => {
 
   useEffect(() => {
     calculateNewTotal()
-  }, [calculateNewTotal])
+  })
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))

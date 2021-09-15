@@ -69,7 +69,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
           </>
           )
         : (
-          <h3>Tu carrito está vacío</h3>
+          <h4>Tu carrito está vacío</h4>
           )}
     </Container>
   )
