@@ -16,7 +16,9 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
               return (
                 <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
                   <Col lg={2} className='d-flex justify-content-center align-items-center'>
+                    <Link to={`/product/details/${product.id}`}>
                     <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
+                    </Link>
                   </Col>
 
                   <Col lg={6}>
