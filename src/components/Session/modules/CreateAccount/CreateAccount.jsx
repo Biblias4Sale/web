@@ -4,7 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { CreateAccountView } from './CreateAccountView'
-import { createUser } from '../../../../redux/actions'
+import { createUser } from '../../../../redux/actions/userActions'
 import { toastCustom } from '../../../common/Toastify'
 
 export const CreateAccount = ({ setCurrentView }) => {

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setLogged } from '../../../../redux/actions'
+import { setLogged } from '../../../../redux/actions/userActions'
 import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
