@@ -40,6 +40,7 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
                 <FormControl
                   className='fw-bolder'
                   name='qty'
+                  value={product.qty}
                   onChange={handleChange(product.qty)} // NO ANDA
                 />
 
