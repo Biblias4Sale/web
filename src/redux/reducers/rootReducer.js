@@ -12,7 +12,8 @@ import {
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
-  SUBTRACT_QTY_FROM_CART
+  SUBTRACT_QTY_FROM_CART,
+  REMOVE_PRODUCT_FROM_SAVED
 } from '../actions/constants'
 
 const initialState = {
@@ -75,6 +76,9 @@ const rootReducer = (state = initialState, action) => {
 
     case REMOVE_PRODUCT_FROM_CART:
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
+
+    case REMOVE_PRODUCT_FROM_SAVED:
+      return { ...state, cart: { ...state.cart, saved: state.cart.saved.filter(elem => elem.id !== action.payload) } }
 
     case ADD_PRODUCT_TO_SAVED:
       if (state.cart.saved.find(product => product.id === action.payload.id)) {

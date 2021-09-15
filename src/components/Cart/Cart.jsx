@@ -4,7 +4,8 @@ import {
   AddProductToCart,
   RemoveProductFromCart,
   AddProductToSaved,
-  subtractQtyFromCart
+  subtractQtyFromCart,
+  RemoveProductFromSaved
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -32,9 +33,19 @@ export const Cart = () => {
     dispatch(subtractQtyFromCart(id))
   }
 
-  const RemoveProduct = (id) => {
+  const moveToCart = (product) => {
+    dispatch(AddProductToCart(product))
+    dispatch(RemoveProductFromSaved(product.id))
+  }
+
+  const removeFromCart = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
+
+  const removeFromSaved = (id) => {
+    dispatch(RemoveProductFromSaved(id))
+  }
+
   const addSaved = (product) => {
     dispatch(AddProductToSaved(product))
     dispatch(RemoveProductFromCart(product.id))
@@ -46,7 +57,9 @@ export const Cart = () => {
       saved={saved}
       total={total}
       addQty={addQty}
-      RemoveProduct={RemoveProduct}
+      removeFromCart={removeFromCart}
+      removeFromSaved={removeFromSaved}
+      moveToCart={moveToCart}
       addSaved={addSaved}
       subtractQty={subtractQty}
       actualView={actualView}

@@ -13,7 +13,8 @@ import {
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
-  SUBTRACT_QTY_FROM_CART
+  SUBTRACT_QTY_FROM_CART,
+  REMOVE_PRODUCT_FROM_SAVED
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -129,9 +130,14 @@ export const setSearchString = (searchString) => {
 }
 
 export const AddProductToCart = (newproduct) => {
+  let newQty = 1
+  if (newproduct.hasOwnProperty('qty')) {
+    newQty = newproduct.qty
+  }
+
   return {
     type: ADD_PRODUCT_TO_CART,
-    payload: { ...newproduct, qty: 1 }
+    payload: { ...newproduct, qty: newQty }
   }
 }
 
@@ -153,5 +159,12 @@ export const AddProductToSaved = (newproduct) => {
   return {
     type: ADD_PRODUCT_TO_SAVED,
     payload: newproduct
+  }
+}
+
+export const RemoveProductFromSaved = (id) => {
+  return {
+    type: REMOVE_PRODUCT_FROM_SAVED,
+    payload: id
   }
 }

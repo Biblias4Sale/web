@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Saved = ({ saved, addQty, RemoveProduct, subtractQty, addSaved }) => {
+const Saved = ({ saved, moveToCart, removeFromSaved }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -22,22 +22,22 @@ const Saved = ({ saved, addQty, RemoveProduct, subtractQty, addSaved }) => {
             </Row>
 
             <Row>
-              <Col><Link to='#' onClick={() => RemoveProduct(product.id)}>Eliminar</Link></Col>
-              <Col><Link to='#' onClick={() => addSaved(product)}>Guardar para después</Link></Col>
+              <Col><Link to='#' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
+              <Col><Link to='#' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>
             </Row>
 
           </Col>
 
           <Col lg={2} className='d-flex justify-content-center align-items-center'>
             <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-              <Button variant='outline-dark' onClick={() => subtractQty(product.id)}>
+              <Button variant='outline-dark'>
                 <span className='fw-bolder'>-</span>
               </Button>
               <FormControl
                 className='fw-bolder'
                 value={product.qty}
               />
-              <Button variant='outline-dark' onClick={() => addQty(product)}>
+              <Button variant='outline-dark'>
                 <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
               </Button>
             </InputGroup>
