@@ -10,7 +10,8 @@ import {
   GET_REVIEWS,
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
-  REMOVE_PRODUCT_FROM_CART
+  REMOVE_PRODUCT_FROM_CART,
+  SUBTRACT_QTY_FROM_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -62,14 +63,14 @@ const rootReducer = (state = initialState, action) => {
     case ADD_PRODUCT_TO_CART:
       const productoRepetido = state.cart.main.find(product => product.id === action.payload.id)
       if (productoRepetido) {
-        productoRepetido.qty = productoRepetido.qty + 1
+        action.payload.qty = productoRepetido.qty + 1
         return {
           ...state,
           cart: {
             ...state.cart,
             main: [...state.cart.main
               .filter(product => product.id !== action.payload.id)
-              .concat(productoRepetido)]
+              .concat(action.payload)]
           }
         }
       } else {
@@ -78,6 +79,18 @@ const rootReducer = (state = initialState, action) => {
 
     case REMOVE_PRODUCT_FROM_CART:
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
+
+    case SUBTRACT_QTY_FROM_CART:
+      action.payload.qty--
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          main: [...state.cart.main
+            .filter(product => product.id !== action.payload.id)
+            .concat(action.payload)]
+        }
+      }
 
     default:
       return state

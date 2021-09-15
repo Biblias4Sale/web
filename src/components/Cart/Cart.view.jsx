@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total, addOne, deleteProduct, subTotal }) => {
+export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty, subPriceTotal }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -33,7 +33,7 @@ export const CartView = ({ cart, total, addOne, deleteProduct, subTotal }) => {
                 </Row>
 
                 <Row>
-                  <Col><Link to='#' onClick={() => deleteProduct(product.id)}>Eliminar</Link></Col>
+                  <Col><Link to='#' onClick={() => RemoveProduct(product.id)}>Eliminar</Link></Col>
                   <Col><Link to='#'>Guardar para después</Link></Col>
 
                 </Row>
@@ -42,14 +42,14 @@ export const CartView = ({ cart, total, addOne, deleteProduct, subTotal }) => {
 
               <Col lg={2} className='d-flex justify-content-center align-items-center'>
                 <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                  <Button variant='outline-dark'>
+                  <Button variant='outline-dark' onClick={() => subtractQty(product)}>
                     <span className='fw-bolder'>-</span>
                   </Button>
                   <FormControl
                     className='fw-bolder'
                     value={product.qty}
                   />
-                  <Button variant='outline-dark' onClick={() => addOne(product)}>
+                  <Button variant='outline-dark' onClick={() => addQty(product)}>
                     <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
                   </Button>
                 </InputGroup>
@@ -61,7 +61,7 @@ export const CartView = ({ cart, total, addOne, deleteProduct, subTotal }) => {
               </Col>
 
               <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
-              <Row><span className='fw-bolder fs-5'>{product && FormatedPrice(product) + subTotal}</span></Row>
+              <Row><span className='fw-bolder fs-5'>{product && product.price * subPriceTotal}</span></Row>
               </Col>
             </Row>
           )

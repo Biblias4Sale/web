@@ -1,6 +1,6 @@
 import CartView from './Cart.view'
 import { useState, useEffect } from 'react'
-import { AddProductToCart, RemoveProductFromCart } from '../../redux/actions/index'
+import { AddProductToCart, RemoveProductFromCart, subtractQtyFromCart } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
 let resTotal = 0
@@ -17,26 +17,34 @@ export const Cart = () => {
     })
     setTotal(resTotal)
   }, [cart])
-  
-  const addOne = (product) => {
+
+  const addQty = (product) => {
     dispatch(AddProductToCart(product))
   }
-  
-  const deleteProduct = (id) => {
+
+  const subtractQty = (product) => {
+    dispatch(subtractQtyFromCart(product))
+  }
+
+  const RemoveProduct = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
   
-  // const subPriceTotal = (id) => {
-  //   let acc = 0
-  //   cart.forEach(elem => {
-  //     if(elem.id === id) acc++
-  //     elem.price + elem.price})
-  //   }
+  const subPriceTotal = () => {
+    for (let i = 0; i < cart.length; i++) {
+      for (let j = 1; j < cart.length -1; j++) {
+        let acc = 0
+        if(i.id === i.id) acc++
+        return acc
+      }
+    }
+  }
+
+  console.log(subPriceTotal())
   
   return (
-    <CartView cart={cart} total={total} addOne={addOne} deleteProduct={deleteProduct} subTotal={subTotal}/>
-    )
-  }
-  
-  export default Cart
-  
+    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} subtractQty={subtractQty} subPriceTotal={subPriceTotal()}/>
+  )
+}
+
+export default Cart
