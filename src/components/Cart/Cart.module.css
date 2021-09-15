@@ -48,10 +48,12 @@ ul {
 .headerItem {
   border-width: 1px;
   cursor: pointer;
+  transition: transform 0.3s ease-out;
 }
 
 .headerItem:hover {
   color: rgb(94, 93, 93);
+  transform: translateY(5px);
 }
 
 .productContainer {

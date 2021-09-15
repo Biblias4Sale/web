@@ -1,40 +1,77 @@
 import CartView from './Cart.view'
 import { useState, useEffect } from 'react'
-import { AddProductToCart, RemoveProductFromCart, AddProductToSaved, subtractQtyFromCart } from '../../redux/actions/index'
+import {
+  AddProductToCart,
+  RemoveProductFromCart,
+  AddProductToSaved,
+  subtractQtyFromCart,
+  RemoveProductFromSaved
+} from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
-
-let resTotal = 0
 
 export const Cart = () => {
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.cart.main)
+  const main = useSelector((state) => state.cart.main)
+  const saved = useSelector((state) => state.cart.saved)
   const [total, setTotal] = useState()
+  const [actualView, setActualView] = useState('main')
 
-  useEffect(() => {
-    cart.forEach(product => {
-      resTotal = resTotal + product.price * product.qty
-    })
-    setTotal(resTotal)
-  }, [cart])
+  // useEffect(() => {
+  //   main.forEach((product) => {
+  //     resTotal = resTotal + product.price * product.qty
+  //   })
+  //   setTotal(resTotal)
+  // }, [main])
+
+  // console.log('Main', main)
+
+  const handleChange = (event, value) => {
+    console.log(event)
+    console.log(value)
+  }
 
   const addQty = (product) => {
     dispatch(AddProductToCart(product))
   }
 
   const subtractQty = (id) => {
+    console.log('soy la funcion q resta')
     dispatch(subtractQtyFromCart(id))
   }
 
-  const RemoveProduct = (id) => {
+  const moveToCart = (product) => {
+    dispatch(AddProductToCart(product))
+    dispatch(RemoveProductFromSaved(product.id))
+  }
+
+  const removeFromCart = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
-  const addSaved = (product) => {
+
+  const removeFromSaved = (id) => {
+    dispatch(RemoveProductFromSaved(id))
+  }
+
+  const moveToSaved = (product) => {
     dispatch(AddProductToSaved(product))
     dispatch(RemoveProductFromCart(product.id))
   }
 
   return (
-    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} addSaved={addSaved} subtractQty={subtractQty} />
+    <CartView
+      main={main}
+      saved={saved}
+      total={total}
+      addQty={addQty}
+      removeFromCart={removeFromCart}
+      removeFromSaved={removeFromSaved}
+      moveToCart={moveToCart}
+      moveToSaved={moveToSaved}
+      subtractQty={subtractQty}
+      actualView={actualView}
+      setActualView={setActualView}
+      handleChange={handleChange}
+    />
   )
 }
 
