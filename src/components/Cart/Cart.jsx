@@ -10,27 +10,30 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
+  let resTotal = 0
+
   const dispatch = useDispatch()
   const main = useSelector((state) => state.cart.main)
   const saved = useSelector((state) => state.cart.saved)
   const [total, setTotal] = useState()
+  
+  useEffect(() => {
+    main.forEach(product => {
+      resTotal = resTotal + (product.price * product.qty)
+    })
+    setTotal(resTotal)
+  }, [main])
+
   const [actualView, setActualView] = useState('main')
 
-  // useEffect(() => {
-  //   main.forEach((product) => {
-  //     resTotal = resTotal + product.price * product.qty
-  //   })
-  //   setTotal(resTotal)
-  // }, [main])
 
-  // console.log('Main', main)
+  const handleChange = (e) => {
+    console.log(e, 'no entre')
 
-  const handleChange = (event, value) => {
-    console.log(event)
-    console.log(value)
   }
 
   const addQty = (product) => {
+    console.log('soy la funcion q suma')
     dispatch(AddProductToCart(product))
   }
 

@@ -8,7 +8,7 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
 
     <Container id={styles.body} className='justify-content-center'>
       {main.map(product => {
-        const subtotal = product.price * product.qty
+        const subtotal = product?.price * product?.qty
 
         return (
           <Row className='border border-dark p-1 mt-2' key={product.id}>
@@ -39,22 +39,16 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
 
                 <FormControl
                   className='fw-bolder'
-                //   value={product.qty}
                   name='qty'
-                  onChange={(event) => handleChange(event.name, event.value)} // NO ANDA
+                  onChange={handleChange(product.qty)} // NO ANDA
                 />
 
                 <Button variant='outline-dark' onClick={() => addQty(product)}>
-                  <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                  <span className='fw-bolder'>+</span>
                 </Button>
 
               </InputGroup>
             </Col>
-
-            {/* <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
-              <Row><span className='fw-bolder fs-6 text-center'>Precio unitario:</span></Row>
-              <Row><span className='fw-bolder fs-6'>{product && FormatedPrice(product)}</span></Row>
-            </Col> */}
 
             <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
               <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: subtotal })}</span></Row>
