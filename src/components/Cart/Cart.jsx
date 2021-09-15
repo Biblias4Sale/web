@@ -6,8 +6,7 @@ import {
   AddProductToSaved,
   SubtractQtyFromCart,
   RemoveProductFromSaved,
-  SubtractQtyFromSaved,
-  QtyChoiceFromCart
+  SubtractQtyFromSaved
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -17,34 +16,31 @@ export const Cart = () => {
   const savedList = useSelector((state) => state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
-  const [key, setKey] = useState(1)
+  const [newKey, setNewKey] = useState(1)
 
-  useEffect(() => {
+  const calculateNewTotal = () => {
     let newTotal = 0
     mainList.forEach(product => {
       newTotal = newTotal + product.price * product.qty
+      setTotal(total => newTotal)
     })
-    setTotal(total => newTotal)
-  }, [mainList])
-
-  const handleChange = (e, id) => {
-    console.log(e.target.value,'sot valueeeeeeeee')
-    // setHandle({
-    //   ...handle,
-    //   [e.target.name]: e.target.value,
-    // });
-    dispatch(QtyChoiceFromCart(id, e.target.value))
   }
+
+  useEffect(() => {
+    calculateNewTotal()
+  })
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
+    calculateNewTotal()
     console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
+    calculateNewTotal()
     console.log('Nuevo total:', total)
   }
 
@@ -67,10 +63,12 @@ export const Cart = () => {
   }
 
   const addQtyToSaved = (product) => {
+    setNewKey(prev => prev + 1)
     dispatch(AddProductToSaved(product))
   }
 
   const subtractQtyFromSaved = (id) => {
+    setNewKey(prev => prev + 1)
     dispatch(SubtractQtyFromSaved(id))
   }
 
@@ -89,8 +87,7 @@ export const Cart = () => {
       moveToSaved={moveToSaved}
       actualView={actualView}
       setActualView={setActualView}
-      handleChange={handleChange}
-      key={key}
+      newKey={newKey}
     />
   )
 }

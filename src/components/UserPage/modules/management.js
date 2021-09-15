@@ -2,5 +2,6 @@ export const Management = [
   'Datos personales',
   'Mis Compras',
   'Mis Reviews',
-  'Métodos de pago'
+  'Métodos de pago',
+  'Favoritos'
 ]

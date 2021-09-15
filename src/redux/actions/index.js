@@ -15,8 +15,9 @@ import {
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
-  SUBTRACT_QTY_FROM_SAVED,
-  QTY_CHOOSE_FROM_CART
+  ADD_PRODUCT_TO_FAVORITES,
+  REMOVE_PRODUCT_FROM_FAVORITES,
+  SUBTRACT_QTY_FROM_SAVED
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -157,6 +158,19 @@ export const RemoveProductFromSaved = (id) => {
   }
 }
 
+export const addProductToFavorites = (product) => {
+  return {
+    type: ADD_PRODUCT_TO_FAVORITES,
+    payload: product
+  }
+}
+export const RemoveProductFromFavorites = (id) => {
+  return {
+    type: REMOVE_PRODUCT_FROM_FAVORITES,
+    payload: id
+  }
+}
+
 export const SubtractQtyFromSaved = (id) => {
   return {
     type: SUBTRACT_QTY_FROM_SAVED,
@@ -164,9 +178,9 @@ export const SubtractQtyFromSaved = (id) => {
   }
 }
 
-export const QtyChoiceFromCart = (id, newQty) => {
-  return {
-    type: QTY_CHOOSE_FROM_CART,
-    payload: { id: id, qty: newQty }
-  }
-}
+// export const QtyChoiceFromCart = (id, newQty) => {
+//   return {
+//     type: QTY_CHOOSE_FROM_CART,
+//     payload: { id: id, qty: newQty }
+//   }
+// }
