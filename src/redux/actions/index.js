@@ -12,6 +12,7 @@ import {
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
+  ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART
 } from './constants'
 
@@ -138,6 +139,13 @@ export const RemoveProductFromCart = (id) => {
   return {
     type: REMOVE_PRODUCT_FROM_CART,
     payload: id
+  }
+}
+
+export const AddProductToSaved = (newproduct) => {
+  return {
+    type: ADD_PRODUCT_TO_SAVED,
+    payload: { ...newproduct, qty: 1 }
   }
 }
 

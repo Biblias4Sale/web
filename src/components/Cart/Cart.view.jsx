@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty }) => {
+export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty, addSaved }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -34,7 +34,7 @@ export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty }) =>
 
                 <Row>
                   <Col><Link to='#' onClick={() => RemoveProduct(product.id)}>Eliminar</Link></Col>
-                  <Col><Link to='#'>Guardar para después</Link></Col>
+                  <Col><Link to='#' onClick={() => addSaved(product)}>Guardar para después</Link></Col>
 
                 </Row>
 
