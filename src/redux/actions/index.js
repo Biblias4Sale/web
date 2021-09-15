@@ -14,7 +14,8 @@ import {
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
-  REMOVE_PRODUCT_FROM_SAVED
+  REMOVE_PRODUCT_FROM_SAVED,
+  SUBTRACT_QTY_FROM_SAVED
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -146,7 +147,7 @@ export const RemoveProductFromCart = (id) => {
   }
 }
 
-export const subtractQtyFromCart = (id) => {
+export const SubtractQtyFromCart = (id) => {
   return {
     type: SUBTRACT_QTY_FROM_CART,
     payload: id
@@ -163,6 +164,13 @@ export const AddProductToSaved = (newproduct) => {
 export const RemoveProductFromSaved = (id) => {
   return {
     type: REMOVE_PRODUCT_FROM_SAVED,
+    payload: id
+  }
+}
+
+export const SubtractQtyFromSaved = (id) => {
+  return {
+    type: SUBTRACT_QTY_FROM_SAVED,
     payload: id
   }
 }

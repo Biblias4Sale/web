@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Saved = ({ saved, moveToCart, removeFromSaved }) => {
+const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
-      {saved.map(product => (
+      {savedList.map(product => (
         <Row className='border border-dark p-1 mt-2' key={product.id}>
           <Col lg={2}>
             <img src={product.img} alt='' style={{ width: '5vw' }} />
@@ -29,14 +29,14 @@ const Saved = ({ saved, moveToCart, removeFromSaved }) => {
 
           <Col lg={2} className='d-flex justify-content-center align-items-center'>
             <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-              <Button variant='outline-dark'>
+              <Button variant='outline-dark' onClick={() => subtractQtyFromSaved(product.id)}>
                 <span className='fw-bolder'>-</span>
               </Button>
               <FormControl
                 className='fw-bolder'
                 // value={product.qty}
               />
-              <Button variant='outline-dark'>
+              <Button variant='outline-dark' onClick={() => addQtyToSaved(product)}>
                 <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
               </Button>
             </InputGroup>

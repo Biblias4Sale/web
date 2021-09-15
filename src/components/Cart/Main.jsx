@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, handleChange }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
-      {main.map(product => {
+      {mainList.map(product => {
         const subtotal = product?.price * product?.qty
 
         return (
@@ -33,7 +33,7 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
             <Col lg={2} className='d-flex justify-content-center align-items-center'>
               <InputGroup style={{ width: '7.5vw' }} className='text-center'>
 
-                <Button variant='outline-dark' onClick={() => subtractQty(product.id)}>
+                <Button variant='outline-dark' onClick={() => subtractQtyFromCart(product.id)}>
                   <span className='fw-bolder'>-</span>
                 </Button>
 
@@ -43,7 +43,7 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
                   onChange={handleChange(product.qty)} // NO ANDA
                 />
 
-                <Button variant='outline-dark' onClick={() => addQty(product)}>
+                <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>
                   <span className='fw-bolder'>+</span>
                 </Button>
 
