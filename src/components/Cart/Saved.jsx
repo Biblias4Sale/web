@@ -6,14 +6,14 @@ import styles from './Cart.module.css'
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey }) => {
   return (
 
-    <Container id={styles.body} className='justify-content-center bg-white'>
+    <Container id={styles.body} className='justify-content-center'>
       {savedList.length > 0
         ? (
           <>
             {savedList.map(product => {
               const subtotal = product?.price * product?.qty
               return (
-                <Row className='border border-dark p-1 mt-2' key={{ newKey } + 100}>
+                <Row className='border border-dark p-1 mt-2 bg-white' key={{ newKey } + 100}>
                   <Col lg={2}>
                     <Link to={`/product/details/${product.id}`}>
                       <img src={product.img} alt='' style={{ width: '5vw' }} />
@@ -60,11 +60,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
               )
             }
             )}
-            <Row lg={5} className='d-flex justify-content-center align-items-center flex-column m-3'>
-              <Button variant='outline-dark'>
-                <span className='fw-bolder'>Comprar</span>
-              </Button>
-            </Row>
+
           </>
           )
         : (
