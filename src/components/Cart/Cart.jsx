@@ -24,11 +24,6 @@ export const Cart = () => {
   const RemoveProduct = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
-<<<<<<< HEAD
-  
-  return (
-    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} subtractQty={subtractQty}/>
-=======
   const addSaved = (product) => {
     dispatch(AddProductToSaved(product))
     dispatch(RemoveProductFromCart(product.id))
@@ -36,7 +31,6 @@ export const Cart = () => {
 
   return (
     <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} subtractQty={subtractQty} addSaved={addSaved} />
->>>>>>> 2a1f87bf60dafe10765d94e229a5e449fb38dd39
   )
 }
 
