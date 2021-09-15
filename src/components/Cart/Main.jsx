@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, newKey }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, newKey }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -42,7 +42,6 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                   name='qty'
                   value={product.qty}
                   readOnly
-                  // onChange={handleChange(product.qty)} // NO ANDA
                 />
 
                 <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>

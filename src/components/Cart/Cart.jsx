@@ -19,26 +19,28 @@ export const Cart = () => {
   const [newKey, setNewKey] = useState(1)
 
   useEffect(() => {
+    calculateNewTotal()
+  }, [mainList])
+
+  const calculateNewTotal = () => {
     let newTotal = 0
     mainList.forEach(product => {
       newTotal = newTotal + product.price * product.qty
+      setTotal(total => newTotal)
     })
-    setTotal(total => newTotal)
-  }, [mainList])
-
-  const handleChange = (e) => {
-    // console.log(e, 'no entre')
   }
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
     setNewKey(prev => prev + 1)
+    calculateNewTotal()
     console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
     setNewKey(prev => prev + 1)
+    calculateNewTotal()
     console.log('Nuevo total:', total)
   }
 
@@ -85,7 +87,6 @@ export const Cart = () => {
       moveToSaved={moveToSaved}
       actualView={actualView}
       setActualView={setActualView}
-      handleChange={handleChange}
       newKey={newKey}
     />
   )
