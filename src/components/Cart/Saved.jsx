@@ -6,17 +6,17 @@ import styles from './Cart.module.css'
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey }) => {
   return (
 
-    <Container id={styles.body} className='justify-content-center bg-white'>
+    <Container id={styles.body} className='justify-content-center'>
       {savedList.length > 0
         ? (
           <>
             {savedList.map(product => {
               const subtotal = product?.price * product?.qty
               return (
-                <Row className='border border-dark p-1 mt-2' key={{ newKey } + 100}>
-                  <Col lg={2}>
+                <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={{ newKey } + 100}>
+                  <Col lg={2} className='d-flex justify-content-center align-items-center'>
                     <Link to={`/product/details/${product.id}`}>
-                      <img src={product.img} alt='' style={{ width: '5vw' }} />
+                      <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
                     </Link>
                   </Col>
 
@@ -29,8 +29,8 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                     </Row>
 
                     <Row lg={7}>
-                      <Col lg={3}><Link to='#' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
-                      <Col lg={4}><Link to='#' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>
+                      <Col lg={3}><Link to='#' className='text-decoration-none' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
+                      <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>
                     </Row>
                   </Col>
 
@@ -41,7 +41,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                       </Button>
 
                       <FormControl
-                      className='fw-bolder text-center bg-white'
+                        className='fw-bolder text-center bg-white'
                         value={product.qty}
                         readOnly
                       />
@@ -60,11 +60,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
               )
             }
             )}
-              <Row lg={5} className='d-flex justify-content-center align-items-center flex-column m-3'>                      
-              <Button variant='outline-dark'>
-                        <span className='fw-bolder'>Comprar</span>
-             </Button>
-             </Row>
+
           </>
           )
         : (
