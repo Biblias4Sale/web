@@ -100,7 +100,6 @@ const rootReducer = (state = initialState, action) => {
           if (product.id === action.payload) {
             newQty = product.qty--
             if (state.cart.main.hasOwnProperty('qty')) newQty = product.qty
-            console.log(newQty, 'ESto anda pero no renderiza')
           }
         }
       })
@@ -113,7 +112,6 @@ const rootReducer = (state = initialState, action) => {
           if (product.id === action.payload) {
             newQty = product.qty--
             if (state.cart.saved.hasOwnProperty('qty')) newQty = product.qty
-            console.log(newQty, 'ESto anda pero no renderiza')
           }
         }
       })
