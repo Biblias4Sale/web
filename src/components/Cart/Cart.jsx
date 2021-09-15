@@ -12,7 +12,7 @@ export const Cart = () => {
   
   useEffect(() => {
     cart.forEach(product => {
-      resTotal = resTotal + product.price * product.qty
+      resTotal = resTotal + (product.price * product.qty)
     })
     setTotal(resTotal)
   }, [cart])
