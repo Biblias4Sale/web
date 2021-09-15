@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, handle }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -39,9 +39,9 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
 
                 <FormControl
                   className='fw-bolder'
-                  name='qty'
-                  value={product.qty}
-                  onChange={handleChange(product.qty)} // NO ANDA
+                  name={product.qty}
+                  value={handle}
+                  onChange={e => handleChange(e)} // NO ANDA
                 />
 
                 <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>

@@ -27,8 +27,18 @@ export const Cart = () => {
 
   const [actualView, setActualView] = useState('main')
 
+  const [handle, setHandle] = useState([mainList.forEach(elem => elem.qty)])
+
+  console.log(handle, ' soy handle')
+
   const handleChange = (e) => {
-    console.log(e, 'no entre')
+    e.preventDefault()
+    console.log(e.target.name, ' soy name')
+    setHandle({
+      ...handle,
+      [e.target.name]: parseInt(e.target.value),
+    });
+    // console.log(handle, ' soy handle')
   }
 
   const addQtyToCart = (product) => {
@@ -81,6 +91,7 @@ export const Cart = () => {
       actualView={actualView}
       setActualView={setActualView}
       handleChange={handleChange}
+      handle={handle}
     />
   )
 }
