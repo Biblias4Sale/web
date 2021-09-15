@@ -79,35 +79,16 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
 
     case ADD_PRODUCT_TO_SAVED:
-      const productoRepetido2 = state.cart.saved.find(product => product.id === action.payload.id)
-      if (productoRepetido2) {
-        productoRepetido2.qty = productoRepetido2.qty + 1
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            saved: [...state.cart.saved
-              .filter(product => product.id !== action.payload.id)
-              .concat(productoRepetido2)]
-          }
-        }
+      if (state.cart.saved.find(product => product.id === action.payload.id)) {
+        state.cart.saved.map(product => {
+          if (product.id === action.payload.id) {
+            product.qty++
+          } return null
+        })
+        // action.payload.qty = productoRepetido.qty + 1
+        return { ...state, cart: { saved: state.cart.saved } }
       } else {
         return { ...state, cart: { ...state.cart, saved: state.cart.saved.concat(action.payload) } }
-<<<<<<< HEAD
-      }
-
-    case SUBTRACT_QTY_FROM_CART:
-      action.payload.qty--
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          main: [...state.cart.main
-            .filter(product => product.id !== action.payload.id)
-            .concat(action.payload)]
-        }
-=======
->>>>>>> b22a051f7588917c95ec3c8df996925b63c4a5d8
       }
 
     case SUBTRACT_QTY_FROM_CART:
