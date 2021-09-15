@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-export const CartView = ({ cart, total, addQty, RemoveProduct, addSaved, subtractQty }) => {
+export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty, addSaved }) => {
   return (
     <>
       <div id={styles.banner} />
@@ -42,7 +42,7 @@ export const CartView = ({ cart, total, addQty, RemoveProduct, addSaved, subtrac
 
               <Col lg={2} className='d-flex justify-content-center align-items-center'>
                 <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                  <Button variant='outline-dark'>
+                  <Button variant='outline-dark' onClick={() => subtractQty(product)}>
                     <span className='fw-bolder'>-</span>
                   </Button>
                   <FormControl

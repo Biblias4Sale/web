@@ -1,6 +1,6 @@
 import CartView from './Cart.view'
 import { useState, useEffect } from 'react'
-import { AddProductToCart, AddProductToSaved, RemoveProductFromCart } from '../../redux/actions/index'
+import { AddProductToCart, RemoveProductFromCart, subtractQtyFromCart, AddProductToSaved } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
 let resTotal = 0
@@ -30,7 +30,7 @@ export const Cart = () => {
   }
 
   return (
-    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} addSaved={addSaved} />
+    <CartView cart={cart} total={total} addQty={addQty} RemoveProduct={RemoveProduct} subtractQty={subtractQty} addSaved={addSaved} />
   )
 }
 

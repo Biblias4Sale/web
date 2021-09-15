@@ -12,7 +12,8 @@ import {
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
-  ADD_PRODUCT_TO_SAVED
+  ADD_PRODUCT_TO_SAVED,
+  SUBTRACT_QTY_FROM_CART
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -145,5 +146,12 @@ export const AddProductToSaved = (newproduct) => {
   return {
     type: ADD_PRODUCT_TO_SAVED,
     payload: { ...newproduct, qty: 1 }
+  }
+}
+
+export const subtractQtyFromCart = (product) => {
+  return {
+    type: SUBTRACT_QTY_FROM_CART,
+    payload: product
   }
 }
