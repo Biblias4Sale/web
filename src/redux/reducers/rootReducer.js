@@ -13,7 +13,7 @@ import {
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
-  REMOVE_PRODUCT_FROM_SAVED
+  REMOVE_PRODUCT_FROM_SAVED,
 } from '../actions/constants'
 
 const initialState = {
@@ -94,8 +94,13 @@ const rootReducer = (state = initialState, action) => {
 
     case SUBTRACT_QTY_FROM_CART:
       state.cart.main.forEach(product => {
-        if (product.id === action.payload) {
-          product.qty--
+        let newQty = 1
+        if(product.qty > 1) {
+          if (product.id === action.payload) {
+            newQty = product.qty--
+            if (state.cart.main.hasOwnProperty('qty')) newQty = product.qty
+            console.log(newQty, 'ESto anda pero no renderiza')
+          }
         }
       })
       return { ...state, cart: { ...state.cart, main: state.cart.main } }
