@@ -141,9 +141,9 @@ export const RemoveProductFromCart = (id) => {
   }
 }
 
-export const subtractQtyFromCart = (product) => {
+export const subtractQtyFromCart = (id) => {
   return {
     type: SUBTRACT_QTY_FROM_CART,
-    payload: product
+    payload: id
   }
 }

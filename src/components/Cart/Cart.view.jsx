@@ -35,14 +35,13 @@ export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty }) =>
                 <Row>
                   <Col><Link to='#' onClick={() => RemoveProduct(product.id)}>Eliminar</Link></Col>
                   <Col><Link to='#'>Guardar para después</Link></Col>
-
                 </Row>
 
               </Col>
 
               <Col lg={2} className='d-flex justify-content-center align-items-center'>
                 <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                  <Button variant='outline-dark' onClick={() => subtractQty(product)}>
+                  <Button variant='outline-dark' onClick={() => subtractQty(product.id)}>
                     <span className='fw-bolder'>-</span>
                   </Button>
                   <FormControl
