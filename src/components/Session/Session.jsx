@@ -11,7 +11,7 @@ export const Session = (props) => {
         centered
       >
         <Modal.Header>
-          <button type='button' class='btn-close' aria-label='Close' onClick={props.onHide} />
+          <button type='button' className='btn-close' aria-label='Close' onClick={props.onHide} />
         </Modal.Header>
 
         <Modal.Body>

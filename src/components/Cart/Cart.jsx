@@ -9,8 +9,6 @@ import {
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
-let resTotal = 0
-
 export const Cart = () => {
   const dispatch = useDispatch()
   const main = useSelector((state) => state.cart.main)
@@ -18,18 +16,26 @@ export const Cart = () => {
   const [total, setTotal] = useState()
   const [actualView, setActualView] = useState('main')
 
-  useEffect(() => {
-    main.forEach((product) => {
-      resTotal = resTotal + product.price * product.qty
-    })
-    setTotal(resTotal)
-  }, [main])
+  // useEffect(() => {
+  //   main.forEach((product) => {
+  //     resTotal = resTotal + product.price * product.qty
+  //   })
+  //   setTotal(resTotal)
+  // }, [main])
+
+  // console.log('Main', main)
+
+  const handleChange = (event, value) => {
+    console.log(event)
+    console.log(value)
+  }
 
   const addQty = (product) => {
     dispatch(AddProductToCart(product))
   }
 
   const subtractQty = (id) => {
+    console.log('soy la funcion q resta')
     dispatch(subtractQtyFromCart(id))
   }
 
@@ -46,7 +52,7 @@ export const Cart = () => {
     dispatch(RemoveProductFromSaved(id))
   }
 
-  const addSaved = (product) => {
+  const moveToSaved = (product) => {
     dispatch(AddProductToSaved(product))
     dispatch(RemoveProductFromCart(product.id))
   }
@@ -60,10 +66,11 @@ export const Cart = () => {
       removeFromCart={removeFromCart}
       removeFromSaved={removeFromSaved}
       moveToCart={moveToCart}
-      addSaved={addSaved}
+      moveToSaved={moveToSaved}
       subtractQty={subtractQty}
       actualView={actualView}
       setActualView={setActualView}
+      handleChange={handleChange}
     />
   )
 }

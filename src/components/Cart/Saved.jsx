@@ -25,7 +25,6 @@ const Saved = ({ saved, moveToCart, removeFromSaved }) => {
               <Col><Link to='#' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
               <Col><Link to='#' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>
             </Row>
-
           </Col>
 
           <Col lg={2} className='d-flex justify-content-center align-items-center'>
@@ -35,7 +34,7 @@ const Saved = ({ saved, moveToCart, removeFromSaved }) => {
               </Button>
               <FormControl
                 className='fw-bolder'
-                value={product.qty}
+                // value={product.qty}
               />
               <Button variant='outline-dark'>
                 <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
@@ -46,7 +45,6 @@ const Saved = ({ saved, moveToCart, removeFromSaved }) => {
           <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
             <Row><span className='fw-bolder fs-5'>{product && FormatedPrice(product)}</span></Row>
           </Col>
-
         </Row>
       )
       )}

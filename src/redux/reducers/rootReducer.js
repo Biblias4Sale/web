@@ -93,12 +93,12 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case SUBTRACT_QTY_FROM_CART:
-      state.cart.main.map(product => {
+      state.cart.main.forEach(product => {
         if (product.id === action.payload) {
           product.qty--
-        } return null
+        }
       })
-      return { ...state, cart: { main: state.cart.main } }
+      return { ...state, cart: { ...state.cart, main: state.cart.main } }
 
     default:
       return state

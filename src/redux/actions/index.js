@@ -131,9 +131,7 @@ export const setSearchString = (searchString) => {
 
 export const AddProductToCart = (newproduct) => {
   let newQty = 1
-  if (newproduct.hasOwnProperty('qty')) {
-    newQty = newproduct.qty
-  }
+  if (newproduct.hasOwnProperty('qty')) newQty = newproduct.qty
 
   return {
     type: ADD_PRODUCT_TO_CART,
@@ -149,6 +147,7 @@ export const RemoveProductFromCart = (id) => {
 }
 
 export const subtractQtyFromCart = (id) => {
+  console.log('soy la action que resta', 'el id es', id)
   return {
     type: SUBTRACT_QTY_FROM_CART,
     payload: id
