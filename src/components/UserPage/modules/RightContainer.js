@@ -2,6 +2,7 @@ import { Col } from 'react-bootstrap'
 import { Management } from './management'
 import { EditAccount } from '../Options/EditAccount/EditAccount'
 import styles from './userPage.module.css'
+import Favorites from '../Options/Favorites/Favorites'
 
 export const RightContainer = ({ option }) => {
   return (
@@ -15,7 +16,9 @@ export const RightContainer = ({ option }) => {
               ? <h4> Próximamente: Mis Reviews </h4>
               : option === Management[3]
                 ? <h4> Próximamente: Métodos de pago </h4>
-                : <h4> COMPONENTE default </h4>
+                : option === Management[4]
+                  ? <Favorites />
+                  : <h4>Componente Default</h4>
       }
     </Col>
   )

@@ -15,6 +15,8 @@ import {
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
+  ADD_PRODUCT_TO_FAVORITES,
+  REMOVE_PRODUCT_FROM_FAVORITES,
   SUBTRACT_QTY_FROM_SAVED
 } from './constants'
 
@@ -164,6 +166,19 @@ export const AddProductToSaved = (newproduct) => {
 export const RemoveProductFromSaved = (id) => {
   return {
     type: REMOVE_PRODUCT_FROM_SAVED,
+    payload: id
+  }
+}
+
+export const addProductToFavorites = (product) => {
+  return {
+    type: ADD_PRODUCT_TO_FAVORITES,
+    payload: product
+  }
+}
+export const RemoveProductFromFavorites = (id) => {
+  return {
+    type: REMOVE_PRODUCT_FROM_FAVORITES,
     payload: id
   }
 }
