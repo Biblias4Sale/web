@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, key }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, newKey }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -11,7 +11,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
         const subtotal = product?.price * product?.qty
 
         return (
-          <Row className='border border-dark p-2 mt-2' key={key}>
+          <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
             <Col lg={2}>
               <img src={product.img} alt='' style={{ width: '5vw' }} />
             </Col>
@@ -41,7 +41,8 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                   className='fw-bolder'
                   name='qty'
                   value={product.qty}
-                  onChange={handleChange(product.qty)} // NO ANDA
+                  readOnly
+                  // onChange={handleChange(product.qty)} // NO ANDA
                 />
 
                 <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>
@@ -58,9 +59,9 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
         )
       })}
       <Row>
-        <span className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
+        <div className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
           Total: {total && FormatedPrice({ price: total })}
-        </span>
+        </div>
 
       </Row>
     </Container>

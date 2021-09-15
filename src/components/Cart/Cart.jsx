@@ -16,7 +16,7 @@ export const Cart = () => {
   const savedList = useSelector((state) => state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
-  const [key, setKey] = useState(1)
+  const [newKey, setNewKey] = useState(1)
 
   useEffect(() => {
     let newTotal = 0
@@ -32,13 +32,13 @@ export const Cart = () => {
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
     console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
     console.log('Nuevo total:', total)
   }
 
@@ -61,12 +61,12 @@ export const Cart = () => {
   }
 
   const addQtyToSaved = (product) => {
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
     dispatch(AddProductToSaved(product))
   }
 
   const subtractQtyFromSaved = (id) => {
-    setKey(prev => prev + 1)
+    setNewKey(prev => prev + 1)
     dispatch(SubtractQtyFromSaved(id))
   }
 
@@ -86,7 +86,7 @@ export const Cart = () => {
       actualView={actualView}
       setActualView={setActualView}
       handleChange={handleChange}
-      key={key}
+      newKey={newKey}
     />
   )
 }
