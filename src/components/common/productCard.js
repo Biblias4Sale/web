@@ -16,7 +16,7 @@ export const ProductCards = ({ product, height, imgWidth, addFavorite }) => {
     <Card style={CardStyle}>
       {logged
         ? (
-          <ButtonLike />
+          <ButtonLike product={product} />
           )
         : null}
       <Link

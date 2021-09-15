@@ -13,7 +13,9 @@ import {
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
-  REMOVE_PRODUCT_FROM_SAVED
+  REMOVE_PRODUCT_FROM_SAVED,
+  ADD_PRODUCT_TO_FAVORITES,
+  REMOVE_PRODUCT_FROM_FAVORITES
 } from '../actions/constants'
 
 const initialState = {
@@ -27,7 +29,8 @@ const initialState = {
   cart: {
     main: [],
     saved: []
-  }
+  },
+  favorites: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -100,6 +103,15 @@ const rootReducer = (state = initialState, action) => {
       })
       return { ...state, cart: { ...state.cart, main: state.cart.main } }
 
+    case ADD_PRODUCT_TO_FAVORITES:
+      if (state.favorites.find(product => product.id === action.payload.id)) {
+        return { ...state, favorites: state.favorites }
+      } else {
+        return { ...state, favorites: state.favorites.concat(action.payload) }
+      }
+
+    case REMOVE_PRODUCT_FROM_FAVORITES:
+      return { ...state, favorites: state.favorites.filter(elem => elem.id !== action.payload) }
     default:
       return state
   }
