@@ -63,6 +63,7 @@ const CartView = ({
               removeFromSaved={removeFromSaved}
               addQtyToSaved={addQtyToSaved}
               subtractQtyFromSaved={subtractQtyFromSaved}
+              key={key}
             />
             )}
       </div>

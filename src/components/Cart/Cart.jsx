@@ -61,10 +61,12 @@ export const Cart = () => {
   }
 
   const addQtyToSaved = (product) => {
+    setKey(prev => prev + 1)
     dispatch(AddProductToSaved(product))
   }
 
   const subtractQtyFromSaved = (id) => {
+    setKey(prev => prev + 1)
     dispatch(SubtractQtyFromSaved(id))
   }
 
