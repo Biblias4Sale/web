@@ -26,17 +26,15 @@ const CartView = ({
         <div id={styles.header}>
           <ul>
             <li
-              className={styles.headerItem}
+              className={actualView === 'main' ? styles.headerSelectedItem : styles.headerItem}
               onClick={() => setActualView('main')}
             >
-              {' '}
               {`Carrito (${mainList.length})`}
             </li>
             <li
-              className={styles.headerItem}
+              className={actualView === 'saved' ? styles.headerSelectedItem : styles.headerItem}
               onClick={() => setActualView('saved')}
             >
-              {' '}
               {`Guardados (${savedList.length})`}
             </li>
           </ul>

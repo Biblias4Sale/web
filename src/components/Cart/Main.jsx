@@ -17,7 +17,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                 <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
                   <Col lg={2} className='d-flex justify-content-center align-items-center'>
                     <Link to={`/product/details/${product.id}`}>
-                    <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
+                      <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
                     </Link>
                   </Col>
 
@@ -63,14 +63,14 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
               )
             })}
             <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
-                Total: {total && FormatedPrice({ price: total })}
+              Total: {total && FormatedPrice({ price: total })}
             </Row>
 
-            <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>                      
+            <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
               <Button variant='outline-dark'>
-                        <span className='fw-bolder'>Comprar</span>
-             </Button>
-             </Row>
+                <span className='fw-bolder'>Comprar</span>
+              </Button>
+            </Row>
           </>
           )
         : (

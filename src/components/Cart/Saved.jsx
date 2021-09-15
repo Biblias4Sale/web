@@ -15,8 +15,8 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
               return (
                 <Row className='border border-dark p-1 mt-2' key={{ newKey } + 100}>
                   <Col lg={2}>
-                  <Link to={`/product/details/${product.id}`}>
-                    <img src={product.img} alt='' style={{ width: '5vw' }} />
+                    <Link to={`/product/details/${product.id}`}>
+                      <img src={product.img} alt='' style={{ width: '5vw' }} />
                     </Link>
                   </Col>
 
