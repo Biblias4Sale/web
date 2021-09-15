@@ -132,7 +132,7 @@ export const setSearchString = (searchString) => {
 
 export const AddProductToCart = (newproduct) => {
   let newQty = 1
-  if (newproduct.hasOwnProperty('qty')) newQty = newproduct.qty
+  if (newproduct.qty) newQty = newproduct.qty
 
   return {
     type: ADD_PRODUCT_TO_CART,

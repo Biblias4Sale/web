@@ -95,11 +95,9 @@ const rootReducer = (state = initialState, action) => {
 
     case SUBTRACT_QTY_FROM_CART:
       state.cart.main.forEach(product => {
-        let newQty = 1
-        if (product.qty > 1) {
-          if (product.id === action.payload) {
-            newQty = product.qty--
-            if (state.cart.main.hasOwnProperty('qty')) newQty = product.qty
+        if (product.id === action.payload) {
+          if (product.qty > 1) {
+            product.qty--
           }
         }
       })
@@ -107,11 +105,9 @@ const rootReducer = (state = initialState, action) => {
 
     case SUBTRACT_QTY_FROM_SAVED:
       state.cart.saved.forEach(product => {
-        let newQty = 1
-        if (product.qty > 1) {
-          if (product.id === action.payload) {
-            newQty = product.qty--
-            if (state.cart.saved.hasOwnProperty('qty')) newQty = product.qty
+        if (product.id === action.payload) {
+          if (product.qty > 1) {
+            product.qty--
           }
         }
       })
