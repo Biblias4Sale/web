@@ -152,6 +152,6 @@ export const subtractQtyFromCart = (id) => {
 export const AddProductToSaved = (newproduct) => {
   return {
     type: ADD_PRODUCT_TO_SAVED,
-    payload: { ...newproduct, qty: 1 }
+    payload: newproduct
   }
 }

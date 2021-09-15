@@ -54,13 +54,13 @@ export const CartView = ({ cart, total, addQty, RemoveProduct, subtractQty, addS
                 </InputGroup>
               </Col>
 
-              <Col lg={1}  className='d-flex justify-content-center align-items-center flex-column'>
-              <Row><span className='fw-bolder fs-6 text-center'>Precio unitario:</span></Row>
-              <Row><span className='fw-bolder fs-6'>{product && FormatedPrice(product)}</span></Row>
+              <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
+                <Row><span className='fw-bolder fs-6 text-center'>Precio unitario:</span></Row>
+                <Row><span className='fw-bolder fs-6'>{product && FormatedPrice(product)}</span></Row>
               </Col>
 
               <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
-              <Row><span className='fw-bolder fs-5'>{product && product.price * product.qty}</span></Row>
+                <Row><span className='fw-bolder fs-5'>{product && product.price * product.qty}</span></Row>
               </Col>
             </Row>
           )
