@@ -25,6 +25,7 @@ export const Cart = () => {
       setTotal(total => newTotal)
     })
   }
+
   useEffect(() => {
     calculateNewTotal()
   }, [calculateNewTotal])
