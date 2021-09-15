@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, key }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -11,7 +11,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
         const subtotal = product?.price * product?.qty
 
         return (
-          <Row className='border border-dark p-2 mt-2' key={product.id}>
+          <Row className='border border-dark p-2 mt-2' key={key}>
             <Col lg={2}>
               <img src={product.img} alt='' style={{ width: '5vw' }} />
             </Col>
@@ -30,12 +30,6 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
               </Row>
             </Col>
 
-            {/* <Col lg={2}>
-              <Row>
-                <p> Precio: {FormatedPrice(product)}</p>
-              </Row>
-            </Col> */}
-
             <Col lg={2} className='d-flex justify-content-center align-items-center'>
               <InputGroup style={{ width: '7.5vw' }} className='text-center'>
 
@@ -46,6 +40,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                 <FormControl
                   className='fw-bolder'
                   name='qty'
+                  value={product.qty}
                   onChange={handleChange(product.qty)} // NO ANDA
                 />
 

@@ -11,32 +11,35 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
-  // let resTotal = 0
-
   const dispatch = useDispatch()
   const mainList = useSelector((state) => state.cart.main)
   const savedList = useSelector((state) => state.cart.saved)
-  const [total, setTotal] = useState(50)
-
-  // useEffect(() => {
-  //   mainList.forEach(product => {
-  //     resTotal = resTotal + (product.price * product.qty)
-  //   })
-  //   setTotal(resTotal)
-  // }, [mainList])
-
   const [actualView, setActualView] = useState('main')
+  const [total, setTotal] = useState()
+  const [key, setKey] = useState(1)
+
+  useEffect(() => {
+    let newTotal = 0
+    mainList.forEach(product => {
+      newTotal = newTotal + product.price * product.qty
+    })
+    setTotal(total => newTotal)
+  }, [mainList])
 
   const handleChange = (e) => {
-    console.log(e, 'no entre')
+    // console.log(e, 'no entre')
   }
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
+    setKey(prev => prev + 1)
+    console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
+    setKey(prev => prev + 1)
+    console.log('Nuevo total:', total)
   }
 
   const moveToCart = (product) => {
@@ -81,6 +84,7 @@ export const Cart = () => {
       actualView={actualView}
       setActualView={setActualView}
       handleChange={handleChange}
+      key={key}
     />
   )
 }
