@@ -96,7 +96,8 @@ const rootReducer = (state = initialState, action) => {
         }
       } else {
         return { ...state, cart: { ...state.cart, saved: state.cart.saved.concat(action.payload) } }
-        
+      }
+
     case SUBTRACT_QTY_FROM_CART:
       action.payload.qty--
       return {
