@@ -11,7 +11,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
         const subtotal = product?.price * product?.qty
 
         return (
-          <Row className='border border-dark p-1 mt-2' key={product.id}>
+          <Row className='border border-dark p-2 mt-2' key={product.id}>
             <Col lg={2}>
               <img src={product.img} alt='' style={{ width: '5vw' }} />
             </Col>
