@@ -11,19 +11,19 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
-  let resTotal = 0
+  // let resTotal = 0
 
   const dispatch = useDispatch()
   const mainList = useSelector((state) => state.cart.main)
   const savedList = useSelector((state) => state.cart.saved)
-  const [total, setTotal] = useState()
+  const [total, setTotal] = useState(50)
 
-  useEffect(() => {
-    mainList.forEach(product => {
-      resTotal = resTotal + (product.price * product.qty)
-    })
-    setTotal(resTotal)
-  }, [mainList])
+  // useEffect(() => {
+  //   mainList.forEach(product => {
+  //     resTotal = resTotal + (product.price * product.qty)
+  //   })
+  //   setTotal(resTotal)
+  // }, [mainList])
 
   const [actualView, setActualView] = useState('main')
 

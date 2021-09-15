@@ -30,6 +30,12 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
               </Row>
             </Col>
 
+            {/* <Col lg={2}>
+              <Row>
+                <p> Precio: {FormatedPrice(product)}</p>
+              </Row>
+            </Col> */}
+
             <Col lg={2} className='d-flex justify-content-center align-items-center'>
               <InputGroup style={{ width: '7.5vw' }} className='text-center'>
 
