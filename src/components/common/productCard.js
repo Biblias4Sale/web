@@ -4,13 +4,21 @@ import { CardBottom } from './cardBottom'
 import { FormatedPrice } from './formatedPrice'
 import { GetStarts } from './getStars'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { ButtonLike } from './ButtonLike'
 
-export const ProductCards = ({ product, height, imgWidth }) => {
+export const ProductCards = ({ product, height, imgWidth, addFavorite }) => {
   const formatedPrice = FormatedPrice(product)
   const productStars = GetStarts(product)
+  const logged = useSelector(state => state.logged)
 
   return (
     <Card style={CardStyle}>
+      {logged
+        ? (
+          <ButtonLike />
+          )
+        : null}
       <Link
         to={`/product/details/${product.id}`}
         className='d-flex justify-content-center align-items-center '

@@ -9,7 +9,7 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cart.main)
   const [total, setTotal] = useState()
-  
+
   useEffect(() => {
     cart.forEach(product => {
       resTotal = resTotal + product.price * product.qty
