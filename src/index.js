@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 // import { RootComponent, LoadingView } from './components';
 
 const { persistor, store } = Store
-// persistor.purge()
+persistor.purge()
 
 ReactDOM.render(
   <React.StrictMode>
