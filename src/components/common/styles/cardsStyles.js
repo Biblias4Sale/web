@@ -7,3 +7,7 @@ export const CardStyle = {
 export const LinkStyle = {
   textDecoration: 'none'
 }
+
+export const linkStyle2 = {
+  display: 'flex'
+}

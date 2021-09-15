@@ -1,5 +1,5 @@
 import CartView from './Cart.view'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   AddProductToCart,
   RemoveProductFromCart,
