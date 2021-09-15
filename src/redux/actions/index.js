@@ -15,6 +15,7 @@ import {
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
+  SUBTRACT_QTY_FROM_SAVED
 } from './constants'
 
 import { ApiURL } from '../../config/config'
@@ -131,7 +132,7 @@ export const setSearchString = (searchString) => {
 
 export const AddProductToCart = (newproduct) => {
   let newQty = 1
-  if (newproduct.hasOwnProperty('qty')) newQty = newproduct.qty
+  if (newproduct.qty) newQty = newproduct.qty
 
   return {
     type: ADD_PRODUCT_TO_CART,
@@ -146,8 +147,7 @@ export const RemoveProductFromCart = (id) => {
   }
 }
 
-export const subtractQtyFromCart = (id) => {
-  console.log('soy la action que resta', 'el id es', id)
+export const SubtractQtyFromCart = (id) => {
   return {
     type: SUBTRACT_QTY_FROM_CART,
     payload: id
@@ -164,6 +164,13 @@ export const AddProductToSaved = (newproduct) => {
 export const RemoveProductFromSaved = (id) => {
   return {
     type: REMOVE_PRODUCT_FROM_SAVED,
+    payload: id
+  }
+}
+
+export const SubtractQtyFromSaved = (id) => {
+  return {
+    type: SUBTRACT_QTY_FROM_SAVED,
     payload: id
   }
 }

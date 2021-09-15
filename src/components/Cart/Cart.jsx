@@ -4,8 +4,9 @@ import {
   AddProductToCart,
   RemoveProductFromCart,
   AddProductToSaved,
-  subtractQtyFromCart,
-  RemoveProductFromSaved
+  SubtractQtyFromCart,
+  RemoveProductFromSaved,
+  SubtractQtyFromSaved
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -13,33 +14,29 @@ export const Cart = () => {
   let resTotal = 0
 
   const dispatch = useDispatch()
-  const main = useSelector((state) => state.cart.main)
-  const saved = useSelector((state) => state.cart.saved)
+  const mainList = useSelector((state) => state.cart.main)
+  const savedList = useSelector((state) => state.cart.saved)
   const [total, setTotal] = useState()
-  
+
   useEffect(() => {
-    main.forEach(product => {
+    mainList.forEach(product => {
       resTotal = resTotal + (product.price * product.qty)
     })
     setTotal(resTotal)
-  }, [main])
+  }, [mainList])
 
   const [actualView, setActualView] = useState('main')
 
-
   const handleChange = (e) => {
     console.log(e, 'no entre')
-
   }
 
-  const addQty = (product) => {
-    console.log('soy la funcion q suma')
+  const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
   }
 
-  const subtractQty = (id) => {
-    console.log('soy la funcion q resta')
-    dispatch(subtractQtyFromCart(id))
+  const subtractQtyFromCart = (id) => {
+    dispatch(SubtractQtyFromCart(id))
   }
 
   const moveToCart = (product) => {
@@ -60,17 +57,27 @@ export const Cart = () => {
     dispatch(RemoveProductFromCart(product.id))
   }
 
+  const addQtyToSaved = (product) => {
+    dispatch(AddProductToSaved(product))
+  }
+
+  const subtractQtyFromSaved = (id) => {
+    dispatch(SubtractQtyFromSaved(id))
+  }
+
   return (
     <CartView
-      main={main}
-      saved={saved}
+      mainList={mainList}
+      savedList={savedList}
       total={total}
-      addQty={addQty}
+      addQtyToCart={addQtyToCart}
+      subtractQtyFromCart={subtractQtyFromCart}
       removeFromCart={removeFromCart}
       removeFromSaved={removeFromSaved}
+      addQtyToSaved={addQtyToSaved}
+      subtractQtyFromSaved={subtractQtyFromSaved}
       moveToCart={moveToCart}
       moveToSaved={moveToSaved}
-      subtractQty={subtractQty}
       actualView={actualView}
       setActualView={setActualView}
       handleChange={handleChange}
