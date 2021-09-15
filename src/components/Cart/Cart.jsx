@@ -21,6 +21,10 @@ export const Cart = () => {
     dispatch(AddProductToCart(product))
   }
 
+  const subtractQty = (id) => {
+    dispatch(subtractQtyFromCart(id))
+  }
+
   const RemoveProduct = (id) => {
     dispatch(RemoveProductFromCart(id))
   }
