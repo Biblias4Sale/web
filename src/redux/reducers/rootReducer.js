@@ -12,7 +12,8 @@ import {
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
-  SUBTRACT_QTY_FROM_CART
+  SUBTRACT_QTY_FROM_CART,
+  REMOVE_PRODUCT_FROM_SAVED
 } from '../actions/constants'
 
 const initialState = {
@@ -62,15 +63,13 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, searchString: action.payload }
 
     case ADD_PRODUCT_TO_CART:
-      // const productoRepetido = state.cart.main.find(product => product.id === action.payload.id)
       if (state.cart.main.find(product => product.id === action.payload.id)) {
         state.cart.main.map(product => {
           if (product.id === action.payload.id) {
             product.qty++
           } return null
         })
-        // action.payload.qty = productoRepetido.qty + 1
-        return { ...state, cart: { main: state.cart.main } }
+        return { ...state, cart: { ...state.cart, main: state.cart.main } }
       } else {
         return { ...state, cart: { ...state.cart, main: state.cart.main.concat(action.payload) } }
       }
@@ -78,40 +77,28 @@ const rootReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT_FROM_CART:
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
 
+    case REMOVE_PRODUCT_FROM_SAVED:
+      return { ...state, cart: { ...state.cart, saved: state.cart.saved.filter(elem => elem.id !== action.payload) } }
+
     case ADD_PRODUCT_TO_SAVED:
-      const productoRepetido2 = state.cart.saved.find(product => product.id === action.payload.id)
-      if (productoRepetido2) {
-        productoRepetido2.qty = productoRepetido2.qty + 1
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            saved: [...state.cart.saved
-              .filter(product => product.id !== action.payload.id)
-              .concat(productoRepetido2)]
-          }
-        }
+      if (state.cart.saved.find(product => product.id === action.payload.id)) {
+        state.cart.saved.map(product => {
+          if (product.id === action.payload.id) {
+            product.qty++
+          } return null
+        })
+        return { ...state, cart: { ...state.cart, saved: state.cart.saved } }
       } else {
         return { ...state, cart: { ...state.cart, saved: state.cart.saved.concat(action.payload) } }
       }
 
     case SUBTRACT_QTY_FROM_CART:
-      state.cart.main.map(product => {
+      state.cart.main.forEach(product => {
         if (product.id === action.payload) {
           product.qty--
-        } return null
+        }
       })
-      return { ...state, cart: { main: state.cart.main } }
-
-      // return {
-      //   ...state,
-      //   cart: {
-      //     ...state.cart,
-      //     main: [...state.cart.main
-      //       .filter(product => product.id !== action.payload.id)
-      //       .concat(action.payload)]
-      //   }
-      // }
+      return { ...state, cart: { ...state.cart, main: state.cart.main } }
 
     default:
       return state
