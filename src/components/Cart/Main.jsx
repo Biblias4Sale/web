@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, handleChange }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, newKey }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
-      {main.map(product => {
-        const subtotal = product.price * product.qty
+      {mainList.map(product => {
+        const subtotal = product?.price * product?.qty
 
         return (
-          <Row className='border border-dark p-1 mt-2' key={product.id}>
+          <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
             <Col lg={2}>
               <img src={product.img} alt='' style={{ width: '5vw' }} />
             </Col>
@@ -33,28 +33,23 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
             <Col lg={2} className='d-flex justify-content-center align-items-center'>
               <InputGroup style={{ width: '7.5vw' }} className='text-center'>
 
-                <Button variant='outline-dark' onClick={() => subtractQty(product.id)}>
+                <Button variant='outline-dark' onClick={() => subtractQtyFromCart(product.id)}>
                   <span className='fw-bolder'>-</span>
                 </Button>
 
                 <FormControl
                   className='fw-bolder'
-                //   value={product.qty}
                   name='qty'
-                  onChange={(event) => handleChange(event.name, event.value)} // NO ANDA
+                  value={product.qty}
+                  readOnly
                 />
 
-                <Button variant='outline-dark' onClick={() => addQty(product)}>
-                  <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>
+                  <span className='fw-bolder'>+</span>
                 </Button>
 
               </InputGroup>
             </Col>
-
-            {/* <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
-              <Row><span className='fw-bolder fs-6 text-center'>Precio unitario:</span></Row>
-              <Row><span className='fw-bolder fs-6'>{product && FormatedPrice(product)}</span></Row>
-            </Col> */}
 
             <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
               <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: subtotal })}</span></Row>
@@ -63,9 +58,9 @@ const Main = ({ main, total, addQty, removeFromCart, subtractQty, moveToSaved, h
         )
       })}
       <Row>
-        <span className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
+        <div className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
           Total: {total && FormatedPrice({ price: total })}
-        </span>
+        </div>
 
       </Row>
     </Container>

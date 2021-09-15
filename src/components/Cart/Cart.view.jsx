@@ -3,18 +3,20 @@ import Main from './Main'
 import Saved from './Saved'
 
 const CartView = ({
-  main,
-  saved,
+  mainList,
+  savedList,
   total,
-  addQty,
+  addQtyToCart,
   removeFromCart,
   removeFromSaved,
-  subtractQty,
+  subtractQtyFromCart,
+  subtractQtyFromSaved,
   moveToCart,
   moveToSaved,
+  addQtyToSaved,
   actualView,
   setActualView,
-  handleChange
+  newKey
 }) => {
   return (
     <>
@@ -28,14 +30,14 @@ const CartView = ({
               onClick={() => setActualView('main')}
             >
               {' '}
-              {`Carrito (${main.length})`}
+              {`Carrito (${mainList.length})`}
             </li>
             <li
               className={styles.headerItem}
               onClick={() => setActualView('saved')}
             >
               {' '}
-              {`Guardados (${saved.length})`}
+              {`Guardados (${savedList.length})`}
             </li>
           </ul>
         </div>
@@ -43,20 +45,23 @@ const CartView = ({
         {actualView === 'main'
           ? (
             <Main
-              main={main}
+              mainList={mainList}
               total={total}
-              addQty={addQty}
+              addQtyToCart={addQtyToCart}
               removeFromCart={removeFromCart}
-              subtractQty={subtractQty}
+              subtractQtyFromCart={subtractQtyFromCart}
               moveToSaved={moveToSaved}
-              handleChange={handleChange}
+              newKey={newKey}
             />
             )
           : (
             <Saved
-              saved={saved}
+              savedList={savedList}
               moveToCart={moveToCart}
               removeFromSaved={removeFromSaved}
+              addQtyToSaved={addQtyToSaved}
+              subtractQtyFromSaved={subtractQtyFromSaved}
+              newKey={newKey}
             />
             )}
       </div>

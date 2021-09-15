@@ -4,39 +4,43 @@ import {
   AddProductToCart,
   RemoveProductFromCart,
   AddProductToSaved,
-  subtractQtyFromCart,
-  RemoveProductFromSaved
+  SubtractQtyFromCart,
+  RemoveProductFromSaved,
+  SubtractQtyFromSaved
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
   const dispatch = useDispatch()
-  const main = useSelector((state) => state.cart.main)
-  const saved = useSelector((state) => state.cart.saved)
-  const [total, setTotal] = useState()
+  const mainList = useSelector((state) => state.cart.main)
+  const savedList = useSelector((state) => state.cart.saved)
   const [actualView, setActualView] = useState('main')
+  const [total, setTotal] = useState()
+  const [newKey, setNewKey] = useState(1)
 
-  // useEffect(() => {
-  //   main.forEach((product) => {
-  //     resTotal = resTotal + product.price * product.qty
-  //   })
-  //   setTotal(resTotal)
-  // }, [main])
-
-  // console.log('Main', main)
-
-  const handleChange = (event, value) => {
-    console.log(event)
-    console.log(value)
+  const calculateNewTotal = () => {
+    let newTotal = 0
+    mainList.forEach(product => {
+      newTotal = newTotal + product.price * product.qty
+      setTotal(total => newTotal)
+    })
   }
+  useEffect(() => {
+    calculateNewTotal()
+  }, [calculateNewTotal])
 
-  const addQty = (product) => {
+  const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
+    setNewKey(prev => prev + 1)
+    calculateNewTotal()
+    console.log('Nuevo total:', total)
   }
 
-  const subtractQty = (id) => {
-    console.log('soy la funcion q resta')
-    dispatch(subtractQtyFromCart(id))
+  const subtractQtyFromCart = (id) => {
+    dispatch(SubtractQtyFromCart(id))
+    setNewKey(prev => prev + 1)
+    calculateNewTotal()
+    console.log('Nuevo total:', total)
   }
 
   const moveToCart = (product) => {
@@ -57,20 +61,32 @@ export const Cart = () => {
     dispatch(RemoveProductFromCart(product.id))
   }
 
+  const addQtyToSaved = (product) => {
+    setNewKey(prev => prev + 1)
+    dispatch(AddProductToSaved(product))
+  }
+
+  const subtractQtyFromSaved = (id) => {
+    setNewKey(prev => prev + 1)
+    dispatch(SubtractQtyFromSaved(id))
+  }
+
   return (
     <CartView
-      main={main}
-      saved={saved}
+      mainList={mainList}
+      savedList={savedList}
       total={total}
-      addQty={addQty}
+      addQtyToCart={addQtyToCart}
+      subtractQtyFromCart={subtractQtyFromCart}
       removeFromCart={removeFromCart}
       removeFromSaved={removeFromSaved}
+      addQtyToSaved={addQtyToSaved}
+      subtractQtyFromSaved={subtractQtyFromSaved}
       moveToCart={moveToCart}
       moveToSaved={moveToSaved}
-      subtractQty={subtractQty}
       actualView={actualView}
       setActualView={setActualView}
-      handleChange={handleChange}
+      newKey={newKey}
     />
   )
 }
