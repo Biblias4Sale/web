@@ -15,8 +15,10 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
 
               return (
                 <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
-                  <Col lg={2}>
-                    <img src={product.img} alt='' style={{ width: '5vw' }} />
+                  <Col lg={2} className='d-flex justify-content-center align-items-center'>
+                    <Link to={`/product/details/${product.id}`}>
+                    <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
+                    </Link>
                   </Col>
 
                   <Col lg={6}>
@@ -27,9 +29,9 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                       <p> Marca: {product.brand}</p>
                     </Row>
 
-                    <Row>
-                      <Col><Link to='#' onClick={() => removeFromCart(product.id)}>Eliminar</Link></Col>
-                      <Col><Link to='#' onClick={() => moveToSaved(product)}>Guardar para después</Link></Col>
+                    <Row lg={7}>
+                      <Col lg={3}><Link to='#' onClick={() => removeFromCart(product.id)}>Eliminar</Link></Col>
+                      <Col lg={4}><Link to='#' onClick={() => moveToSaved(product)}>Guardar para después</Link></Col>
                     </Row>
                   </Col>
 
@@ -41,7 +43,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                       </Button>
 
                       <FormControl
-                        className='fw-bolder'
+                        className='fw-bolder text-center bg-white'
                         name='qty'
                         value={product.qty}
                         readOnly
@@ -60,12 +62,15 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                 </Row>
               )
             })}
-            <Row>
-              <div className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
+            <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
                 Total: {total && FormatedPrice({ price: total })}
-              </div>
-
             </Row>
+
+            <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>                      
+              <Button variant='outline-dark'>
+                        <span className='fw-bolder'>Comprar</span>
+             </Button>
+             </Row>
           </>
           )
         : (
