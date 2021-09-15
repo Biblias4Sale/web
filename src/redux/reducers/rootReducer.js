@@ -11,6 +11,7 @@ import {
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
+  ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART
 } from '../actions/constants'
 
@@ -77,6 +78,22 @@ const rootReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT_FROM_CART:
       return { ...state, cart: { ...state.cart, main: state.cart.main.filter(elem => elem.id !== action.payload) } }
 
+    case ADD_PRODUCT_TO_SAVED:
+      const productoRepetido2 = state.cart.saved.find(product => product.id === action.payload.id)
+      if (productoRepetido2) {
+        productoRepetido2.qty = productoRepetido2.qty + 1
+        return {
+          ...state,
+          cart: {
+            ...state.cart,
+            saved: [...state.cart.saved
+              .filter(product => product.id !== action.payload.id)
+              .concat(productoRepetido2)]
+          }
+        }
+      } else {
+        return { ...state, cart: { ...state.cart, saved: state.cart.saved.concat(action.payload) } }
+        
     case SUBTRACT_QTY_FROM_CART:
       state.cart.main.map(product => {
         if (product.id === action.payload) {
