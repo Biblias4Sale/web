@@ -18,10 +18,6 @@ export const Cart = () => {
   const [total, setTotal] = useState()
   const [newKey, setNewKey] = useState(1)
 
-  useEffect(() => {
-    calculateNewTotal()
-  }, [mainList])
-
   const calculateNewTotal = () => {
     let newTotal = 0
     mainList.forEach(product => {
@@ -29,6 +25,9 @@ export const Cart = () => {
       setTotal(total => newTotal)
     })
   }
+  useEffect(() => {
+    calculateNewTotal()
+  }, [calculateNewTotal])
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
