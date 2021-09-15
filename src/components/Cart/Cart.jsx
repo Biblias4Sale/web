@@ -6,47 +6,46 @@ import {
   AddProductToSaved,
   SubtractQtyFromCart,
   RemoveProductFromSaved,
-  SubtractQtyFromSaved
+  SubtractQtyFromSaved,
+  QtyChoiceFromCart
 } from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
-  let resTotal = 0
-
   const dispatch = useDispatch()
   const mainList = useSelector((state) => state.cart.main)
   const savedList = useSelector((state) => state.cart.saved)
+  const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
+  const [key, setKey] = useState(1)
 
   useEffect(() => {
+    let newTotal = 0
     mainList.forEach(product => {
-      resTotal = resTotal + (product.price * product.qty)
+      newTotal = newTotal + product.price * product.qty
     })
-    setTotal(resTotal)
+    setTotal(total => newTotal)
   }, [mainList])
 
-  const [actualView, setActualView] = useState('main')
-
-  const [handle, setHandle] = useState([mainList.forEach(elem => elem.qty)])
-
-  console.log(handle, ' soy handle')
-
-  const handleChange = (e) => {
-    e.preventDefault()
-    console.log(e.target.name, ' soy name')
-    setHandle({
-      ...handle,
-      [e.target.name]: parseInt(e.target.value),
-    });
-    // console.log(handle, ' soy handle')
+  const handleChange = (e, id) => {
+    console.log(e.target.value,'sot valueeeeeeeee')
+    // setHandle({
+    //   ...handle,
+    //   [e.target.name]: e.target.value,
+    // });
+    dispatch(QtyChoiceFromCart(id, e.target.value))
   }
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))
+    setKey(prev => prev + 1)
+    console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
+    setKey(prev => prev + 1)
+    console.log('Nuevo total:', total)
   }
 
   const moveToCart = (product) => {
@@ -91,7 +90,7 @@ export const Cart = () => {
       actualView={actualView}
       setActualView={setActualView}
       handleChange={handleChange}
-      handle={handle}
+      key={key}
     />
   )
 }

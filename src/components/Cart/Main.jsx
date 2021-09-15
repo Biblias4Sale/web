@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, handle }) => {
+const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, handleChange, key }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -11,7 +11,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
         const subtotal = product?.price * product?.qty
 
         return (
-          <Row className='border border-dark p-2 mt-2' key={product.id}>
+          <Row className='border border-dark p-2 mt-2' key={key}>
             <Col lg={2}>
               <img src={product.img} alt='' style={{ width: '5vw' }} />
             </Col>
@@ -39,9 +39,12 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
 
                 <FormControl
                   className='fw-bolder'
-                  name={product.qty}
-                  value={handle}
-                  onChange={e => handleChange(e)} // NO ANDA
+                  // name={product.qty}
+                  // value={handle}
+                  // onChange={e => handleChange(e)} // NO ANDA
+                  name='qty'
+                  value={product.qty}
+                  onChange={e => handleChange(e, product.id)} // NO ANDA
                 />
 
                 <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>
