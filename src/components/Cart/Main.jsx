@@ -86,8 +86,8 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
           )
         : (
           <Col className='d-flex  justify-content-center align-items-center'>
-              <h4>Tu carrito está vacío</h4>
-              <img src={emptyCart} className='w-25' alt='' />
+            <h4>Tu carrito está vacío</h4>
+            <img src={emptyCart} className='w-25' alt='' />
           </Col>
           )}
     </Container>
