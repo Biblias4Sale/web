@@ -4,7 +4,6 @@ import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { Cursor } from '../../NavBarStyle'
 
 export const CartIcon = () => {
-  // const cart = useSelector(state => state.cart.main)
   const cart = useSelector((state) => state.logged ? state.userCart.ProductSolds : state.cart.main)
 
   return (
