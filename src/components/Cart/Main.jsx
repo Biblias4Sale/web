@@ -14,9 +14,11 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
               const subtotal = product?.price * product?.qty
 
               return (
-                <Row className='border border-dark p-2 mt-2' key={{ newKey } + product.id}>
-                  <Col lg={2}>
-                    <img src={product.img} alt='' style={{ width: '5vw' }} />
+                <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={{ newKey } + product.id}>
+                  <Col lg={2} className='d-flex justify-content-center align-items-center'>
+                    <Link to={`/product/details/${product.id}`}>
+                      <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
+                    </Link>
                   </Col>
 
                   <Col lg={6}>
@@ -27,9 +29,9 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                       <p> Marca: {product.brand}</p>
                     </Row>
 
-                    <Row>
-                      <Col><Link to='#' onClick={() => removeFromCart(product.id)}>Eliminar</Link></Col>
-                      <Col><Link to='#' onClick={() => moveToSaved(product)}>Guardar para después</Link></Col>
+                    <Row lg={7}>
+                      <Col lg={3}><Link to='#' className='text-decoration-none' onClick={() => removeFromCart(product.id)}>Eliminar</Link></Col>
+                      <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => moveToSaved(product)}>Guardar para después</Link></Col>
                     </Row>
                   </Col>
 
@@ -41,7 +43,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                       </Button>
 
                       <FormControl
-                        className='fw-bolder'
+                        className='fw-bolder text-center bg-white'
                         name='qty'
                         value={product.qty}
                         readOnly
@@ -60,16 +62,19 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
                 </Row>
               )
             })}
-            <Row>
-              <div className='fw-bolder fs-4 d-flex justify-content-end align-items-center m-3'>
-                Total: {total && FormatedPrice({ price: total })}
-              </div>
+            <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
+              Total: {total && FormatedPrice({ price: total })}
+            </Row>
 
+            <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
+              <Button variant='outline-dark'>
+                <span className='fw-bolder'>Comprar</span>
+              </Button>
             </Row>
           </>
           )
         : (
-          <h3>Tu carrito está vacío</h3>
+          <h4>Tu carrito está vacío</h4>
           )}
     </Container>
   )

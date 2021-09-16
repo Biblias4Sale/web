@@ -28,7 +28,7 @@ export const Cart = () => {
 
   useEffect(() => {
     calculateNewTotal()
-  }, [calculateNewTotal])
+  })
 
   const addQtyToCart = (product) => {
     dispatch(AddProductToCart(product))

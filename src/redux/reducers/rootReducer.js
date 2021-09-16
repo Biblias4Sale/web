@@ -125,9 +125,19 @@ const rootReducer = (state = initialState, action) => {
       })
       return { ...state, cart: { ...state.cart, saved: state.cart.saved } }
 
-    default:
-      return state
-  }
+// case QTY_CHOOSE_FROM_CART:
+//   state.cart.main.forEach(product => {
+//     if (product.id === action.payload.id) {
+//       if (product.qty > 1) {
+//         product.qty = action.payload.qty
+//       }
+//     }
+//   })
+//   return { ...state, cart: { ...state.cart, saved: state.cart.main } }
+
+default:
+  return state
+}
 }
 
 export default rootReducer

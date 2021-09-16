@@ -18,10 +18,10 @@
   margin: auto;
   margin-top: 2rem;
   border-width: 1px;
-  border-color: grey;
+  border-color: rgb(192, 178, 178);
   width: 85vw;
   height: 80vh;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: rgb(250, 250, 250);
 }
 
@@ -51,6 +51,11 @@ ul {
   border-width: 1px;
   cursor: pointer;
   transition: transform 0.3s ease-out;
+}
+
+.headerSelectedItem {
+  color:black;
+  font-weight: bold;
 }
 
 .headerItem:hover {

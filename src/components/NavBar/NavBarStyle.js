@@ -22,5 +22,6 @@ export const CategoriesTitle = {
 }
 
 export const Cursor = {
-  cursor: 'pointer'
+  cursor: 'pointer',
+  margin: '0px'
 }
