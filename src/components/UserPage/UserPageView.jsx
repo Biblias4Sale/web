@@ -9,7 +9,6 @@ import { RightContainer } from './modules/RightContainer'
 export const UserPageView = ({ section }) => {
   const user = useSelector(state => state.logged)
   const userCapitals = GetUserCapitals(user)
-
   const [option, setOption] = useState(section)
 
   return (
