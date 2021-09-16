@@ -17,7 +17,7 @@ export const CatalogueView = ({
   return (
     <div>
       <div> <CenterBanner />
-        <Container className='d-flex justify-content-around flex-wrap'>
+        <Container className='d-flex justify-content-center flex-wrap'>
           <LeftContainer
             options={options}
             handleCategoryChange={handleCategoryChange}

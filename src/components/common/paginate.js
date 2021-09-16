@@ -16,18 +16,18 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
   }
 
   return (
-    <div>
-      <Pagination>
-        {firstObj > 0
-          ? <Pagination.Prev onClick={prevPage} />
-          : null}
-        {pageNumbers && pageNumbers.map(number => (
-          <Pagination.Item key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
-        ))}
-        {lastObj < allObj
-          ? <Pagination.Next onClick={nextPage} />
-          : null}
-      </Pagination>
-    </div>
+
+    <Pagination className='d-flex justify-content-start m-3'>
+      {firstObj > 0
+        ? <Pagination.Prev onClick={prevPage} />
+        : null}
+      {pageNumbers && pageNumbers.map(number => (
+        <Pagination.Item className='text-center' style={{ width: '3vw' }}key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
+      ))}
+      {lastObj < allObj
+        ? <Pagination.Next onClick={nextPage} />
+        : null}
+    </Pagination>
+
   )
 }

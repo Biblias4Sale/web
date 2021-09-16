@@ -4,11 +4,13 @@ import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { Cursor } from '../../NavBarStyle'
 
 export const CartIcon = () => {
-  const cart = useSelector(state => state.cart.main)
+  // const cart = useSelector(state => state.cart.main)
+  const cart = useSelector((state) => state.logged ? state.userCart.ProductSolds : state.cart.main)
+
   return (
-    <div className='position-relative'>
+    <div className='position-relative mt-2'>
       <Link to='/cart' className='text-decoration-none'>
-        {cart.length > 0
+        {cart && cart.length > 0
           ? <div className='position-absolute bottom-0 start-50 mb-2 translate-middle'>{cart.length}</div>
           : null}
         <HiOutlineShoppingCart size={32} title='Shopping cart' style={Cursor} />

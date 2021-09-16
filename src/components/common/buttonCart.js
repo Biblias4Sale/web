@@ -10,12 +10,8 @@ import axios from 'axios'
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
+  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
   const logged = useSelector(state => state.logged)
-
-  // console.log('user:', userID)
-  // console.log('cart:', cartID)
-  // console.log('product:', product.id)
 
   const onSubmit = async () => {
     if (logged) {
@@ -30,7 +26,8 @@ export const ButtonCart = ({ product }) => {
         toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
       }
     } else {
-      dispatch(AddProductToCart(product)) // << AGREGA AL CARRITO DE INVITADO
+      console.log('agrego a carrito de invitado')
+      dispatch(AddProductToCart(product))
     }
   }
   return (
