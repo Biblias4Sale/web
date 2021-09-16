@@ -12,9 +12,9 @@ export const getReviews = () => {
   }
 }
 
-export const getFavorites = (id) => {
+export const getFavorites = (userID) => {
   return async function (dispatch) {
-    const response = await axios.get(`${ApiURL}/favorites/${id}`)
+    const response = await axios.get(`${ApiURL}/favorites/${userID}`)
     return dispatch({ type: GET_FAVORITES, payload: response.data })
   }
 }

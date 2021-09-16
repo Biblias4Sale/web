@@ -7,7 +7,8 @@ import {
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
   SUBTRACT_QTY_FROM_SAVED,
-  GET_CART
+  GET_CART,
+  GET_SAVED
 } from './constants'
 
 export const AddProductToCart = (newproduct) => {
@@ -55,9 +56,16 @@ export const SubtractQtyFromSaved = (id) => {
   }
 }
 
-export const getCart = (id) => {
+export const getCart = (userID) => {
   return async function (dispatch) {
-    const response = await axios.get(`${ApiURL}/cart/${id}`)
+    const response = await axios.get(`${ApiURL}/cart/${userID}`)
     return dispatch({ type: GET_CART, payload: response.data.cart })
+  }
+}
+
+export const getSaved = (userID) => {
+  return async function (dispatch) {
+    const response = await axios.get(`${ApiURL}/saveProduct/${userID}`)
+    return dispatch({ type: GET_SAVED, payload: response.data })
   }
 }

@@ -1,7 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { AddProductToCart, getCart } from '../../redux/actions/cartActions'
-
 import { useSelector, useDispatch } from 'react-redux'
 import { toastCustom } from './Toastify'
 import { ApiURL } from '../../config/config'
