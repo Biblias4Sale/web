@@ -9,7 +9,7 @@ export const RightContainer = ({ option }) => {
     <Col lg={9} id={styles.rightContainer}>
       {
         option === Management[0]
-          ? <EditAccount />
+          ? <Favorites />
           : option === Management[1]
             ? <h4> Próximamente: Mis Compras </h4>
             : option === Management[2]
@@ -17,7 +17,7 @@ export const RightContainer = ({ option }) => {
               : option === Management[3]
                 ? <h4> Próximamente: Métodos de pago </h4>
                 : option === Management[4]
-                  ? <Favorites />
+                  ? <EditAccount />
                   : <h4>Componente Default</h4>
       }
     </Col>
