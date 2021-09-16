@@ -14,7 +14,6 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
             <>
               <h3 style={{ marginRight: '0.5rem' }}>{options.searching}</h3>
               <img src={btnBlue} alt='' height='30px' onClick={clearSearch} style={{ marginRight: '1rem', cursor: 'pointer' }} />
-              {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
               {options.category
                 ? (
                   <>

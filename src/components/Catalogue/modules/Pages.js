@@ -17,6 +17,7 @@ export const Pages = ({ finalList }) => {
     <div>
       <MapProduct product={product} />
       <hr />
+
       <Pagination
         firstObj={firstObj}
         lastObj={lastObj}
@@ -26,6 +27,7 @@ export const Pages = ({ finalList }) => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
+
     </div>
   )
 }
