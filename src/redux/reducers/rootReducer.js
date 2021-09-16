@@ -40,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, logged: action.payload }
 
     case LOG_OUT:
-      return { ...state, logged: false, favorites: null, userCart: null }
+      return { ...state, logged: false, favorites: [], userCart: [] }
 
     case CREATE_USER:
       return { ...state, logged: action.payload }
