@@ -7,10 +7,10 @@ export const CartIcon = () => {
   const cart = useSelector(state => state.cart.main)
   return (
     <div>
-    <Link to='/cart' className='text-decoration-none'>
-      <div className='d-flex align-content-end justify-content-center'>{cart.length}</div>
-      <HiOutlineShoppingCart size={33} title='Shopping cart' style={Cursor} />
-    </Link>
+      <Link to='/cart' className='text-decoration-none'>
+        <div className='d-flex align-content-end justify-content-center'>{cart.length}</div>
+        <HiOutlineShoppingCart size={33} title='Carrito de Compras' style={Cursor} />
+      </Link>
     </div>
   )
 }

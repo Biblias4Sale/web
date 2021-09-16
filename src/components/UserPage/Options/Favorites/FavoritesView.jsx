@@ -1,5 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { FormatedPrice } from '../../../common/formatedPrice'
 
 const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
   console.log('FAVORITE', favorite)
@@ -20,9 +21,12 @@ const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
               </Row>
 
               <Row>
-                <Col><Link to='#' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                <Col><Link to='#' onClick={() => moveToCart(product)}>Enviar al Carrito</Link></Col>
+                <Col><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
+                <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Enviar al Carrito</Link></Col>
               </Row>
+            </Col>
+            <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
+              <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: product.price })}</span></Row>
             </Col>
           </Row>
         )
