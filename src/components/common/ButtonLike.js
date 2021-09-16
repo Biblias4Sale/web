@@ -20,6 +20,8 @@ export const ButtonLike = ({ product }) => {
     }
   }
   return (
-    <div style={{ color: 'red', cursor: 'pointer' }}><AiOutlineHeart onClick={handleClick} /></div>
+    <div style={{ color: 'gray', cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}>
+      <AiOutlineHeart onClick={handleClick} title='Agregar a Favoritos' />
+    </div>
   )
 }
