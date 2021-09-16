@@ -12,11 +12,11 @@ export const EditAccountView = ({
   errorAuth
 }) => {
   return (
-    <Container>
+    <Container className='d-flex flex-wrap'>
       <h3 style={title}>Modificar datos personales</h3>
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Nombre</Form.Label>
             <Form.Control
               type='text'
@@ -29,7 +29,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.name && errors.name}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Apellido</Form.Label>
             <Form.Control
               type='text'
@@ -44,7 +44,7 @@ export const EditAccountView = ({
           </Form.Group>
         </Row>
         <Row>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Email</Form.Label>
             <Form.Control
               type='e-mail'
@@ -57,7 +57,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.email && errors.email}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} Lg={12}>
             <Form.Label>Teléfono</Form.Label>
             <Form.Control
               type='tel'
@@ -72,7 +72,7 @@ export const EditAccountView = ({
           </Form.Group>
         </Row>
         <Row>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
               type='password'
@@ -84,7 +84,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.password && errors.password}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} Lg={12}>
             <Form.Label>Confirmar Contraseña</Form.Label>
             <Form.Control
               type='password'
@@ -97,7 +97,7 @@ export const EditAccountView = ({
             </Row>
           </Form.Group>
         </Row>
-        <Form.Group>
+        <Form.Group lg={6} sm={12}>
           <Form.Label>Dirección</Form.Label>
           <Form.Control
             type='text'
@@ -111,7 +111,7 @@ export const EditAccountView = ({
           </Row>
         </Form.Group>
         <Row>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Ciudad</Form.Label>
             <Form.Control
               type='text'
@@ -124,7 +124,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.city && errors.city}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={3} sm={6}>
             <Form.Label>Provincia</Form.Label>
             <Form.Control
               type='text'
@@ -137,7 +137,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.province && errors.province}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col}>
+          <Form.Group as={Col} lg={3} sm={6}>
             <Form.Label>Código Postal</Form.Label>
             <Form.Control
               type='text'

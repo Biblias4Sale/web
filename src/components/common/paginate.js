@@ -16,8 +16,8 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
   }
 
   return (
-
-    <Pagination className='d-flex justify-content-start m-3'>
+      <div className='d-flex justify-content-center'>
+    <Pagination className='d-flex justify-content-center m-3'>
       {firstObj > 0
         ? <Pagination.Prev onClick={prevPage} />
         : null}
@@ -28,6 +28,6 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
         ? <Pagination.Next onClick={nextPage} />
         : null}
     </Pagination>
-
+    </div>
   )
 }
