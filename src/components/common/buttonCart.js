@@ -21,7 +21,7 @@ export const ButtonCart = ({ product }) => {
     if (logged) {
       console.log('agrego a carrito de usuario')
       try {
-        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: 1 })
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
         dispatch(getCart(userID))
 
         toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
