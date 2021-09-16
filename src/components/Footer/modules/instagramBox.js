@@ -8,7 +8,7 @@ export const InstagramBox = () => {
   return (
     <Col xs={4} lg={4} className='d-flex justify-content-center align-items-center'>
       <NavLink href={url} target='_blank' className='d-flex justify-content-center align-items-center fw-bold' style={InstagramLink}>
-        Síguenos en
+        Seguinos en
         <Image src={InstagramLogo} style={InstagramLogoStyle} />
       </NavLink>
     </Col>

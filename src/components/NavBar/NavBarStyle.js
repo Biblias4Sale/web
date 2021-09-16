@@ -25,3 +25,9 @@ export const Cursor = {
   cursor: 'pointer',
   margin: '0px'
 }
+
+export const CursorLike = {
+  cursor: 'pointer',
+  margin: '0px',
+  color: 'black'
+}
