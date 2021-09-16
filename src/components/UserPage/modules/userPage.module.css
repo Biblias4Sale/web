@@ -59,12 +59,19 @@
   z-index: 15;
 }
 
-
 .optionItem {
   margin-bottom: 1.5rem;
   cursor: pointer;
+  transition: transform 0.3s ease-out;
 }
 
 .optionItem:hover {
   color: rgb(94, 93, 93);
+  transform: translateX(5px);
+}
+
+.optionSelectedItem {
+  margin-bottom: 1.5rem;
+  color:rgb(2, 0, 95);;
+  font-weight: bold;
 }
