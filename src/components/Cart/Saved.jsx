@@ -64,7 +64,9 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
           </>
           )
         : (
-          <h4>No tenés productos guardados</h4>
+          <Col className='d-flex  justify-content-center align-items-center'>
+            <h4>No tenés productos guardados</h4>
+          </Col>
           )}
 
     </Container>

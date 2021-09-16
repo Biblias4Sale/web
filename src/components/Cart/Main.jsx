@@ -85,10 +85,10 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
           </>
           )
         : (
-          <div style={{ margin: 'auto' }}>
+          <Col className='d-flex  justify-content-center align-items-center'>
             <h4>Tu carrito está vacío</h4>
-            <img src={emptyCart} width='25%' alt='' />
-          </div>
+            <img src={emptyCart} className='w-25' alt='' />
+          </Col>
           )}
     </Container>
   )

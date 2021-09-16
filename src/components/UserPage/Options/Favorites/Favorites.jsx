@@ -1,24 +1,28 @@
 import FavoritesView from './FavoritesView'
 import { useSelector, useDispatch } from 'react-redux'
-import { AddProductToCart } from '../../../../redux/actions/cartActions'
-import { RemoveProductFromFavorites } from '../../../../redux/actions/index'
+import { getFavorites } from '../../../../redux/actions/index'
+import { ApiURL } from '../../../../config/config'
+import axios from 'axios'
 
 export const Favorites = (props) => {
   const dispatch = useDispatch()
-  const favorite = useSelector((state) => state.favorites)
+  const favorites = useSelector(state => state.favorites)
+  const userID = useSelector(state => state.logged.user.id)
 
-  const moveToCart = (product) => {
-    dispatch(AddProductToCart(product))
-    dispatch(RemoveProductFromFavorites(product.id))
+  const moveToCart = async (productID) => {
+    await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
+    // ACA FALTA AGREGAR AL CARRITO DE USUARIO
+    dispatch(getFavorites(productID))
   }
 
-  const RemovefromFavorites = (id) => {
-    dispatch(RemoveProductFromFavorites(id))
+  const RemovefromFavorites = async (productID) => {
+    await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
+    dispatch(getFavorites(userID))
   }
 
   return (
     <FavoritesView
-      favorite={favorite}
+      favorites={favorites}
       moveToCart={moveToCart}
       RemovefromFavorites={RemovefromFavorites}
     />
