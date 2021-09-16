@@ -64,7 +64,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
           </>
           )
         : (
-          <h4>No tenes productos guardados</h4>
+          <h4>No tenés productos guardados</h4>
           )}
 
     </Container>
