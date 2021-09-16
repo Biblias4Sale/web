@@ -12,7 +12,7 @@ export const LikeIcon = () => {
         }}
         className='text-decoration-none'
       >
-        <AiOutlineHeart size={25} title='Favoritos' style={CursorLike} />
+        <AiOutlineHeart size={32} title='Favoritos' style={CursorLike} />
       </Link>
     </div>
   )
