@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
   const dispatch = useDispatch()
-  const mainList = useSelector((state) => state.cart.main)
+  const mainList = useSelector((state) => state.logged ? state.userCart.ProductSolds : state.cart.main)
   const savedList = useSelector((state) => state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
