@@ -1,11 +1,13 @@
-
+import axios from 'axios'
+import { ApiURL } from '../../config/config'
 import {
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   ADD_PRODUCT_TO_SAVED,
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
-  SUBTRACT_QTY_FROM_SAVED
+  SUBTRACT_QTY_FROM_SAVED,
+  GET_CART
 } from './constants'
 
 export const AddProductToCart = (newproduct) => {
@@ -50,5 +52,12 @@ export const SubtractQtyFromSaved = (id) => {
   return {
     type: SUBTRACT_QTY_FROM_SAVED,
     payload: id
+  }
+}
+
+export const getCart = (id) => {
+  return async function (dispatch) {
+    const response = await axios.get(`${ApiURL}/cart/${id}`)
+    return dispatch({ type: GET_CART, payload: response.data.cart })
   }
 }

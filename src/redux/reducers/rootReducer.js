@@ -15,7 +15,9 @@ import {
   SUBTRACT_QTY_FROM_CART,
   REMOVE_PRODUCT_FROM_SAVED,
   SUBTRACT_QTY_FROM_SAVED,
-  UPDATE_FAVORITES
+  GET_FAVORITES,
+  // DELETE_FAVORITES,
+  GET_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -26,11 +28,11 @@ const initialState = {
   reviews: [],
   searchResult: [],
   searchString: '',
+  favorites: [],
   cart: {
     main: [],
     saved: []
-  },
-  favorites: []
+  }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -39,7 +41,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, logged: action.payload }
 
     case LOG_OUT:
-      return { ...state, logged: false }
+      return { ...state, logged: false, favorites: null, userCart: null }
 
     case CREATE_USER:
       return { ...state, logged: action.payload }
@@ -125,9 +127,11 @@ const rootReducer = (state = initialState, action) => {
       })
       return { ...state, cart: { ...state.cart, saved: state.cart.saved } }
 
-    case UPDATE_FAVORITES :
-
+    case GET_FAVORITES:
       return { ...state, favorites: action.payload }
+
+    case GET_CART :
+      return { ...state, userCart: action.payload }
 
     default:
       return state

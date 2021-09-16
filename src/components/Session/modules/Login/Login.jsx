@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLogged } from '../../../../redux/actions/userActions'
+import { getCart } from '../../../../redux/actions/cartActions'
 import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
@@ -31,8 +32,8 @@ export const Login = ({ setCurrentView }) => {
       dispatch(setLogged(response.data))
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
       dispatch(getFavorites(response.data.user.id))
+      dispatch(getCart(response.data.user.id))
     } catch (error) {
-      // console.log('error en login:', error)
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
   }
