@@ -1,18 +1,22 @@
 import { AiOutlineHeart } from 'react-icons/ai'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { toastCustom } from './Toastify'
-import { addProductToFavorites } from '../../redux/actions/index'
+import { getFavorites } from '../../redux/actions/index'
+// import { addProductToFavorites } from '../../redux/actions/index'
+import { ApiURL } from '../../config/config'
+import axios from 'axios'
 
 export const ButtonLike = ({ product }) => {
   const dispatch = useDispatch()
+  const id = useSelector(state => state.logged.user.id)
 
   const handleClick = async () => {
     try {
-      dispatch(addProductToFavorites(product))
-      toastCustom('Producto agregado favoritos', 'success', 2000, 'bottom-right')
+      await axios.post(`${ApiURL}/favorites/${id}/${product.id}`)
+      dispatch(getFavorites(id))
+      toastCustom('Producto agregado favoritos', 'success', 4000, 'bottom-right')
     } catch (error) {
-      console.log('Error a agregar al carrito', error)
-      toastCustom('Producto no pudo ser agregado', 'error', 2000, 'bottom-right')
+      toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
     }
   }
   return (

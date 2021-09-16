@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLogged } from '../../../../redux/actions/userActions'
+import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
@@ -29,6 +30,7 @@ export const Login = ({ setCurrentView }) => {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
+      dispatch(getFavorites(response.data.user.id))
     } catch (error) {
       // console.log('error en login:', error)
       setErrorAuth('Datos inválidos, intenta nuevamente')

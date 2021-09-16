@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../../common/formatedPrice'
 import { title } from './FavoritesStyle'
 
-const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
+const FavoritesView = ({ favorites, moveToCart, RemovefromFavorites }) => {
   return (
     <Container>
       <h3 style={title}>Favoritos</h3>
 
-      {favorite.map(product => {
+      {favorites.map(product => {
         return (
           <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={product.id}>
             <Col lg={2} className='d-flex justify-content-center align-items-center'>
@@ -24,7 +24,7 @@ const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
 
               <Row>
                 <Col><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al Carrito</Link></Col>
+                <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
               </Row>
             </Col>
             <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
