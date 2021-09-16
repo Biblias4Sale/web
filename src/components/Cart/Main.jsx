@@ -2,6 +2,7 @@ import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-boot
 import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
+import emptyCart from '../../assets/carritoVacio.png'
 
 const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, newKey }) => {
   return (
@@ -68,13 +69,16 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
 
             <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
               <Button variant='outline-dark'>
-                <span className='fw-bolder'>Comprar</span>
+                <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
               </Button>
             </Row>
           </>
           )
         : (
-          <h4>Tu carrito está vacío</h4>
+          <div style={{ margin: 'auto' }}>
+            <h4>Tu carrito está vacío</h4>
+            <img src={emptyCart} width='25%' alt='' />
+          </div>
           )}
     </Container>
   )

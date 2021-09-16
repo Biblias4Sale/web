@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { SearchBarView } from './SearchBarView'
-import { setSearchResult, setSearchString } from '../../redux/actions/index'
+import { setSearchResult, setSearchString } from '../../redux/actions/productActions'
 
 export const SearchBar = () => {
   const dispatch = useDispatch()
