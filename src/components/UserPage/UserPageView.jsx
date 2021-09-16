@@ -9,14 +9,14 @@ import { RightContainer } from './modules/RightContainer'
 export const UserPageView = ({ section }) => {
   const user = useSelector(state => state.logged)
   const userCapitals = GetUserCapitals(user)
-  const [option, setOption] = useState(section)
+  const [actualView, setActualView] = useState(section)
 
   return (
     <>
       <TopContainer userCapitals={userCapitals} />
       <Container className='d-flex' style={{ marginTop: '50px' }}>
-        <LeftContainer user={user} setOption={setOption} />
-        <RightContainer option={option} />
+        <LeftContainer user={user} actualView={actualView} setActualView={setActualView} />
+        <RightContainer actualView={actualView} />
       </Container>
     </>
   )
