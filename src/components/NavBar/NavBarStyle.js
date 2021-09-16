@@ -29,5 +29,5 @@ export const Cursor = {
 export const CursorLike = {
   cursor: 'pointer',
   margin: '0px',
-  color: 'black'
+  color: 'red'
 }
