@@ -16,7 +16,6 @@ import {
   REMOVE_PRODUCT_FROM_SAVED,
   SUBTRACT_QTY_FROM_SAVED,
   GET_FAVORITES,
-  // DELETE_FAVORITES,
   GET_CART
 } from '../actions/constants'
 

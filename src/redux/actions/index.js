@@ -2,8 +2,7 @@ import axios from 'axios'
 import { ApiURL } from '../../config/config'
 import {
   GET_REVIEWS,
-  GET_FAVORITES,
-  DELETE_FAVORITES
+  GET_FAVORITES
 } from './constants'
 
 export const getReviews = () => {
@@ -18,8 +17,4 @@ export const getFavorites = (id) => {
     const response = await axios.get(`${ApiURL}/favorites/${id}`)
     return dispatch({ type: GET_FAVORITES, payload: response.data })
   }
-}
-
-export const deleteFavorites = () => {
-  return { type: DELETE_FAVORITES }
 }
