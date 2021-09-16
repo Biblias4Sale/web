@@ -1,11 +1,13 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../../common/formatedPrice'
+import { title } from './FavoritesStyle'
 
 const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
-  console.log('FAVORITE', favorite)
   return (
     <Container>
+      <h3 style={title}>Favoritos</h3>
+
       {favorite.map(product => {
         return (
           <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={product.id}>
