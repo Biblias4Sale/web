@@ -30,6 +30,7 @@ export const ButtonCart = ({ product }) => {
         toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
       }
     } else {
+      console.log('agrego a carrito de invitado')
       dispatch(AddProductToCart(product)) // << AGREGA AL CARRITO DE INVITADO
     }
   }
