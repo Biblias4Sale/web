@@ -13,10 +13,6 @@ export const ButtonCart = ({ product }) => {
   const cartID = useSelector(state => state.logged ? state.userCart.id : null)
   const logged = useSelector(state => state.logged)
 
-  // console.log('user:', userID)
-  // console.log('cart:', cartID)
-  // console.log('product:', product.id)
-
   const onSubmit = async () => {
     if (logged) {
       console.log('agrego a carrito de usuario')
@@ -31,7 +27,7 @@ export const ButtonCart = ({ product }) => {
       }
     } else {
       console.log('agrego a carrito de invitado')
-      dispatch(AddProductToCart(product)) // << AGREGA AL CARRITO DE INVITADO
+      dispatch(AddProductToCart(product))
     }
   }
   return (
