@@ -1,19 +1,36 @@
 import { Button } from 'react-bootstrap'
 import { HiOutlineShoppingCart } from 'react-icons/hi'
-import { AddProductToCart } from '../../redux/actions/cartActions'
-import { useDispatch } from 'react-redux'
+import { AddProductToCart, getCart } from '../../redux/actions/cartActions'
+
+import { useSelector, useDispatch } from 'react-redux'
 import { toastCustom } from './Toastify'
+import { ApiURL } from '../../config/config'
+import axios from 'axios'
 
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
+  const userID = useSelector(state => state.logged ? state.logged.user.id : null)
+  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
+  const logged = useSelector(state => state.logged)
+
+  // console.log('user:', userID)
+  // console.log('cart:', cartID)
+  // console.log('product:', product.id)
 
   const onSubmit = async () => {
-    try {
-      dispatch(AddProductToCart(product))
-      toastCustom('Producto agregado al carrito', 'success', 2000, 'bottom-right')
-    } catch (error) {
-      console.log('Error a agregar al carrito', error)
-      toastCustom('Producto no pudo ser agregado', 'error', 2000, 'bottom-right')
+    if (logged) {
+      console.log('agrego a carrito de usuario')
+      try {
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: 1 })
+        dispatch(getCart(userID))
+
+        toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        console.log('Error a agregar al carrito', error)
+        toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(AddProductToCart(product)) // << AGREGA AL CARRITO DE INVITADO
     }
   }
   return (
