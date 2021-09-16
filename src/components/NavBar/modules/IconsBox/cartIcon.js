@@ -6,10 +6,12 @@ import { Cursor } from '../../NavBarStyle'
 export const CartIcon = () => {
   const cart = useSelector(state => state.cart.main)
   return (
-    <div>
+    <div className='position-relative'>
       <Link to='/cart' className='text-decoration-none'>
-        <div className='d-flex align-content-end justify-content-center'>{cart.length}</div>
-        <HiOutlineShoppingCart size={33} title='Carrito de Compras' style={Cursor} />
+        {cart.length > 0
+          ? <div className='position-absolute bottom-0 start-50 mb-2 translate-middle'>{cart.length}</div>
+          : null}
+        <HiOutlineShoppingCart size={32} title='Shopping cart' style={Cursor} />
       </Link>
     </div>
   )
