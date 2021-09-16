@@ -16,18 +16,18 @@ export const Paginate = ({ objPerPage, allObj, pages, setCurrentPage, currentPag
   }
 
   return (
-    <div>
-      <Pagination>
-        {firstObj > 0
-          ? <Pagination.Prev onClick={prevPage} />
-          : null}
-        {pageNumbers && pageNumbers.map(number => (
-          <Pagination.Item key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
-        ))}
-        {lastObj < allObj
-          ? <Pagination.Next onClick={nextPage} />
-          : null}
-      </Pagination>
-    </div>
+
+    <Pagination>
+      {firstObj > 0
+        ? <Pagination.Prev onClick={prevPage} />
+        : null}
+      {pageNumbers && pageNumbers.map(number => (
+        <Pagination.Item key={number} onClick={() => pages(number)}>{number}</Pagination.Item>
+      ))}
+      {lastObj < allObj
+        ? <Pagination.Next onClick={nextPage} />
+        : null}
+    </Pagination>
+
   )
 }
