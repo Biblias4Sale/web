@@ -10,9 +10,9 @@ export const Favorites = (props) => {
   const userID = useSelector(state => state.logged.user.id)
 
   const moveToCart = async (productID) => {
-    await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
+    // await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
     // ACA FALTA AGREGAR AL CARRITO DE USUARIO
-    dispatch(getFavorites(productID))
+    // dispatch(getFavorites(productID))
   }
 
   const RemovefromFavorites = async (productID) => {
