@@ -2,7 +2,6 @@ import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-boot
 import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
-import emptySave from '../../assets/emplySave.png'
 
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey }) => {
   return (
@@ -66,8 +65,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
           )
         : (
           <Col className='d-flex  justify-content-center align-items-center'>
-              <h4>Vamos a comprar ?</h4>
-              <img src={emptySave} className='w-25' alt='' />
+            <h4>No tenés productos guardados</h4>
           </Col>
           )}
 
