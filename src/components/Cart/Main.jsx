@@ -68,7 +68,7 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
 
             <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
               <Button variant='outline-dark'>
-                <span className='fw-bolder'>Comprar</span>
+                <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
               </Button>
             </Row>
           </>
