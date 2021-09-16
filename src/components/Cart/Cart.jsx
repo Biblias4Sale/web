@@ -7,7 +7,7 @@ import {
   SubtractQtyFromCart,
   RemoveProductFromSaved,
   SubtractQtyFromSaved
-} from '../../redux/actions/index'
+} from '../../redux/actions/cartActions'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Cart = () => {
