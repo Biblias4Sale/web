@@ -1,18 +1,11 @@
 import axios from 'axios'
-import { SET_LOGGED, CREATE_USER, LOG_OUT } from './constants'
+import { SET_LOGGED, LOG_OUT } from './constants'
 import { ApiURL } from '../../config/config'
 
-export const setLogged = (loginInfo) => {
+export const setLogged = (userInfo) => {
   return {
     type: SET_LOGGED,
-    payload: loginInfo
-  }
-}
-
-export const createUser = (registerInfo) => {
-  return {
-    type: CREATE_USER,
-    payload: registerInfo
+    payload: userInfo
   }
 }
 

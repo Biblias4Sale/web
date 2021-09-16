@@ -1,4 +1,5 @@
-import { AiOutlineHeart } from 'react-icons/ai'
+import { useState } from 'react'
+import { AiFillHeart } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
 import { toastCustom } from './Toastify'
 import { getFavorites } from '../../redux/actions/index'
@@ -9,19 +10,38 @@ import axios from 'axios'
 export const ButtonLike = ({ product }) => {
   const dispatch = useDispatch()
   const id = useSelector(state => state.logged.user.id)
+  const favoritesProd = useSelector(state => state.favorites)
+  const [heartColor, setHeartColor] = useState({ color: 'gray' })
+
+  const RemovefromFavorites = async (productID) => {
+    await axios.delete(`${ApiURL}/favorites/${id}/${productID}`)
+    dispatch(getFavorites(id))
+  }
 
   const handleClick = async () => {
-    try {
-      await axios.post(`${ApiURL}/favorites/${id}/${product.id}`)
-      dispatch(getFavorites(id))
-      toastCustom('Producto agregado favoritos', 'success', 4000, 'bottom-right')
-    } catch (error) {
-      toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
+    if (favoritesProd.some(obj => obj.id === product.id)) {
+      console.log('entre')
+      setHeartColor({ color: 'gray' })
+      RemovefromFavorites(product.id)
+      toastCustom('Producto eliminado de favoritos', 'success', 4000, 'bottom-right')
+    } else {
+      try {
+        await axios.post(`${ApiURL}/favorites/${id}/${product.id}`)
+        dispatch(getFavorites(id))
+        setHeartColor({ color: 'red' })
+        toastCustom('Producto agregado favoritos', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
+      }
     }
   }
   return (
-    <div style={{ color: 'gray', cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}>
-      <AiOutlineHeart onClick={handleClick} title='Agregar a Favoritos' />
-    </div>
+    <>
+      {
+      !favoritesProd.some(obj => obj.id === product.id)
+        ? <div style={{ color: heartColor.color, cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={25} onClick={handleClick} /></div>
+        : <div style={{ color: 'red', cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={25} onClick={handleClick} /></div>
+      }
+    </>
   )
 }

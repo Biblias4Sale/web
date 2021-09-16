@@ -4,7 +4,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { CreateAccountView } from './CreateAccountView'
-import { createUser } from '../../../../redux/actions/userActions'
+import { setLogged } from '../../../../redux/actions/userActions'
+import { getCart } from '../../../../redux/actions/cartActions'
+import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 
 export const CreateAccount = ({ setCurrentView }) => {
@@ -32,9 +34,11 @@ export const CreateAccount = ({ setCurrentView }) => {
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
-      const response = await axios.post(`${ApiURL}/user`, formData, { withCredentials: true })
-      dispatch(createUser(response.data))
+      const response = await axios.post(`${ApiURL}/user`, formData)
+      dispatch(setLogged(response.data))
       toastCustom(`Cuenta creada exitosamente. Bienvenid@ ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
+      dispatch(getFavorites(response.data.user.id))
+      dispatch(getCart(response.data.user.id))
     } catch (error) {
       console.log('Error en crear cuenta:', error)
       toastCustom('Ya existe una cuenta con esa dirección de e-mail', 'error', 4000, 'bottom-right')

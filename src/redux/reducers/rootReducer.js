@@ -4,7 +4,6 @@ import {
   GET_PRODUCTS,
   GET_PRODUCT_BY_ID,
   DELETE_DETAILS,
-  CREATE_USER,
   LOG_OUT,
   SET_SEARCH_RESULT,
   GET_REVIEWS,
@@ -31,7 +30,8 @@ const initialState = {
   cart: {
     main: [],
     saved: []
-  }
+  },
+  userCart: {}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -41,9 +41,6 @@ const rootReducer = (state = initialState, action) => {
 
     case LOG_OUT:
       return { ...state, logged: false, favorites: [], userCart: [] }
-
-    case CREATE_USER:
-      return { ...state, logged: action.payload }
 
     case GET_PRODUCTS:
       return { ...state, products: action.payload }
