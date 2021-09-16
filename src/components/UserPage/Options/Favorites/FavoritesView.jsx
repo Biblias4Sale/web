@@ -8,9 +8,9 @@ const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
     <Container>
       {favorite.map(product => {
         return (
-          <Row className='border border-dark p-1 mt-2' key={product.id}>
-            <Col lg={2}>
-              <img src={product.img} alt='' style={{ width: '5vw' }} />
+          <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={product.id}>
+            <Col lg={2} className='d-flex justify-content-center align-items-center'>
+              <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
             </Col>
             <Col lg={6}>
               <Row className='text-uppercase mt-2'>
@@ -22,7 +22,7 @@ const FavoritesView = ({ favorite, moveToCart, RemovefromFavorites }) => {
 
               <Row>
                 <Col><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Enviar al Carrito</Link></Col>
+                <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al Carrito</Link></Col>
               </Row>
             </Col>
             <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
