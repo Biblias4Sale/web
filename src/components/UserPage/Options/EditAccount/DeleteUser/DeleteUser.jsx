@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { logOut } from '../../../../../redux/actions/index'
+import { logOut } from '../../../../../redux/actions/userActions'
 import { DeleteUserView } from './DeleteUserView'
 import { toastCustom } from '../../../../common/Toastify'
 import axios from 'axios'

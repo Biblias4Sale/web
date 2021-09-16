@@ -1,7 +1,7 @@
 import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { ButtonCartStyle } from '../ProductDetailsStyle'
 import { useDispatch } from 'react-redux'
-import { AddProductToCart } from '../../../redux/actions'
+import { AddProductToCart } from '../../../redux/actions/cartActions'
 import { toastCustom } from '../../common/Toastify'
 
 export const ButtonCart = ({ product }) => {

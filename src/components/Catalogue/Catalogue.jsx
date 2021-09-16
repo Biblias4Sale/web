@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getProducts, setSearchResult } from '../../redux/actions/index'
+import { getProducts, setSearchResult } from '../../redux/actions/productActions'
 import { Statements } from './modules/main/statements'
 import { getSubs } from './modules/main/getSubs'
 import { filterByCategory } from './modules/main/filterByCategory.js'

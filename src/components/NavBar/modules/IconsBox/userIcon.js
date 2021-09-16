@@ -5,7 +5,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Session } from '../../../Session/Session'
 import { Cursor } from '../../NavBarStyle'
-import { logOut } from '../../../../redux/actions/index'
+import { logOut } from '../../../../redux/actions/userActions'
 
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)

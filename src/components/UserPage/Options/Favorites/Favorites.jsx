@@ -1,7 +1,7 @@
 import FavoritesView from './FavoritesView'
 import { useSelector, useDispatch } from 'react-redux'
-import { AddProductToCart, RemoveProductFromFavorites } from '../../../../redux/actions'
-
+import { AddProductToCart } from '../../../../redux/actions/cartActions'
+import { RemoveProductFromFavorites } from '../../../../redux/actions/index'
 export const Favorites = () => {
   const dispatch = useDispatch()
   const favorite = useSelector((state) => state.favorites)

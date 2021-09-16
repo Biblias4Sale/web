@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { logOut } from '../../redux/actions'
+import { logOut } from '../../redux/actions/userActions'
 
 const Logout = () => {
   const dispatch = useDispatch()

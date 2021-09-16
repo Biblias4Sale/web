@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 // import * as yup from 'yup'
 import { EditAccountView } from './EditAccountView'
-import { editUser } from '../../../../redux/actions/index'
+import { editUser } from '../../../../redux/actions/userActions'
 import { toastCustom } from '../../../common/Toastify'
 
 export const EditAccount = () => {
