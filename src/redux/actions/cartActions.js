@@ -8,7 +8,8 @@ import {
   REMOVE_PRODUCT_FROM_SAVED,
   SUBTRACT_QTY_FROM_SAVED,
   GET_CART,
-  GET_SAVED
+  GET_SAVED,
+  CLEAN_GUEST_CART
 } from './constants'
 
 export const AddProductToCart = (newproduct) => {
@@ -56,6 +57,12 @@ export const SubtractQtyFromSaved = (id) => {
   }
 }
 
+export const cleanGuestCart = () => {
+  return {
+    type: CLEAN_GUEST_CART
+  }
+}
+
 export const getCart = (userID) => {
   return async function (dispatch) {
     const response = await axios.get(`${ApiURL}/cart/${userID}`)
@@ -65,7 +72,7 @@ export const getCart = (userID) => {
 
 export const getSaved = (userID) => {
   return async function (dispatch) {
-    const response = await axios.get(`${ApiURL}/saveProduct/${userID}`)
+    const response = await axios.get(`${ApiURL}/savedProducts/${userID}`)
     return dispatch({ type: GET_SAVED, payload: response.data })
   }
 }

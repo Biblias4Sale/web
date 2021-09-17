@@ -16,7 +16,8 @@ import {
   SUBTRACT_QTY_FROM_SAVED,
   GET_FAVORITES,
   GET_CART,
-  GET_SAVED
+  GET_SAVED,
+  CLEAN_GUEST_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -123,6 +124,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_SAVED :
       return { ...state, userSaved: action.payload }
+
+    case CLEAN_GUEST_CART:
+      return { ...state, cart: { ...state.cart, main: [], saved: [] } }
 
     default:
       return state

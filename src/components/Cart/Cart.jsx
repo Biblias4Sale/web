@@ -38,23 +38,41 @@ export const Cart = () => {
     calculateNewTotal()
   })
 
-  const addQtyToCart = (product) => {
-    dispatch(AddProductToCart(product))
-    setNewKey(prev => prev + 1)
-    calculateNewTotal()
+  const addQtyToCart = async (product) => {
+    if (logged) {
+      try {
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+        dispatch(getCart(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(AddProductToCart(product))
+      setNewKey(prev => prev + 1)
+      calculateNewTotal()
+    }
   }
 
-  const subtractQtyFromCart = (id) => {
-    dispatch(SubtractQtyFromCart(id))
-    setNewKey(prev => prev + 1)
-    calculateNewTotal()
+  const subtractQtyFromCart = async (productID) => {
+    if (logged) {
+      try {
+        await axios.post(`${ApiURL}/cart/subProduct/${cartID}/${productID}`)
+        dispatch(getCart(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(SubtractQtyFromCart(productID))
+      setNewKey(prev => prev + 1)
+      calculateNewTotal()
+    }
   }
 
   const moveToCart = async (product) => {
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/saveProduct/${userID}/${product.id}`)
-        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+        await axios.delete(`${ApiURL}/savedProducts/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
         dispatch(getSaved(userID))
         dispatch(getCart(userID))
         toastCustom('Producto movido al carrito', 'success', 4000, 'bottom-right')
@@ -84,9 +102,8 @@ export const Cart = () => {
   const removeFromSaved = async (productID) => {
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        await axios.delete(`${ApiURL}/savedProducts/${userID}/${productID}`)
         dispatch(getSaved(userID))
-        // toastCustom('Producto eliminado del carrito', 'success', 4000, 'bottom-right')
       } catch (error) {
         toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
       }
@@ -99,7 +116,7 @@ export const Cart = () => {
     if (logged) {
       try {
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
-        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
         dispatch(getCart(userID))
         dispatch(getSaved(userID))
         toastCustom('Producto movido a guardados', 'success', 4000, 'bottom-right')
@@ -115,7 +132,7 @@ export const Cart = () => {
   const addQtyToSaved = async (product) => {
     if (logged) {
       try {
-        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`)
         dispatch(getSaved(userID))
       } catch (error) {
         toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
@@ -129,7 +146,7 @@ export const Cart = () => {
   const subtractQtyFromSaved = async (productID) => {
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        await axios.patch(`${ApiURL}/savedProducts/${userID}/${productID}`)
         dispatch(getSaved(userID))
       } catch (error) {
         toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
