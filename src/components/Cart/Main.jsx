@@ -1,10 +1,13 @@
 import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-bootstrap'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../../components/common/formatedPrice'
 import styles from './Cart.module.css'
 import emptyCart from '../../assets/carritoVacio.png'
+import { MercadoPago } from '../../components/MercadoPago/MercadoPago'
 
 const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, newKey }) => {
+  const [show, setShow] = useState(false)
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -70,16 +73,18 @@ const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCa
             {mainList.length === 1
               ? (
                 <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
-                  <Button variant='outline-dark'>
+                  <Button variant='outline-dark' onClick={() => setShow(true)}>
                     <span className='fw-bolder'>Comprar 1 producto</span>
                   </Button>
+                  <MercadoPago show={show} onHide={() => setShow(false)} />
                 </Row>
                 )
               : (
                 <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
-                  <Button variant='outline-dark'>
+                  <Button variant='outline-dark' onClick={() => setShow(true)}>
                     <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
                   </Button>
+                  <MercadoPago show={show} onHide={() => setShow(false)} />
                 </Row>)}
 
           </>
