@@ -12,7 +12,7 @@ export const UserPageView = ({ section }) => {
   const [actualView, setActualView] = useState(section)
 
   return (
-    <div className='w-100 bg-warning p-4'>
+    <div className='w-100 p-4'>
       <TopContainer userCapitals={userCapitals}/>
       <Container className='d-flex' style={{ marginTop: '50px'}}>
         <LeftContainer user={user} actualView={actualView} setActualView={setActualView} />
