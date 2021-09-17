@@ -19,8 +19,8 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
-  const mainList = useSelector((state) => state.logged ? state.userCart.ProductSolds : state.cart.main)
+  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
   const savedList = useSelector((state) => state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
@@ -50,13 +50,25 @@ export const Cart = () => {
     calculateNewTotal()
   }
 
-  const moveToCart = (product) => {
-    dispatch(AddProductToCart(product))
-    dispatch(RemoveProductFromSaved(product.id))
+  const moveToCart = async (product) => {
+    if (logged) {
+      console.log('Moviendo de guardados de usuario a carrito de usuario')
+      try {
+        await axios.delete(`${ApiURL}/cart/saveProduct/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/cart/${cartID}/${product.id}`)
+        dispatch(getCart(userID))
+        dispatch(getSaved(userID))
+        toastCustom('Producto movido al carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(AddProductToCart(product))
+      dispatch(RemoveProductFromSaved(product.id))
+    }
   }
 
   const removeFromCart = async (productID) => {
-    console.log('PRODUCT ID:', productID)
     if (logged) {
       console.log('Eliminando producto del carrito de usuario')
       try {

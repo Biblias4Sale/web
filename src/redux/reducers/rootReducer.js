@@ -32,8 +32,8 @@ const initialState = {
     main: [],
     saved: []
   },
-  userCart: {},
-  userSaved: {}
+  userCart: [],
+  userSaved: []
 }
 
 const rootReducer = (state = initialState, action) => {

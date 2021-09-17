@@ -29,11 +29,12 @@ export const Login = ({ setCurrentView }) => {
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
+      console.log(response.data)
       dispatch(setLogged(response.data))
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
-      dispatch(getFavorites(response.data.user.id))
-      dispatch(getCart(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
+      dispatch(getFavorites(response.data.user.user.id))
+      dispatch(getCart(response.data.user.user.id))
+      dispatch(getSaved(response.data.user.user.id))
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
