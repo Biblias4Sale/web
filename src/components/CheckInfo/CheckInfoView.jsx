@@ -5,10 +5,7 @@ export const CheckInfoView = ({
   handleSubmit,
   errors,
   oldInfo,
-  setModalShow,
-  modalShow,
-  handleChange,
-  errorAuth
+  handleChange
 }) => {
   return (
     <Container className='d-flex flex-wrap'>

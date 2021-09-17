@@ -26,6 +26,7 @@ export const CheckInfo = () => {
     province: true,
     phone: true
   })
+  // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       dispatch(checkInfo(oldInfo.user.id, formData, oldInfo.token))
@@ -36,7 +37,7 @@ export const CheckInfo = () => {
     }
   }
 
-  const handlechange = (event, value) => {
+  const handleChange = (event, value) => {
     const nameFormat = /^[a-zA-Z]{1,20}$/
     const phoneFormat = /^[0-9]{1,12}$/
     const adressFormat = /^[#.0-9a-zA-Z\s,-]+$/
@@ -67,26 +68,25 @@ export const CheckInfo = () => {
           }))
         }
       }
-
-      if (event === 'phone' || event === 'cp') {
-        if (!value.match(phoneFormat)) {
-          setErrors((prev) => ({
-            ...prev,
-            [event]: `Ingresa ${errorString} válido`
-          }))
-        }
-      }
-      setFormData((prev) => ({ ...prev, [event]: value }))
     }
-    return (
-      <div>
-        <CheckInfoView
-          handleSubmit={handleSubmit(onSubmit)}
-          errors={errors}
-          oldInfo={oldInfo.user}
-          handleChange={handlechange}
-        />
-      </div>
-    )
+    if (event === 'phone' || event === 'cp') {
+      if (!value.match(phoneFormat)) {
+        setErrors((prev) => ({
+          ...prev,
+          [event]: `Ingresa ${errorString} válido`
+        }))
+      }
+    }
+    setFormData((prev) => ({ ...prev, [event]: value }))
   }
+  return (
+    <div>
+      <CheckInfoView
+        handleSubmit={handleSubmit(onSubmit)}
+        errors={errors}
+        oldInfo={oldInfo.user}
+        handleChange={handleChange}
+      />
+    </div>
+  )
 }
