@@ -59,7 +59,7 @@ export const SubtractQtyFromSaved = (id) => {
 export const getCart = (userID) => {
   return async function (dispatch) {
     const response = await axios.get(`${ApiURL}/cart/${userID}`)
-    return dispatch({ type: GET_CART, payload: response.data.cart })
+    return dispatch({ type: GET_CART, payload: response.data })
   }
 }
 

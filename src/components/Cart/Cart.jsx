@@ -21,7 +21,7 @@ export const Cart = () => {
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
   const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
   const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
-  const savedList = useSelector((state) => state.cart.saved)
+  const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
   const [newKey, setNewKey] = useState(1)
@@ -52,12 +52,11 @@ export const Cart = () => {
 
   const moveToCart = async (product) => {
     if (logged) {
-      console.log('Moviendo de guardados de usuario a carrito de usuario')
       try {
-        await axios.delete(`${ApiURL}/cart/saveProduct/${userID}/${product.id}`)
-        await axios.post(`${ApiURL}/cart/${cartID}/${product.id}`)
-        dispatch(getCart(userID))
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
         dispatch(getSaved(userID))
+        dispatch(getCart(userID))
         toastCustom('Producto movido al carrito', 'success', 4000, 'bottom-right')
       } catch (error) {
         toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
@@ -70,7 +69,6 @@ export const Cart = () => {
 
   const removeFromCart = async (productID) => {
     if (logged) {
-      console.log('Eliminando producto del carrito de usuario')
       try {
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
         dispatch(getCart(userID))
@@ -79,21 +77,29 @@ export const Cart = () => {
         toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
       }
     } else {
-      console.log('Eliminando producto del carrito de invitado')
       dispatch(RemoveProductFromCart(productID))
     }
   }
 
-  const removeFromSaved = (id) => {
-    dispatch(RemoveProductFromSaved(id))
+  const removeFromSaved = async (productID) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        dispatch(getSaved(userID))
+        // toastCustom('Producto eliminado del carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(RemoveProductFromSaved(productID))
+    }
   }
 
   const moveToSaved = async (product) => {
     if (logged) {
-      console.log('Moviendo de carrito de usuario a guardados de usuario')
       try {
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
-        await axios.post(`${ApiURL}/saveProduct/${userID}`, { productID: product.id })
+        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
         dispatch(getCart(userID))
         dispatch(getSaved(userID))
         toastCustom('Producto movido a guardados', 'success', 4000, 'bottom-right')
@@ -106,14 +112,32 @@ export const Cart = () => {
     }
   }
 
-  const addQtyToSaved = (product) => {
-    setNewKey(prev => prev + 1)
-    dispatch(AddProductToSaved(product))
+  const addQtyToSaved = async (product) => {
+    if (logged) {
+      try {
+        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        dispatch(getSaved(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      setNewKey(prev => prev + 1)
+      dispatch(AddProductToSaved(product))
+    }
   }
 
-  const subtractQtyFromSaved = (id) => {
-    setNewKey(prev => prev + 1)
-    dispatch(SubtractQtyFromSaved(id))
+  const subtractQtyFromSaved = async (productID) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        dispatch(getSaved(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      setNewKey(prev => prev + 1)
+      dispatch(SubtractQtyFromSaved(productID))
+    }
   }
 
   return (

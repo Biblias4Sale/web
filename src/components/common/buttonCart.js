@@ -8,7 +8,7 @@ import axios from 'axios'
 
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
-  const userID = useSelector(state => state.logged ? state.logged.user.user.id : null)
+  const userID = useSelector(state => state.logged ? state.logged.user.id : null)
   const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
   const logged = useSelector(state => state.logged)
 
