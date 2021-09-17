@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setLogged } from '../../../../redux/actions/userActions'
-import { getCart, getSaved } from '../../../../redux/actions/cartActions'
+import { getCart, getSaved, cleanGuestCart } from '../../../../redux/actions/cartActions'
 import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
@@ -25,15 +25,41 @@ export const Login = ({ setCurrentView }) => {
     contraseña: false
   })
 
+  // const logged = useSelector(state => state.logged)
+  const guestCart = useSelector((state) => state.cart.main)
+  const guestSaved = useSelector((state) => state.cart.saved)
+  // const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  // const userID = useSelector(state => state.logged ? state.logged.user.id : null)
+
+  // const userCart = useSelector((state) => state.logged ? state.userCart : null)
+  // const userSaved = useSelector((state) => state.logged ? state.userSaved : null)
+
+  const joinCarts = async (cartID, userID) => {
+    try {
+      await guestCart.forEach((product) => {
+        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+      })
+      await guestSaved.forEach((product) => {
+        axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
-      toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
+      await joinCarts(response.data.cart.id, response.data.user.id)
+      dispatch(cleanGuestCart())
       dispatch(getFavorites(response.data.user.id))
+      dispatch(getSaved(response.data.user.id))
       dispatch(getCart(response.data.user.id))
       dispatch(getSaved(response.data.user.id))
+
+      toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
       setErrorAuth('Datos inválidos, intenta nuevamente')
     }
