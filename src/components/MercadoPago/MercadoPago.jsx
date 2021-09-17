@@ -4,34 +4,41 @@ import { useEffect, useState } from "react"
 import {ApiURL} from '../../config/config'
 import { Modal } from 'react-bootstrap'
 import { Loading } from '../common/spinner'
+import { CheckInfo } from "./CheckInfo/CheckInfo"
 // import { Pay } from './modules/Pay'
 
 export const MercadoPago = (props) => {
-    // if(props.user.address || props.user.city || props.user.province || props.user.cp || props.user.phone) props.setCurrentView('check')
-    // if(!props.user.address || !props.user.city || !props.user.province || !props.user.cp || !props.user.phone) props.setCurrentView('pay')
+    const user = useSelector(state => state.logged.user)
+    // const userCart = useSelector(state => state.userCart)
 
-    // const user = useSelector(state => state.logged.userCart)
+    const [actualView, setActualView] = useState('init')
 
-    // const payment = async () => {
-    //       const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, 
-    //         {
-    //             "currency_id": "ARS",
-    //             "description": "Alta facha",
-    //             "title": "Una camara Noilan",
-    //             "unit_price": 20000,
-    //             "quantity": 2
-    //          }
-    //       , {withCredentials: true})
-    //       return response.data
-    //     }
+    const [url, setUrl] = useState('');
+   
+    const check = () => {
+        if(user.address || user.city || user.province || user.cp || user.phone) return setActualView('pay')
+        if(!user.address || !user.city || !user.province || !user.cp || !user.phone) return setActualView('check')
+    }
 
-    // const [actualView, setActualView] = useState('pay')
 
-    // let response 
+    const payment = async () => {
+          const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, 
+          //HARTCODEADO PORQUE NO SE QUE DATOS MANDAR DEL CARRITO (:
+            {
+                "currency_id": "ARS",
+                "description": "ndfkjgnrjl",
+                "title": "Una camara Noilan",
+                "unit_price": 20000,
+                "quantity": 2
+             }
+          , {withCredentials: true})
+          return response.data
+        }
 
-    // useEffect(async () => {
-    //    response = await payment()
-    // }, [])
+    useEffect( () => {
+        check()
+        payment().then(res => setUrl(res.url))
+    }, [])
 
     return (
      <div>
@@ -47,10 +54,8 @@ export const MercadoPago = (props) => {
         </Modal.Header>
 
         <Modal.Body>
-        {/* {
-            !response?.url ? <Loading /> */}
-         <iframe src={`http://stackoverflow.com/questions/42914666/react-router-external-link`} style={{width:'100%', height:'600px'}}/>   
-        {/* } */}
+        {actualView === 'check' ? <CheckInfo /> : <Loading />}
+        {actualView === 'pay' ? <iframe title='Finaliza tu compra' src={url} style={{width:'100%', height:'600px'}}/> : <Loading />} 
         </Modal.Body>
       </Modal>
     </div>
