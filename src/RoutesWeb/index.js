@@ -18,7 +18,6 @@ export const RouterWeb = () => {
       {logged
         ? <Route exact path='/micuenta' component={UserPage} />
         : <Route component={NotFound} />}
-
       <Route component={NotFound} />
     </Switch>
   )

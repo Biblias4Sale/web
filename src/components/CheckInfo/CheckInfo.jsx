@@ -1,23 +1,17 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { EditAccountView } from './EditAccountView'
-import { editUser } from '../../../../redux/actions/userActions'
-import { toastCustom } from '../../../common/Toastify'
+import { CheckInfoView } from './CheckInfoView'
+import { checkInfo } from '../../redux/actions/userActions'
+import { toastCustom } from '../common/Toastify'
 
-export const EditAccount = () => {
-  const [modalShow, setModalShow] = useState(false)
+export const CheckInfo = () => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
   const { handleSubmit } = useForm()
 
   const [formData, setFormData] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
     cp: '',
     address: '',
     city: '',
@@ -26,11 +20,6 @@ export const EditAccount = () => {
   })
 
   const [errors, setErrors] = useState({
-    name: true,
-    lastName: true,
-    email: true,
-    password: true,
-    confirmPassword: true,
     cp: true,
     address: true,
     city: true,
@@ -40,7 +29,7 @@ export const EditAccount = () => {
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
-      dispatch(editUser(oldInfo.user.id, formData, oldInfo.token))
+      dispatch(checkInfo(oldInfo.user.id, formData, oldInfo.token))
       toastCustom('Cuenta actualizada exitosamente', 'success', 4000, 'bottom-right')
     } catch (error) {
       console.log('Error en actualizar cuenta', error)
@@ -49,18 +38,11 @@ export const EditAccount = () => {
   }
 
   const handleChange = (event, value) => {
-    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const nameFormat = /^[a-zA-Z]{1,20}$/
     const phoneFormat = /^[0-9]{1,12}$/
     const adressFormat = /^[#.0-9a-zA-Z\s,-]+$/
-    const passwordFormat = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,10}$/
     setErrors((prev) => ({ ...prev, [event]: false }))
     let errorString
-    if (event === 'name') errorString = 'un nombre'
-    if (event === 'lastName') errorString = 'un apellido'
-    if (event === 'email') errorString = 'un correo electrónico'
-    if (event === 'password') errorString = 'una contraseña'
-    if (event === 'confirmPassword') errorString = 'nuevamente la contraseña'
     if (event === 'cp') errorString = 'un código postal'
     if (event === 'address') errorString = 'una dirección'
     if (event === 'city') errorString = 'una ciudad'
@@ -70,7 +52,7 @@ export const EditAccount = () => {
     if (!value) {
       setErrors((prev) => ({ ...prev, [event]: `Ingresa ${errorString}` }))
     } else {
-      if (event === 'name' || event === 'lastName' || event === 'province') {
+      if (event === 'province') {
         if (!value.match(nameFormat)) {
           setErrors((prev) => ({
             ...prev,
@@ -83,31 +65,6 @@ export const EditAccount = () => {
           setErrors((prev) => ({
             ...prev,
             [event]: `Ingresa ${errorString} válido`
-          }))
-        }
-      }
-      if (event === 'email') {
-        if (!value.match(emailFormat)) {
-          setErrors((prev) => ({
-            ...prev,
-            [event]: `Ingresa ${errorString} válido`
-          }))
-        }
-      }
-      if (event === 'password') {
-        if (!value.match(passwordFormat)) {
-          setErrors((prev) => ({
-            ...prev,
-            [event]: 'Debe tener al entre 6 y 10 caracteres; y al menos un número, una minúscula y una mayúscula.'
-          }))
-        }
-      }
-
-      if (event === 'confirmPassword') {
-        if (formData.password !== value) {
-          setErrors((prev) => ({
-            ...prev,
-            [event]: 'Las contraseñas no coinciden'
           }))
         }
       }
@@ -124,12 +81,10 @@ export const EditAccount = () => {
   }
   return (
     <div>
-      <EditAccountView
+      <CheckInfoView
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
         oldInfo={oldInfo.user}
-        setModalShow={setModalShow}
-        modalShow={modalShow}
         handleChange={handleChange}
       />
     </div>
