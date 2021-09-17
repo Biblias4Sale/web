@@ -4,7 +4,6 @@ import { botton, title } from './CheckInfoStyle'
 export const CheckInfoView = ({
   handleSubmit,
   errors,
-  oldInfo,
   handleChange
 }) => {
   return (
@@ -12,13 +11,24 @@ export const CheckInfoView = ({
       <h6 style={title}>Para continuar con tu compra es necesario que agregues los siguientes datos personales:</h6>
       <Form onSubmit={handleSubmit}>
         <Row>
+          <Form.Group as={Col}>
+            <Form.Label>Dirección</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Dirección'
+              name='address'
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+            />
+            <Row className='justify-content-center m-2'>
+              <h6 className='text-danger'>{errors.address && errors.address}</h6>
+            </Row>
+          </Form.Group>
           <Form.Group as={Col} lg={6} Lg={12}>
             <Form.Label>Teléfono</Form.Label>
             <Form.Control
               type='tel'
               placeholder='Teléfono'
               name='phone'
-              defaultValue={oldInfo.phone}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -26,19 +36,6 @@ export const CheckInfoView = ({
             </Row>
           </Form.Group>
         </Row>
-        <Form.Group lg={6} sm={12}>
-          <Form.Label>Dirección</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Dirección'
-            name='address'
-            defaultValue={oldInfo.address}
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-          />
-          <Row className='justify-content-center m-2'>
-            <h6 className='text-danger'>{errors.address && errors.address}</h6>
-          </Row>
-        </Form.Group>
         <Row>
           <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Ciudad</Form.Label>
@@ -46,7 +43,6 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Ciudad'
               name='city'
-              defaultValue={oldInfo.city}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -59,7 +55,6 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Provincia'
               name='province'
-              defaultValue={oldInfo.province}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -72,7 +67,6 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Código Postal'
               name='cp'
-              defaultValue={oldInfo.cp}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>

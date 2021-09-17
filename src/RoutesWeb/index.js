@@ -6,7 +6,6 @@ import { UserPage } from '../components/UserPage/UserPage'
 import { NotFound } from '../components/Error/Error404'
 import Cart from '../components/Cart/Cart'
 import { useSelector } from 'react-redux'
-import { CheckInfo } from '../components/CheckInfo/CheckInfo'
 
 export const RouterWeb = () => {
   const logged = useSelector(state => state.logged)
@@ -19,7 +18,6 @@ export const RouterWeb = () => {
       {logged
         ? <Route exact path='/micuenta' component={UserPage} />
         : <Route component={NotFound} />}
-      <Route exact path='/check' component={CheckInfo} />
       <Route component={NotFound} />
     </Switch>
   )
