@@ -23,6 +23,7 @@ export const ButtonCart = ({ product }) => {
       }
     } else {
       dispatch(AddProductToCart(product))
+      toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
     }
   }
   return (
