@@ -20,7 +20,6 @@ export const ButtonLike = ({ product }) => {
 
   const handleClick = async () => {
     if (favoritesProd.some(obj => obj.id === product.id)) {
-      console.log('entre')
       setHeartColor({ color: 'gray' })
       RemovefromFavorites(product.id)
       toastCustom('Producto eliminado de favoritos', 'success', 4000, 'bottom-right')
