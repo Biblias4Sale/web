@@ -9,13 +9,13 @@ import axios from 'axios'
 
 export const ButtonLike = ({ product }) => {
   const dispatch = useDispatch()
-  const id = useSelector(state => state.logged.user.id)
+  const userID = useSelector(state => state.logged.user.id)
   const favoritesProd = useSelector(state => state.favorites)
   const [heartColor, setHeartColor] = useState({ color: 'gray' })
 
   const RemovefromFavorites = async (productID) => {
-    await axios.delete(`${ApiURL}/favorites/${id}/${productID}`)
-    dispatch(getFavorites(id))
+    await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
+    dispatch(getFavorites(userID))
   }
 
   const handleClick = async () => {
@@ -26,8 +26,8 @@ export const ButtonLike = ({ product }) => {
       toastCustom('Producto eliminado de favoritos', 'success', 4000, 'bottom-right')
     } else {
       try {
-        await axios.post(`${ApiURL}/favorites/${id}/${product.id}`)
-        dispatch(getFavorites(id))
+        await axios.post(`${ApiURL}/favorites/${userID}/${product.id}`)
+        dispatch(getFavorites(userID))
         setHeartColor({ color: 'red' })
         toastCustom('Producto agregado favoritos', 'success', 4000, 'bottom-right')
       } catch (error) {

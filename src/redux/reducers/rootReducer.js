@@ -15,7 +15,8 @@ import {
   REMOVE_PRODUCT_FROM_SAVED,
   SUBTRACT_QTY_FROM_SAVED,
   GET_FAVORITES,
-  GET_CART
+  GET_CART,
+  GET_SAVED
 } from '../actions/constants'
 
 const initialState = {
@@ -31,7 +32,8 @@ const initialState = {
     main: [],
     saved: []
   },
-  userCart: {}
+  userCart: [],
+  userSaved: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -103,16 +105,6 @@ const rootReducer = (state = initialState, action) => {
       })
       return { ...state, cart: { ...state.cart, main: state.cart.main } }
 
-      // case ADD_PRODUCT_TO_FAVORITES:
-      //   if (state.favorites.find(product => product.id === action.payload.id)) {
-      //     return { ...state, favorites: state.favorites }
-      //   } else {
-      //     return { ...state, favorites: state.favorites.concat(action.payload) }
-      //   }
-
-      // case REMOVE_PRODUCT_FROM_FAVORITES:
-      //   return { ...state, favorites: state.favorites.filter(elem => elem.id !== action.payload) }
-
     case SUBTRACT_QTY_FROM_SAVED:
       state.cart.saved.forEach(product => {
         if (product.id === action.payload) {
@@ -128,6 +120,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_CART :
       return { ...state, userCart: action.payload }
+
+    case GET_SAVED :
+      return { ...state, userSaved: action.payload }
 
     default:
       return state

@@ -6,14 +6,22 @@ import {
   AddProductToSaved,
   SubtractQtyFromCart,
   RemoveProductFromSaved,
-  SubtractQtyFromSaved
+  SubtractQtyFromSaved,
+  getCart,
+  getSaved
 } from '../../redux/actions/cartActions'
 import { useSelector, useDispatch } from 'react-redux'
+import { toastCustom } from '../common/Toastify'
+import { ApiURL } from '../../config/config'
+import axios from 'axios'
 
 export const Cart = () => {
   const dispatch = useDispatch()
-  const mainList = useSelector((state) => state.logged ? state.userCart.ProductSolds : state.cart.main)
-  const savedList = useSelector((state) => state.cart.saved)
+  const logged = useSelector(state => state.logged)
+  const userID = useSelector(state => state.logged ? state.logged.user.id : null)
+  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
+  const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
   const [newKey, setNewKey] = useState(1)
@@ -34,42 +42,102 @@ export const Cart = () => {
     dispatch(AddProductToCart(product))
     setNewKey(prev => prev + 1)
     calculateNewTotal()
-    console.log('Nuevo total:', total)
   }
 
   const subtractQtyFromCart = (id) => {
     dispatch(SubtractQtyFromCart(id))
     setNewKey(prev => prev + 1)
     calculateNewTotal()
-    console.log('Nuevo total:', total)
   }
 
-  const moveToCart = (product) => {
-    dispatch(AddProductToCart(product))
-    dispatch(RemoveProductFromSaved(product.id))
+  const moveToCart = async (product) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+        dispatch(getSaved(userID))
+        dispatch(getCart(userID))
+        toastCustom('Producto movido al carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(AddProductToCart(product))
+      dispatch(RemoveProductFromSaved(product.id))
+    }
   }
 
-  const removeFromCart = (id) => {
-    dispatch(RemoveProductFromCart(id))
+  const removeFromCart = async (productID) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
+        dispatch(getCart(userID))
+        // toastCustom('Producto eliminado del carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(RemoveProductFromCart(productID))
+    }
   }
 
-  const removeFromSaved = (id) => {
-    dispatch(RemoveProductFromSaved(id))
+  const removeFromSaved = async (productID) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        dispatch(getSaved(userID))
+        // toastCustom('Producto eliminado del carrito', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(RemoveProductFromSaved(productID))
+    }
   }
 
-  const moveToSaved = (product) => {
-    dispatch(AddProductToSaved(product))
-    dispatch(RemoveProductFromCart(product.id))
+  const moveToSaved = async (product) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
+        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        dispatch(getCart(userID))
+        dispatch(getSaved(userID))
+        toastCustom('Producto movido a guardados', 'success', 4000, 'bottom-right')
+      } catch (error) {
+        toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      dispatch(AddProductToSaved(product))
+      dispatch(RemoveProductFromCart(product.id))
+    }
   }
 
-  const addQtyToSaved = (product) => {
-    setNewKey(prev => prev + 1)
-    dispatch(AddProductToSaved(product))
+  const addQtyToSaved = async (product) => {
+    if (logged) {
+      try {
+        await axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        dispatch(getSaved(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      setNewKey(prev => prev + 1)
+      dispatch(AddProductToSaved(product))
+    }
   }
 
-  const subtractQtyFromSaved = (id) => {
-    setNewKey(prev => prev + 1)
-    dispatch(SubtractQtyFromSaved(id))
+  const subtractQtyFromSaved = async (productID) => {
+    if (logged) {
+      try {
+        await axios.delete(`${ApiURL}/saveProduct/${userID}/${productID}`)
+        dispatch(getSaved(userID))
+      } catch (error) {
+        toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
+      }
+    } else {
+      setNewKey(prev => prev + 1)
+      dispatch(SubtractQtyFromSaved(productID))
+    }
   }
 
   return (

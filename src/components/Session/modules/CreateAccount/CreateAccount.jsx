@@ -5,7 +5,7 @@ import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { CreateAccountView } from './CreateAccountView'
 import { setLogged } from '../../../../redux/actions/userActions'
-import { getCart } from '../../../../redux/actions/cartActions'
+import { getCart, getSaved } from '../../../../redux/actions/cartActions'
 import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 
@@ -39,6 +39,7 @@ export const CreateAccount = ({ setCurrentView }) => {
       toastCustom(`Cuenta creada exitosamente. Bienvenid@ ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
       dispatch(getFavorites(response.data.user.id))
       dispatch(getCart(response.data.user.id))
+      dispatch(getSaved(response.data.user.id))
     } catch (error) {
       console.log('Error en crear cuenta:', error)
       toastCustom('Ya existe una cuenta con esa dirección de e-mail', 'error', 4000, 'bottom-right')
