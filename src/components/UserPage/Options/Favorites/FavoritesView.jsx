@@ -30,20 +30,19 @@ const FavoritesView = ({
               <Col lg={2} className='d-flex justify-content-center align-items-center'>
                 <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
               </Col>
-              <Col lg={6}>
+              <Col lg={7}>
                 <Row className='text-uppercase mt-2'>
                   <h5>{product.model}</h5>
                 </Row>
                 <Row>
                   <p> Marca: {product.brand}</p>
                 </Row>
-
                 <Row>
                   <Col><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
                   <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
                 </Row>
               </Col>
-              <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
+              <Col lg={3} className='d-flex justify-content-center align-items-center flex-column'>
                 <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: product.price })}</span></Row>
               </Col>
             </Row>

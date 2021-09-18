@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select/creatable'
+import { Col, Container, Row } from 'react-bootstrap'
 
 export const SelectOptions = ({ options, setOptions }) => {
   const selections = [
@@ -10,9 +11,14 @@ export const SelectOptions = ({ options, setOptions }) => {
     // { value: 'Aleatorio', label: 'Aleatorio' }
   ]
   return (
-    <div className='mb-4'>
-      <Select options={selections} onChange={(event) => setOptions((prev) => ({ ...prev, orderBy: event.value }))} />
-    </div>
+    <Container>
+      <Row>
+        <Col style={{ display: 'flex', justifyContent: 'end' }} lg={8}><label>Ordenar por:</label></Col>
+        <Col lg={4}>
+          <Select defaultValue='precio' style={{ marginBottom: '10px' }} options={selections} onChange={(event) => setOptions((prev) => ({ ...prev, orderBy: event.value }))} />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 export default SelectOptions

@@ -3,6 +3,7 @@ import { Pages } from '../Pages'
 import { SelectOptions } from '../SelectOptions'
 import { NoProductToShow } from './noProducts'
 import btnBlue from '../../../../assets/btn_close_blue.png'
+import { AiOutlineCloseSquare } from 'react-icons/ai'
 
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
   return (
@@ -18,7 +19,7 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
                 ? (
                   <>
                     <h5 style={{ marginRight: '0.5rem' }}>sólo en {options.category}</h5>
-                    <img src={btnBlue} alt='' height='30px' onClick={clearCategory} style={{ cursor: 'pointer' }} />
+                    <AiOutlineCloseSquare size={30} alt='' height='30px' onClick={clearCategory} style={{ cursor: 'pointer', marginLeft: '10px' }} />
                   </>
                   )
                 : null}
@@ -28,7 +29,7 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
             ? (
               <>
                 <h3 style={{ marginRight: '0.5rem' }}>{options.category}</h3>
-                <img src={btnBlue} alt='' height='30px' onClick={clearCategory} style={{ cursor: 'pointer' }} />
+                <AiOutlineCloseSquare alt='' size={30} onClick={clearCategory} style={{ cursor: 'pointer', marginLeft: '10px' }} />
                 {/* <button type='button' class='btn-close' aria-label='Close' onClick={clearSearch} /> */}
               </>
               )
