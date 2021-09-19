@@ -34,6 +34,10 @@ export const Cart = () => {
     })
   }
 
+  // useEffect(() => {
+  //   dispatch(getCart(userID))
+  // })
+
   useEffect(() => {
     calculateNewTotal()
   })
@@ -173,6 +177,7 @@ export const Cart = () => {
       actualView={actualView}
       setActualView={setActualView}
       newKey={newKey}
+      logged={logged}
     />
   )
 }

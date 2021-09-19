@@ -13,8 +13,8 @@ export const UserPageView = ({ section }) => {
 
   return (
     <div className='w-100 p-4'>
-      <TopContainer userCapitals={userCapitals}/>
-      <Container className='d-flex' style={{ marginTop: '50px'}}>
+      <TopContainer userCapitals={userCapitals} />
+      <Container className='d-flex' style={{ marginTop: '50px' }}>
         <LeftContainer user={user} actualView={actualView} setActualView={setActualView} />
         <RightContainer actualView={actualView} />
       </Container>

@@ -1,91 +1,63 @@
-import { useSelector } from "react-redux"
+// import { useSelector } from 'react-redux'
 import axios from 'axios'
-import { useEffect, useState } from "react"
-import {ApiURL} from '../../config/config'
+import { useEffect, useState } from 'react'
+import { ApiURL } from '../../config/config'
 import { Modal } from 'react-bootstrap'
-import { CheckInfo } from "./CheckInfo/CheckInfo"
+import { CheckInfo } from './CheckInfo/CheckInfo'
 // import { Pay } from './modules/Pay'
 
 export const MercadoPago = (props) => {
-    const user = useSelector(state => state.logged.user)
-    const userCart = useSelector(state => state.userCart)
+  // const user = useSelector(state => state.logged.user)
+  // const userCart = useSelector(state => state.userCart)
 
-    const [actualView, setActualView] = useState('init')
+  const [actualView, setActualView] = useState('check')
+  const [url, setUrl] = useState('')
 
-    const [url, setUrl] = useState('');
-   
-    const check = () => {
-        if(user?.address || user?.city || user?.province || user?.cp || user?.phone) return setActualView('pay')
-        if(!user?.address || !user?.city || !user?.province || !user?.cp || !user?.phone) return setActualView('check')
-    }
+  // const check = () => {
+  //   if (user?.address || user?.city || user?.province || user?.cp || user?.phone) return setActualView('pay')
+  //   if (!user?.address || !user?.city || !user?.province || !user?.cp || !user?.phone) return setActualView('check')
+  // }
 
-    // const cart = userCart.map(elem => (
-    //     {
-    // title: elem.model, 
-    // description: elem.brand,
-    // price: elem.price,
-    // quantity: elem.qty
-    //   })
-    // )
+  const payment = async () => {
+    const response = await axios.post(`${ApiURL}/api/v1/mercadopago`,
+      // HARTCODEADO PORQUE NO SE QUE DATOS MANDAR DEL CARRITO (:
+      {
+        currency_id: 'ARS',
+        description: 'ndfkjgnrjl',
+        title: 'Una camara Noilan',
+        unit_price: 20000,
+        quantity: 2
+      }
+      , { withCredentials: true })
+    return response.data
+  }
 
-    // const [totalPrice, setTotalPrice] = useState()
-    // const [totalQty, setTotalQty] = useState()
+  useEffect(() => {
+    payment().then(res => setUrl(res.url))
+  }, [])
 
-    // const calculateTotal = () => {
-    //     let newPrice = 0
-    //     let newQty = 0
-    //     cart.forEach(elem => {
-    //         newPrice = newPrice + elem.price * elem.quantity
-    //         newQty = newQty + elem.quantity
-    //       setTotalPrice(totalPrice => newPrice)
-    //       setTotalQty(totalQty => newQty)
-    //     })
-    //   }
+  // useEffect(() => {
+  //   if (user?.address || user?.city || user?.province || user?.cp || user?.phone) return setActualView('pay')
+  //   if (!user?.address || !user?.city || !user?.province || !user?.cp || !user?.phone) return setActualView('check')
+  //   payment().then(res => setUrl(res.url))
+  // }, [user?.address, user?.city, user?.phone, user?.cp, user?.province])
 
-    // console.log(cart)
-    // 
-    // "description": userCart[0].brand,
-    // "title": userCart[0].model,
-    // "unit_price": userCart[0].price,
-    // "quantity": parseInt(userCart[0].qty)
-    
-
-    const payment = async () => {
-          const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, 
-          //HARTCODEADO PORQUE NO SE QUE DATOS MANDAR DEL CARRITO (:
-            {
-                "currency_id": "ARS",
-                "description": "carrito",
-                "title": "productos",
-                "unit_price": 1516,
-                "quantity": 2
-             }
-          , {withCredentials: true})
-          console.log(response.data, 'dataaaaaaaaa')
-          return response.data
-        }
-
-    useEffect( () => {
-        check()
-        payment().then(res => setUrl(res.url))
-    }, [])
-
-    return (
-     <div>
+  return (
+    <div>
       <Modal
         show={props.show}
         onHide={props.onHide}
         {...props}
         size='lg'
         centered
-        >
+      >
         <Modal.Header>
           <button type='button' className='btn-close' aria-label='Close' onClick={props.onHide} />
         </Modal.Header>
 
         <Modal.Body>
-        {actualView === 'pay' ? <CheckInfo /> : null}
-        {actualView === 'check' ? <iframe title='Finaliza tu compra' src={url} style={{width:'100%', height:'600px'}}/> : null} 
+          {actualView === 'check' ? <CheckInfo setActualView={setActualView} /> : null}
+          {actualView === 'pay' ? <iframe title='Finaliza tu compra' src={url} style={{ width: '100%', height: '600px' }} /> : null}
         </Modal.Body>
       </Modal>
     </div>

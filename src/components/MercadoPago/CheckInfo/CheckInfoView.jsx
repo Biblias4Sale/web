@@ -4,11 +4,12 @@ import { botton, title } from './CheckInfoStyle'
 export const CheckInfoView = ({
   handleSubmit,
   errors,
+  formData,
   handleChange
 }) => {
   return (
     <Container className='d-flex flex-wrap'>
-      <h6 style={title}>Para continuar con tu compra es necesario que agregues los siguientes datos personales:</h6>
+      <h6 style={title}>Por favor, verifica tus datos para la compra:</h6>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Form.Group as={Col}>
@@ -17,6 +18,7 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Dirección'
               name='address'
+              value={formData.address}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -29,6 +31,7 @@ export const CheckInfoView = ({
               type='tel'
               placeholder='Teléfono'
               name='phone'
+              value={formData.phone}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -42,6 +45,7 @@ export const CheckInfoView = ({
             <Form.Control
               type='text'
               placeholder='Ciudad'
+              value={formData.city}
               name='city'
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
@@ -55,6 +59,7 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Provincia'
               name='province'
+              value={formData.province}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -67,6 +72,7 @@ export const CheckInfoView = ({
               type='text'
               placeholder='Código Postal'
               name='cp'
+              value={formData.cp}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -79,12 +85,12 @@ export const CheckInfoView = ({
             {!errors.address && !errors.phone && !errors.cp && !errors.city && !errors.province
               ? (
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-                  Actualizar
+                  Realizar Pago
                 </Button>
                 )
               : (
-                <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
-                  Actualizar
+                <Button disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+                  Realizar Pago
                 </Button>)}
           </Row>
         </Col>

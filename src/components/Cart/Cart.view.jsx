@@ -16,7 +16,8 @@ const CartView = ({
   addQtyToSaved,
   actualView,
   setActualView,
-  newKey
+  newKey,
+  logged
 }) => {
   return (
     <>
@@ -50,6 +51,7 @@ const CartView = ({
               subtractQtyFromCart={subtractQtyFromCart}
               moveToSaved={moveToSaved}
               newKey={newKey}
+              logged={logged}
             />
             )
           : (
