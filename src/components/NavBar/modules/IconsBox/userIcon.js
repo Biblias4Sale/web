@@ -10,8 +10,8 @@ import { logOut } from '../../../../redux/actions/userActions'
 export const UserIcon = () => {
   const [modalShow, setModalShow] = useState(false)
   const logged = useSelector(state => state.logged)
-  const [initial, setinitial] = useState('')
   const [currentView, setCurrentView] = useState('init')
+  const [initial, setinitial] = useState('')
 
   const dispatch = useDispatch()
   const history = useHistory()

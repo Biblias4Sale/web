@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
-import { checkInfo } from '../../redux/actions/userActions'
-import { toastCustom } from '../common/Toastify'
+import { checkInfo } from '../../../redux/actions/userActions'
+import { toastCustom } from '../../common/Toastify'
 
 export const CheckInfo = () => {
   const dispatch = useDispatch()
