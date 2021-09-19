@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
-import { checkInfo } from '../../../redux/actions/userActions'
-// import { toastCustom } from '../../common/Toastify'
+import { editUser } from '../../../redux/actions/userActions'
 
 export const CheckInfo = ({ setActualView }) => {
   const dispatch = useDispatch()
@@ -20,23 +19,16 @@ export const CheckInfo = ({ setActualView }) => {
   })
 
   const [errors, setErrors] = useState({
-    cp: true,
-    address: true,
-    city: true,
-    province: true,
-    phone: true
+    cp: false,
+    address: false,
+    city: false,
+    province: false,
+    phone: false
   })
 
-  console.log('Form Data', formData)
-
-  const onSubmit = async () => {
-    try {
-      dispatch(checkInfo(oldInfo.user.id, formData, oldInfo.token))
-      setActualView('pay')
-      // toastCustom('Cuenta actualizada exitosamente', 'success', 4000, 'bottom-right')
-    } catch (error) {
-      // toastCustom('Cuenta no ha sido actualizada', 'error', 4000, 'bottom-right')
-    }
+  const onSubmit = () => {
+    dispatch(editUser(oldInfo.user.id, formData, oldInfo.token))
+    setActualView('pay')
   }
 
   const handleChange = (event, value) => {

@@ -5,11 +5,11 @@ import { botton, title } from './EditAccountStyle'
 export const EditAccountView = ({
   handleSubmit,
   errors,
-  oldInfo,
   setModalShow,
   modalShow,
   handleChange,
-  errorAuth
+  errorAuth,
+  formData
 }) => {
   return (
     <Container className='d-flex flex-wrap'>
@@ -22,7 +22,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Nombre'
               name='name'
-              defaultValue={oldInfo.name}
+              value={formData.name}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -35,7 +35,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Apellido'
               name='lastName'
-              defaultValue={oldInfo.lastName}
+              value={formData.lastName}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -50,7 +50,7 @@ export const EditAccountView = ({
               type='e-mail'
               placeholder='E-mail'
               name='email'
-              defaultValue={oldInfo.email}
+              value={formData.email}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -63,7 +63,7 @@ export const EditAccountView = ({
               type='tel'
               placeholder='Teléfono'
               name='phone'
-              defaultValue={oldInfo.phone}
+              value={formData.phone}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -103,7 +103,7 @@ export const EditAccountView = ({
             type='text'
             placeholder='Dirección'
             name='address'
-            defaultValue={oldInfo.address}
+            value={formData.address}
             onChange={(event) => handleChange(event.target.name, event.target.value)}
           />
           <Row className='justify-content-center m-2'>
@@ -117,7 +117,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Ciudad'
               name='city'
-              defaultValue={oldInfo.city}
+              value={formData.city}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -130,7 +130,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Provincia'
               name='province'
-              defaultValue={oldInfo.province}
+              value={formData.province}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -143,7 +143,7 @@ export const EditAccountView = ({
               type='text'
               placeholder='Código Postal'
               name='cp'
-              defaultValue={oldInfo.cp}
+              value={formData.cp}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
             <Row className='justify-content-center m-2'>
@@ -153,7 +153,7 @@ export const EditAccountView = ({
         </Row>
         <Col>
           <Row>
-            {!errors.name && !errors.lastName && !errors.email && !errors.password && !errors.confirmPassword
+            {!errors.name && !errors.lastName && !errors.phone && !errors.email && !errors.password && !errors.confirmPassword
               ? (
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                   Actualizar

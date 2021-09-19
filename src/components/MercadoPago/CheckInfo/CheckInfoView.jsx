@@ -82,7 +82,7 @@ export const CheckInfoView = ({
         </Row>
         <Col>
           <Row>
-            {!errors.address && !errors.phone && !errors.cp && !errors.city && !errors.province
+            {!errors.address && !errors.phone && !errors.cp && !errors.city && !errors.province && formData.address && formData.phone && formData.cp && formData.city && formData.province
               ? (
                 <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                   Realizar Pago
