@@ -16,7 +16,7 @@ export const logOut = () => {
   }
 }
 
-export const editUser = (id, data, token) => {
+export const editUser = (id, data, token, cart) => {
   return async function (dispatch) {
     axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
       .then(editUser => {
@@ -33,37 +33,13 @@ export const editUser = (id, data, token) => {
             province: editUser.data.province,
             phone: editUser.data.phone
           },
-          token
+          token,
+          cart
         }
         if (editUser.status === 200) {
           return dispatch({
             type: SET_LOGGED,
             payload: EditedUser
-          })
-        }
-      })
-      .catch(e => window.alert('Usuario No Modificado'))
-  }
-}
-
-export const checkInfo = (id, data, token) => {
-  return async function (dispatch) {
-    axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
-      .then(checkInfo => {
-        const CheckedInfo = {
-          user: {
-            cp: checkInfo.data.cp,
-            address: checkInfo.data.address,
-            city: checkInfo.data.city,
-            province: checkInfo.data.province,
-            phone: checkInfo.data.phone
-          },
-          token
-        }
-        if (checkInfo.status === 200) {
-          return dispatch({
-            type: SET_LOGGED,
-            payload: CheckedInfo
           })
         }
       })

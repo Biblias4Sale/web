@@ -1,4 +1,4 @@
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { ApiURL } from '../../config/config'
@@ -6,32 +6,23 @@ import { Modal } from 'react-bootstrap'
 import { CheckInfo } from './CheckInfo/CheckInfo'
 // import { Pay } from './modules/Pay'
 
-export const MercadoPago = (props) => {
+export const Checkout = (props) => {
   // const user = useSelector(state => state.logged.user)
-  // const userCart = useSelector(state => state.userCart)
+  const userCart = useSelector(state => state.userCart)
 
-  const [actualView, setActualView] = useState('check')
   const [url, setUrl] = useState('')
 
+  const mpCart = userCart.map(product => (
+    {
+      currency_id: 'ARS',
+      // description: product.brand + ' ' + product.model,
+      title: product.brand + ' ' + product.model,
+      unit_price: parseInt(product.price),
+      quantity: parseInt(product.qty)
+    }))
+
   const payment = async () => {
-    const response = await axios.post(`${ApiURL}/api/v1/mercadopago`,
-      // HARTCODEADO PORQUE NO SE QUE DATOS MANDAR DEL CARRITO (:
-      [{
-        currency_id: 'ARS',
-        description: 'ndfkjgnrjl',
-        title: 'Una camara Noilan',
-        unit_price: 20000,
-        quantity: 2
-      },
-      {
-        currency_id: 'ARS',
-        description: 'ndfkjgnrjl',
-        title: 'Una camara Noilan',
-        unit_price: 88000,
-        quantity: 2
-      }]
-      , { withCredentials: true })
-      console.log(response.data, 'holis')
+    const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, mpCart, { withCredentials: true })
     return response.data
   }
 
@@ -53,8 +44,8 @@ export const MercadoPago = (props) => {
         </Modal.Header>
 
         <Modal.Body>
-          {actualView === 'pay' ? <CheckInfo setActualView={setActualView} /> : null}
-          {actualView === 'check' ? <iframe title='Finaliza tu compra' src={url} style={{ width: '100%', height: '600px' }} /> : null}
+          {props.checkoutView === 'check' ? <CheckInfo setCheckoutView={props.setCheckoutView} /> : null}
+          {props.checkoutView === 'pay' ? <iframe title='Finaliza tu compra' src={url} style={{ width: '100%', height: '600px' }} /> : null}
         </Modal.Body>
       </Modal>
     </div>

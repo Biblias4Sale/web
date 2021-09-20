@@ -13,30 +13,33 @@ export const EditAccount = () => {
   const { handleSubmit } = useForm()
 
   const [formData, setFormData] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
+    name: oldInfo.user.name,
+    lastName: oldInfo.user.lastName,
+    email: oldInfo.user.email,
+    password: oldInfo.user.password,
     confirmPassword: '',
-    cp: '',
-    address: '',
-    city: '',
-    province: '',
-    phone: ''
+    cp: oldInfo.user.cp,
+    address: oldInfo.user.address,
+    city: oldInfo.user.city,
+    province: oldInfo.user.province,
+    phone: oldInfo.user.phone
   })
 
+  console.log('FORMDATA', formData)
+
   const [errors, setErrors] = useState({
-    name: true,
-    lastName: true,
-    email: true,
-    password: true,
-    confirmPassword: true,
-    cp: true,
-    address: true,
-    city: true,
-    province: true,
-    phone: true
+    name: false,
+    lastName: false,
+    email: false,
+    password: false,
+    confirmPassword: false,
+    cp: false,
+    address: false,
+    city: false,
+    province: false,
+    phone: false
   })
+
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
@@ -131,6 +134,7 @@ export const EditAccount = () => {
         setModalShow={setModalShow}
         modalShow={modalShow}
         handleChange={handleChange}
+        formData={formData}
       />
     </div>
   )

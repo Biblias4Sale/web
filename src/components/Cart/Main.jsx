@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { MercadoPago } from '../../components/MercadoPago/MercadoPago'
+import { Checkout } from '../../components/MercadoPago/MercadoPago'
 import { Session } from '../Session/Session'
 import MainView from './MainView.jsx'
 
@@ -16,11 +16,14 @@ const Main = ({
 }) => {
   const [showMP, setShowMP] = useState(false)
   const [showSession, setShowSession] = useState(false)
-  const [currentView, setCurrentView] = useState('init')
+  const [sessionView, setSessionView] = useState('init')
+  const [checkoutView, setCheckoutView] = useState('')
 
   const shop = () => {
-    if (logged) setShowMP(true)
-    else setShowSession(true)
+    if (logged) {
+      setShowMP(true)
+      setCheckoutView('check')
+    } else setShowSession(true)
   }
 
   return (
@@ -28,14 +31,14 @@ const Main = ({
       {!logged
         ? (
           <Session
-            currentView={currentView}
-            setCurrentView={setCurrentView}
+            currentView={sessionView}
+            setCurrentView={setSessionView}
             show={showSession}
             onHide={() => setShowSession(false)}
           />
           )
         : (
-          <MercadoPago show={showMP} onHide={() => setShowMP(false)} />
+          <Checkout show={showMP} checkoutView={checkoutView} setCheckoutView={setCheckoutView} onHide={() => setShowMP(false)} />
           )}
 
       <MainView
@@ -45,8 +48,8 @@ const Main = ({
         newKey={newKey}
         setShowSession={setShowSession}
         showSession={showSession}
-        setCurrentView={setCurrentView}
-        currentView={currentView}
+        setCurrentView={setSessionView}
+        currentView={sessionView}
         logged={logged}
         showMP={showMP}
         setShowMP={setShowMP}
