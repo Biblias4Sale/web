@@ -6,7 +6,7 @@ import ProductDetails from '../components/ProductDetails/ProductDetails'
 import UserPage from '../components/UserPage/UserPage'
 import NotFound from '../components/Error/Error404'
 import Cart from '../components/Cart/Cart'
-import LogOut from '../components/Session/LogOut/LogOut'
+import LogOut from '../components/Session/LogOut/Logout'
 
 export const RouterWeb = () => {
   const logged = useSelector(state => state.logged)

@@ -1,5 +1,4 @@
 import { BannerBox } from './modules/banner'
-// import { GetProduct } from './modules/getProduct'
 import { ProductReviewView } from './ProductReviews/ProductReviewView'
 import { ProductContainer } from './modules/productContainer'
 import { Loading } from '../common/spinner'
