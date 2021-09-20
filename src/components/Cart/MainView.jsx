@@ -113,74 +113,77 @@ const MainView = ({
                         </div>
                         )
                       : null}
-
-                    {!disableInput
+                    {product.stock > 0
                       ? (
-                        <InputGroup
-                          style={{ width: '7.5vw' }}
-                          className='text-center'
-                        >
-                          <Button
-                            variant='outline-dark'
-                            onClick={() => subtractQtyFromCart(product.id)}
-                          >
-                            <span className='fw-bolder'>-</span>
-                          </Button>
-
-                          <FormControl
-                            className='fw-bolder text-center bg-white'
-                            name='qty'
-                            value={product.qty}
-                            readOnly
-                          />
-                          {product.qty < product.stock
+                          !disableInput
                             ? (
-                              <Button
-                                variant='outline-dark'
-                                onClick={() => addQtyToCart(product)}
+                              <InputGroup
+                                style={{ width: '7.5vw' }}
+                                className='text-center'
                               >
-                                <span className='fw-bolder'>+</span>
-                              </Button>
+                                <Button
+                                  variant='outline-dark'
+                                  onClick={() => subtractQtyFromCart(product.id)}
+                                >
+                                  <span className='fw-bolder'>-</span>
+                                </Button>
+
+                                <FormControl
+                                  className='fw-bolder text-center bg-white'
+                                  name='qty'
+                                  value={product.qty}
+                                  readOnly
+                                />
+                                {product.qty < product.stock
+                                  ? (
+                                    <Button
+                                      variant='outline-dark'
+                                      onClick={() => addQtyToCart(product)}
+                                    >
+                                      <span className='fw-bolder'>+</span>
+                                    </Button>
+                                    )
+                                  : (
+                                    <Button
+                                      variant='outline-dark'
+                                      disabled
+                                    >
+                                      <span className='fw-bolder'>+</span>
+                                    </Button>
+                                    )}
+
+                              </InputGroup>
                               )
                             : (
-                              <Button
-                                variant='outline-dark'
-                                disabled
+                              <InputGroup
+                                style={{ width: '7.5vw' }}
+                                className='text-center'
                               >
-                                <span className='fw-bolder'>+</span>
-                              </Button>
-                              )}
+                                <Button
+                                  variant='outline-dark'
+                                  disabled
+                                >
+                                  <span className='fw-bolder'>-</span>
+                                </Button>
 
-                        </InputGroup>
+                                <FormControl
+                                  className='fw-bolder text-center bg-white'
+                                  name='qty'
+                                  value={product.qty}
+                                  readOnly
+                                  disabled
+                                />
+
+                                <Button
+                                  variant='outline-dark'
+                                  disabled
+                                >
+                                  <span className='fw-bolder'>+</span>
+                                </Button>
+                              </InputGroup>
+                              )
                         )
-                      : (
-                        <InputGroup
-                          style={{ width: '7.5vw' }}
-                          className='text-center'
-                        >
-                          <Button
-                            variant='outline-dark'
-                            disabled
-                          >
-                            <span className='fw-bolder'>-</span>
-                          </Button>
-
-                          <FormControl
-                            className='fw-bolder text-center bg-white'
-                            name='qty'
-                            value={product.qty}
-                            readOnly
-                            disabled
-                          />
-
-                          <Button
-                            variant='outline-dark'
-                            disabled
-                          >
-                            <span className='fw-bolder'>+</span>
-                          </Button>
-                        </InputGroup>
-                        )}
+                      : null}
 
                   </Col>
 

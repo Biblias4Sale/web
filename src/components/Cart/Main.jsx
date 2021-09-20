@@ -49,6 +49,8 @@ const Main = ({
     setMpCart(arr)
   }, [mainList])
 
+  console.log(mpCart)
+
   return (
     <>
       {!logged
