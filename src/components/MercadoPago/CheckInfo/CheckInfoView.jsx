@@ -9,7 +9,7 @@ export const CheckInfoView = ({
 }) => {
   return (
     <Container className='d-flex flex-wrap'>
-      <h6 style={title}>Por favor, verifica tus datos para la compra:</h6>
+      <h6 style={title}>Por favor, verificá tus datos para la compra:</h6>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Form.Group as={Col}>

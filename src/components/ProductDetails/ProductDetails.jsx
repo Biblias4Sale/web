@@ -1,11 +1,26 @@
 import { ProductDetailsView } from './ProductDetailsView'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { ApiURL } from '../../config/config'
 
-export const ProductDetails = (props) => {
+const ProductDetails = (props) => {
   const productId = props.match.params.id
+
+  const [detailedProduct, setDetailedProduct] = useState('')
+
+  useEffect(() => {
+    const getDetails = async () => {
+      const response = await axios.get(`${ApiURL}/products/detail/${productId}`)
+      setDetailedProduct(response.data)
+    }
+    getDetails()
+  }, [productId])
 
   return (
     <>
-      <ProductDetailsView match={productId} />
+      <ProductDetailsView product={detailedProduct} />
     </>
   )
 }
+
+export default ProductDetails

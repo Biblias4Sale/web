@@ -12,14 +12,16 @@ export const ButtonCart = ({ product }) => {
   const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
   const logged = useSelector(state => state.logged)
 
-  const onSubmit = async () => {
+  const addToCart = async () => {
     if (logged) {
       try {
         await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
-        dispatch(getCart(userID))
         toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
+        setTimeout(() => {
+          dispatch(getCart(userID))
+        }, 1000)
       } catch (error) {
-        toastCustom('Producto no pudo ser agregado', 'error', 4000, 'bottom-right')
+        toastCustom('El producto no pudo ser agregado', 'error', 4000, 'bottom-right')
       }
     } else {
       dispatch(AddProductToCart(product))
@@ -28,7 +30,7 @@ export const ButtonCart = ({ product }) => {
   }
   return (
     <div className='d-flex justify-content-center'>
-      <Button variant='dark' size='sm' className='d-flex align-items-center text-nowrap' onClick={onSubmit}>
+      <Button variant='dark' size='sm' className='d-flex align-items-center text-nowrap' onClick={addToCart}>
         <HiOutlineShoppingCart size={25} className='me-2' />
         <h6> AGREGAR AL CARRITO </h6>
       </Button>

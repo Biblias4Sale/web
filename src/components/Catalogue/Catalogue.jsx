@@ -10,7 +10,7 @@ import { filterByPoints } from './modules/main/filterByPoints.js'
 import { orderByPrice } from './modules/main/orderByPrice.js'
 import { CatalogueView } from './Catalogue.view.jsx'
 
-export const Catalogue = (props) => {
+const Catalogue = (props) => {
   const searchResult = useSelector(state => state.searchResult)
   const searchString = useSelector(state => state.searchString)
 
@@ -98,3 +98,5 @@ export const Catalogue = (props) => {
     />
   )
 }
+
+export default Catalogue

@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import axios from 'axios'
 import { ApiURL } from '../../../../config/config'
 import { CreateAccountView } from './CreateAccountView'
 import { setLogged } from '../../../../redux/actions/userActions'
-import { getCart, getSaved } from '../../../../redux/actions/cartActions'
+import { getCart, getSaved, cleanGuestCart } from '../../../../redux/actions/cartActions'
 import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 
@@ -31,15 +31,36 @@ export const CreateAccount = ({ setCurrentView }) => {
     confirmPassword: true
   })
 
+  const guestCart = useSelector((state) => state.cart.main)
+  const guestSaved = useSelector((state) => state.cart.saved)
+
+  const joinCarts = async (cartID, userID) => {
+    try {
+      await guestCart.forEach((product) => {
+        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
+      })
+      await guestSaved.forEach((product) => {
+        axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/user`, formData)
       dispatch(setLogged(response.data))
+      console.log('INFO DE LOG:', response.data)
+      await joinCarts(response.data.cart.id, response.data.user.id)
+      dispatch(cleanGuestCart())
+      setTimeout(() => {
+        dispatch(getFavorites(response.data.user.id))
+        dispatch(getCart(response.data.user.id))
+        dispatch(getSaved(response.data.user.id))
+      }, 1000)
       toastCustom(`Cuenta creada exitosamente. Bienvenid@ ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
-      dispatch(getFavorites(response.data.user.id))
-      dispatch(getCart(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
     } catch (error) {
       console.log('Error en crear cuenta:', error)
       toastCustom('Ya existe una cuenta con esa dirección de e-mail', 'error', 4000, 'bottom-right')

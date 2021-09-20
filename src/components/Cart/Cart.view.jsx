@@ -17,7 +17,8 @@ const CartView = ({
   actualView,
   setActualView,
   newKey,
-  logged
+  logged,
+  disableInput
 }) => {
   return (
     <>
@@ -52,6 +53,7 @@ const CartView = ({
               moveToSaved={moveToSaved}
               newKey={newKey}
               logged={logged}
+              disableInput={disableInput}
             />
             )
           : (
@@ -62,6 +64,7 @@ const CartView = ({
               addQtyToSaved={addQtyToSaved}
               subtractQtyFromSaved={subtractQtyFromSaved}
               newKey={newKey}
+              disableInput={disableInput}
             />
             )}
       </div>

@@ -26,7 +26,8 @@ const MainView = ({
   moveToSaved,
   subtractQtyFromCart,
   addQtyToCart,
-  total
+  total,
+  disableInput
 }) => {
   return (
     <>
@@ -37,6 +38,7 @@ const MainView = ({
             <>
               {mainList.map((product) => {
                 const subtotal = product?.price * product?.qty
+                // const actualStock = await
 
                 return (
                   <Row
@@ -90,31 +92,68 @@ const MainView = ({
                       lg={2}
                       className='d-flex justify-content-center align-items-center'
                     >
-                      <InputGroup
-                        style={{ width: '7.5vw' }}
-                        className='text-center'
-                      >
-                        <Button
-                          variant='outline-dark'
-                          onClick={() => subtractQtyFromCart(product.id)}
-                        >
-                          <span className='fw-bolder'>-</span>
-                        </Button>
 
-                        <FormControl
-                          className='fw-bolder text-center bg-white'
-                          name='qty'
-                          value={product.qty}
-                          readOnly
-                        />
+                      <div>
+                        {/* {actualStock} disponibles */}
+                      </div>
 
-                        <Button
-                          variant='outline-dark'
-                          onClick={() => addQtyToCart(product)}
-                        >
-                          <span className='fw-bolder'>+</span>
-                        </Button>
-                      </InputGroup>
+                      {!disableInput
+                        ? (
+                          <InputGroup
+                            style={{ width: '7.5vw' }}
+                            className='text-center'
+                          >
+                            <Button
+                              variant='outline-dark'
+                              onClick={() => subtractQtyFromCart(product.id)}
+                            >
+                              <span className='fw-bolder'>-</span>
+                            </Button>
+
+                            <FormControl
+                              className='fw-bolder text-center bg-white'
+                              name='qty'
+                              value={product.qty}
+                              readOnly
+                            />
+
+                            <Button
+                              variant='outline-dark'
+                              onClick={() => addQtyToCart(product)}
+                            >
+                              <span className='fw-bolder'>+</span>
+                            </Button>
+                          </InputGroup>
+                          )
+                        : (
+                          <InputGroup
+                            style={{ width: '7.5vw' }}
+                            className='text-center'
+                          >
+                            <Button
+                              variant='outline-dark'
+                              disabled
+                            >
+                              <span className='fw-bolder'>-</span>
+                            </Button>
+
+                            <FormControl
+                              className='fw-bolder text-center bg-white'
+                              name='qty'
+                              value={product.qty}
+                              readOnly
+                              disabled
+                            />
+
+                            <Button
+                              variant='outline-dark'
+                              disabled
+                            >
+                              <span className='fw-bolder'>+</span>
+                            </Button>
+                          </InputGroup>
+                          )}
+
                     </Col>
 
                     <Col

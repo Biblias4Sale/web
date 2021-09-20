@@ -25,39 +25,33 @@ export const Login = ({ setCurrentView }) => {
     contraseña: false
   })
 
-  // const logged = useSelector(state => state.logged)
   const guestCart = useSelector((state) => state.cart.main)
   const guestSaved = useSelector((state) => state.cart.saved)
-  // const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
-  // const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-
-  // const userCart = useSelector((state) => state.logged ? state.userCart : null)
-  // const userSaved = useSelector((state) => state.logged ? state.userSaved : null)
 
   const joinCarts = async (cartID, userID) => {
     try {
       await guestCart.forEach((product) => {
-        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
       })
       await guestSaved.forEach((product) => {
-        axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
       })
     } catch (error) {
       console.log(error)
     }
   }
 
-  // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
       await joinCarts(response.data.cart.id, response.data.user.id)
       dispatch(cleanGuestCart())
-      dispatch(getFavorites(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
-      dispatch(getCart(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
+      setTimeout(() => {
+        dispatch(getFavorites(response.data.user.id))
+        dispatch(getCart(response.data.user.id))
+        dispatch(getSaved(response.data.user.id))
+      }, 1000)
 
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
