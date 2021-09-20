@@ -1,8 +1,9 @@
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CheckOut from '../MercadoPago/CheckOut'
 import { Session } from '../Session/Session'
 import MainView from './MainView.jsx'
+import axios from 'axios'
+import { ApiURL } from '../../config/config'
 
 const Main = ({
   total,
@@ -18,13 +19,34 @@ const Main = ({
   const [showSession, setShowSession] = useState(false)
   const [sessionView, setSessionView] = useState('init')
   const [checkoutView, setCheckoutView] = useState('')
+  const [mpCart, setMpCart] = useState([])
+  const [url, setUrl] = useState('')
+
+  const payment = async () => {
+    const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, mpCart, { withCredentials: true })
+    return response.data
+  }
 
   const shop = () => {
     if (logged) {
+      payment().then(res => setUrl(res.url))
       setShowMP(true)
       setCheckoutView('check')
     } else setShowSession(true)
   }
+
+  useEffect(() => {
+    const arr = mainList.map(product => (
+      {
+        currency_id: 'ARS',
+        // description: product.brand + ' ' + product.model,
+        title: product.brand + ' ' + product.model,
+        unit_price: parseInt(product.price),
+        quantity: parseInt(product.qty)
+      }))
+
+    setMpCart(arr)
+  }, [mainList])
 
   return (
     <>
@@ -38,7 +60,14 @@ const Main = ({
           />
           )
         : (
-          <CheckOut show={showMP} checkoutView={checkoutView} setCheckoutView={setCheckoutView} onHide={() => setShowMP(false)} />
+          <CheckOut
+            url={url}
+            mpCart={mpCart}
+            show={showMP}
+            checkoutView={checkoutView}
+            setCheckoutView={setCheckoutView}
+            onHide={() => setShowMP(false)}
+          />
           )}
 
       <MainView

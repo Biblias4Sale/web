@@ -34,10 +34,6 @@ export const Cart = () => {
     })
   }
 
-  // useEffect(() => {
-  //   dispatch(getCart(userID))
-  // })
-
   useEffect(() => {
     calculateNewTotal()
   })
@@ -61,14 +57,13 @@ export const Cart = () => {
     if (logged) {
       try {
         await axios.post(`${ApiURL}/cart/subProduct/${cartID}/${productID}`)
-        dispatch(getCart(userID))
+        await dispatch(getCart(userID))
       } catch (error) {
         toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
       }
     } else {
       dispatch(SubtractQtyFromCart(productID))
       setNewKey(prev => prev + 1)
-      calculateNewTotal()
     }
   }
 
