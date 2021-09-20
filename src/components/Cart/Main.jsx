@@ -1,101 +1,95 @@
-import { Container, Col, Row, InputGroup, Button, FormControl } from 'react-bootstrap'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FormatedPrice } from '../../components/common/formatedPrice'
-import styles from './Cart.module.css'
-import emptyCart from '../../assets/carritoVacio.png'
-import { MercadoPago } from '../../components/MercadoPago/MercadoPago'
+import { useState, useEffect } from 'react'
+import CheckOut from '../MercadoPago/CheckOut'
+import { Session } from '../Session/Session'
+import MainView from './MainView.jsx'
+import axios from 'axios'
+import { ApiURL } from '../../config/config'
 
-const Main = ({ mainList, total, addQtyToCart, removeFromCart, subtractQtyFromCart, moveToSaved, newKey }) => {
-  const [show, setShow] = useState(false)
+const Main = ({
+  total,
+  mainList,
+  addQtyToCart,
+  removeFromCart,
+  subtractQtyFromCart,
+  moveToSaved,
+  newKey,
+  logged,
+  disableInput
+}) => {
+  const [showMP, setShowMP] = useState(false)
+  const [showSession, setShowSession] = useState(false)
+  const [sessionView, setSessionView] = useState('init')
+  const [checkoutView, setCheckoutView] = useState('')
+  const [mpCart, setMpCart] = useState([])
+  const [url, setUrl] = useState('')
+
+  const payment = async () => {
+    const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, mpCart, { withCredentials: true })
+    return response.data
+  }
+
+  const shop = () => {
+    if (logged) {
+      payment().then(res => setUrl(res.url))
+      setShowMP(true)
+      setCheckoutView('check')
+    } else setShowSession(true)
+  }
+
+  useEffect(() => {
+    const arr = mainList.map(product => (
+      {
+        currency_id: 'ARS',
+        // description: product.brand + ' ' + product.model,
+        title: product.brand + ' ' + product.model,
+        unit_price: parseInt(product.price),
+        quantity: parseInt(product.qty)
+      }))
+
+    setMpCart(arr)
+  }, [mainList])
+
   return (
-
-    <Container id={styles.body} className='justify-content-center'>
-      {mainList.length > 0
+    <>
+      {!logged
         ? (
-          <>
-            {mainList.map(product => {
-              const subtotal = product?.price * product?.qty
-
-              return (
-                <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={{ newKey } + product.id}>
-                  <Col lg={2} className='d-flex justify-content-center align-items-center'>
-                    <Link to={`/product/details/${product.id}`}>
-                      <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
-                    </Link>
-                  </Col>
-
-                  <Col lg={6}>
-                    <Row className='text-uppercase mt-2'>
-                      <h5>{product.model}</h5>
-                    </Row>
-                    <Row>
-                      <p> Marca: {product.brand}</p>
-                    </Row>
-
-                    <Row lg={7}>
-                      <Col lg={3}><Link to='#' className='text-decoration-none' onClick={() => removeFromCart(product.id)}>Eliminar</Link></Col>
-                      <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => moveToSaved(product)}>Guardar para después</Link></Col>
-                    </Row>
-                  </Col>
-
-                  <Col lg={2} className='d-flex justify-content-center align-items-center'>
-                    <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-
-                      <Button variant='outline-dark' onClick={() => subtractQtyFromCart(product.id)}>
-                        <span className='fw-bolder'>-</span>
-                      </Button>
-
-                      <FormControl
-                        className='fw-bolder text-center bg-white'
-                        name='qty'
-                        value={product.qty}
-                        readOnly
-                      />
-
-                      <Button variant='outline-dark' onClick={() => addQtyToCart(product)}>
-                        <span className='fw-bolder'>+</span>
-                      </Button>
-
-                    </InputGroup>
-                  </Col>
-
-                  <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
-                    <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: subtotal })}</span></Row>
-                  </Col>
-                </Row>
-              )
-            })}
-            <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
-              Total: {total && FormatedPrice({ price: total })}
-            </Row>
-
-            {mainList.length === 1
-              ? (
-                <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
-                  <Button variant='outline-dark' onClick={() => setShow(true)}>
-                    <span className='fw-bolder'>Comprar 1 producto</span>
-                  </Button>
-                  <MercadoPago show={show} onHide={() => setShow(false)} />
-                </Row>
-                )
-              : (
-                <Row lg={5} className='d-flex justify-content-center align-items-center flex-column'>
-                  <Button variant='outline-dark' onClick={() => setShow(true)}>
-                    <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
-                  </Button>
-                  <MercadoPago show={show} onHide={() => setShow(false)} />
-                </Row>)}
-
-          </>
+          <Session
+            currentView={sessionView}
+            setCurrentView={setSessionView}
+            show={showSession}
+            onHide={() => setShowSession(false)}
+          />
           )
         : (
-          <Col className='d-flex  justify-content-center align-items-center'>
-            <h4>Tu carrito está vacío</h4>
-            <img src={emptyCart} className='w-25' alt='' />
-          </Col>
+          <CheckOut
+            url={url}
+            mpCart={mpCart}
+            show={showMP}
+            checkoutView={checkoutView}
+            setCheckoutView={setCheckoutView}
+            onHide={() => setShowMP(false)}
+          />
           )}
-    </Container>
+
+      <MainView
+        mainList={mainList}
+        shop={shop}
+        removeFromCart={removeFromCart}
+        newKey={newKey}
+        setShowSession={setShowSession}
+        showSession={showSession}
+        setCurrentView={setSessionView}
+        currentView={sessionView}
+        logged={logged}
+        showMP={showMP}
+        setShowMP={setShowMP}
+        moveToSaved={moveToSaved}
+        subtractQtyFromCart={subtractQtyFromCart}
+        addQtyToCart={addQtyToCart}
+        total={total}
+        disableInput={disableInput}
+      />
+    </>
   )
 }
 

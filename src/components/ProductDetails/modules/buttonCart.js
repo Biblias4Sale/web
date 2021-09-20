@@ -6,6 +6,7 @@ import { toastCustom } from '../../common/Toastify'
 
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
+
   const onSubmit = async () => {
     try {
       dispatch(AddProductToCart(product))

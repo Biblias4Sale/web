@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
-const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey }) => {
+const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey, disableInput }) => {
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -35,22 +35,46 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                   </Col>
 
                   <Col lg={2} className='d-flex justify-content-center align-items-center'>
-                    <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                      <Button variant='outline-dark' onClick={() => subtractQtyFromSaved(product.id)}>
-                        <span className='fw-bolder'>-</span>
-                      </Button>
 
-                      <FormControl
-                        className='fw-bolder text-center bg-white'
-                        value={product.qty}
-                        readOnly
-                      />
+                    {disableInput
+                      ? (
+                        <InputGroup style={{ width: '7.5vw' }} className='text-center'>
+                          <Button variant='outline-dark' disabled>
+                            <span className='fw-bolder'>-</span>
+                          </Button>
 
-                      <Button variant='outline-dark' onClick={() => addQtyToSaved(product)}>
-                        <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
-                      </Button>
+                          <FormControl
+                            className='fw-bolder text-center bg-white'
+                            value={product.qty}
+                            readOnly
+                            disabled
+                          />
 
-                    </InputGroup>
+                          <Button variant='outline-dark' disabled>
+                            <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                          </Button>
+
+                        </InputGroup>
+                        )
+                      : (
+                        <InputGroup style={{ width: '7.5vw' }} className='text-center'>
+                          <Button variant='outline-dark' onClick={() => subtractQtyFromSaved(product.id)}>
+                            <span className='fw-bolder'>-</span>
+                          </Button>
+
+                          <FormControl
+                            className='fw-bolder text-center bg-white'
+                            value={product.qty}
+                            readOnly
+                          />
+
+                          <Button variant='outline-dark' onClick={() => addQtyToSaved(product)}>
+                            <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                          </Button>
+
+                        </InputGroup>
+                        )}
+
                   </Col>
 
                   <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>

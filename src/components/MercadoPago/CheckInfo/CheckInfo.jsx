@@ -2,39 +2,33 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
-import { checkInfo } from '../../../redux/actions/userActions'
-import { toastCustom } from '../../common/Toastify'
+import { editUser } from '../../../redux/actions/userActions'
 
-export const CheckInfo = () => {
+export const CheckInfo = ({ setCheckoutView }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
   const { handleSubmit } = useForm()
 
   const [formData, setFormData] = useState({
-    cp: '',
-    address: '',
-    city: '',
-    province: '',
-    phone: ''
+    cp: oldInfo.user.cp,
+    address: oldInfo.user.address,
+    city: oldInfo.user.city,
+    province: oldInfo.user.province,
+    phone: oldInfo.user.phone
   })
 
   const [errors, setErrors] = useState({
-    cp: true,
-    address: true,
-    city: true,
-    province: true,
-    phone: true
+    cp: false,
+    address: false,
+    city: false,
+    province: false,
+    phone: false
   })
-  // Submit your data into Redux store
-  const onSubmit = async () => {
-    try {
-      dispatch(checkInfo(oldInfo.user.id, formData, oldInfo.token))
-      toastCustom('Cuenta actualizada exitosamente', 'success', 4000, 'bottom-right')
-    } catch (error) {
-      console.log('Error en actualizar cuenta', error)
-      toastCustom('Cuenta no ha sido actualizada', 'error', 4000, 'bottom-right')
-    }
+
+  const onSubmit = () => {
+    dispatch(editUser(oldInfo.user.id, formData, oldInfo.token, oldInfo.cart))
+    setCheckoutView('pay')
   }
 
   const handleChange = (event, value) => {
@@ -84,7 +78,7 @@ export const CheckInfo = () => {
       <CheckInfoView
         handleSubmit={handleSubmit(onSubmit)}
         errors={errors}
-        oldInfo={oldInfo.user}
+        formData={formData}
         handleChange={handleChange}
       />
     </div>

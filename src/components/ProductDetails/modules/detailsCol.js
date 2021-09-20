@@ -1,6 +1,6 @@
 import { Col } from 'react-bootstrap'
 import { GetStarts } from '../../common/getStars'
-import { ButtonCart } from './buttonCart'
+import { ButtonCart } from '../../common/buttonCart'
 import { Loading } from '../../common/spinner'
 import { DetailsColStyle, Height } from '../ProductDetailsStyle'
 
