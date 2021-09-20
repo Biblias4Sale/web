@@ -1,9 +1,11 @@
 import { HomeView } from './HomeView'
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <HomeView />
     </>
   )
 }
+
+export default Home

@@ -7,7 +7,6 @@ import { CheckInfo } from './CheckInfo/CheckInfo'
 
 const CheckOut = (props) => {
   const userCart = useSelector(state => state.userCart)
-
   const [url, setUrl] = useState('')
 
   const mpCart = userCart.map(product => (

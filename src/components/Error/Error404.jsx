@@ -2,7 +2,7 @@ import { Container, Col, Row, Image, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import error404 from '../../assets/error404.png'
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <Container>
       <Row>
@@ -36,3 +36,5 @@ export const NotFound = () => {
     </Container>
   )
 }
+
+export default NotFound

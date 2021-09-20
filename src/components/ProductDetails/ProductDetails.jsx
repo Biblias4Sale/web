@@ -1,6 +1,6 @@
 import { ProductDetailsView } from './ProductDetailsView'
 
-export const ProductDetails = (props) => {
+const ProductDetails = (props) => {
   const productId = props.match.params.id
 
   return (
@@ -9,3 +9,5 @@ export const ProductDetails = (props) => {
     </>
   )
 }
+
+export default ProductDetails
