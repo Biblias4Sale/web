@@ -25,14 +25,8 @@ export const Login = ({ setCurrentView }) => {
     contraseña: false
   })
 
-  // const logged = useSelector(state => state.logged)
   const guestCart = useSelector((state) => state.cart.main)
   const guestSaved = useSelector((state) => state.cart.saved)
-  // const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
-  // const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-
-  // const userCart = useSelector((state) => state.logged ? state.userCart : null)
-  // const userSaved = useSelector((state) => state.logged ? state.userSaved : null)
 
   const joinCarts = async (cartID, userID) => {
     try {
