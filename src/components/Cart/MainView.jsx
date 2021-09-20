@@ -56,7 +56,7 @@ const MainView = ({
                     </Link>
                   </Col>
 
-                  <Col lg={6}>
+                  <Col lg={4}>
                     <Row className='text-uppercase mt-2'>
                       <h5>{product.model}</h5>
                     </Row>
@@ -64,8 +64,8 @@ const MainView = ({
                       <p> Marca: {product.brand}</p>
                     </Row>
 
-                    <Row lg={7}>
-                      <Col lg={3}>
+                    <Row>
+                      <Col lg={4}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -74,7 +74,7 @@ const MainView = ({
                           Eliminar
                         </Link>
                       </Col>
-                      <Col lg={4}>
+                      <Col lg={6}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -87,30 +87,30 @@ const MainView = ({
                   </Col>
 
                   <Col
-                    lg={2}
-                    className='d-flex justify-content-center align-items-center'
+                    lg={4}
+                    className='d-flex justify-content-center align-items-center align-content-end'
                   >
                     {product.stock === 1
                       ? (
-                        <div>
+                        <h5 className='text-warning'>
                           Último disponible!
-                        </div>
+                        </h5>
                         )
                       : null}
 
                     {product.stock > 1
                       ? (
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <h5 className='text-success' style={{ display: 'flex', flexDirection: 'row' }}>
                           {product.stock} disponibles
-                        </div>
+                        </h5>
                         )
                       : null}
 
                     {product.stock < 1
                       ? (
-                        <div>
+                        <h5 className='text-danger'>
                           Sin stock
-                        </div>
+                        </h5>
                         )
                       : null}
                     {product.stock > 0
@@ -188,7 +188,7 @@ const MainView = ({
                   </Col>
 
                   <Col
-                    lg={1}
+                    lg={2}
                     className='d-flex justify-content-center align-items-center flex-column'
                   >
                     <Row>
