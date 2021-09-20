@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom'
 import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 import emptyCart from '../../assets/carritoVacio.png'
-import { MercadoPago } from '../MercadoPago/MercadoPago'
-import { Session } from '../Session/Session'
 
 const MainView = ({
   mainList,
@@ -32,18 +30,6 @@ const MainView = ({
 }) => {
   return (
     <>
-      {!logged
-        ? (
-          <Session
-            currentView={currentView}
-            setCurrentView={setCurrentView}
-            show={showSession}
-            onHide={() => setShowSession(false)}
-          />
-          )
-        : (
-          <MercadoPago show={showMP} onHide={() => setShowMP(false)} />
-          )}
 
       <Container id={styles.body} className='justify-content-center'>
         {mainList.length > 0

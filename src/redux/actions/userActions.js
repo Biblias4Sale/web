@@ -16,7 +16,7 @@ export const logOut = () => {
   }
 }
 
-export const editUser = (id, data, token) => {
+export const editUser = (id, data, token, cart) => {
   return async function (dispatch) {
     axios.put(`${ApiURL}/user/${id}`, data, { withCredentials: true })
       .then(editUser => {
@@ -33,7 +33,8 @@ export const editUser = (id, data, token) => {
             province: editUser.data.province,
             phone: editUser.data.phone
           },
-          token
+          token,
+          cart
         }
         if (editUser.status === 200) {
           return dispatch({

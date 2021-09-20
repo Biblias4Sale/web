@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
 import { editUser } from '../../../redux/actions/userActions'
 
-export const CheckInfo = ({ setActualView }) => {
+export const CheckInfo = ({ setCheckoutView }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
 
@@ -27,8 +27,8 @@ export const CheckInfo = ({ setActualView }) => {
   })
 
   const onSubmit = () => {
-    dispatch(editUser(oldInfo.user.id, formData, oldInfo.token))
-    setActualView('pay')
+    dispatch(editUser(oldInfo.user.id, formData, oldInfo.token, oldInfo.cart))
+    setCheckoutView('pay')
   }
 
   const handleChange = (event, value) => {
