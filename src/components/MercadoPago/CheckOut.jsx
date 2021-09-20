@@ -4,10 +4,8 @@ import { useEffect, useState } from 'react'
 import { ApiURL } from '../../config/config'
 import { Modal } from 'react-bootstrap'
 import { CheckInfo } from './CheckInfo/CheckInfo'
-// import { Pay } from './modules/Pay'
 
-export const Checkout = (props) => {
-  // const user = useSelector(state => state.logged.user)
+const CheckOut = (props) => {
   const userCart = useSelector(state => state.userCart)
 
   const [url, setUrl] = useState('')
@@ -28,7 +26,7 @@ export const Checkout = (props) => {
 
   useEffect(() => {
     payment().then(res => setUrl(res.url))
-  }, [payment])
+  }, [])
 
   return (
     <div>
@@ -51,3 +49,5 @@ export const Checkout = (props) => {
     </div>
   )
 }
+
+export default CheckOut

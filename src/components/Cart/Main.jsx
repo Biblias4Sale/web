@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { Checkout } from '../../components/MercadoPago/MercadoPago'
+import CheckOut from '../MercadoPago/CheckOut'
 import { Session } from '../Session/Session'
 import MainView from './MainView.jsx'
 
@@ -38,7 +38,7 @@ const Main = ({
           />
           )
         : (
-          <Checkout show={showMP} checkoutView={checkoutView} setCheckoutView={setCheckoutView} onHide={() => setShowMP(false)} />
+          <CheckOut show={showMP} checkoutView={checkoutView} setCheckoutView={setCheckoutView} onHide={() => setShowMP(false)} />
           )}
 
       <MainView

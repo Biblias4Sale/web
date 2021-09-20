@@ -51,7 +51,7 @@ export const Login = ({ setCurrentView }) => {
         dispatch(getFavorites(response.data.user.id))
         dispatch(getCart(response.data.user.id))
         dispatch(getSaved(response.data.user.id))
-      }, 2000)
+      }, 1000)
 
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
