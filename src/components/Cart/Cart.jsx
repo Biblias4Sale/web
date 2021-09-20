@@ -33,11 +33,21 @@ export const Cart = () => {
       newTotal = newTotal + product.price * product.qty
       setTotal(total => newTotal)
     })
+
+    mainList.sort((a, b) => {
+      if (a.model > b.model) {
+        return 1
+      }
+      if (a.model < b.model) {
+        return -1
+      }
+      return 0
+    })
   }
 
   useEffect(() => {
     dispatch(getCart(userID))
-    dispatch(getCart(userID))
+    dispatch(getSaved(userID))
   }, [dispatch, userID])
 
   useEffect(() => {
