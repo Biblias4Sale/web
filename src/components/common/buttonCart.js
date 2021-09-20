@@ -17,7 +17,9 @@ export const ButtonCart = ({ product }) => {
       try {
         await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
         toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
-        dispatch(getCart(userID))
+        setTimeout(() => {
+          dispatch(getCart(userID))
+        }, 1000)
       } catch (error) {
         toastCustom('El producto no pudo ser agregado', 'error', 4000, 'bottom-right')
       }
