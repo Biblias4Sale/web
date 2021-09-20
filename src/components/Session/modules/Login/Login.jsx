@@ -41,17 +41,17 @@ export const Login = ({ setCurrentView }) => {
     }
   }
 
-  // Submit your data into Redux store
   const onSubmit = async () => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
       await joinCarts(response.data.cart.id, response.data.user.id)
       dispatch(cleanGuestCart())
-      dispatch(getFavorites(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
-      dispatch(getCart(response.data.user.id))
-      dispatch(getSaved(response.data.user.id))
+      setTimeout(() => {
+        dispatch(getFavorites(response.data.user.id))
+        dispatch(getCart(response.data.user.id))
+        dispatch(getSaved(response.data.user.id))
+      }, 2000)
 
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
