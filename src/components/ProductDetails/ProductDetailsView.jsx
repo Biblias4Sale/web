@@ -1,13 +1,21 @@
 import { BannerBox } from './modules/banner'
-import { GetProduct } from './modules/getProduct'
+// import { GetProduct } from './modules/getProduct'
 import { ProductReviewView } from './ProductReviews/ProductReviewView'
+import { ProductContainer } from './modules/productContainer'
+import { Loading } from '../common/spinner'
 
-export const ProductDetailsView = ({ match }) => {
+export const ProductDetailsView = ({ product }) => {
   return (
     <div>
       <div>
         <BannerBox />
-        <GetProduct id={match} />
+        <div>
+          {
+      !product
+        ? <Loading />
+        : <ProductContainer product={product} />
+      }
+        </div>
       </div>
       <div>
         <ProductReviewView />

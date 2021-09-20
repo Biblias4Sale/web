@@ -38,6 +38,7 @@ const MainView = ({
             <>
               {mainList.map((product) => {
                 const subtotal = product?.price * product?.qty
+                // const actualStock = await
 
                 return (
                   <Row
@@ -91,6 +92,10 @@ const MainView = ({
                       lg={2}
                       className='d-flex justify-content-center align-items-center'
                     >
+
+                      <div>
+                        {/* {actualStock} disponibles */}
+                      </div>
 
                       {!disableInput
                         ? (

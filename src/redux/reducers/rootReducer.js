@@ -23,7 +23,6 @@ import {
 const initialState = {
   logged: false,
   products: [],
-  productDetails: [],
   categories: [],
   reviews: [],
   searchResult: [],
@@ -48,8 +47,8 @@ const rootReducer = (state = initialState, action) => {
     case GET_PRODUCTS:
       return { ...state, products: action.payload }
 
-    case GET_PRODUCT_BY_ID:
-      return { ...state, productDetails: action.payload }
+      // case GET_PRODUCT_BY_ID:
+      //   return { ...state, productDetails: action.payload }
 
     case DELETE_DETAILS:
       return { ...state, productDetails: [] }
