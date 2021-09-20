@@ -90,10 +90,29 @@ const MainView = ({
                     lg={2}
                     className='d-flex justify-content-center align-items-center'
                   >
+                    {product.stock === 1
+                      ? (
+                        <div>
+                          Último disponible!
+                        </div>
+                        )
+                      : null}
 
-                    <div>
-                      {product.stock} disponibles
-                    </div>
+                    {product.stock > 1
+                      ? (
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                          {product.stock} disponibles
+                        </div>
+                        )
+                      : null}
+
+                    {product.stock < 1
+                      ? (
+                        <div>
+                          Sin stock
+                        </div>
+                        )
+                      : null}
 
                     {!disableInput
                       ? (
@@ -114,13 +133,24 @@ const MainView = ({
                             value={product.qty}
                             readOnly
                           />
+                          {product.qty < product.stock
+                            ? (
+                              <Button
+                                variant='outline-dark'
+                                onClick={() => addQtyToCart(product)}
+                              >
+                                <span className='fw-bolder'>+</span>
+                              </Button>
+                              )
+                            : (
+                              <Button
+                                variant='outline-dark'
+                                disabled
+                              >
+                                <span className='fw-bolder'>+</span>
+                              </Button>
+                              )}
 
-                          <Button
-                            variant='outline-dark'
-                            onClick={() => addQtyToCart(product)}
-                          >
-                            <span className='fw-bolder'>+</span>
-                          </Button>
                         </InputGroup>
                         )
                       : (
