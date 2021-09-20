@@ -31,10 +31,10 @@ export const Login = ({ setCurrentView }) => {
   const joinCarts = async (cartID, userID) => {
     try {
       await guestCart.forEach((product) => {
-        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
       })
       await guestSaved.forEach((product) => {
-        axios.post(`${ApiURL}/saveProduct/${userID}/${product.id}`)
+        axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
       })
     } catch (error) {
       console.log(error)
