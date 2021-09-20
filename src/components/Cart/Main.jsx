@@ -13,7 +13,8 @@ const Main = ({
   subtractQtyFromCart,
   moveToSaved,
   newKey,
-  logged
+  logged,
+  disableInput
 }) => {
   const [showMP, setShowMP] = useState(false)
   const [showSession, setShowSession] = useState(false)
@@ -86,6 +87,7 @@ const Main = ({
         subtractQtyFromCart={subtractQtyFromCart}
         addQtyToCart={addQtyToCart}
         total={total}
+        disableInput={disableInput}
       />
     </>
   )
