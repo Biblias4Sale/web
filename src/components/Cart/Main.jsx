@@ -14,7 +14,9 @@ const Main = ({
   moveToSaved,
   newKey,
   logged,
-  disableInput
+  disableInput,
+  cartID,
+  userID
 }) => {
   const [showMP, setShowMP] = useState(false)
   const [showSession, setShowSession] = useState(false)
@@ -45,12 +47,12 @@ const Main = ({
       .map(product => (
         {
           currency_id: 'ARS',
-          // description: product.brand + ' ' + product.model,
+          description: { userID },
           title: product.brand + ' ' + product.model,
           unit_price: parseInt(product.price),
           quantity: parseInt(product.qty)
         }))
-    setMpCart(arr)
+    setMpCart(arr, cartID)
   }, [mainList])
 
   return (

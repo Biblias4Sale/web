@@ -207,6 +207,8 @@ export const Cart = () => {
       newKey={newKey}
       logged={logged}
       disableInput={disableInput}
+      cartID={cartID}
+      userID={userID}
     />
   )
 }
