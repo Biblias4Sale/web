@@ -34,21 +34,25 @@ const Main = ({
     if (logged) {
       console.log('entre logged')
       payment().then(res => setUrl(res.url))
+      mainList.forEach(product => {
+        if (product.stock < 1) moveToSaved(product)
+      })
       setShowMP(true)
       setCheckoutView('check')
     } else setShowSession(true)
   }
 
   useEffect(() => {
-    const arr = mainList.map(product => (
-      {
-        currency_id: 'ARS',
-        // description: product.brand + ' ' + product.model,
-        title: product.brand + ' ' + product.model,
-        unit_price: parseInt(product.price),
-        quantity: parseInt(product.qty)
-      }))
-
+    const arr = mainList
+      .filter(product => product.stock > 0)
+      .map(product => (
+        {
+          currency_id: 'ARS',
+          // description: product.brand + ' ' + product.model,
+          title: product.brand + ' ' + product.model,
+          unit_price: parseInt(product.price),
+          quantity: parseInt(product.qty)
+        }))
     setMpCart(arr)
   }, [mainList])
 
@@ -91,6 +95,7 @@ const Main = ({
         addQtyToCart={addQtyToCart}
         total={total}
         disableInput={disableInput}
+        mpCart={mpCart}
       />
     </>
   )
