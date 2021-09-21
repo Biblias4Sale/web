@@ -20,6 +20,7 @@ export const Cart = () => {
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
   const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  console.log('SOY CARTID', logged)
   const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
   const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
