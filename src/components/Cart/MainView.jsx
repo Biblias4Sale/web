@@ -122,12 +122,23 @@ const MainView = ({
                                 style={{ width: '7.5vw' }}
                                 className='text-center'
                               >
-                                <Button
-                                  variant='outline-dark'
-                                  onClick={() => subtractQtyFromCart(product.id)}
-                                >
-                                  <span className='fw-bolder'>-</span>
-                                </Button>
+                                {product.qty > 1
+                                  ? (
+                                    <Button
+                                      variant='outline-dark'
+                                      onClick={() => subtractQtyFromCart(product.id)}
+                                    >
+                                      <span className='fw-bolder'>-</span>
+                                    </Button>
+                                    )
+                                  : (
+                                    <Button
+                                      variant='outline-dark'
+                                      disabled
+                                    >
+                                      <span className='fw-bolder'>-</span>
+                                    </Button>
+                                    )}
 
                                 <FormControl
                                   className='fw-bolder text-center bg-white'
