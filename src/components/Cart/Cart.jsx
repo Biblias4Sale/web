@@ -29,10 +29,12 @@ export const Cart = () => {
 
   const calculateNewTotal = () => {
     let newTotal = 0
-    mainList.forEach(product => {
-      newTotal = newTotal + product.price * product.qty
-      setTotal(total => newTotal)
-    })
+    mainList
+      .filter(product => product.stock > 0)
+      .forEach(product => {
+        newTotal = newTotal + product.price * product.qty
+        setTotal(total => newTotal)
+      })
 
     mainList.sort((a, b) => {
       if (a.model > b.model) {
