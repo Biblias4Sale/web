@@ -22,6 +22,9 @@ const FavoritesView = ({
 
   return (
     <Container>
+            {favorites.length > 0
+        ? (
+          <>
       <h3 style={title}>Favoritos</h3>
       <div style={{ height: '75vh' }}>
         {myfavorites.map(product => {
@@ -39,11 +42,11 @@ const FavoritesView = ({
                 </Row>
 
                 <Row>
-                  <Col><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                  <Col><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
+                  <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
+                  <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
                 </Row>
               </Col>
-              <Col lg={1} className='d-flex justify-content-center align-items-center flex-column'>
+              <Col lg={4} className='d-flex justify-content-center align-items-center flex-column'>
                 <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: product.price })}</span></Row>
               </Col>
             </Row>
@@ -61,6 +64,13 @@ const FavoritesView = ({
           lastObj={lastObj}
         />
       </div>
+      </>
+          )
+        : (
+          <Col className='d-flex  justify-content-center align-items-center'>
+            <h4>No tenés productos favoritos</h4>
+          </Col>
+          )}
     </Container>
   )
 }
