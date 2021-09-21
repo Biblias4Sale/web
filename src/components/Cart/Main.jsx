@@ -25,11 +25,14 @@ const Main = ({
 
   const payment = async () => {
     const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, mpCart, { withCredentials: true })
+    console.log('soy response.data', response.data)
     return response.data
   }
 
   const shop = () => {
+    console.log('entre a shop')
     if (logged) {
+      console.log('entre logged')
       payment().then(res => setUrl(res.url))
       mainList.forEach(product => {
         if (product.stock < 1) moveToSaved(product)
