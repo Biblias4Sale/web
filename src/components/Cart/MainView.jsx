@@ -44,19 +44,19 @@ const MainView = ({
                   key={{ newKey } + product.id}
                 >
                   <Col
-                    lg={2}
+                    lg={2} sm={5}
                     className='d-flex justify-content-center align-items-center'
                   >
                     <Link to={`/product/details/${product.id}`}>
                       <img
                         src={product.img}
                         alt=''
-                        style={{ maxWidth: '80px', maxHeight: '80px' }}
+                        style={{ maxWidth: '25vw', maxHeight: '15vh' }}
                       />
                     </Link>
                   </Col>
 
-                  <Col lg={4}>
+                  <Col lg={4} sm={12}>
                     <Row className='text-uppercase mt-2'>
                       <h5>{product.model}</h5>
                     </Row>
@@ -65,7 +65,7 @@ const MainView = ({
                     </Row>
 
                     <Row>
-                      <Col lg={4}>
+                      <Col lg={4} sm={6}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -74,7 +74,7 @@ const MainView = ({
                           Eliminar
                         </Link>
                       </Col>
-                      <Col lg={6}>
+                      <Col lg={6} sm={6}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -88,35 +88,42 @@ const MainView = ({
 
                   <Col
                     lg={4}
-                    className='d-flex justify-content-center align-items-center align-content-end'
-                  >
+                    className='d-flex justify-content-center align-items-center'
+                    >
+                 <Col
+                    className='d-flex justify-content-center align-items-center'
+                    >
                     {product.stock === 1
                       ? (
-                        <h5 className='text-warning'>
+                        <h5 className='text-warning m-4'>
                           Último disponible!
                         </h5>
                         )
-                      : null}
 
                     {product.stock > 1
                       ? (
-                        <h5 className='text-success' style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div>
+                        <h5 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
                           {product.stock} disponibles
                         </h5>
+                      </div>
                         )
                       : null}
 
                     {product.stock < 1
                       ? (
-                        <h5 className='text-danger'>
+                        <h5 className='text-danger m-4'>
                           Sin stock
                         </h5>
                         )
                       : null}
+                      </Col>
                     {product.stock > 0
                       ? (
-                          !disableInput
+                        !disableInput
                             ? (
+                              <div>
+                              <Col className='d-flex justify-content-center'>
                               <InputGroup
                                 style={{ width: '7.5vw' }}
                                 className='text-center'
@@ -153,16 +160,20 @@ const MainView = ({
                                     )}
 
                               </InputGroup>
+                                </Col>
+                                </div>
                               )
-                            : (
-                              <InputGroup
+                              : (
+                                <div>
+                                <Col>
+                                <InputGroup
                                 style={{ width: '7.5vw' }}
                                 className='text-center'
-                              >
+                                >
                                 <Button
                                   variant='outline-dark'
                                   disabled
-                                >
+                                  >
                                   <span className='fw-bolder'>-</span>
                                 </Button>
 
@@ -172,18 +183,20 @@ const MainView = ({
                                   value={product.qty}
                                   readOnly
                                   disabled
-                                />
+                                  />
 
                                 <Button
                                   variant='outline-dark'
                                   disabled
-                                >
+                                  >
                                   <span className='fw-bolder'>+</span>
                                 </Button>
                               </InputGroup>
+                              </Col>
+                                    </div>
                               )
-                        )
-                      : null}
+                              )
+                              : null}
 
                   </Col>
 
