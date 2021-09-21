@@ -27,7 +27,8 @@ const MainView = ({
   subtractQtyFromCart,
   addQtyToCart,
   total,
-  disableInput
+  disableInput,
+  mpCart
 }) => {
   return (
 
@@ -44,19 +45,19 @@ const MainView = ({
                   key={{ newKey } + product.id}
                 >
                   <Col
-                    lg={2} sm={5}
+                    lg={2}
                     className='d-flex justify-content-center align-items-center'
                   >
                     <Link to={`/product/details/${product.id}`}>
                       <img
                         src={product.img}
                         alt=''
-                        style={{ maxWidth: '25vw', maxHeight: '15vh' }}
+                        style={{ maxWidth: '80px', maxHeight: '80px' }}
                       />
                     </Link>
                   </Col>
 
-                  <Col lg={4} sm={12}>
+                  <Col lg={4}>
                     <Row className='text-uppercase mt-2'>
                       <h5>{product.model}</h5>
                     </Row>
@@ -65,7 +66,7 @@ const MainView = ({
                     </Row>
 
                     <Row>
-                      <Col lg={4} sm={6}>
+                      <Col lg={4}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -74,7 +75,7 @@ const MainView = ({
                           Eliminar
                         </Link>
                       </Col>
-                      <Col lg={6} sm={6}>
+                      <Col lg={6}>
                         <Link
                           to='#'
                           className='text-decoration-none'
@@ -88,14 +89,11 @@ const MainView = ({
 
                   <Col
                     lg={4}
-                    className='d-flex justify-content-center align-items-center'
-                    >
-                 <Col
-                    className='d-flex justify-content-center align-items-center'
-                    >
+                    className='d-flex justify-content-center align-items-center align-content-end'
+                  >
                     {product.stock === 1
                       ? (
-                        <h5 className='text-warning m-4'>
+                        <h5 className='text-warning'>
                           Último disponible!
                         </h5>
                         )
@@ -103,28 +101,23 @@ const MainView = ({
 
                     {product.stock > 1
                       ? (
-                        <div>
-                        <h5 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
+                        <h5 className='text-success' style={{ display: 'flex', flexDirection: 'row' }}>
                           {product.stock} disponibles
                         </h5>
-                      </div>
                         )
                       : null}
 
                     {product.stock < 1
                       ? (
-                        <h5 className='text-danger m-4'>
+                        <h5 className='text-danger'>
                           Sin stock
                         </h5>
                         )
                       : null}
-                      </Col>
                     {product.stock > 0
                       ? (
-                        !disableInput
+                          !disableInput
                             ? (
-                              <div>
-                              <Col className='d-flex justify-content-center'>
                               <InputGroup
                                 style={{ width: '7.5vw' }}
                                 className='text-center'
@@ -161,20 +154,16 @@ const MainView = ({
                                     )}
 
                               </InputGroup>
-                                </Col>
-                                </div>
                               )
-                              : (
-                                <div>
-                                <Col>
-                                <InputGroup
+                            : (
+                              <InputGroup
                                 style={{ width: '7.5vw' }}
                                 className='text-center'
-                                >
+                              >
                                 <Button
                                   variant='outline-dark'
                                   disabled
-                                  >
+                                >
                                   <span className='fw-bolder'>-</span>
                                 </Button>
 
@@ -184,20 +173,18 @@ const MainView = ({
                                   value={product.qty}
                                   readOnly
                                   disabled
-                                  />
+                                />
 
                                 <Button
                                   variant='outline-dark'
                                   disabled
-                                  >
+                                >
                                   <span className='fw-bolder'>+</span>
                                 </Button>
                               </InputGroup>
-                              </Col>
-                                    </div>
                               )
-                              )
-                              : null}
+                        )
+                      : null}
 
                   </Col>
 
@@ -207,18 +194,22 @@ const MainView = ({
                   >
                     <Row>
                       <span className='fw-bolder fs-5'>
-                        {FormatedPrice({ price: subtotal })}
+                        {product.stock > 0 ? FormatedPrice({ price: subtotal }) : null}
                       </span>
                     </Row>
                   </Col>
                 </Row>
               )
             })}
-            <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
-              Total: {total && FormatedPrice({ price: total })}
-            </Row>
+            {total > 0
+              ? (
+                <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
+                  Total: {total && FormatedPrice({ price: total })}
+                </Row>
+                )
+              : null}
 
-            {mainList.length === 1
+            {mpCart.length === 1
               ? (
                 <Row
                   lg={5}
@@ -229,16 +220,20 @@ const MainView = ({
                   </Button>
                 </Row>
                 )
-              : (
+              : null}
+            {mpCart.length > 1
+              ? (
                 <Row
                   lg={5}
                   className='d-flex justify-content-center align-items-center flex-column'
                 >
                   <Button variant='outline-dark' onClick={shop}>
-                    <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
+                    <span className='fw-bolder'>{`Comprar ${mpCart.length} productos`}</span>
                   </Button>
                 </Row>
-                )}
+                )
+              : null}
+
           </>
           )
         : (
