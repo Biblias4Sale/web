@@ -56,6 +56,10 @@ export const Cart = () => {
     calculateNewTotal()
   })
 
+  useEffect(() => {
+    calculateNewTotal()
+  }, [mainList])
+
   const addQtyToCart = async (product) => {
     if (logged) {
       setDisableInput(true)
