@@ -27,8 +27,7 @@ const MainView = ({
   subtractQtyFromCart,
   addQtyToCart,
   total,
-  disableInput,
-  mpCart
+  disableInput
 }) => {
   return (
 
@@ -100,6 +99,7 @@ const MainView = ({
                           Último disponible!
                         </h5>
                         )
+                      : null}
 
                     {product.stock > 1
                       ? (
@@ -207,22 +207,18 @@ const MainView = ({
                   >
                     <Row>
                       <span className='fw-bolder fs-5'>
-                        {product.stock > 0 ? FormatedPrice({ price: subtotal }) : null}
+                        {FormatedPrice({ price: subtotal })}
                       </span>
                     </Row>
                   </Col>
                 </Row>
               )
             })}
-            {total > 0
-              ? (
-                <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
-                  Total: {total && FormatedPrice({ price: total })}
-                </Row>
-                )
-              : null}
+            <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
+              Total: {total && FormatedPrice({ price: total })}
+            </Row>
 
-            {mpCart.length === 1
+            {mainList.length === 1
               ? (
                 <Row
                   lg={5}
@@ -233,20 +229,16 @@ const MainView = ({
                   </Button>
                 </Row>
                 )
-              : null}
-            {mpCart.length > 1
-              ? (
+              : (
                 <Row
                   lg={5}
                   className='d-flex justify-content-center align-items-center flex-column'
                 >
                   <Button variant='outline-dark' onClick={shop}>
-                    <span className='fw-bolder'>{`Comprar ${mpCart.length} productos`}</span>
+                    <span className='fw-bolder'>{`Comprar ${mainList.length} productos`}</span>
                   </Button>
                 </Row>
-                )
-              : null}
-
+                )}
           </>
           )
         : (
