@@ -53,7 +53,7 @@ export const CreateAccount = ({ setCurrentView }) => {
       const response = await axios.post(`${ApiURL}/user`, formData)
       dispatch(setLogged(response.data))
       console.log('INFO DE LOG:', response.data)
-      await joinCarts(response.data.cart.id, response.data.user.id)
+      await joinCarts(response.data.cart, response.data.user.id)
       dispatch(cleanGuestCart())
       setTimeout(() => {
         dispatch(getFavorites(response.data.user.id))
