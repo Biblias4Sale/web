@@ -37,7 +37,7 @@ const Main = ({
   }
 
   useEffect(() => {
-    const arr = mainList.map(product => (
+    const arr = mainList.filter(product => product.stock > 0).map(product => (
       {
         currency_id: 'ARS',
         // description: product.brand + ' ' + product.model,
@@ -45,11 +45,10 @@ const Main = ({
         unit_price: parseInt(product.price),
         quantity: parseInt(product.qty)
       }))
+    // .filter(product => product.stock > 0)
 
     setMpCart(arr)
   }, [mainList])
-
-  console.log(mpCart)
 
   return (
     <>
@@ -90,6 +89,7 @@ const Main = ({
         addQtyToCart={addQtyToCart}
         total={total}
         disableInput={disableInput}
+        mpCart={mpCart}
       />
     </>
   )
