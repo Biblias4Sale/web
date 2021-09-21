@@ -93,25 +93,25 @@ const MainView = ({
                   >
                     {product.stock === 1
                       ? (
-                        <h5 className='text-warning'>
+                        <h6 className='text-warning m-4'>
                           Último disponible!
-                        </h5>
+                        </h6>
                         )
                       : null}
 
                     {product.stock > 1
                       ? (
-                        <h5 className='text-success' style={{ display: 'flex', flexDirection: 'row' }}>
+                        <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
                           {product.stock} disponibles
-                        </h5>
+                        </h6>
                         )
                       : null}
 
                     {product.stock < 1
                       ? (
-                        <h5 className='text-danger'>
+                        <h6 className='text-danger m-4'>
                           Sin stock
-                        </h5>
+                        </h6>
                         )
                       : null}
                     {product.stock > 0

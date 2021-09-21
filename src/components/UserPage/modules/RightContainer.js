@@ -15,8 +15,6 @@ export const RightContainer = ({ actualView }) => {
             : actualView === Management[2]
               ? <h4> Próximamente: Mis Reviews </h4>
               : actualView === Management[3]
-                ? <h4> Próximamente: Métodos de pago </h4>
-                : actualView === Management[4]
                   ? <Favorites />
                   : <h4>Componente Default</h4>
       }
