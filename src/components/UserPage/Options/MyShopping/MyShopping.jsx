@@ -16,7 +16,7 @@ export const  MyShopping = () => {
             getOrders()
     }, [userID])
 
-    console.log(orders)
+    console.log(orders, 'soy ordenes ')
     return (
         <div>
             <MyShoppingView orders={orders} />
