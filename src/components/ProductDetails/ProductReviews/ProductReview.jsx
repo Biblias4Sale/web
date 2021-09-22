@@ -1,9 +1,9 @@
 import { ProductReviewView } from './ProductReviewView'
 
-export const ProductReview = () => {
+export const ProductReview = ({ product }) => {
   return (
     <>
-      <ProductReviewView />
+      <ProductReviewView product={product} />
     </>
   )
 }
