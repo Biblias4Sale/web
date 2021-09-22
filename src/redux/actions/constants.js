@@ -21,4 +21,4 @@ export const GET_FAVORITES = 'GET_FAVORITES'
 export const GET_CART = 'GET_CART'
 export const GET_SAVED = 'GET_SAVED'
 
-export const SET_STATUS = 'SET_STATUS'
+export const SET_CART = 'SET_CART'

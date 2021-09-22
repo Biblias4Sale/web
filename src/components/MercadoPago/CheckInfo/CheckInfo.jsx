@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
 import { editUser } from '../../../redux/actions/userActions'
-import { setCartState } from '../../../redux/actions/cartActions'
+import { setCart } from '../../../redux/actions/cartActions'
 
 export const CheckInfo = ({ setCheckoutView }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
+  const userID = oldInfo.user.id
+  const cartID = oldInfo.cart.id
 
   const { handleSubmit } = useForm()
 
@@ -27,8 +29,8 @@ export const CheckInfo = ({ setCheckoutView }) => {
     phone: false
   })
 
-  const onSubmit = async () => {
-    dispatch(setCartState(oldInfo.cart.id))
+  const onSubmit = () => {
+    dispatch(setCart(cartID, userID))
     dispatch(editUser(oldInfo.user.id, formData, oldInfo.token, oldInfo.cart))
     setCheckoutView('pay')
   }

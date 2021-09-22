@@ -16,7 +16,7 @@ import {
   GET_CART,
   GET_SAVED,
   CLEAN_GUEST_CART,
-  SET_STATUS
+  SET_CART
 } from '../actions/constants'
 
 const initialState = {
@@ -40,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
     case SET_LOGGED:
       return { ...state, logged: action.payload }
 
-    case SET_STATUS:
+    case SET_CART:
       return { ...state, logged: { ...state.logged, cart: action.payload } }
 
     case LOG_OUT:
