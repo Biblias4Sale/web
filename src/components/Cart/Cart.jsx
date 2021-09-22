@@ -19,8 +19,8 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
-  const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
+  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
+  const mainList = useSelector((state) => state.logged ? state.userCart.products : state.cart.main)
   const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
@@ -29,14 +29,14 @@ export const Cart = () => {
 
   const calculateNewTotal = () => {
     let newTotal = 0
-    mainList
+    mainList && mainList
       .filter(product => product.stock > 0)
       .forEach(product => {
         newTotal = newTotal + product.price * product.qty
         setTotal(total => newTotal)
       })
 
-    mainList.sort((a, b) => {
+    mainList && mainList.sort((a, b) => {
       if (a.model > b.model) {
         return 1
       }
@@ -113,8 +113,6 @@ export const Cart = () => {
   const removeFromCart = async (productID) => {
     if (logged) {
       try {
-        console.log(cartID)
-        console.log(productID)
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
         dispatch(getCart(userID))
       } catch (error) {
@@ -139,13 +137,15 @@ export const Cart = () => {
   }
 
   const moveToSaved = async (product) => {
-    console.log(product)
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
         await axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
-        dispatch(getCart(userID))
-        dispatch(getSaved(userID))
+        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
+          .then(() => {
+            dispatch(getCart(userID))
+            dispatch(getSaved(userID))
+          }
+          )
         toastCustom('Producto movido a guardados', 'success', 4000, 'bottom-right')
       } catch (error) {
         toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')

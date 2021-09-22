@@ -45,7 +45,7 @@ export const Login = ({ setCurrentView }) => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
-      await joinCarts(response.data.cart, response.data.user.id)
+      await joinCarts(response.data.cartID, response.data.user.id)
       dispatch(cleanGuestCart())
       setTimeout(() => {
         dispatch(getFavorites(response.data.user.id))
