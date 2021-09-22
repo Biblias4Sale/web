@@ -35,7 +35,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                   </Col>
 
                   <Col lg={4} className='d-flex justify-content-center align-items-center'>
-<Col >
+                    <Col >
                   {product.stock === 1
                       ? (
                         <h6 className='text-warning m-4'>

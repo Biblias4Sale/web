@@ -31,23 +31,62 @@ const FavoritesView = ({
                 return (
                   <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={product.id}>
                     <Col lg={2} className='d-flex justify-content-center align-items-center'>
+                    <Link to={`/product/details/${product.id}`}>
                       <img src={product.img} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
+                    </Link>
                     </Col>
-                    <Col lg={7}>
+                    <Col lg={4}>
                       <Row className='text-uppercase mt-2'>
                         <h5>{product.model}</h5>
                       </Row>
                       <Row>
                         <p> Marca: {product.brand}</p>
                       </Row>
-                      <Row>
-                        <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                        <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
+                      <Row lg={12} >
+                        <Col lg={5}><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
+                        <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
                       </Row>
                     </Col>
-                    <Col lg={4} className='d-flex justify-content-center align-items-center flex-column'>
-                      <Row><span className='fw-bolder fs-5'>{FormatedPrice({ price: product.price })}</span></Row>
-                    </Col>
+
+
+                    <Col lg={3} className='d-flex justify-content-center align-items-center'>
+                    <Col>
+                  {product.stock === 1
+                      ? (
+                        <h6 className='text-warning m-4'>
+                          Último disponible!
+                        </h6>
+                        )
+                      : null}
+
+                    {product.stock > 1
+                      ? (
+                        <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
+                          {product.stock} disponibles
+                        </h6>
+                        )
+                      : null}
+
+                    {product.stock < 1
+                      ? (
+                        <h6 className='text-danger m-4'>
+                          Sin stock
+                        </h6>
+                        )
+                      : null}
+                      </Col>
+
+                  </Col>
+
+
+                    <Col lg={2} className='d-flex justify-content-center align-items-center flex-column'>
+                    <Row>
+                      <span className='fw-bolder fs-5'>
+                        {product && FormatedPrice({ price: product.price })}
+                      </span>
+                      </Row>
+                  </Col>
+                    
                   </Row>
                 )
               })}
