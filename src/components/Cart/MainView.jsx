@@ -50,7 +50,7 @@ const MainView = ({
                   >
                     <Link to={`/product/details/${product.id}`}>
                       <img
-                        src={product.img}
+                        src={product.img[0]}
                         alt=''
                         style={{ maxWidth: '80px', maxHeight: '80px' }}
                       />

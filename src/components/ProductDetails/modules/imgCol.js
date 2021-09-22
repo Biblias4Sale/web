@@ -4,7 +4,7 @@ import { ImgColStyle } from '../ProductDetailsStyle'
 export const ImgCol = ({ img }) => {
   return (
     <Col xs={12} lg={5} style={ImgColStyle}>
-      <Image src={img} />
+      <Image src={img[0]} />
     </Col>
   )
 }

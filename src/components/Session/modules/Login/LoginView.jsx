@@ -10,7 +10,8 @@ export const LoginView = ({
   handleSubmit,
   handleChange,
   errors,
-  errorAuth
+  errorAuth,
+  googleLogin
 }) => {
   return (
     <Container style={container}>
@@ -97,7 +98,7 @@ export const LoginView = ({
             </Row>
             <Row> <h4 className='m-1 text-center'> O </h4></Row>
             <Row>
-              <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
+              <Button style={botton} variant='pl-1 pr-1 m-3 justify-content-center' onClick={googleLogin}>
                 <GrGoogle size={20} />
                 Ingresar con Google
               </Button>

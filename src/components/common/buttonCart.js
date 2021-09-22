@@ -13,6 +13,7 @@ export const ButtonCart = ({ product }) => {
   const logged = useSelector(state => state.logged)
 
   const addToCart = async () => {
+    console.log(cartID)
     if (logged) {
       try {
         await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
