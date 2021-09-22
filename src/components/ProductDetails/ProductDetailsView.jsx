@@ -1,5 +1,5 @@
 import { BannerBox } from './modules/banner'
-import { ProductReviewView } from './ProductReviews/ProductReviewView'
+import { ProductReview } from './ProductReviews/ProductReview'
 import { ProductContainer } from './modules/productContainer'
 import { Loading } from '../common/spinner'
 
@@ -17,7 +17,7 @@ export const ProductDetailsView = ({ product }) => {
         </div>
       </div>
       <div>
-        <ProductReviewView />
+        <ProductReview product={product} />
       </div>
     </div>
   )
