@@ -9,7 +9,8 @@ import {
   SUBTRACT_QTY_FROM_SAVED,
   GET_CART,
   GET_SAVED,
-  CLEAN_GUEST_CART
+  CLEAN_GUEST_CART,
+  SET_STATUS
 } from './constants'
 
 export const AddProductToCart = (newproduct) => {
@@ -74,5 +75,12 @@ export const getSaved = (userID) => {
   return async function (dispatch) {
     const response = await axios.get(`${ApiURL}/savedProducts/${userID}`)
     return dispatch({ type: GET_SAVED, payload: response.data })
+  }
+}
+
+export const setCartState = (id) => {
+  return async dispatch => {
+    const response = await axios.put(`${ApiURL}/cart/update/${id}`)
+    return dispatch({ type: SET_STATUS, payload: response.data })
   }
 }
