@@ -19,7 +19,7 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
   const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
   const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
@@ -139,6 +139,7 @@ export const Cart = () => {
   }
 
   const moveToSaved = async (product) => {
+    console.log(product)
     if (logged) {
       try {
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
