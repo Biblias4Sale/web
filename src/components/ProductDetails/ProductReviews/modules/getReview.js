@@ -12,7 +12,7 @@ export const GetReview = ({ product }) => {
 
   useEffect(() => {
     dispatch(getReviews(product.id))
-  }, [dispatch])
+  }, [dispatch, product.id])
 
   const {
     reviewsPerPage,
