@@ -15,7 +15,7 @@ import './index.css'
 
 const { persistor, store } = Store
 
-// persistor.purge()
+persistor.purge()
 
 ReactDOM.render(
   <React.StrictMode>
