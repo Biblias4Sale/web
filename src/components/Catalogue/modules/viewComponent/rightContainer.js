@@ -2,7 +2,6 @@ import { Col } from 'react-bootstrap'
 import { Pages } from '../Pages'
 import { SelectOptions } from '../SelectOptions'
 import { NoProductToShow } from './noProducts'
-import btnBlue from '../../../../assets/btn_close_blue.png'
 import { AiOutlineCloseSquare } from 'react-icons/ai'
 
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
@@ -14,7 +13,7 @@ export const RightContainer = ({ options, finalList, setOptions, clearCategory, 
           ? (
             <>
               <h3 style={{ marginRight: '0.5rem' }}>{options.searching}</h3>
-              <img src={btnBlue} alt='' height='30px' onClick={clearSearch} style={{ marginRight: '1rem', cursor: 'pointer' }} />
+              <AiOutlineCloseSquare alt='' height='30px' onClick={clearSearch} style={{ marginRight: '1rem', cursor: 'pointer' }} />
               {options.category
                 ? (
                   <>
