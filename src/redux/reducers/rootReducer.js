@@ -15,7 +15,7 @@ import {
   GET_FAVORITES,
   GET_CART,
   GET_SAVED,
-  CLEAN_GUEST_CART
+  CLEAN_GUEST_CART,
 } from '../actions/constants'
 
 const initialState = {

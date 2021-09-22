@@ -9,7 +9,7 @@ export const Favorites = (props) => {
   const dispatch = useDispatch()
   const favorites = useSelector(state => state.favorites)
   const userID = useSelector(state => state.logged.user.id)
-  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
+  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
 
   const moveToCart = async (productID) => {
     await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
