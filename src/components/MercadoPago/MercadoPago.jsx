@@ -26,6 +26,7 @@ export const Checkout = (props) => {
     return response.data
   }
 
+  
   useEffect(() => {
     payment().then(res => setUrl(res.url))
   }, [])
