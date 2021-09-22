@@ -9,3 +9,11 @@ export const botton = {
   color: 'white',
   cursor: 'pointer'
 }
+
+export const containers = {
+  backgroundColor: 'white',
+  border: 'solid',
+  borderColor: 'gray',
+  borderRadius: '10px',
+  padding: '10px'
+}
