@@ -4,9 +4,7 @@ import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey, disableInput }) => {
-
-    console.log(savedList, ' savedList')
-
+  console.log(savedList, ' savedList')
 
   return (
 
