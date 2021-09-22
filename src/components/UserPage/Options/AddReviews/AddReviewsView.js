@@ -1,4 +1,5 @@
 import { Form, Container, Button, Row, Col } from 'react-bootstrap'
+import { botton } from './AddReviewStyle'
 
 const AddReviewsView = ({
   handleSubmit,
@@ -48,12 +49,12 @@ const AddReviewsView = ({
             <Row>
               {!errors.title && !errors.description && formData.description && formData.title
                 ? (
-                  <Button type='submit' variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <Button type='submit' style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                     Enviar
                   </Button>
                   )
                 : (
-                  <Button type='submit' disabled variant='pl-1 pr-1 m-3 justify-content-center'>
+                  <Button type='submit' disabled style={botton} variant='pl-1 pr-1 m-3 justify-content-center'>
                     Enviar
                   </Button>)}
             </Row>
