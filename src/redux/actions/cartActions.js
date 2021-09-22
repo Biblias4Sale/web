@@ -10,7 +10,7 @@ import {
   GET_CART,
   GET_SAVED,
   CLEAN_GUEST_CART,
-  SET_STATUS
+  SET_CART
 } from './constants'
 
 export const AddProductToCart = (newproduct) => {
@@ -78,9 +78,9 @@ export const getSaved = (userID) => {
   }
 }
 
-export const setCartState = (id) => {
+export const setCart = (cartID, userID) => {
   return async dispatch => {
-    const response = await axios.put(`${ApiURL}/cart/update/${id}`)
-    return dispatch({ type: SET_STATUS, payload: response.data })
+    const response = await axios.post(`${ApiURL}/cart/confirmCart/${cartID}/${userID}`)
+    return dispatch({ type: SET_CART, payload: response.data })
   }
 }

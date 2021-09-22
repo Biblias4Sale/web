@@ -45,14 +45,12 @@ const Main = ({
   }
 
   useEffect(() => {
-    console.log(mainList)
-    const arr = mainList
+    const arr = mainList && mainList
       .filter(product => product.stock > 0)
       .map(product => (
         {
           currency_id: 'ARS',
-          description: userID?.toString(),
-          category_id: cartID?.toString(),
+          description: product.description,
           title: product.brand + ' ' + product.model,
           unit_price: parseInt(product.price),
           quantity: parseInt(product.qty)

@@ -33,7 +33,7 @@ const MainView = ({
   return (
 
     <Container id={styles.body} className='justify-content-center'>
-      {mainList.length > 0
+      {mainList && mainList.length > 0
         ? (
           <>
             {mainList.map((product, index) => {

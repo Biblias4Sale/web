@@ -43,6 +43,6 @@ export const editUser = (id, data, token, cart) => {
           })
         }
       })
-      .catch(e => window.alert('Usuario No Modificado'))
+      // .catch(e => window.alert('Usuario No Modificado'))
   }
 }

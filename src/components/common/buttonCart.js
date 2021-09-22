@@ -9,7 +9,7 @@ import axios from 'axios'
 export const ButtonCart = ({ product }) => {
   const dispatch = useDispatch()
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
+  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
   const logged = useSelector(state => state.logged)
 
   const addToCart = async () => {
@@ -31,7 +31,7 @@ export const ButtonCart = ({ product }) => {
   }
   return (
     <div className='d-flex justify-content-center'>
-      <Button variant='dark' size='sm' className='d-flex align-items-center text-nowrap' onClick={product.stock > 0 ? addToCart : addToCart}>
+      <Button variant='dark' size='sm' className='d-flex align-items-center text-nowrap' onClick={product.stock > 0 ? addToCart : null}>
         {product.stock > 0 ? <HiOutlineShoppingCart size={25} className='me-2' /> : null}
         {product.stock > 0 ? <h6> AGREGAR AL CARRITO </h6> : <h6>SIN STOCK</h6>}
       </Button>

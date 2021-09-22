@@ -2,19 +2,31 @@ import axios from 'axios'
 import { ApiURL } from '../../config/config'
 import {
   GET_REVIEWS,
-  GET_FAVORITES
+  GET_FAVORITES,
 } from './constants'
 
-export const getReviews = () => {
+export const getReviews = (productId) => {
   return async function (dispatch) {
-    const reviews = await axios.get(`${ApiURL}/products/reviews`)
+    const reviews = await axios.get(`${ApiURL}/reviews/${productId}`)
     return dispatch({ type: GET_REVIEWS, payload: reviews.data })
   }
 }
 
+export const addReview = (data) => {
+  return async function (dispatch) {
+    const newReview = await axios.post(`${ApiURL}/reviews/`, data, { withCredentials: true })
+    return dispatch({
+      type: GET_REVIEWS,
+      payload: newReview
+    })
+  }
+}
 export const getFavorites = (userID) => {
   return async function (dispatch) {
     const response = await axios.get(`${ApiURL}/favorites/${userID}`)
     return dispatch({ type: GET_FAVORITES, payload: response.data })
   }
 }
+
+
+

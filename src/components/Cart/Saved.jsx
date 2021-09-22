@@ -37,31 +37,31 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                   </Col>
 
                   <Col lg={4} className='d-flex justify-content-center align-items-center'>
-                    <Col>
-                      {product.stock === 1
-                        ? (
-                          <h6 className='text-warning m-4'>
-                            Último disponible!
-                          </h6>
-                          )
-                        : null}
+                    <Col >
+                  {product.stock === 1
+                      ? (
+                        <h6 className='text-warning m-4'>
+                          Último disponible!
+                        </h6>
+                        )
+                      : null}
 
-                      {product.stock > 1
-                        ? (
-                          <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
-                            {product.stock} disponibles
-                          </h6>
-                          )
-                        : null}
+                    {product.stock > 1
+                      ? (
+                        <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
+                          {product.stock} disponibles
+                        </h6>
+                        )
+                      : null}
 
-                      {product.stock < 1
-                        ? (
-                          <h6 className='text-danger m-4'>
-                            Sin stock
-                          </h6>
-                          )
-                        : null}
-                    </Col>
+                    {product.stock < 1
+                      ? (
+                        <h6 className='text-danger m-4'>
+                          Sin stock
+                        </h6>
+                        )
+                      : null}
+                      </Col>
                     {product.stock > 0
                       ? (
                           !disableInput

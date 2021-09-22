@@ -4,6 +4,7 @@ export const LOG_OUT = 'LOG_OUT'
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const GET_REVIEWS = 'GET_REVIEWS'
+export const POST_REVIEW = 'POST_REVIEW'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 export const SET_SEARCH_STRING = 'SET_SEARCH_STRING'
 
@@ -21,4 +22,4 @@ export const GET_FAVORITES = 'GET_FAVORITES'
 export const GET_CART = 'GET_CART'
 export const GET_SAVED = 'GET_SAVED'
 
-export const SET_STATUS = 'SET_STATUS'
+export const SET_CART = 'SET_CART'

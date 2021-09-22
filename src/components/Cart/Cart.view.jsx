@@ -33,13 +33,13 @@ const CartView = ({
               className={actualView === 'main' ? styles.headerSelectedItem : styles.headerItem}
               onClick={() => setActualView('main')}
             >
-              {`Carrito (${mainList.length})`}
+              {`Carrito (${mainList && mainList.length})`}
             </li>
             <li
               className={actualView === 'saved' ? styles.headerSelectedItem : styles.headerItem}
               onClick={() => setActualView('saved')}
             >
-              {`Guardados (${savedList.length})`}
+              {`Guardados (${savedList && savedList.length})`}
             </li>
           </ul>
         </div>

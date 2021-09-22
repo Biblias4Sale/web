@@ -11,7 +11,6 @@ export const ProductCards = ({ product, height, imgWidth, addFavorite }) => {
   const formatedPrice = FormatedPrice(product)
   const productStars = GetStarts(product)
   const logged = useSelector(state => state.logged)
-
   return (
     <Card style={CardStyle}>
       {logged
@@ -20,7 +19,7 @@ export const ProductCards = ({ product, height, imgWidth, addFavorite }) => {
           )
         : null}
       <Link
-        to={`/product/details/${product.id}`}
+        to={'/product/details/' + product.id}
         className='d-flex justify-content-center align-items-center '
         style={{ height: height }}
       >
