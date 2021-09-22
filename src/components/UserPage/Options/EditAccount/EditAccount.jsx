@@ -25,8 +25,6 @@ export const EditAccount = () => {
     phone: oldInfo.user.phone
   })
 
-  console.log('FORMDATA', formData)
-
   const [errors, setErrors] = useState({
     name: false,
     lastName: false,

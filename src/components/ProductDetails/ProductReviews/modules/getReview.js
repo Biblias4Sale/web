@@ -7,11 +7,11 @@ import { Col, Container } from 'react-bootstrap'
 import { Pagination } from './pagesComponent/pagination'
 import { Statements } from './pagesComponent/statements'
 
-export const GetReview = () => {
+export const GetReview = ({ product }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getReviews())
+    dispatch(getReviews(product.id))
   }, [dispatch])
 
   const {

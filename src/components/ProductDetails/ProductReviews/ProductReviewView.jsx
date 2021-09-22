@@ -1,9 +1,9 @@
 import { GetReview } from './modules/getReview'
 
-export const ProductReviewView = () => {
+export const ProductReviewView = ({ product }) => {
   return (
     <div>
-      <GetReview />
+      <GetReview product={product} />
     </div>
   )
 }

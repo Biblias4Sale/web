@@ -4,6 +4,7 @@ export const LOG_OUT = 'LOG_OUT'
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const GET_REVIEWS = 'GET_REVIEWS'
+export const POST_REVIEW = 'POST_REVIEW'
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 export const SET_SEARCH_STRING = 'SET_SEARCH_STRING'
 
