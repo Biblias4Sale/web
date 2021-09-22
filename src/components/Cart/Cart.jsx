@@ -19,8 +19,8 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
-  const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
+  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
+  const mainList = useSelector((state) => state.logged ? state.userCart.products : state.cart.main)
   const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
   const [total, setTotal] = useState()
@@ -29,14 +29,14 @@ export const Cart = () => {
 
   const calculateNewTotal = () => {
     let newTotal = 0
-    mainList
+    mainList && mainList
       .filter(product => product.stock > 0)
       .forEach(product => {
         newTotal = newTotal + product.price * product.qty
         setTotal(total => newTotal)
       })
 
-    mainList.sort((a, b) => {
+    mainList && mainList.sort((a, b) => {
       if (a.model > b.model) {
         return 1
       }

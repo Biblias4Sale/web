@@ -8,7 +8,7 @@ import { CheckInfo } from './CheckInfo/CheckInfo'
 
 export const Checkout = (props) => {
   // const user = useSelector(state => state.logged.user)
-  const userCart = useSelector(state => state.userCart)
+  const userCart = useSelector(state => state.userCart.products)
 
   const [url, setUrl] = useState('')
 
@@ -26,7 +26,6 @@ export const Checkout = (props) => {
     return response.data
   }
 
-  
   useEffect(() => {
     payment().then(res => setUrl(res.url))
   }, [])
