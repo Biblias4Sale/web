@@ -18,7 +18,9 @@ const CartView = ({
   setActualView,
   newKey,
   logged,
-  disableInput
+  disableInput,
+  cartID,
+  userID
 }) => {
   return (
     <>
@@ -54,6 +56,8 @@ const CartView = ({
               newKey={newKey}
               logged={logged}
               disableInput={disableInput}
+              cartID={cartID}
+              userID={userID}
             />
             )
           : (
