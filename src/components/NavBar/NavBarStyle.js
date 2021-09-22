@@ -23,11 +23,12 @@ export const CategoriesTitle = {
 
 export const Cursor = {
   cursor: 'pointer',
-  margin: '0px'
+  margin: '0px',
+  color: 'black'
 }
 
 export const CursorLike = {
   cursor: 'pointer',
   margin: '0px',
-  color: 'red'
+  color: 'black'
 }

@@ -13,6 +13,7 @@ const DropCategories = (props) => {
         ? ''
         : (
           <NavDropdown
+            style={{ color: 'black' }}
             title='Categorías'
           >
             {allCategories.map(category =>

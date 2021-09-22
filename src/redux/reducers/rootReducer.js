@@ -15,7 +15,8 @@ import {
   GET_FAVORITES,
   GET_CART,
   GET_SAVED,
-  CLEAN_GUEST_CART
+  CLEAN_GUEST_CART,
+  SET_STATUS
 } from '../actions/constants'
 
 const initialState = {
@@ -38,6 +39,9 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGGED:
       return { ...state, logged: action.payload }
+
+    case SET_STATUS:
+      return { ...state, logged: { ...state.logged, cart: action.payload } }
 
     case LOG_OUT:
       return { ...state, logged: false, favorites: [], userCart: [] }

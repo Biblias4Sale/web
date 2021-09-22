@@ -20,3 +20,5 @@ export const QTY_CHOOSE_FROM_CART = 'QTY_CHOOSE_FROM_CART'
 export const GET_FAVORITES = 'GET_FAVORITES'
 export const GET_CART = 'GET_CART'
 export const GET_SAVED = 'GET_SAVED'
+
+export const SET_STATUS = 'SET_STATUS'

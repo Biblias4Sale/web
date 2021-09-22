@@ -91,6 +91,7 @@ const MainView = ({
                     lg={4}
                     className='d-flex justify-content-center align-items-center align-content-end'
                   >
+                    <Col>
                     {product.stock === 1
                       ? (
                         <h6 className='text-warning m-4'>
@@ -114,6 +115,7 @@ const MainView = ({
                         </h6>
                         )
                       : null}
+                      </Col>
                     {product.stock > 0
                       ? (
                           !disableInput

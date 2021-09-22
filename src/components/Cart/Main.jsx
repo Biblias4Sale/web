@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+// import { useDispatch } from 'react-redux'
 import CheckOut from '../MercadoPago/CheckOut'
 import { Session } from '../Session/Session'
 import MainView from './MainView.jsx'
@@ -14,7 +15,9 @@ const Main = ({
   moveToSaved,
   newKey,
   logged,
-  disableInput
+  disableInput,
+  cartID,
+  userID
 }) => {
   const [showMP, setShowMP] = useState(false)
   const [showSession, setShowSession] = useState(false)
@@ -23,14 +26,16 @@ const Main = ({
   const [mpCart, setMpCart] = useState([])
   const [url, setUrl] = useState('')
 
-  const payment = async () => {
+  const Payment = async () => {
     const response = await axios.post(`${ApiURL}/api/v1/mercadopago`, mpCart, { withCredentials: true })
     return response.data
   }
 
   const shop = () => {
     if (logged) {
-      payment().then(res => setUrl(res.url))
+      Payment().then(res => {
+        setUrl(res.url)
+      })
       mainList.forEach(product => {
         if (product.stock < 1) moveToSaved(product)
       })
@@ -45,13 +50,14 @@ const Main = ({
       .map(product => (
         {
           currency_id: 'ARS',
-          // description: product.brand + ' ' + product.model,
+          description: userID.toString(),
+          category_id: cartID.toString(),
           title: product.brand + ' ' + product.model,
           unit_price: parseInt(product.price),
           quantity: parseInt(product.qty)
         }))
     setMpCart(arr)
-  }, [mainList])
+  }, [mainList, cartID, userID])
 
   return (
     <>

@@ -55,7 +55,7 @@ export const UserIcon = () => {
           </>
           )
         : (
-          <div className='dropdown'>
+          <div className='dropdown' style={{ color: 'black' }}>
             <NavDropdown
               title={initial}
               className='d-relative justify-content-around rounded-circle border border-dark dropdown-menu-left'
