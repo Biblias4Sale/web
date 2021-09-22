@@ -113,6 +113,8 @@ export const Cart = () => {
   const removeFromCart = async (productID) => {
     if (logged) {
       try {
+        console.log(cartID)
+        console.log(productID)
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
         dispatch(getCart(userID))
       } catch (error) {
