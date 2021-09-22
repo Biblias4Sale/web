@@ -57,7 +57,7 @@ const Main = ({
           quantity: parseInt(product.qty)
         }))
     setMpCart(arr)
-  }, [mainList])
+  }, [mainList, cartID, userID])
 
   return (
     <>
