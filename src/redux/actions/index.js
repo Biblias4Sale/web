@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ApiURL } from '../../config/config'
 import {
   GET_REVIEWS,
-  GET_FAVORITES
+  GET_FAVORITES,
 } from './constants'
 
 export const getReviews = () => {
@@ -18,3 +18,6 @@ export const getFavorites = (userID) => {
     return dispatch({ type: GET_FAVORITES, payload: response.data })
   }
 }
+
+
+
