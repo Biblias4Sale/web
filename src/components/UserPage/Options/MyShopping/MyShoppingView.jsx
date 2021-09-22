@@ -2,16 +2,16 @@ import { FormatedPrice } from '../../../common/formatedPrice'
 import { Card, Container, Image, Row } from 'react-bootstrap'
 import { CardStyle } from './MyShoppingStyle'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
  
 
 export const MyShoppingView = ({orders}) => (
-  
         <div>
             {orders.sort((a, b) =>  b.cartId - a.cartId).map(elem => {
                 return (
                     <Container  style={{border: 'solid 1px grey'}} className='m-2'>
-                    <h4 className='d-inline-flex p-3'>{elem.cartId}</h4>
-                    <h4 className='d-inline-flex text-success'>{elem.status}</h4>
+                    <h4 className='d-flex text-success'>{elem.status} </h4>
+                    <p className='d-flex' >{moment(elem.confirmationDate).format('LLLL')}</p>
                     <div>{elem.productSolds?.map(product => {
                           const formatedPrice = FormatedPrice(product)
                         return (
