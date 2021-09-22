@@ -1,5 +1,5 @@
 import { FormatedPrice } from '../../../common/formatedPrice'
-import { Card, Container, Image } from 'react-bootstrap'
+import { Card, Container, Image, Row } from 'react-bootstrap'
 import { CardStyle } from './MyShoppingStyle'
 import { Link } from 'react-router-dom'
 
@@ -22,8 +22,8 @@ export const MyShoppingView = ({orders}) => (
         <Image variant='top' src={product.img} style={{ height: '60px' }} className='m-1' fluid />
       </Link>
       <Card.Body className='fw-bolder'>
-        <Card.Text className='d-flex justify-content-center'>{product.brand + ' ' + product.model}</Card.Text>
-        <Card.Text className='d-flex justify-content-center'> {formatedPrice} </Card.Text>
+      <Row style={{height: '8vh'}}><Card.Text className='text-center'>{product.brand + ' ' + product.model}</Card.Text></Row>
+      <Row><Card.Text className='d-flex justify-content-center'> {formatedPrice} </Card.Text></Row>
       </Card.Body>
     </Card>
                             </div>
