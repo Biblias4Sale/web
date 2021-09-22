@@ -19,7 +19,7 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const logged = useSelector(state => state.logged)
   const userID = useSelector(state => state.logged ? state.logged.user.id : null)
-  const cartID = useSelector(state => state.logged ? state.logged.cart : null)
+  const cartID = useSelector(state => state.logged ? state.logged.cart.id : null)
   const mainList = useSelector((state) => state.logged ? state.userCart : state.cart.main)
   const savedList = useSelector((state) => state.logged ? state.userSaved : state.cart.saved)
   const [actualView, setActualView] = useState('main')
@@ -48,8 +48,10 @@ export const Cart = () => {
   }
 
   useEffect(() => {
-    dispatch(getCart(userID))
-    dispatch(getSaved(userID))
+    if (userID !== null) {
+      dispatch(getCart(userID))
+      dispatch(getSaved(userID))
+    }
   }, [dispatch, userID])
 
   useEffect(() => {

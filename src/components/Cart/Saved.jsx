@@ -4,6 +4,10 @@ import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey, disableInput }) => {
+
+    console.log(savedList, ' savedList')
+
+
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -28,51 +32,51 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                       <p> Marca: {product.brand}</p>
                     </Row>
 
-                    <Row lg={12} >
+                    <Row lg={12}>
                       <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
                       <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>
                     </Row>
                   </Col>
 
                   <Col lg={4} className='d-flex justify-content-center align-items-center'>
-<Col >
-                  {product.stock === 1
-                      ? (
-                        <h6 className='text-warning m-4'>
-                          Último disponible!
-                        </h6>
-                        )
-                      : null}
+                    <Col>
+                      {product.stock === 1
+                        ? (
+                          <h6 className='text-warning m-4'>
+                            Último disponible!
+                          </h6>
+                          )
+                        : null}
 
-                    {product.stock > 1
-                      ? (
-                        <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
-                          {product.stock} disponibles
-                        </h6>
-                        )
-                      : null}
+                      {product.stock > 1
+                        ? (
+                          <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
+                            {product.stock} disponibles
+                          </h6>
+                          )
+                        : null}
 
-                    {product.stock < 1
-                      ? (
-                        <h6 className='text-danger m-4'>
-                          Sin stock
-                        </h6>
-                        )
-                      : null}
-                      </Col>
+                      {product.stock < 1
+                        ? (
+                          <h6 className='text-danger m-4'>
+                            Sin stock
+                          </h6>
+                          )
+                        : null}
+                    </Col>
                     {product.stock > 0
                       ? (
-                        !disableInput
-                      ? (
-                        <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                          {product.qty > 1
+                          !disableInput
+                            ? (
+                              <InputGroup style={{ width: '7.5vw' }} className='text-center'>
+                                {product.qty > 1
                                   ? (
-                                  <Button variant='outline-dark' disabled>
-                            <span className='fw-bolder'>-</span>
-                          </Button>
+                                    <Button variant='outline-dark' disabled>
+                                      <span className='fw-bolder'>-</span>
+                                    </Button>
                                     )
-                                    : (
-                                      <Button
+                                  : (
+                                    <Button
                                       variant='outline-dark'
                                       disabled
                                     >
@@ -80,48 +84,48 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                                     </Button>
                                     )}
 
-                          <FormControl
-                            className='fw-bolder text-center bg-white'
-                            value={product.qty}
-                            readOnly
-                            disabled
-                          />
+                                <FormControl
+                                  className='fw-bolder text-center bg-white'
+                                  value={product.qty}
+                                  readOnly
+                                  disabled
+                                />
 
-{product.qty < product.stock
+                                {product.qty < product.stock
                                   ? (
-                          <Button variant='outline-dark' disabled>
-                            <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
-                          </Button>
- )
- : (
-  <Button
-  variant='outline-dark'
-  disabled
->
-  <span className='fw-bolder'>+</span>
-</Button>
-)}
-                        </InputGroup>
+                                    <Button variant='outline-dark' disabled>
+                                      <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                                    </Button>
+                                    )
+                                  : (
+                                    <Button
+                                      variant='outline-dark'
+                                      disabled
+                                    >
+                                      <span className='fw-bolder'>+</span>
+                                    </Button>
+                                    )}
+                              </InputGroup>
+                              )
+                            : (
+                              <InputGroup style={{ width: '7.5vw' }} className='text-center'>
+                                <Button variant='outline-dark' onClick={() => subtractQtyFromSaved(product.id)}>
+                                  <span className='fw-bolder'>-</span>
+                                </Button>
+
+                                <FormControl
+                                  className='fw-bolder text-center bg-white'
+                                  value={product.qty}
+                                  readOnly
+                                />
+
+                                <Button variant='outline-dark' onClick={() => addQtyToSaved(product)}>
+                                  <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
+                                </Button>
+
+                              </InputGroup>
+                              )
                         )
-                      : (
-                        <InputGroup style={{ width: '7.5vw' }} className='text-center'>
-                          <Button variant='outline-dark' onClick={() => subtractQtyFromSaved(product.id)}>
-                            <span className='fw-bolder'>-</span>
-                          </Button>
-
-                          <FormControl
-                            className='fw-bolder text-center bg-white'
-                            value={product.qty}
-                            readOnly
-                          />
-
-                          <Button variant='outline-dark' onClick={() => addQtyToSaved(product)}>
-                            <span className='fw-bolder d-flex justify-content-center align-items-center'>+</span>
-                          </Button>
-
-                        </InputGroup>
-                        )
-                      )
                       : null}
                   </Col>
 
@@ -130,7 +134,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                       <span className='fw-bolder fs-5'>
                         {product && FormatedPrice({ price: subtotal })}
                       </span>
-                      </Row>
+                    </Row>
                   </Col>
                 </Row>
               )
