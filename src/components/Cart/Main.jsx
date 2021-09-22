@@ -45,7 +45,7 @@ const Main = ({
   }
 
   useEffect(() => {
-    const arr = mainList
+    const arr = mainList && mainList
       .filter(product => product.stock > 0)
       .map(product => (
         {
