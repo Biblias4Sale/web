@@ -113,8 +113,6 @@ export const Cart = () => {
   const removeFromCart = async (productID) => {
     if (logged) {
       try {
-        console.log(cartID)
-        console.log(productID)
         await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
         dispatch(getCart(userID))
       } catch (error) {
@@ -139,13 +137,15 @@ export const Cart = () => {
   }
 
   const moveToSaved = async (product) => {
-    console.log(product)
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
         await axios.post(`${ApiURL}/savedProducts/${userID}/${product.id}`, { qty: product.qty })
-        dispatch(getCart(userID))
-        dispatch(getSaved(userID))
+        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${product.id}`)
+          .then(() => {
+            dispatch(getCart(userID))
+            dispatch(getSaved(userID))
+          }
+          )
         toastCustom('Producto movido a guardados', 'success', 4000, 'bottom-right')
       } catch (error) {
         toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
