@@ -44,7 +44,9 @@ const FavoritesView = ({
                       </Row>
                       <Row lg={12}>
                         <Col lg={5}><Link to='#' className='text-decoration-none' onClick={() => RemovefromFavorites(product.id)}>Eliminar</Link></Col>
-                        <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
+                        {product.stock > 0
+                          ? <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product.id)}>Agregar al Carrito</Link></Col>
+                          : null}
                       </Row>
                     </Col>
 
