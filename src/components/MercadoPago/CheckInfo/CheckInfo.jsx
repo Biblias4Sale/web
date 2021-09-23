@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
 import { getCart } from '../../../redux/actions/cartActions'
-import { checkInfo } from '../../../redux/actions/userActions'
-
+import { editUser } from '../../../redux/actions/userActions'
 import axios from 'axios'
 import { ApiURL } from '../../../config/config'
 
@@ -34,8 +33,7 @@ const CheckInfo = ({ setCheckoutView, total }) => {
 
   const onSubmit = async () => {
     await axios.post(`${ApiURL}/cart/confirmCart/${cartID}/${userID}`, { price: total })
-    dispatch(checkInfo(oldInfo.user.id, formData, oldInfo.token))
-
+    dispatch(editUser(oldInfo.user.id, formData, oldInfo.token, oldInfo.cart))
     setTimeout(() => {
       dispatch(getCart(userID))
     }, 1000)
