@@ -1,5 +1,5 @@
 export const CardStyle = {
-  height: '55vh',
+  height: '60vh',
   width: '35vh',
   marginBottom: '25px'
 }
