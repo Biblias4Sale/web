@@ -23,6 +23,7 @@ export const AddReview = () => {
 
   const handleChange = (event, value) => {
     const titleFormat = /^[#.0-9a-zA-Z\s,-]+$/
+    const ParagraphFormat = /[^\r\n]+((\r|\n|\r\n)[^\r\n]+)*/
     const numberFormat = /^[0-9]{1,12}$/
     setErrors((prev) => ({ ...prev, [event]: false }))
     let errorString
@@ -41,6 +42,15 @@ export const AddReview = () => {
         }
       }
     }
+    if (event === 'description') {
+      if (!value.match(ParagraphFormat)) {
+        setErrors((prev) => ({
+          ...prev,
+          [event]: `Ingresa ${errorString} válido`
+        }))
+      }
+    }
+
     if (event === 'rating') {
       if (!value.match(numberFormat)) {
         setErrors((prev) => ({
@@ -55,10 +65,10 @@ export const AddReview = () => {
   const onSubmit = async () => {
     try {
       dispatch(addReview(formData))
-      toastCustom('Gracias por dejar su comentario sobre el producto', 'success', 4000, 'bottom-right')
+      toastCustom('Gracias por dejar tu comentario sobre el producto', 'success', 4000, 'bottom-right')
     } catch (error) {
       console.log('Error al agregar comentario', error)
-      toastCustom('No pudo ser guardado su comentario', 'error', 4000, 'bottom-right')
+      toastCustom('No pudo ser guardado tu comentario', 'error', 4000, 'bottom-right')
     }
   }
 

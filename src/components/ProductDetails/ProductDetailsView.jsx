@@ -4,6 +4,7 @@ import { ProductContainer } from './modules/productContainer'
 import { Loading } from '../common/spinner'
 
 export const ProductDetailsView = ({ product }) => {
+  const reviews = product.reviews
   return (
     <div>
       <div>
@@ -17,7 +18,9 @@ export const ProductDetailsView = ({ product }) => {
         </div>
       </div>
       <div>
-        <ProductReview product={product} />
+        {reviews
+          ? <ProductReview product={product} />
+          : null}
       </div>
     </div>
   )

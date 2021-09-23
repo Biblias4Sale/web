@@ -2,7 +2,7 @@
 import { Modal } from 'react-bootstrap'
 import CheckInfo from './CheckInfo/CheckInfo'
 import ChoosePayment from './ChoosePayment'
-import UponDelivery from './UponDelivery/UponDelivey'
+import UponDelivery from './UponDelivery/UponDelivery'
 
 const CheckOut = (props) => {
   return (
