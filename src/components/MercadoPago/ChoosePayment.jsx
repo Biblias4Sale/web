@@ -1,14 +1,18 @@
 import { Container, Button, Col, Row } from 'react-bootstrap'
+import { botton } from './ChoosePaymentStyle'
 
 const ChoosePayment = ({ setCheckoutView }) => {
   return (
-    <Container className='d-flex flex-wrap'>
-      <Row>
+    <Container>
+      <Row className='d-flex justify-content-center'>
+        <h6>¿Cómo deseas realizar tu pago?</h6>
+      </Row>
+      <Row className='d-flex flex-wrap'>
         <Col>
-          <Button onClick={() => console.log('te prometo que voy a pagar')}>Pago contraentrega</Button>
+          <Button style={botton} onClick={() => setCheckoutView('delivery')}>Pago contraentrega</Button>
         </Col>
         <Col>
-          <Button onClick={() => setCheckoutView('pay')}>MercadoPago</Button>
+          <Button style={botton} onClick={() => setCheckoutView('pay')}>MercadoPago</Button>
         </Col>
       </Row>
     </Container>
