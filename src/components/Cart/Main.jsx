@@ -78,6 +78,7 @@ const Main = ({
             checkoutView={checkoutView}
             setCheckoutView={setCheckoutView}
             onHide={() => setShowMP(false)}
+            cartID={cartID}
           />
           )}
 
