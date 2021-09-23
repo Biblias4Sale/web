@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getFavorites } from '../../../../redux/actions/index'
 import { getCart } from '../../../../redux/actions/cartActions'
 import { ApiURL } from '../../../../config/config'
+import { toastCustom } from '../../../common/Toastify'
+
 import axios from 'axios'
 
 export const Favorites = (props) => {
@@ -17,8 +19,11 @@ export const Favorites = (props) => {
   }, [userID, dispatch])
 
   const moveToCart = async (productID) => {
-    await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
+    // await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
     await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${productID}`)
+      .then(() => {
+        toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
+      })
     dispatch(getCart(userID))
     dispatch(getFavorites(userID))
   }
