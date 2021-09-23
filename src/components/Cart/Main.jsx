@@ -71,6 +71,7 @@ const Main = ({
           )
         : (
           <CheckOut
+            total={total}
             url={url}
             mpCart={mpCart}
             show={showMP}
