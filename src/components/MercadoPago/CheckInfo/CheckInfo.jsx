@@ -5,7 +5,7 @@ import { CheckInfoView } from './CheckInfoView'
 import { editUser } from '../../../redux/actions/userActions'
 import { setCart, getCart } from '../../../redux/actions/cartActions'
 
-export const CheckInfo = ({ setCheckoutView }) => {
+ const CheckInfo = ({ setCheckoutView }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
   const cartID = useSelector(state => state.logged ? state.userCart.id : null)
@@ -92,3 +92,5 @@ export const CheckInfo = ({ setCheckoutView }) => {
     </div>
   )
 }
+
+export default CheckInfo
