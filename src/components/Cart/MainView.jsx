@@ -42,7 +42,7 @@ const MainView = ({
               return (
                 <Row
                   className='border border-secondary border-1 rounded p-2 mt-2 bg-white'
-                  key={{ newKey } + product.id}
+                  key={newKey + product.id}
                 >
                   <Col
                     lg={2}

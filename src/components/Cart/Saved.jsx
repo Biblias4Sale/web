@@ -10,10 +10,10 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
       {savedList.length > 0
         ? (
           <>
-            {savedList.map(product => {
+            {savedList.map((product, index) => {
               const subtotal = product?.price * product?.qty
               return (
-                <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={{ newKey } + 100}>
+                <Row className='border border-secondary border-1 rounded p-2 mt-2 bg-white' key={newKey + index}>
                   <Col lg={2} className='d-flex justify-content-center align-items-center'>
                     <Link to={`/product/details/${product.id}`}>
                       <img src={product.img[0]} alt='' style={{ maxWidth: '80px', maxHeight: '80px' }} />
