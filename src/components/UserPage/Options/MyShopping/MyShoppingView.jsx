@@ -12,7 +12,7 @@ export const MyShoppingView = ({ orders }) => (
         <Container key={index} style={{ border: 'solid 1px grey' }} className='m-2'>
           <h4 className='d-flex text-success'>{elem.status} </h4>
           <h4>Total: {formatedTotal}</h4>
-          <p className='d-flex'>{moment(elem.confirmationDate).format('LLLL')}</p>
+          <p className='d-flex'>{moment(elem.confirmationPending).format('LLLL')}</p>
           <div>{elem.productSolds?.map(product => {
             const formatedPrice = FormatedPrice(product)
             return (

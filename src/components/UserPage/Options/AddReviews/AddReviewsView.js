@@ -20,7 +20,7 @@ const AddReviewsView = ({
               <Form.Label>Puntuación</Form.Label>
               <Col sm='8'>
                 <input
-                  type='range' name='rating' class='form-range' max='5' min='1' step='1' id='customRange3'
+                  type='range' name='rating' className='form-range' max='5' min='1' step='1' id='customRange3'
                   onChange={(event) => handleChange(event.target.name, event.target.value)}
                 />
               </Col>

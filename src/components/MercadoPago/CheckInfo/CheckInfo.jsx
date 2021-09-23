@@ -4,13 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CheckInfoView } from './CheckInfoView'
 import { getCart } from '../../../redux/actions/cartActions'
 import { editUser } from '../../../redux/actions/userActions'
-import axios from 'axios'
-import { ApiURL } from '../../../config/config'
 
 const CheckInfo = ({ setCheckoutView, total }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
-  const cartID = useSelector(state => state.logged ? state.userCart.id : null)
   const userID = oldInfo.user.id
 
   const { handleSubmit } = useForm()
@@ -32,12 +29,11 @@ const CheckInfo = ({ setCheckoutView, total }) => {
   })
 
   const onSubmit = async () => {
-    await axios.post(`${ApiURL}/cart/confirmCart/${cartID}/${userID}`, { price: total })
+    // await axios.post(`${ApiURL}/cart/confirmCart/${cartID}/${userID}`, { price: total })
     dispatch(editUser(oldInfo.user.id, formData, oldInfo.token, oldInfo.cart))
     setTimeout(() => {
       dispatch(getCart(userID))
     }, 1000)
-    // setCheckoutView('pay')
     setCheckoutView('choose')
   }
 
