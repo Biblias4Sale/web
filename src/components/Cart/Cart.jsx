@@ -48,8 +48,10 @@ export const Cart = () => {
   }
 
   useEffect(() => {
-    dispatch(getCart(userID))
-    dispatch(getSaved(userID))
+    if (userID !== null) {
+      dispatch(getCart(userID))
+      dispatch(getSaved(userID))
+    }
   }, [dispatch, userID])
 
   useEffect(() => {

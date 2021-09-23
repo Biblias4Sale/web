@@ -23,7 +23,7 @@ export const ProductCards = ({ product, height, imgWidth, addFavorite }) => {
         className='d-flex justify-content-center align-items-center '
         style={{ height: height }}
       >
-        <Image variant='top' src={product.img} style={{ height: imgWidth }} fluid />
+        <Image variant='top' src={product.img[0]} style={{ height: imgWidth }} fluid />
       </Link>
       <Card.Body className='fw-bolder'>
         <Card.Text className='d-flex justify-content-center'>{product.brand + ' ' + product.model}</Card.Text>

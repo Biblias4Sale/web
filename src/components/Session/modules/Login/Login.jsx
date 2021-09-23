@@ -6,7 +6,7 @@ import { getCart, getSaved, cleanGuestCart } from '../../../../redux/actions/car
 import { getFavorites } from '../../../../redux/actions/index'
 import { toastCustom } from '../../../common/Toastify'
 import axios from 'axios'
-import { ApiURL } from '../../../../config/config'
+import { ApiURL, url } from '../../../../config/config'
 import { LoginView } from './LoginView'
 
 export const Login = ({ setCurrentView }) => {
@@ -75,6 +75,39 @@ export const Login = ({ setCurrentView }) => {
     setFormData(prev => ({ ...prev, [event]: value }))
   }
 
+  // google
+
+  const cb = (newWindow, queryUrl) => {
+    if (newWindow) {
+      const timer = setInterval(() => {
+        newWindow.window.close()
+        if (newWindow.closed) {
+          console.log('se cerro')
+          if (timer) {
+            axios.get(queryUrl, { withCredentials: true })
+            .then(response => console.log(response.data))
+            clearInterval(timer)
+          }
+        }
+      },2000)
+    }
+  }
+
+  const googleLogin = () => {
+    let queryUrl
+    (window.location.hostname.includes('localhost'))
+      ? (queryUrl = 'http://localhost:3001/api/v1/user')
+      : (queryUrl = 'https://noiloan.herokuapp.com/api/v1/user')
+      
+    if(window.location.hostname.includes('localhost')){
+      const newWindow = window.open(url.local, '_blank', 'width=400, height=600')
+      return cb(newWindow, queryUrl)
+    }else{
+      const newWindow = window.open(url.production, '_blank', 'width=400, height=600')
+      return cb(newWindow, queryUrl)
+    }
+  }
+
   return (
     <div>
       <LoginView
@@ -83,6 +116,7 @@ export const Login = ({ setCurrentView }) => {
         errors={errors}
         errorAuth={errorAuth}
         handleChange={handleChange}
+        googleLogin={googleLogin}
       />
     </div>
   )
