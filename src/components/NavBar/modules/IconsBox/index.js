@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 export const IconsBox = () => {
   const logged = useSelector((state) => state.logged)
   return (
-    <Container className='d-flex justify-content-around align-items-center' style={SetSurface('40vh')}>
+    <Container className='d-flex justify-content-between align-items-end' style={SetSurface('40vh', '6vh')}>
       {logged
         ? <LikeIcon />
         : null}

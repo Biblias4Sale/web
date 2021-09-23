@@ -9,7 +9,7 @@ import { Style, Input } from './SearchBarStyle'
 export const SearchBarView = ({ handleChangeSearchBar, result, search, searching }) => {
   return (
     <div>
-      <InputGroup.Text style={Style} className='bg-white w-100'>
+      <InputGroup.Text style={Style} className='bg-transparent w-100'>
         <FormControl
           style={Input}
           value={searching}

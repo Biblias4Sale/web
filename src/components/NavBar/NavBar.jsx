@@ -9,20 +9,20 @@ export const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand='lg' style={NavContainer}>
       <Container>
-        <Col lg={2}>
+        <Col lg={2} md={10} xs={12}>
           <LogoBox />
         </Col>
-        <Col lg={10}>
+        <Col lg={10} md={2} xs={12}>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav '>
-            <Nav className='me-auto aling-items-center'>
-              <Col lg={8} md={10} sm={12}>
+            <Nav className='me-auto align-items-center'>
+              <Col xl={5} lg={5} className='d-flex justify-content-center align-items-end' style={{ marginTop: '10px' }}>
                 <SearchBar />
               </Col>
-              <Col lg={4}>
+              <Col xl={4} lg={3} className='d-flex justify-content-center'>
                 <LinksBox />
               </Col>
-              <Col lg={4}>
+              <Col xl={3} lg={3} className='d-flex'>
                 <IconsBox />
               </Col>
             </Nav>
