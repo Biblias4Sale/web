@@ -1,9 +1,16 @@
-import { Form, Container, Button, Col, Row } from 'react-bootstrap'
+import { Container, Button, Col, Row } from 'react-bootstrap'
 
-const ChoosePayment = () => {
+const ChoosePayment = ({ setCheckoutView }) => {
   return (
     <Container className='d-flex flex-wrap'>
-      <h1>hola</h1>
+      <Row>
+        <Col>
+          <Button onClick={() => console.log('te prometo que voy a pagar')}>Pago contraentrega</Button>
+        </Col>
+        <Col>
+          <Button onClick={() => setCheckoutView('pay')}>MercadoPago</Button>
+        </Col>
+      </Row>
     </Container>
   )
 }

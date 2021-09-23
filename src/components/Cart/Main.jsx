@@ -50,7 +50,7 @@ const Main = ({
       .map(product => (
         {
           currency_id: 'ARS',
-          description: product.description,
+          description: `${cartID}`,
           title: product.brand + ' ' + product.model,
           unit_price: parseInt(product.price),
           quantity: parseInt(product.qty)

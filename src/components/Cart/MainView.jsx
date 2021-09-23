@@ -50,7 +50,7 @@ const MainView = ({
                   >
                     <Link to={`/product/details/${product.id}`}>
                       <img
-                        src={product.img[0]}
+                        src={product.img}
                         alt=''
                         style={{ maxWidth: '80px', maxHeight: '80px' }}
                       />
@@ -214,7 +214,7 @@ const MainView = ({
                 </Row>
               )
             })}
-            {total > 0
+            {total && total > 0
               ? (
                 <Row className='fw-bolder fs-4 d-flex justify-content-end align-items-center p-5'>
                   Total: {total && FormatedPrice({ price: total })}

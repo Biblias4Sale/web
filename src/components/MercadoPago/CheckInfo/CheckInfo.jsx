@@ -5,7 +5,7 @@ import { CheckInfoView } from './CheckInfoView'
 import { editUser } from '../../../redux/actions/userActions'
 import { setCart, getCart } from '../../../redux/actions/cartActions'
 
- const CheckInfo = ({ setCheckoutView }) => {
+const CheckInfo = ({ setCheckoutView }) => {
   const dispatch = useDispatch()
   const oldInfo = useSelector(state => state.logged)
   const cartID = useSelector(state => state.logged ? state.userCart.id : null)
@@ -35,7 +35,8 @@ import { setCart, getCart } from '../../../redux/actions/cartActions'
     setTimeout(() => {
       dispatch(getCart(userID))
     }, 1000)
-    setCheckoutView('pay')
+    // setCheckoutView('pay')
+    setCheckoutView('choose')
   }
 
   const handleChange = (event, value) => {
