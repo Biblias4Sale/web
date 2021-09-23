@@ -11,13 +11,13 @@ export const RightContainer = ({ actualView }) => {
     <Col lg={9} id={styles.rightContainer}>
       {
         actualView === Management[0]
-          ? <EditAccount />
+          ? <MyShopping />
           : actualView === Management[1]
-            ? <MyShopping />
+            ? <Favorites />
             : actualView === Management[2]
               ? <AddReview />
               : actualView === Management[3]
-                ? <Favorites />
+                ? <EditAccount />
                 : <h4>Componente Default</h4>
       }
     </Col>
