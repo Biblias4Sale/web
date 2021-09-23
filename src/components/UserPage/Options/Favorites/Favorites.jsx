@@ -14,7 +14,7 @@ export const Favorites = (props) => {
 
   useEffect(() => {
     dispatch(getFavorites(userID))
-  }, [userID])
+  }, [userID, dispatch])
 
   const moveToCart = async (productID) => {
     await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
