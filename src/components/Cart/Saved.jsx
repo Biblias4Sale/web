@@ -4,8 +4,6 @@ import { FormatedPrice } from '../common/formatedPrice'
 import styles from './Cart.module.css'
 
 const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtractQtyFromSaved, newKey, disableInput }) => {
-  console.log(savedList, ' savedList')
-
   return (
 
     <Container id={styles.body} className='justify-content-center'>
@@ -37,16 +35,16 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                   </Col>
 
                   <Col lg={4} className='d-flex justify-content-center align-items-center'>
-                    <Col >
-                  {product.stock === 1
-                      ? (
+                    <Col>
+                      {product.stock === 1
+                    ? (
                         <h6 className='text-warning m-4'>
                           Último disponible!
                         </h6>
-                        )
-                      : null}
+                      )
+                    : null}
 
-                    {product.stock > 1
+                      {product.stock > 1
                       ? (
                         <h6 className='text-success m-4' style={{ display: 'flex', flexDirection: 'row' }}>
                           {product.stock} disponibles
@@ -54,14 +52,14 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
                         )
                       : null}
 
-                    {product.stock < 1
+                      {product.stock < 1
                       ? (
                         <h6 className='text-danger m-4'>
                           Sin stock
                         </h6>
                         )
                       : null}
-                      </Col>
+                    </Col>
                     {product.stock > 0
                       ? (
                           !disableInput

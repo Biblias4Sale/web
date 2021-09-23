@@ -9,8 +9,6 @@ export const Input = ({
   handleChange,
   handleBlur
 }) => {
-
-  console.log(handleBlur)
   return (
 
     <InputGroup size='lg m-2'>

@@ -83,7 +83,6 @@ export const Login = ({ setCurrentView }) => {
       const timer = setInterval(() => {
         newWindow.window.close()
         if (newWindow.closed) {
-          console.log('se cerro')
           if (timer) {
             axios.get(queryUrl, { withCredentials: true })
               .then(response => console.log(response.data))

@@ -57,7 +57,7 @@ export const AddReview = () => {
       dispatch(addReview(formData))
       toastCustom('Gracias por dejar su comentario sobre el producto', 'success', 4000, 'bottom-right')
     } catch (error) {
-      console.log('Error agregar comentario', error)
+      console.log('Error al agregar comentario', error)
       toastCustom('No pudo ser guardado su comentario', 'error', 4000, 'bottom-right')
     }
   }

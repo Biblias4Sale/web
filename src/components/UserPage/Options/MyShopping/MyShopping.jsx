@@ -12,7 +12,6 @@ export const MyShopping = () => {
     const getOrders = async () => {
       const response = await axios.get(`${ApiURL}/cart/orders/${userID}`)
       setOrders(response.data)
-      console.log('MIS ORDENES', response.data)
     }
     getOrders()
   }, [userID])
