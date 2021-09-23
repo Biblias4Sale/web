@@ -30,7 +30,7 @@ const Saved = ({ savedList, moveToCart, removeFromSaved, addQtyToSaved, subtract
 
                     <Row lg={12}>
                       <Col lg={4}><Link to='#' className='text-decoration-none' onClick={() => removeFromSaved(product.id)}>Eliminar</Link></Col>
-                      {product.stock > 0 ? <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col>: null}
+                      {product.stock > 0 ? <Col lg={6}><Link to='#' className='text-decoration-none' onClick={() => moveToCart(product)}>Agregar al carrito</Link></Col> : null}
 
                     </Row>
                   </Col>

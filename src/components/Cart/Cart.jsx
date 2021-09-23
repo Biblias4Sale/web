@@ -63,10 +63,12 @@ export const Cart = () => {
       setDisableInput(true)
       try {
         await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
-        setTimeout(() => {
-          dispatch(getCart(userID))
-          setDisableInput(false)
-        }, 500)
+          .then(() => {
+            setTimeout(() => {
+              dispatch(getCart(userID))
+              setDisableInput(false)
+            }, 250)
+          })
       } catch (error) {
         toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
       }
@@ -82,10 +84,12 @@ export const Cart = () => {
       setDisableInput(true)
       try {
         await axios.post(`${ApiURL}/cart/subProduct/${cartID}/${productID}`)
-        setTimeout(() => {
-          dispatch(getCart(userID))
-          setDisableInput(false)
-        }, 500)
+          .then(() => {
+            setTimeout(() => {
+              dispatch(getCart(userID))
+              setDisableInput(false)
+            }, 250)
+          })
       } catch (error) {
         toastCustom('Error: intente nuevamente', 'error', 4000, 'bottom-right')
       }
@@ -95,13 +99,15 @@ export const Cart = () => {
     }
   }
 
-  const moveToCart = async (product) => {
+  const moveToCart = (product) => {
     if (logged) {
       try {
-        await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
-        await axios.delete(`${ApiURL}/savedProducts/${userID}/${product.id}`)
-        dispatch(getSaved(userID))
-        dispatch(getCart(userID))
+        axios.delete(`${ApiURL}/savedProducts/${userID}/${product.id}`)
+        axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`, { qty: product.qty })
+          .then(() => {
+            dispatch(getSaved(userID))
+            dispatch(getCart(userID))
+          })
         toastCustom('Producto movido al carrito', 'success', 4000, 'bottom-right')
       } catch (error) {
         toastCustom('Error: el producto no pudo ser movido', 'error', 4000, 'bottom-right')
@@ -112,11 +118,13 @@ export const Cart = () => {
     }
   }
 
-  const removeFromCart = async (productID) => {
+  const removeFromCart = (productID) => {
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
-        dispatch(getCart(userID))
+        axios.delete(`${ApiURL}/cart/delProduct/${cartID}/${productID}`)
+          .then(() => {
+            dispatch(getCart(userID))
+          })
       } catch (error) {
         toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
       }
@@ -125,11 +133,13 @@ export const Cart = () => {
     }
   }
 
-  const removeFromSaved = async (productID) => {
+  const removeFromSaved = (productID) => {
     if (logged) {
       try {
-        await axios.delete(`${ApiURL}/savedProducts/${userID}/${productID}`)
-        dispatch(getSaved(userID))
+        axios.delete(`${ApiURL}/savedProducts/${userID}/${productID}`)
+          .then(() => {
+            dispatch(getSaved(userID))
+          })
       } catch (error) {
         toastCustom('Error: el producto no pudo ser eliminado', 'error', 4000, 'bottom-right')
       }
