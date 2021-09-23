@@ -11,7 +11,6 @@ export const EditAccountView = ({
   errorAuth,
   formData
 }) => {
-  console.log('formdata', formData)
   return (
     <Container className='d-flex flex-wrap'>
       <h3 style={title}>Modificar datos personales</h3>
