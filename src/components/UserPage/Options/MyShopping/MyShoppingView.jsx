@@ -7,9 +7,11 @@ import moment from 'moment'
 export const MyShoppingView = ({ orders }) => (
   <div>
     {orders.sort((a, b) => b.cartId - a.cartId).map((elem, index) => {
+      const formatedTotal = FormatedPrice({ price: elem.totalAmount })
       return (
         <Container key={index} style={{ border: 'solid 1px grey' }} className='m-2'>
           <h4 className='d-flex text-success'>{elem.status} </h4>
+          <h4>Total: {formatedTotal}</h4>
           <p className='d-flex'>{moment(elem.confirmationDate).format('LLLL')}</p>
           <div>{elem.productSolds?.map(product => {
             const formatedPrice = FormatedPrice(product)
