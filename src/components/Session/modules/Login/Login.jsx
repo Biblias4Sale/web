@@ -45,13 +45,14 @@ export const Login = ({ setCurrentView }) => {
     try {
       const response = await axios.post(`${ApiURL}/login`, formData)
       dispatch(setLogged(response.data))
-      await joinCarts(response.data.cartID, response.data.user.id)
-      dispatch(cleanGuestCart())
-      setTimeout(() => {
-        dispatch(getFavorites(response.data.user.id))
-        dispatch(getCart(response.data.user.id))
-        dispatch(getSaved(response.data.user.id))
-      }, 1000)
+      await joinCarts(response.data.cartID, response.data.user.id).then(() => {
+        dispatch(cleanGuestCart())
+        setTimeout(() => {
+          dispatch(getFavorites(response.data.user.id))
+          dispatch(getCart(response.data.user.id))
+          dispatch(getSaved(response.data.user.id))
+        }, 1000)
+      })
 
       toastCustom(`Bienvenidx nuevamente ${response.data.user.name}!`, 'success', 4000, 'bottom-right')
     } catch (error) {
@@ -85,11 +86,11 @@ export const Login = ({ setCurrentView }) => {
           console.log('se cerro')
           if (timer) {
             axios.get(queryUrl, { withCredentials: true })
-            .then(response => console.log(response.data))
+              .then(response => console.log(response.data))
             clearInterval(timer)
           }
         }
-      },2000)
+      }, 2000)
     }
   }
 
@@ -98,11 +99,11 @@ export const Login = ({ setCurrentView }) => {
     (window.location.hostname.includes('localhost'))
       ? (queryUrl = 'http://localhost:3001/api/v1/user')
       : (queryUrl = 'https://noiloan.herokuapp.com/api/v1/user')
-      
-    if(window.location.hostname.includes('localhost')){
+
+    if (window.location.hostname.includes('localhost')) {
       const newWindow = window.open(url.local, '_blank', 'width=400, height=600')
       return cb(newWindow, queryUrl)
-    }else{
+    } else {
       const newWindow = window.open(url.production, '_blank', 'width=400, height=600')
       return cb(newWindow, queryUrl)
     }

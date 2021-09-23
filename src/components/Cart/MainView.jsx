@@ -222,7 +222,7 @@ const MainView = ({
                 )
               : null}
 
-            {mpCart.length === 1
+            {mpCart?.length === 1
               ? (
                 <Row
                   lg={5}
@@ -234,7 +234,7 @@ const MainView = ({
                 </Row>
                 )
               : null}
-            {mpCart.length > 1
+            {mpCart?.length > 1
               ? (
                 <Row
                   lg={5}
