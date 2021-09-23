@@ -32,6 +32,8 @@ const CheckInfo = ({ setCheckoutView, total }) => {
 
   const onSubmit = async () => {
     await axios.post(`${ApiURL}/cart/confirmCart/${cartID}/${userID}`, { price: total })
+    await axios.put(`${ApiURL}/user/${userID}`, formData, { withCredentials: true })
+
     setTimeout(() => {
       dispatch(getCart(userID))
     }, 1000)
