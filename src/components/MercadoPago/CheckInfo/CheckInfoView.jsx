@@ -25,7 +25,7 @@ export const CheckInfoView = ({
               <h6 className='text-danger'>{errors.address && errors.address}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col} lg={6} Lg={12}>
+          <Form.Group as={Col} lg={6}>
             <Form.Label>Teléfono</Form.Label>
             <Form.Control
               type='tel'

@@ -11,6 +11,7 @@ export const EditAccountView = ({
   errorAuth,
   formData
 }) => {
+  console.log('formdata', formData)
   return (
     <Container className='d-flex flex-wrap'>
       <h3 style={title}>Modificar datos personales</h3>
@@ -57,7 +58,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.email && errors.email}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col} lg={6} Lg={12}>
+          <Form.Group as={Col} lg={6} sm={12}>
             <Form.Label>Teléfono</Form.Label>
             <Form.Control
               type='tel'
@@ -84,7 +85,7 @@ export const EditAccountView = ({
               <h6 className='text-danger'>{errors.password && errors.password}</h6>
             </Row>
           </Form.Group>
-          <Form.Group as={Col} lg={6} Lg={12}>
+          <Form.Group as={Col} lg={6}>
             <Form.Label>Confirmar Contraseña</Form.Label>
             <Form.Control
               type='password'

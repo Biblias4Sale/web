@@ -9,7 +9,6 @@ import Cart from '../components/Cart/Cart'
 import { Logout } from '../components/Session/LogOut/LogOut'
 import SuccessLogin from '../components/Session/modules/Login/Google/SuccessLogin'
 import FailureLogin from '../components/Session/modules/Login/Google/FailureLogin'
-import UponDelivery from '../components/MercadoPago/UponDelivery/UponDelivey'
 export const RouterWeb = () => {
   const logged = useSelector(state => state.logged)
   return (
@@ -21,7 +20,6 @@ export const RouterWeb = () => {
       <Route exact path='/login/success' component={SuccessLogin} />
       <Route exact path='/login/failure' component={FailureLogin} />
       <Route exact path='/cart' component={Cart} />
-      <Route exact path='/delivery' component={UponDelivery} />
       {logged
         ? <Route exact path='/micuenta' component={UserPage} />
         : <Route component={NotFound} />}
