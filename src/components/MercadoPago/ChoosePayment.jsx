@@ -4,7 +4,7 @@ import { botton } from './ChoosePaymentStyle'
 const ChoosePayment = ({ setCheckoutView }) => {
   return (
     <Container>
-      <Row className='d-flex justify-content-center'>
+      <Row className='d-flex justify-content-center align-items-center'>
         <h6>¿Cómo deseas realizar tu pago?</h6>
       </Row>
       <Row className='d-flex flex-wrap'>
