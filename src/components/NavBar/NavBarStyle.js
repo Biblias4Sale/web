@@ -13,8 +13,7 @@ export const NavContainer = {
 
 export const LinkStyle = {
   textDecoration: 'none',
-  color: 'black',
-  margin: '6%'
+  color: 'black'
 }
 
 export const CategoriesTitle = {

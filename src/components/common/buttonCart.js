@@ -16,10 +16,12 @@ export const ButtonCart = ({ product }) => {
     if (logged) {
       try {
         await axios.post(`${ApiURL}/cart/addProduct/${cartID}/${product.id}`)
+          .then(() => {
+            setTimeout(() => {
+              dispatch(getCart(userID))
+            }, 1000)
+          })
         toastCustom('Producto agregado al carrito', 'success', 4000, 'bottom-right')
-        setTimeout(() => {
-          dispatch(getCart(userID))
-        }, 1000)
       } catch (error) {
         toastCustom('El producto no pudo ser agregado', 'error', 4000, 'bottom-right')
       }

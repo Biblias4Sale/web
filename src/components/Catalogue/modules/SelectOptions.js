@@ -11,7 +11,7 @@ export const SelectOptions = ({ options, setOptions }) => {
     // { value: 'Aleatorio', label: 'Aleatorio' }
   ]
   return (
-    <Container>
+    <Container style={{ marginBottom: '25px' }}>
       <Row>
         <Col style={{ display: 'flex', justifyContent: 'end' }} lg={8}><label>Ordenar por:</label></Col>
         <Col lg={4}>

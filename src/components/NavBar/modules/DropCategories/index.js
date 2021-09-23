@@ -7,13 +7,12 @@ const DropCategories = (props) => {
   const location = props.location.pathname
 
   return (
-    <>
+    <div style={{ marginBottom: '-8px' }}>
       {
       location === '/catalogo'
         ? ''
         : (
           <NavDropdown
-            style={{ color: 'black' }}
             title='Categorías'
           >
             {allCategories.map(category =>
@@ -33,7 +32,7 @@ const DropCategories = (props) => {
           </NavDropdown>
           )
       }
-    </>
+    </div>
   )
 }
 

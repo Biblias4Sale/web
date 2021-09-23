@@ -7,7 +7,7 @@ import { AiOutlineCloseSquare } from 'react-icons/ai'
 export const RightContainer = ({ options, finalList, setOptions, clearCategory, clearSearch }) => {
   return (
     <Col lg={9}>
-      <div className='d-flex mb-2'>
+      <div className='d-flex mb-2' style={{ marginLeft: '20px' }}>
 
         {options.searching
           ? (

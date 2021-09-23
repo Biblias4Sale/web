@@ -1,4 +1,5 @@
 import FavoritesView from './FavoritesView'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getFavorites } from '../../../../redux/actions/index'
 import { getCart } from '../../../../redux/actions/cartActions'
@@ -10,6 +11,10 @@ export const Favorites = (props) => {
   const favorites = useSelector(state => state.favorites)
   const userID = useSelector(state => state.logged.user.id)
   const cartID = useSelector(state => state.logged ? state.userCart.id : null)
+
+  useEffect(() => {
+    dispatch(getFavorites(userID))
+  }, [userID, dispatch])
 
   const moveToCart = async (productID) => {
     await axios.delete(`${ApiURL}/favorites/${userID}/${productID}`)
