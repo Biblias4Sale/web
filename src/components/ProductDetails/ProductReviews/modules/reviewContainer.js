@@ -7,7 +7,7 @@ export const ReviewContainer = ({ actualPage }) => {
     <>
       {actualPage.map((obj, index) => {
         const stars = []
-        for (let i = 0; i < obj.points; i++) {
+        for (let i = 0; i < obj.rating; i++) {
           stars.push(<BsStarFill key={i} />)
         }
         return (
@@ -24,7 +24,7 @@ export const ReviewContainer = ({ actualPage }) => {
                 </div>
                 <div style={starColor}>{stars}</div>
                 <div style={titleStyle}>
-                  <div>{obj.tittle}</div>
+                  <div>{obj.title}</div>
                 </div>
                 <div style={descriptionStyle}>
                   <div>{obj.description}</div>
