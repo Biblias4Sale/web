@@ -38,7 +38,6 @@ const CheckInfo = ({ setCheckoutView, total }) => {
   }
 
   const handleChange = (event, value) => {
-    const nameFormat = /^[a-zA-Z]{1,20}$/
     const phoneFormat = /^[0-9]{1,12}$/
     const adressFormat = /^[#.0-9a-zA-Z\s,-]+$/
     setErrors((prev) => ({ ...prev, [event]: false }))
@@ -52,15 +51,7 @@ const CheckInfo = ({ setCheckoutView, total }) => {
     if (!value) {
       setErrors((prev) => ({ ...prev, [event]: `Ingresa ${errorString}` }))
     } else {
-      if (event === 'province') {
-        if (!value.match(nameFormat)) {
-          setErrors((prev) => ({
-            ...prev,
-            [event]: `Ingresa ${errorString} válido`
-          }))
-        }
-      }
-      if (event === 'address' || event === 'city') {
+      if (event === 'address' || event === 'city' || event === 'province') {
         if (!value.match(adressFormat)) {
           setErrors((prev) => ({
             ...prev,

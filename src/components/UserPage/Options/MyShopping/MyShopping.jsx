@@ -15,7 +15,6 @@ export const MyShopping = () => {
     const getOrders = async () => {
       const response = await axios.get(`${ApiURL}/cart/orders/${userID}`)
       setOrders(response.data)
-      console.log('MIS COMPRAS', response.data)
     }
     getOrders()
   }, [userID])
@@ -23,7 +22,6 @@ export const MyShopping = () => {
   const makeReview = (id) => {
     setIdProductSold(id)
     setModalShow(true)
-    // console.log('HAGO EL REVIEW', idProductSold)
   }
 
   return (
