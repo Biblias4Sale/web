@@ -1,29 +1,20 @@
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { getReviews } from '../../../../redux/actions'
 import { ReviewContainer } from './reviewContainer'
 import { containerReview } from '../ProductReviewStyle'
 import { Col, Container } from 'react-bootstrap'
 import { Pagination } from './pagesComponent/pagination'
-import { Statements } from './pagesComponent/statements'
+import { useState } from 'react'
 
 export const GetReview = ({ product }) => {
-  const dispatch = useDispatch()
+  const reviews = product.reviews
+  const [currentPage, setCurrentPage] = useState(1)
+  const reviewsPerPage = 2
+  const lastObj = currentPage * reviewsPerPage
+  const firstObj = lastObj - reviewsPerPage
+  const actualPage = reviews.slice(firstObj, lastObj)
 
-  useEffect(() => {
-    dispatch(getReviews(product.id))
-  }, [dispatch, product.id])
-
-  const {
-    reviewsPerPage,
-    actualPage,
-    pages,
-    setCurrentPage,
-    currentPage,
-    reviews,
-    firstObj,
-    lastObj
-  } = Statements()
+  const pages = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
 
   return (
     <Container style={containerReview}>

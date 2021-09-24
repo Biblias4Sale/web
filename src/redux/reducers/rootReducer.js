@@ -4,7 +4,6 @@ import {
   GET_PRODUCTS,
   LOG_OUT,
   SET_SEARCH_RESULT,
-  GET_REVIEWS,
   SET_SEARCH_STRING,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
@@ -22,7 +21,6 @@ const initialState = {
   logged: false,
   products: [],
   categories: [],
-  reviews: [],
   searchResult: [],
   searchString: '',
   favorites: [],
@@ -47,9 +45,6 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_CATEGORIES:
       return { ...state, categories: action.payload }
-
-    case GET_REVIEWS:
-      return { ...state, reviews: action.payload }
 
     case SET_SEARCH_RESULT:
       return { ...state, searchResult: action.payload }
