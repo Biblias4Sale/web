@@ -9,8 +9,9 @@ import {
 
 export const getProducts = () => {
   return async function (dispatch) {
-    const response1 = await axios.get(`${ApiURL}/products`)
-    return dispatch({ type: GET_PRODUCTS, payload: response1.data })
+    const response = await axios.get(`${ApiURL}/products`)
+    console.log(response.data)
+    return dispatch({ type: GET_PRODUCTS, payload: response.data })
   }
 }
 

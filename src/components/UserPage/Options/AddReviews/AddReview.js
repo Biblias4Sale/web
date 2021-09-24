@@ -11,7 +11,7 @@ export const AddReview = (props) => {
 
   const [formData, setFormData] = useState({
     title: '',
-    rating: '',
+    rating: '5',
     description: ''
   })
 

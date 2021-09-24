@@ -12,7 +12,6 @@ const ProductDetails = (props) => {
     const getDetails = async () => {
       const response = await axios.get(`${ApiURL}/products/detail/${productId}`)
       setDetailedProduct(response.data)
-      console.log('DETALLE DE PRODUCTO', response.data)
     }
     getDetails()
   }, [productId])
