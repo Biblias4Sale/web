@@ -44,7 +44,7 @@ export const MyShoppingView = ({ orders, makeReview }) => {
                     <Card.Body className='fw-bolder'>
                       <Row style={{ height: '10vh' }}><Card.Text className='text-center'>{product.brand + ' ' + product.model}</Card.Text></Row>
                       <Row><Card.Text className='d-flex justify-content-center'> {formatedPrice} </Card.Text></Row>
-                      {order.status === 'Entregado' ? <Row> <Button onClick={() => makeReview(product.idProductSold)}>Review</Button> </Row> : null}
+                      {order.status === 'Entregado' ? <Row> <Button variant='dark' onClick={() => makeReview(product.idProductSold)}>Review</Button> </Row> : null}
                     </Card.Body>
                   </Card>
                 </div>
