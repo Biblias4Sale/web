@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { addReview } from '../../../../redux/actions'
 import AddReviewView from './AddReviewsView'
 import { toastCustom } from '../../../common/Toastify'
+import { Modal } from 'react-bootstrap'
+import axios from 'axios'
+import { ApiURL } from '../../../../config/config'
 
-export const AddReview = () => {
-  const dispatch = useDispatch()
+export const AddReview = (props) => {
   const { handleSubmit } = useForm()
 
   const [formData, setFormData] = useState({
@@ -59,13 +59,14 @@ export const AddReview = () => {
         }))
       }
     }
-    setFormData((prev) => ({ ...prev, [event]: value }))
+    setFormData((prev) => ({ ...prev, [event]: `${value}` }))
   }
 
   const onSubmit = async () => {
     try {
-      dispatch(addReview(formData))
+      axios.post(`${ApiURL}/reviews/${props.idProductSold}`, formData, { withCredentials: true })
       toastCustom('Gracias por dejar tu comentario sobre el producto', 'success', 4000, 'bottom-right')
+      props.onHide()
     } catch (error) {
       console.log('Error al agregar comentario', error)
       toastCustom('No pudo ser guardado tu comentario', 'error', 4000, 'bottom-right')
@@ -73,14 +74,24 @@ export const AddReview = () => {
   }
 
   return (
-    <div>
-      <AddReviewView
-        handleSubmit={handleSubmit(onSubmit)}
-        errors={errors}
-        handleChange={handleChange}
-        formData={formData}
-      />
-    </div>
+    <Modal
+      {...props}
+      size='lg'
+      centered
+    >
+      <Modal.Header>
+        <button type='button' className='btn-close' aria-label='Close' onClick={props.onHide} />
+      </Modal.Header>
+      <Modal.Body>
+        <AddReviewView
+          handleSubmit={handleSubmit(onSubmit)}
+          errors={errors}
+          handleChange={handleChange}
+          formData={formData}
+        />
+      </Modal.Body>
+    </Modal>
+
   )
 }
 export default AddReview
