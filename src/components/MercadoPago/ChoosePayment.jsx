@@ -27,14 +27,14 @@ const ChoosePayment = ({ setCheckoutView, cartID, total }) => {
 
   return (
     <Container>
-      <Row className='d-flex justify-content-center align-items-center'>
-        <h6>¿Cómo deseas realizar tu pago?</h6>
+      <Row className='d-flex justify-content-center' style={{ textAlign: 'center' }}>
+        <h5 style={{ marginBottom: '25px' }}>¿Cómo deseas realizar tu pago?</h5>
       </Row>
       <Row className='d-flex flex-wrap'>
-        <Col>
+        <Col lg={6} className='d-flex justify-content-center align-items-center'>
           <Button style={botton} onClick={delivered}>Pago contraentrega</Button>
         </Col>
-        <Col>
+        <Col lg={6} className='d-flex justify-content-center align-items-center'>
           <Button style={botton} onClick={mpCheckOut}>MercadoPago</Button>
         </Col>
       </Row>

@@ -36,12 +36,12 @@ export const ButtonLike = ({ product }) => {
   }
 
   return (
-    <>
+    <div style={{ marginLeft: '-20vh' }}>
       {
       !favoritesProd.some(obj => obj.id === product.id)
-        ? <div style={{ color: heartColor.color, cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={25} onClick={handleClick} /></div>
-        : <div style={{ color: 'red', cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={25} onClick={handleClick} /></div>
+        ? <div style={{ color: heartColor.color, cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={30} onClick={handleClick} /></div>
+        : <div style={{ color: 'red', cursor: 'pointer', display: 'flex', padding: '5px', justifyContent: 'end' }}><AiFillHeart size={30} onClick={handleClick} /></div>
       }
-    </>
+    </div>
   )
 }
