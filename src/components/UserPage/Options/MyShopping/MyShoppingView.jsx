@@ -21,9 +21,13 @@ export const MyShoppingView = ({ orders, makeReview }) => {
         const formatedTotal = FormatedPrice({ price: order.totalAmount })
         return (
           <Container key={index} style={{ border: 'solid 1px grey', padding: '1rem' }} className='m-2'>
+
             {order.status === 'En preparación' ? <h4 className='d-flex text-primary'>{order.status} </h4> : null}
             {order.status === 'Entregado' ? <h4 className='d-flex text-success'>{order.status} </h4> : null}
-            {order.status === 'Pendiente de confirmación de pago' ? <h4 className='d-flex text-warning'>{order.status} </h4> : null}
+            {order.status === 'Pendiente de confirmación de pago' ? <h4 className='d-flex text-secondary'>{order.status} </h4> : null}
+            {order.status === 'Cancelado' ? <h4 className='d-flex text-danger'>{order.status} </h4> : null}
+            {order.status === 'Despachado' ? <h4 className='d-flex text-warning'>{order.status} </h4> : null}
+
             <h5>Total: {formatedTotal}</h5>
             <p className='d-flex'>{moment(order.confirmationPending).format('LLLL')}</p>
             <div>{order.productSolds?.map(product => {
