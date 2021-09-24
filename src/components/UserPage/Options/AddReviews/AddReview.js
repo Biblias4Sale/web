@@ -59,7 +59,7 @@ export const AddReview = (props) => {
         }))
       }
     }
-    setFormData((prev) => ({ ...prev, [event]: value }))
+    setFormData((prev) => ({ ...prev, [event]: `${value}` }))
   }
 
   const onSubmit = async () => {
