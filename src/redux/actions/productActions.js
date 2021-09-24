@@ -10,7 +10,6 @@ import {
 export const getProducts = () => {
   return async function (dispatch) {
     const response = await axios.get(`${ApiURL}/products`)
-    console.log(response.data)
     return dispatch({ type: GET_PRODUCTS, payload: response.data })
   }
 }
